@@ -40,6 +40,22 @@
 
 ---
 
+## 🏆 PROCÉDURE DE CONTRÔLE QUALITÉ & SÉLECTION À 3 ESSAIS (BEST-OF-3)
+
+Pour chaque candidature générée, le robot applique obligatoirement un protocole de **comparaison à 3 essais** :
+1. **Génération de 3 variantes de lettres :**
+   - *Variante 1 :* Axe Pédagogie d'Expertise, Titre Pro TP-01254 & Certification Qualiopi.
+   - *Variante 2 :* Axe Direction Opérationnelle, Management RH (580 pers.) & Dialogue Social (CSE).
+   - *Variante 3 :* Axe Polyvalence Droit Social, Gestion de la Paie & Conseil Entreprise (ADEA / Brevet de Maîtrise).
+2. **Évaluation QualityGuard sur 100 points :**
+   - Conformité A4 stricte (1123px) : 50 points (bloquant).
+   - Zéro gras dans le corps de texte : bloquant.
+   - Résonance lexicale avec l'annonce d'origine : 30 points.
+   - Personnalisation de l'organisme et du contact : 20 points.
+3. **Sélection Automatique :** Seule la variante obtenant le **score maximal** est retenue et compilée en PDF.
+
+---
+
 ## 🛡️ SÉCURITÉ AUTOMATIQUE & QUALITY GUARD (NON NÉGOCIABLE)
 
 1. **Curriculum Vitae (1 Page A4 Stricte) :** Strictement 1 seule page, police sans empattement nette et lisible (Arial), 100% de la hauteur occupée sans aucun vide en bas, 7 sections ordonnées.
@@ -51,7 +67,7 @@
 ---
 
 ## ☁️ VEILLE MULTI-SOURCES & EXÉCUTION CLOUD
-- Recherche en direct sur **France Travail**, **l'Apec** et **Indeed**.
+- Recherche en direct sur **France Travail** (API officielle), **l'Apec** et **Indeed**.
 - Exécution autonome dans le Cloud via GitHub Actions (08h, 13h, 18h).
 - Tableau de bord enrichi avec le **texte intégral de l'annonce d'origine**.
 - Alertes emails automatiques sur **ichard.busson@kairos-paye.fr** avec pièces jointes PDF.

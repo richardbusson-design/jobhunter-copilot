@@ -2,7 +2,7 @@
 import os
 import json
 import re
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, Tuple, List
 
 class QualityGuard:
     def __init__(self, config_dir="config"):
@@ -35,15 +35,12 @@ class QualityGuard:
         desc = job.get("description", "")
         salary_str = job.get("salary", "")
         
-        # 1. Vérification du Salaire
+        # 1. Vérification du Salaire (>= 30 000 € / an)
         min_salary = self.criteria.get("salary", {}).get("min_annual_brut_eur", 30000)
-        
-        # Extraction de chiffres de salaire s'ils existent
         if salary_str:
             nums = [int(n) for n in re.findall(r'\b\d{4,6}\b', salary_str.replace(" ", "").replace("k", "000"))]
             if nums:
                 max_num = max(nums)
-                # Si c'est un salaire mensuel (ex: 2200)
                 if max_num < 4000:
                     annual_equiv = max_num * 12
                     if annual_equiv < min_salary:
@@ -52,7 +49,6 @@ class QualityGuard:
                     return False, f"Salaire trop faible : {salary_str} ({max_num}€ < {min_salary}€)"
 
         # 2. Vérification Géographique
-        # Cas 1 : Télétravail complet
         if "télétravail" in (title + " " + desc).lower() or "remote" in (title + " " + desc).lower() or "distanciel" in (title + " " + desc).lower():
             return True, "Éligible (Télétravail / Distanciel)"
             
@@ -63,38 +59,31 @@ class QualityGuard:
         coastal_depts = self.criteria.get("geography", {}).get("eligible_coastal_departments", [])
         coastal_regions = [r.lower() for r in self.criteria.get("geography", {}).get("eligible_coastal_regions", [])]
         
-        # Cas 2 : Proche de Creil (<= 2h)
-        if dept in nearby_depts or "creil" in text_geo or "beauvais" in text_geo or "compiègne" in text_geo or "amiens" in text_geo or "paris" in text_geo or "oise" in text_geo:
+        if dept in nearby_depts or any(w in text_geo for w in ["creil", "beauvais", "compiègne", "amiens", "paris", "oise", "rouen", "lille", "senlis"]):
             return True, "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)"
             
-        # Cas 3 : Littoral Atlantique ou Méditerranée
-        if dept in coastal_depts or any(r in text_geo for r in coastal_regions) or "bordeaux" in text_geo or "nantes" in text_geo or "marseille" in text_geo or "montpellier" in text_geo:
+        if dept in coastal_depts or any(r in text_geo for r in coastal_regions) or any(w in text_geo for w in ["bordeaux", "nantes", "marseille", "montpellier", "saint-nazaire", "la rochelle", "bayonne"]):
             return True, "Éligible (Exception Littoral Atlantique / Méditerranée)"
             
-        # Si aucun code postal n'est fourni mais que c'est une grande institution nationale
         if not dept and ("afpa" in company.lower() or "cma" in company.lower() or "cci" in company.lower()):
             return True, "Éligible (Réseau National avec Mobilité Totale)"
 
-        return False, f"Hors zone géographique autorisée : {city} ({postal_code}) - non éligible <=2h de Creil et non littoral"
+        return False, f"Hors zone géographique autorisée : {city} ({postal_code})"
 
     def validate_html_letter(self, html_content: str) -> Tuple[bool, str]:
         """Vérifie la conformité absolue de la lettre de motivation."""
-        # 1. Vérification de l'alignement sur kairos-paye.fr
         if "kairos-paye.fr" not in html_content:
             return False, "Expéditeur incomplet : mention de kairos-paye.fr manquante."
             
-        # 2. Vérification stricte du GRAS dans le corps de texte
         body_match = re.search(r'<div class="body-content">(.*?)</div>\s*</div>', html_content, re.DOTALL)
         if body_match:
             body_text = body_match.group(1)
             if "<strong>" in body_text or "<b>" in body_text or "font-weight: bold" in body_text:
                 return False, "Violation règle typographique : Présence de texte en gras dans le corps de la lettre !"
                 
-        # 3. Vérification de la signature vectorielle
         if "signature-svg" not in html_content or "Richard Busson" not in html_content:
             return False, "Signature manuscrite vectorielle manquante en bas à droite."
             
-        # 4. Vérification de la hauteur et de l'équilibre A4
         if "1123px" not in html_content:
             return False, "Le gabarit doit être verrouillé sur la hauteur A4 (1123px)."
             
@@ -124,10 +113,8 @@ class QualityGuard:
         try:
             with open(pdf_path, "rb") as f:
                 content = f.read()
-            # Détection du nombre de pages dans le PDF
             pages = len(re.findall(rb'/Type\s*/Page\b', content))
             if pages == 0:
-                # Alternative pour certains streams PDF
                 pages = len(re.findall(rb'/Page\W', content))
                 
             if pages == 1:
@@ -139,7 +126,29 @@ class QualityGuard:
         except Exception as e:
             return False, f"Erreur lors de la lecture du PDF : {e}"
 
-if __name__ == "__main__":
-    guard = QualityGuard()
-    print("QualityGuard initialisé et opérationnel.")
-
+    def score_letter_candidate(self, html_content: str, job: Dict[str, Any]) -> float:
+        """Évalue et note une variante de lettre sur 100 points pour sélectionner la meilleure."""
+        score = 0.0
+        
+        # 1. Conformité structurelle & typographique (50 pts)
+        is_ok, _ = self.validate_html_letter(html_content)
+        if not is_ok:
+            return 0.0
+        score += 50.0
+        
+        # 2. Résonance avec le texte exact de l'annonce (30 pts)
+        job_text = (job.get("title", "") + " " + job.get("description", "") + " " + job.get("company", "")).lower()
+        key_terms = ["paie", "gestionnaire", "rh", "ressources humaines", "formation", "qualiopi", "silae", "dsn", "métis", "ecf", "titre professionnel", "relations sociales", "cse"]
+        matched = sum(1 for t in key_terms if t in job_text and t in html_content.lower())
+        score += min(matched * 3.5, 30.0)
+        
+        # 3. Qualité de la personnalisation de l'organisme cible (20 pts)
+        company = job.get("company", "")
+        if company and company.lower() in html_content.lower():
+            score += 10.0
+        if job.get("city", "").lower() in html_content.lower():
+            score += 5.0
+        if "À l’attention de" in html_content:
+            score += 5.0
+            
+        return min(score, 100.0)
