@@ -31,16 +31,27 @@ class ApplicationGenerator:
 
     def evaluate_match(self, job: Dict[str, Any]) -> int:
         text = (job.get("title", "") + " " + job.get("description", "") + " " + job.get("company", "")).lower()
-        score = 65
-        keywords_high = ["paie", "gestionnaire de paie", "ressources humaines", "rh", "formation", "formateur", "coordinateur"]
-        keywords_mid = ["dsn", "silae", "titre professionnel", "qualiopi", "comptabilité", "social", "droit social", "alternance", "cfa", "adea"]
+        score = 70
         
-        for kw in keywords_high:
-            if kw in text:
-                score += 6
-        for kw in keywords_mid:
-            if kw in text:
-                score += 4
+        # 1. Piliers Métiers Cibles
+        if "paie" in text or "gestionnaire de paie" in text or "bulletin" in text:
+            score += 8
+        if "ressources humaines" in text or " rh " in text or "rh," in text or text.startswith("rh ") or text.endswith(" rh"):
+            score += 8
+        if "formation" in text or "formateur" in text or "pédagogique" in text or "coordinateur" in text or "tp-" in text:
+            score += 8
+        if "responsable rh" in text or "rrh" in text or "relations sociales" in text or "chargé rh" in text or "gestionnaire rh" in text:
+            score += 8
+
+        # 2. Compétences Techniques & Spécialisées
+        tech_keywords = [
+            "dsn", "silae", "titre professionnel", "qualiopi", "droit social", "droit du travail",
+            "cse", "contrat", "contrats", "administration du personnel", "gestion du personnel",
+            "masse salariale", "alternance", "cfa", "adea", "métis", "ecf"
+        ]
+        
+        matched_tech = sum(1 for kw in tech_keywords if kw in text)
+        score += min(matched_tech * 2, 16)
                 
         return min(score, 98)
 
@@ -181,3 +192,6 @@ class ApplicationGenerator:
         html = html.replace("{{ experiences_html }}", exp_html)
         
         return html
+
+
+
