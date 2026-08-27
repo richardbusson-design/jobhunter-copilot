@@ -6,12 +6,18 @@ on:
     - cron: '0 7,12,17 * * *'
   workflow_dispatch: # Permet aussi de déclencher manuellement le robot depuis un smartphone ou un navigateur
 
+permissions:
+  contents: write # Autorisation d'écriture sur le dépôt pour mettre à jour dashboard.md
+
 jobs:
   jobhunter-run:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Récupération du Code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: 🐍 Configuration de Python 3.11
         uses: actions/setup-python@v5
@@ -37,13 +43,14 @@ jobs:
         run: |
           python src/cloud_runner.py
 
-      - name: 💾 Sauvegarde des Nouvelles Candidatures
+      - name: 💾 Sauvegarde & Publication du Tableau de Bord
         run: |
           git config --global user.name "JobHunter Cloud Bot"
           git config --global user.email "bot@kairos-paye.fr"
+          git pull --rebase origin main || echo "Pas de rebase nécessaire"
           git add candidatures/ tracker.json dashboard.md
-          git commit -m "🤖 [Cloud Bot] Nouvelles candidatures générées $(date +'%Y-%m-%d %H:%M')" || echo "Aucune nouvelle candidature à commiter"
-          git push || echo "Pas de modifications distantes"
+          git commit -m "🤖 [Cloud Bot] Mise à jour du Tableau de Bord & Candidatures $(date +'%Y-%m-%d %H:%M')" || echo "Aucune modification à commiter"
+          git push origin main || echo "Échec du push"
 
       - name: 📎 Sauvegarde des Fichiers PDF en Artifacts Téléchargeables
         uses: actions/upload-artifact@v4
