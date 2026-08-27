@@ -1,72 +1,86 @@
 # -*- coding: utf-8 -*-
 import os
-import subprocess
-import time
-import shutil
 import sys
+import subprocess
+import shutil
 
-def find_browser_path():
-    possible_paths = [
-        # Windows
+def get_browser_path():
+    """Détecte automatiquement le navigateur headless disponible (Windows Edge ou Linux Chromium)."""
+    # 1. Sous Windows (Edge ou Chrome)
+    edge_paths = [
         r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-        # Linux / Ubuntu (GitHub Actions)
-        "/usr/bin/chromium-browser",
-        "/usr/bin/chromium",
-        "/usr/bin/google-chrome",
-        "/usr/bin/google-chrome-stable",
-        # PATH
-        shutil.which("msedge"),
-        shutil.which("chromium-browser"),
-        shutil.which("chromium"),
-        shutil.which("google-chrome"),
-        shutil.which("google-chrome-stable"),
-        shutil.which("chrome")
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe"
     ]
-    for path in possible_paths:
-        if path and os.path.exists(path):
+    for p in edge_paths:
+        if os.path.exists(p):
+            return p
+            
+    # 2. Sous Linux / GitHub Actions (Chromium ou Chrome)
+    linux_bins = ["chromium-browser", "chromium", "google-chrome", "google-chrome-stable"]
+    for b in linux_bins:
+        path = shutil.which(b)
+        if path:
             return path
-    raise FileNotFoundError("Navigateur Chromium / Chrome / Edge introuvable pour la compilation PDF.")
+            
+    return "chromium"
 
-def compile_html_to_pdf(html_path: str, output_pdf_path: str, timeout: int = 20) -> bool:
-    browser_path = find_browser_path()
+def compile_html_to_pdf(html_path: str, pdf_path: str) -> bool:
+    """Compile un fichier HTML vers un PDF A4 strict via Chromium / Edge headless."""
     abs_html = os.path.abspath(html_path)
-    abs_pdf = os.path.abspath(output_pdf_path)
+    abs_pdf = os.path.abspath(pdf_path)
+    browser = get_browser_path()
     
-    os.makedirs(os.path.dirname(abs_pdf), exist_ok=True)
+    file_url = f"file:///{abs_html.replace(os.sep, '/')}"
     
-    if os.path.exists(abs_pdf):
-        try:
-            os.remove(abs_pdf)
-        except Exception:
-            pass
-
     cmd = [
-        browser_path,
-        "--headless=new",
+        browser,
+        "--headless",
         "--disable-gpu",
         "--no-sandbox",
         "--disable-dev-shm-usage",
-        "--no-pdf-header-footer",
-        "--run-all-compositor-stages-before-draw",
         f"--print-to-pdf={abs_pdf}",
-        abs_html
+        "--no-pdf-header-footer",
+        "--print-to-pdf-no-header",
+        file_url
     ]
     
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-        for _ in range(12):
-            if os.path.exists(abs_pdf) and os.path.getsize(abs_pdf) > 0:
-                return True
-            time.sleep(0.3)
+        res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=25)
+        if os.path.exists(abs_pdf) and os.path.getsize(abs_pdf) > 0:
+            # Génération automatique et simultanée de l'image visuelle haute fidélité (PNG)
+            png_path = abs_pdf.replace(".pdf", ".png")
+            render_html_to_png(html_path, png_path)
+            return True
+        return False
     except Exception as e:
-        print(f"Exception lors de la compilation PDF : {e}")
+        print(f"[!] Erreur de compilation PDF : {e}")
+        return False
 
-    return os.path.exists(abs_pdf) and os.path.getsize(abs_pdf) > 0
+def render_html_to_png(html_path: str, png_path: str) -> bool:
+    """Génère une capture visuelle PNG haute résolution (794x1123) pour contrôle visuel immédiat."""
+    abs_html = os.path.abspath(html_path)
+    abs_png = os.path.abspath(png_path)
+    browser = get_browser_path()
+    file_url = f"file:///{abs_html.replace(os.sep, '/')}"
+    
+    cmd = [
+        browser,
+        "--headless",
+        "--disable-gpu",
+        "--no-sandbox",
+        "--window-size=794,1123",
+        f"--screenshot={abs_png}",
+        file_url
+    ]
+    
+    try:
+        subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
+        return os.path.exists(abs_png) and os.path.getsize(abs_png) > 0
+    except Exception as e:
+        print(f"[!] Erreur de génération PNG : {e}")
+        return False
 
 if __name__ == "__main__":
     if len(sys.argv) >= 3:
-        success = compile_html_to_pdf(sys.argv[1], sys.argv[2])
-        print("Succès:" if success else "Échec", sys.argv[2])
+        compile_html_to_pdf(sys.argv[1], sys.argv[2])

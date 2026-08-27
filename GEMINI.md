@@ -62,7 +62,8 @@ Pour chaque candidature générée, le robot applique obligatoirement un protoco
 2. **Lettre de Motivation (1 Page A4 Stricte) :** Strictement 1 seule page, expéditeur à gauche (6 lignes), destinataire à droite aligné très exactement sur la 6ᵉ ligne (*kairos-paye.fr*).
 3. **Règle stricte du GRAS :** **AUCUN mot en gras dans le corps de la lettre**. Le gras est STRICTEMENT RÉSERVÉ à l'**Objet : ...** et à **À l’attention de...**.
 4. **Signature Manuscrite Lisible :** Signature vectorielle cursive nette et élégante en bas à droite au-dessus de *Richard Busson*.
-5. **Orthographe & Typographie :** Respect scrupuleux des majuscules accentuées (À), accents circonflexes (Maîtrise), cédilles (conçu).
+5. **Aperçu Visuel Obligatoire & Zéro Code Brut :** Chaque dossier génère automatiquement le PDF officiel ET son aperçu graphique visuel (PNG haute résolution) pour un contrôle immédiat à l'écran sans jamais ouvrir de code brut.
+6. **Orthographe & Typographie :** Respect scrupuleux des majuscules accentuées (À), accents circonflexes (Maîtrise), cédilles (conçu).
 
 ---
 
