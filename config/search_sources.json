@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "name": "France Travail",
+      "enabled": true,
+      "type": "api_and_web",
+      "searchQueries": [
+        "Formateur gestion de la paie",
+        "Formateur ressources humaines",
+        "Formateur comptabilité gestion",
+        "Coordinateur de formation",
+        "Responsable des ressources humaines"
+      ]
+    },
+    {
+      "name": "Apec",
+      "enabled": true,
+      "type": "web_search",
+      "searchQueries": [
+        "Formateur Paie RH Apec",
+        "Responsable pédagogique formation professionnelle Apec",
+        "Responsable RH administration du personnel Apec"
+      ]
+    },
+    {
+      "name": "Indeed",
+      "enabled": true,
+      "type": "web_search",
+      "searchQueries": [
+        "Formateur Titre Pro Gestionnaire de paie Indeed",
+        "Formateur RH droit social Indeed",
+        "Coordinateur pédagogique formation continue Indeed"
+      ]
+    }
+  ],
+  "targetOrganisms": [
+    "Chambre de Métiers et de l'Artisanat (CMA)",
+    "Chambre de Commerce et d'Industrie (CCI)",
+    "Centres Afpa",
+    "GRETA / Education Nationale",
+    "CFA et Organismes de formation certifiés Qualiopi",
+    "Écoles de gestion et de commerce",
+    "Entreprises (Direction RH / Service Paie)"
+  ]
+}

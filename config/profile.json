@@ -1,0 +1,69 @@
+{
+  "identity": {
+    "fullName": "Richard BUSSON",
+    "title": "Coordinateur de formation / Formateur en paie, ressources humaines et droit social",
+    "address": "98, allée Paul Cézanne",
+    "postalCodeCity": "60100 CREIL",
+    "phone": "09 39 20 08 70",
+    "email": "richard.busson@kairos-paye.fr",
+    "linkedin": "linkedin.com/in/richard-busson",
+    "website": "kairos-paye.fr",
+    "drivingLicense": "Permis B (valide)",
+    "mobility": "Mobilité nationale",
+    "availability": "Disponibilité immédiate",
+    "age": 59,
+    "seniorEmploymentAid": true
+  },
+  "summary": "Dirigeant d'un organisme de formation certifié Qualiopi, formateur, et ancien responsable des ressources humaines d'une structure de 580 collaborateurs. Ingénierie de parcours certifiants, conformité au Référentiel National Qualité, marchés publics de formation et management de site opérationnel. Master 2 de droit public. Mobilité nationale, disponibilité immédiate.",
+  "keySkills": [
+    "Formation d'adultes et d'alternants : douze ans d'animation devant des publics en reconversion ; ingénierie de parcours certifiants, du référentiel à l'évaluation.",
+    "Gestion du personnel en TPE et PME : embauche, contrat d'apprentissage, paie, DSN, conventions collectives : la matière du bloc RH de l'ADEA et du Brevet de Maîtrise.",
+    "Qualité et conformité de la formation : dirigeant d'un organisme certifié Qualiopi (ICPF, QUA007374) : Référentiel National Qualité, traçabilité, indicateurs, suivi d'audit.",
+    "Coordination et pilotage : direction d'un site opérationnel, pilotage RH de 580 collaborateurs, marchés publics du champ formation."
+  ],
+  "experiences": [
+    {
+      "role": "Formateur et consultant en paie, ressources humaines et droit social",
+      "company": "Kairos Formation, organisme certifié Qualiopi, président",
+      "period": "2014 - aujourd'hui",
+      "bullets": [
+        "Conception et animation de parcours certifiants pour adultes, dont un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254, millésime 04) : référentiel, macro-planning, cadrage des évaluations, déroulés de séance.",
+        "Formation de dirigeants et de collaborateurs de TPE et PME à la gestion du personnel : embauche, contrats, apprentissage, paie, DSN, obligations de l'employeur, avec veille réglementaire continue.",
+        "Direction d'un organisme certifié Qualiopi : construction de l'offre, conformité au Référentiel National Qualité, indicateurs, relations avec les financeurs."
+      ]
+    },
+    {
+      "role": "Formateur en gestion de paie, en sous-traitance pédagogique pour l'Afpa",
+      "company": "Centres Afpa de Vervins, Beauvais, Creil et Amiens",
+      "period": "2016 - 2020",
+      "bullets": [
+        "Interventions sur quatre centres pour le compte d'organismes titulaires du marché : référentiel du donneur d'ordre, outil Métis, évaluations en cours de formation, traçabilité du suivi des stagiaires.",
+        "Formation en entrée permanente : groupes à entrées échelonnées et parcours individualisés, organisation proche de celle d'un centre de formation d'apprentis."
+      ]
+    },
+    {
+      "role": "Responsable des relations sociales et des ressources humaines",
+      "company": "Secours Populaire, structure de 580 collaborateurs",
+      "period": "2003 - 2010",
+      "bullets": [
+        "Paie et administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail.",
+        "Pilotage du plan de formation, conduite de marchés publics RH et formation, animation du dialogue social."
+      ]
+    },
+    {
+      "role": "Responsable de site, management opérationnel",
+      "company": "ETV, Nouvelle-Calédonie",
+      "period": "2010 - 2014",
+      "bullets": [
+        "Montage et exploitation d'un site industriel : encadrement des équipes, organisation de la production, conformité réglementaire et prévention des risques."
+      ]
+    }
+  ],
+  "education": [
+    "Master RSE : IAE de Paris (en cours)",
+    "Master 2 Droit public : Université de Picardie",
+    "Maîtrise Sciences de Gestion : Université Paris XIII",
+    "DUT GEA, option Ressources Humaines : Université Paris XIII"
+  ],
+  "tools": "Connaissance du logiciel Silae, DSN et déclarations dématérialisées, Excel. Mobilité nationale, disponibilité immédiate. Français (langue maternelle), anglais (débutant)."
+}
