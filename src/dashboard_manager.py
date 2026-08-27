@@ -33,11 +33,9 @@ class DashboardManager:
     def add_application(self, app_entry: Dict[str, Any]):
         apps = self.load_tracker()
         
-        # Vérifier si l'application existe déjà
         exists = False
         for a in apps:
             if a.get("company") == app_entry.get("company") and a.get("title") == app_entry.get("title"):
-                # Mettre à jour les champs si nécessaire
                 a.update(app_entry)
                 exists = True
                 break
@@ -58,12 +56,12 @@ class DashboardManager:
             
         now_str = datetime.now().strftime("%d/%m/%Y à %H:%M")
         
-        md = f"""# 📊 Tableau de Bord des Candidatures - Richard BUSSON
+        md = f"""# 📊 Tableau de Bord des Candidatures & Annonces Réelles - Richard BUSSON
 
 *Dernière mise à jour automatique : {now_str}*
 
-| Date | Organisme / Entreprise | Intitulé du Poste & Détails Annonce | Ville & Zone | Rémunération | Score Match | Statut | Relance (J+7) | Fichiers PDF A4 |
-| :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+| Date | Organisme / Employeur | Intitulé & Texte Intégral de l'Annonce | Ville & Mobilité | Salaire Brut | Match | Relance (J+7) | Fichiers PDF A4 |
+| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
 """
         for a in apps:
             d = a.get("date", datetime.now().strftime("%Y-%m-%d"))
@@ -78,11 +76,11 @@ class DashboardManager:
             url = a.get("url", "")
             desc = a.get("description", "Formation Gestionnaire de paie, RH, DSN, Qualiopi.")
             
-            # Bloc Annonce avec lien cliquable
-            link_annonce = f"[🔗 Voir l'annonce ({source})]({url})" if url else f"*(Source : {source})*"
-            poste_details = f"**{tit}**<br>{link_annonce}<br><small style='color:#666;'>{desc[:120]}...</small>" if len(desc) > 120 else f"**{tit}**<br>{link_annonce}<br><small style='color:#666;'>{desc}</small>"
+            link_annonce = f"[🔗 **Consulter l'annonce originale sur {source}**]({url})" if url else f"*(Source : {source})*"
             
-            # Liens web propres avec slashs normaux pour GitHub
+            # Bloc texte complet de l'annonce
+            annonce_block = f"**{tit}**<br>{link_annonce}<br><br>📝 **Texte de l'annonce :**<br><blockquote>{desc}</blockquote>"
+            
             folder_rel = a.get("folder_rel", "").replace("\\", "/")
             if folder_rel:
                 link_cv = f"[{comp} - CV]({folder_rel}/CV_Richard_BUSSON.pdf)"
@@ -91,21 +89,19 @@ class DashboardManager:
             else:
                 pdf_links = "Dossier généré"
                 
-            md += f"| {d} | **{comp}** | {poste_details} | {city} | {salary} | **{score}%** | `{stat}` | {rel} | {pdf_links} |\n"
+            md += f"| {d} | **{comp}** | {annonce_block} | {city} | {salary} | **{score}%** | {rel} | {pdf_links} |\n"
             
         md += """
 ---
 
 ### 📌 Guide du Tableau de Bord :
-* **Détails Annonce :** Chaque ligne intègre l'intitulé exact, le lien direct vers l'annonce d'origine et le résumé des exigences.
-* **Score Match :** Évaluation automatique de l'adéquation avec vos compétences (Paie, RH, Qualiopi, Afpa, 580 pers., Master 2).
-* **Statut `Dossier PDF Prêt` :** CV et Lettre de motivation générés et 100% validés par le **QualityGuard** (strictement 1 page A4, zéro gras dans le corps).
-* **Relance (J+7) :** Date conseillée pour relancer le recruteur si aucun retour n'a été reçu.
+* **Texte Intégral de l'Annonce :** Le descriptif complet des missions, compétences et modalités de recrutement est intégré dans chaque ligne.
+* **Score Match :** Évaluation automatique de l'adéquation avec votre profil (Paie, RH, Qualiopi, Afpa, 580 collaborateurs, Master 2).
+* **Sécurité QualityGuard :** CV et Lettre générés sur 1 page A4 stricte en typographie haute lisibilité sans aucun gras dans le corps de lettre.
 """
         with open(self.dashboard_file, "w", encoding="utf-8") as f:
             f.write(md)
             
-        # Synchroniser vers Gemini root
         gemini_dash = r"C:\Users\richa\Gemini\dashboard.md"
         try:
             with open(gemini_dash, "w", encoding="utf-8") as f:
@@ -116,4 +112,4 @@ class DashboardManager:
 if __name__ == "__main__":
     dm = DashboardManager()
     dm.generate_markdown_dashboard()
-    print("dashboard.md régénéré avec la colonne Annonce et descriptif.")
+    print("dashboard.md régénéré avec le texte intégral des annonces.")

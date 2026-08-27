@@ -22,6 +22,13 @@ class ApplicationGenerator:
         with open(full_path, "r", encoding="utf-8") as f:
             return f.read()
 
+    def clean_job_title(self, raw_title: str) -> str:
+        """Nettoie les mentions (H/F), / Formatrice, etc. pour une intégration fluide en prose."""
+        cleaned = re.sub(r'\(H/F\)|H/F|\(F/H\)|F/H', '', raw_title, flags=re.IGNORECASE)
+        cleaned = cleaned.replace("/ Formatrice", "").replace("/ formatrice", "")
+        cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+        return cleaned
+
     def evaluate_match(self, job: Dict[str, Any]) -> int:
         text = (job.get("title", "") + " " + job.get("description", "") + " " + job.get("company", "")).lower()
         score = 65
@@ -37,155 +44,140 @@ class ApplicationGenerator:
                 
         return min(score, 98)
 
-    def generate_letter_content(self, job: Dict[str, Any]) -> Dict[str, str]:
-        company = job.get("company", "CMA Nouvelle-Aquitaine")
-        title = job.get("title", "formateur en paie et ressources humaines, ou coordinateur de formation")
-        contact_name = job.get("contact_name", "Monsieur Stéphane BON")
-        contact_title = job.get("contact_title", "Directeur régional de la Formation")
-        city = job.get("city", "BORDEAUX")
-        postal_code = job.get("postal_code", "33000")
-        address_1 = job.get("address_1", "46, rue Général de Larminat")
-        address_2 = job.get("address_2", "CS 81423")
-        custom_p1 = job.get("custom_p1")
-        custom_p2 = job.get("custom_p2")
-        custom_p3 = job.get("custom_p3")
-        custom_p4 = job.get("custom_p4")
-        custom_p5 = job.get("custom_p5")
-        
-        salutation = "Monsieur le Directeur" if "directeur" in contact_title.lower() else "Madame, Monsieur"
-        today_str = job.get("date_str", datetime.now().strftime("%d %B %Y").replace("August", "août").replace("September", "septembre").replace("October", "octobre"))
-        
-        # Paragraphes impeccables : accents rigoureux et ponctuation française soignée
-        if not custom_p1:
-            if "cma" in company.lower():
-                custom_p1 = f"Votre appel à votre réseau a retenu mon attention. Le poste que vous publiiez relevait d’un autre métier que le mien, aussi est-ce une candidature spontanée que je me permets de vous adresser. {company} accompagne près de 13 000 apprenants par an sur quinze sites et forme environ 18 % des apprentis de Nouvelle-Aquitaine : c’est un opérateur dont je connais la matière, sans en connaître encore la maison."
-            elif "afpa" in company.lower():
-                custom_p1 = f"Votre recherche d’un {title} au centre de formation Afpa retient toute mon attention. Intervenu entre 2016 et 2020 sur quatre centres Afpa (Vervins, Beauvais, Creil et Amiens), je connais parfaitement les exigences de vos dispositifs, l’outil Métis, les évaluations en cours de formation (ECF) et la gestion de groupes à entrées échelonnées et parcours individualisés."
-            else:
-                custom_p1 = f"Votre recherche d’un {title} au sein de {company} a retenu toute mon attention. Acteur reconnu sur notre territoire dans le développement des compétences professionnelles, votre structure représente un environnement dont je maîtrise parfaitement les enjeux techniques, opérationnels et réglementaires."
-
-        custom_p1 = re.sub(r'</?[bi]>|</?strong>', '', custom_p1)
-
-        if not custom_p2:
-            custom_p2 = "Le premier bloc de compétences de l’ADEA, assister à la gestion des ressources humaines et au management des collaborateurs d’une entreprise artisanale, représente 84 heures que je peux animer sans période d’adaptation. Le volet gestion du Brevet de Maîtrise et la formation continue des artisans employeurs relèvent de la même matière : embauche du premier salarié, contrat d’apprentissage, bulletin de paie, DSN et obligations de l’employeur. C’est ce que j’enseigne depuis 2014."
-
-        if not custom_p3:
-            custom_p3 = "J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant aussi le plan de formation. Le cadre d’un centre de formation ne m’est pas étranger non plus : entre 2016 et 2020, je suis intervenu sur quatre centres Afpa, avec référentiel imposé, évaluations en cours de formation et parcours individualisés au sein d’un même groupe."
-
-        if not custom_p4:
-            custom_p4 = "Si c’est une fonction de coordination que vous avez à pourvoir, elle me va tout autant. Je dirige un organisme certifié Qualiopi : le Référentiel National Qualité, la traçabilité des parcours et la préparation d’audit sont mes obligations quotidiennes. J’ai conçu de bout en bout un parcours certifiant de 758 heures préparant au Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d’un site industriel en Nouvelle-Calédonie. Un Master 2 de droit public complète cette approche des cadres réglementaires."
-
-        if not custom_p5:
-            custom_p5 = "Un mot de franchise pour finir. J’ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu’un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l’embauche au titre de ma situation de demandeur d’emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est nationale, sans réserve, sur l’ensemble du réseau, et ma disponibilité immédiate."
-
-        return {
-            "recipient_contact": f"À l’attention de {contact_name}" if contact_name else f"À l’attention de la Direction",
-            "recipient_title": contact_title,
-            "recipient_company": company,
-            "recipient_address_1": address_1,
-            "recipient_address_2": address_2 if address_2 else "",
-            "recipient_city": f"{postal_code} {city.upper()}".strip(),
-            "date_line": f"À Creil, le {today_str}",
-            "objet": f"Candidature spontanée : {title}" if "spontanée" in title.lower() or "candidature" in title.lower() else f"Candidature : {title}",
-            "salutation": salutation,
-            "paragraph_1": custom_p1,
-            "paragraph_2": custom_p2,
-            "paragraph_3": custom_p3,
-            "paragraph_4": custom_p4,
-            "paragraph_5": custom_p5,
-            "closing_politeness": f"Je vous prie d’agréer, {salutation}, l’expression de ma considération distinguée."
-        }
-
-    def generate_cv_content(self, job: Dict[str, Any]) -> Dict[str, str]:
-        title = job.get("title", "Coordinateur de formation / Formateur Paie & RH")
-        
-        pf1 = "<strong>La qualité en formation, vécue de l'intérieur :</strong> direction d'un organisme certifié Qualiopi : Référentiel National Qualité, traçabilité des parcours, indicateurs, suivi d'audit, relations avec les financeurs."
-        pf2 = "<strong>Ingénierie complète, du référentiel au déroulé de séance :</strong> parcours certifiant de 758 heures construit de bout en bout, macro-planning, cadrage des évaluations, et modules courts pour publics en poste."
-        pf3 = "<strong>Encadrement et gestion administrative maîtrisés :</strong> direction d'un site opérationnel, pilotage RH de 580 collaborateurs, plan de formation et marchés publics du champ formation."
-        
-        points_forts_html = f"""
-        <div class="cv-bullet text-justify">{pf1}</div>
-        <div class="cv-bullet text-justify">{pf2}</div>
-        <div class="cv-bullet text-justify">{pf3}</div>
-        """
-        
-        key_skills_html = """
-        <div class="cv-bullet text-justify"><strong>Formation d'adultes et d'alternants :</strong> douze ans d'animation devant des publics en reconversion ; ingénierie de parcours certifiants, du référentiel à l'évaluation.</div>
-        <div class="cv-bullet text-justify"><strong>Gestion du personnel en TPE et PME :</strong> embauche, contrat d'apprentissage, paie, DSN, conventions collectives : la matière du bloc RH de l'ADEA et du Brevet de Maîtrise.</div>
-        <div class="cv-bullet text-justify"><strong>Qualité et conformité de la formation :</strong> dirigeant d'un organisme certifié Qualiopi (ICPF, QUA007374) : Référentiel National Qualité, traçabilité, indicateurs, suivi d'audit.</div>
-        <div class="cv-bullet text-justify"><strong>Coordination et pilotage :</strong> direction d'un site opérationnel, pilotage RH de 580 collaborateurs, marchés publics du champ formation.</div>
-        """
-        
-        exp_html = """
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="font-weight: bold; color: #000000;">Formateur et consultant en paie, ressources humaines et droit social</span>
-            <span style="font-size: 10.5px; color: #333333; font-style: italic;">2014 - aujourd'hui</span>
-          </div>
-          <div style="font-size: 10.8px; color: #222222; font-style: italic;">Kairos Formation, organisme certifié Qualiopi, président</div>
-          <div style="margin-top: 2px;">
-            <div class="cv-bullet text-justify">Conception et animation de parcours certifiants pour adultes, dont un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254, millésime 04) : référentiel, macro-planning, cadrage des évaluations, déroulés de séance.</div>
-            <div class="cv-bullet text-justify">Formation de dirigeants et de collaborateurs de TPE et PME à la gestion du personnel : embauche, contrats, apprentissage, paie, DSN, obligations de l'employeur, avec veille réglementaire continue.</div>
-            <div class="cv-bullet text-justify">Direction d'un organisme certifié Qualiopi : construction de l'offre, conformité au Référentiel National Qualité, indicateurs, relations avec les financeurs.</div>
-          </div>
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="font-weight: bold; color: #000000;">Formateur en gestion de paie, en sous-traitance pédagogique pour l'Afpa</span>
-            <span style="font-size: 10.5px; color: #333333; font-style: italic;">2016 - 2020</span>
-          </div>
-          <div style="font-size: 10.8px; color: #222222; font-style: italic;">Centres Afpa de Vervins, Beauvais, Creil et Amiens</div>
-          <div style="margin-top: 2px;">
-            <div class="cv-bullet text-justify">Interventions sur quatre centres pour le compte d'organismes titulaires du marché : référentiel du donneur d'ordre, outil Métis, évaluations en cours de formation, traçabilité du suivi des stagiaires.</div>
-            <div class="cv-bullet text-justify">Formation en entrée permanente : groupes à entrées échelonnées et parcours individualisés, organisation proche de celle d'un centre de formation d'apprentis.</div>
-          </div>
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="font-weight: bold; color: #000000;">Responsable des relations sociales et des ressources humaines</span>
-            <span style="font-size: 10.5px; color: #333333; font-style: italic;">2003 - 2010</span>
-          </div>
-          <div style="font-size: 10.8px; color: #222222; font-style: italic;">Secours Populaire, structure de 580 collaborateurs</div>
-          <div style="margin-top: 2px;">
-            <div class="cv-bullet text-justify">Paie et administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail.</div>
-            <div class="cv-bullet text-justify">Pilotage du plan de formation, conduite de marchés publics RH et formation, animation du dialogue social.</div>
-          </div>
-        </div>
-
-        <div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="font-weight: bold; color: #000000;">Responsable de site, management opérationnel</span>
-            <span style="font-size: 10.5px; color: #333333; font-style: italic;">2010 - 2014</span>
-          </div>
-          <div style="font-size: 10.8px; color: #222222; font-style: italic;">ETV, Nouvelle-Calédonie</div>
-          <div class="cv-bullet text-justify" style="margin-top: 2px;">
-            Montage et exploitation d'un site industriel : encadrement des équipes, organisation de la production, conformité réglementaire et prévention des risques.
-          </div>
-        </div>
-        """
-        
-        return {
-            "target_title": title,
-            "target_title_upper": title.upper(),
-            "summary": self.profile["summary"],
-            "key_skills_html": key_skills_html.strip(),
-            "points_forts_html": points_forts_html.strip(),
-            "experiences_html": exp_html.strip(),
-            "tools": self.profile["tools"]
-        }
-
     def render_letter_html(self, job: Dict[str, Any]) -> str:
-        data = self.generate_letter_content(job)
+        company = job.get("company", "Organisme")
+        raw_title = job.get("title", "Formateur en gestion de paie et RH")
+        title_clean = self.clean_job_title(raw_title)
+        contact_name = job.get("contact_name", "")
+        contact_title = job.get("contact_title", "Direction du Centre")
+        city = job.get("city", "Creil")
+        postal_code = str(job.get("postal_code", "60100"))
+        address_1 = job.get("address_1", "")
+        address_2 = job.get("address_2", "")
+        
+        contact_full = f"{contact_name}, {contact_title}".strip(", ") if contact_name else contact_title
+        today_str = datetime.now().strftime("%d %B %Y").replace("August", "août").replace("September", "septembre").replace("October", "octobre")
+        
+        # Rédaction fluide et naturelle des paragraphes
+        if "cma" in company.lower() or "artisanat" in company.lower():
+            p1 = f"Votre recherche pour le poste de {title_clean.lower()} au sein de {company} retient toute mon attention. Acteur de référence dans la formation professionnelle et l’accompagnement des entreprises artisanales, votre organisme représente un environnement d’excellence dont je maîtrise parfaitement les exigences pédagogiques et réglementaires."
+        elif "afpa" in company.lower():
+            p1 = f"Votre recherche d’un {title_clean.lower()} au centre de formation Afpa retient toute mon attention. Intervenu entre 2016 et 2020 sur quatre centres Afpa (Vervins, Beauvais, Creil et Amiens), je connais parfaitement les exigences de vos dispositifs, l’outil Métis, les évaluations en cours de formation (ECF) et la gestion de groupes à entrées échelonnées et parcours individualisés."
+        else:
+            p1 = f"Votre recherche pour le poste de {title_clean.lower()} au sein de {company} retient toute mon attention. Structure reconnue dans le développement des compétences, votre établissement propose un cadre d'intervention en parfaite adéquation avec mon parcours de formateur expert et de responsable RH."
+
+        p2 = "Le premier bloc de compétences de l’ADEA, assister à la gestion des ressources humaines et au management des collaborateurs d’une entreprise artisanale, représente 84 heures que je peux animer sans période d’adaptation. Le volet gestion du Brevet de Maîtrise et la formation continue des artisans employeurs relèvent de la même matière : embauche du premier salarié, contrat d’apprentissage, bulletin de paie, DSN et obligations de l’employeur. C’est ce que j’enseigne depuis 2014."
+        p3 = "J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant aussi le plan de formation. Le cadre d’un centre de formation ne m’est pas étranger non plus : entre 2016 et 2020, je suis intervenu sur quatre centres Afpa, avec référentiel imposé, évaluations en cours de formation et parcours individualisés au sein d’un même groupe."
+        p4 = "Si c’est une fonction de coordination que vous avez à pourvoir, elle me va tout autant. Je dirige un organisme certifié Qualiopi : le Référentiel National Qualité, la traçabilité des parcours et la préparation d’audit sont mes obligations quotidiennes. J’ai conçu de bout en bout un parcours certifiant de 758 heures préparant au Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d’un site industriel en Nouvelle-Calédonie. Un Master 2 de droit public complète cette approche des cadres réglementaires."
+        p5 = "Un mot de franchise pour finir. J’ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu’un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l’embauche au titre de ma situation de demandeur d’emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est nationale, sans réserve, sur l’ensemble du réseau, et ma disponibilité immédiate."
+
+        # Nettoyage absolu de toute balise grasse dans le corps
+        p1 = re.sub(r'</?[bi]>|</?strong>', '', p1)
+        p2 = re.sub(r'</?[bi]>|</?strong>', '', p2)
+        p3 = re.sub(r'</?[bi]>|</?strong>', '', p3)
+        p4 = re.sub(r'</?[bi]>|</?strong>', '', p4)
+        p5 = re.sub(r'</?[bi]>|</?strong>', '', p5)
+
         html = self.letter_template
-        for k, v in data.items():
-            html = html.replace(f"{{{{ {k} }}}}", v)
+        html = html.replace("{{ contact_full }}", contact_full)
+        html = html.replace("{{ company_name }}", company)
+        html = html.replace("{{ address_1 }}", address_1 if address_1 else "Direction des Ressources Humaines")
+        html = html.replace("{{ postal_code }}", postal_code)
+        html = html.replace("{{ city }}", city.upper())
+        html = html.replace("{{ current_date }}", today_str)
+        html = html.replace("{{ job_title_clean }}", title_clean)
+        html = html.replace("{{ paragraph_1 }}", p1)
+        html = html.replace("{{ paragraph_2 }}", p2)
+        html = html.replace("{{ paragraph_3 }}", p3)
+        html = html.replace("{{ paragraph_4 }}", p4)
+        html = html.replace("{{ paragraph_5 }}", p5)
+        
         return html
 
     def render_cv_html(self, job: Dict[str, Any]) -> str:
-        data = self.generate_cv_content(job)
+        raw_title = job.get("title", "Formateur en gestion de paie et RH")
+        title_clean = self.clean_job_title(raw_title)
+        
+        summary = (
+            "Dirigeant d’un organisme de formation certifié Qualiopi, formateur expert et ancien responsable des ressources humaines d’une structure de 580 collaborateurs. "
+            "Ingénierie complète de parcours certifiants, conformité au Référentiel National Qualité, marchés publics de formation et gestion de site opérationnel. "
+            "Master 2 de droit public. Mobilité nationale, disponibilité immédiate."
+        )
+
+        key_skills = [
+            ("Formation d’adultes et d’alternants", "douze ans d’animation continue devant des publics adultes et alternants ; ingénierie de parcours certifiants, du référentiel d'activité à l’évaluation finale."),
+            ("Gestion du personnel et paie en entreprise", "embauche, contrats d’apprentissage, administration de la paie, DSN, conventions collectives : la matière du bloc RH de l’ADEA et du Brevet de Maîtrise."),
+            ("Qualité et conformité de la formation", "dirigeant d’un organisme certifié Qualiopi (ICPF, QUA007374) : maîtrise du Référentiel National Qualité, traçabilité, indicateurs et audits."),
+            ("Coordination et pilotage", "direction de site opérationnel, pilotage RH de 580 collaborateurs, gestion de marchés publics et dialogue social.")
+        ]
+        key_skills_html = "".join([f'<div class="cv-bullet"><strong>{k} :</strong> {v}</div>' for k, v in key_skills])
+
+        points_forts = [
+            ("La qualité en formation, vécue de l’intérieur", "direction d’un organisme certifié Qualiopi : maîtrise du RNQ, traçabilité des parcours, indicateurs de performance, suivi d’audit et relations avec les financeurs."),
+            ("Ingénierie complète, du référentiel au déroulé de séance", "parcours certifiant de 758 heures conçu de bout en bout (Titre pro Gestionnaire de paie), macro-planning, cadrage des évaluations et modules courts pour salariés."),
+            ("Encadrement et gestion administrative maîtrisés", "direction d’un site opérationnel, pilotage RH de 580 collaborateurs, plan de développement des compétences et conduite de marchés publics.")
+        ]
+        points_forts_html = "".join([f'<div class="cv-bullet"><strong>{k} :</strong> {v}</div>' for k, v in points_forts])
+
+        exp_data = [
+            {
+                "title": "Formateur et consultant en paie, ressources humaines et droit social",
+                "org": "Kairos Formation, organisme certifié Qualiopi, président",
+                "dates": "2014 – aujourd’hui",
+                "bullets": [
+                    "Conception et animation de parcours certifiants pour adultes, dont un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254, millésime 04) : référentiel, macro-planning, cadrage des évaluations, déroulés de séance.",
+                    "Formation de dirigeants et de collaborateurs de TPE et PME à la gestion du personnel : embauche, contrats, apprentissage, paie, DSN, obligations de l’employeur, avec veille réglementaire continue.",
+                    "Direction d’un organisme certifié Qualiopi : construction de l’offre, conformité au Référentiel National Qualité, indicateurs, relations avec les financeurs."
+                ]
+            },
+            {
+                "title": "Formateur en gestion de paie, en sous-traitance pédagogique pour l’Afpa",
+                "org": "Centres Afpa de Vervins, Beauvais, Creil et Amiens",
+                "dates": "2016 – 2020",
+                "bullets": [
+                    "Interventions sur quatre centres pour le compte d’organismes titulaires du marché : référentiel du donneur d’ordre, outil Métis, évaluations en cours de formation, traçabilité du suivi des stagiaires.",
+                    "Formation en entrée permanente : groupes à entrées échelonnées et parcours individualisés, organisation proche de celle d’un centre de formation d’apprentis."
+                ]
+            },
+            {
+                "title": "Responsable des relations sociales et des ressources humaines",
+                "org": "Secours Populaire, structure de 580 collaborateurs",
+                "dates": "2003 – 2010",
+                "bullets": [
+                    "Paie et administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail.",
+                    "Pilotage du plan de formation, conduite de marchés publics RH et formation, animation du dialogue social."
+                ]
+            },
+            {
+                "title": "Responsable de site, management opérationnel",
+                "org": "ETV, Nouvelle-Calédonie",
+                "dates": "2010 – 2014",
+                "bullets": [
+                    "Montage et exploitation d’un site industriel : encadrement des équipes, organisation de la production, conformité réglementaire et prévention des risques."
+                ]
+            }
+        ]
+
+        exp_html = ""
+        for exp in exp_data:
+            bullets_str = "".join([f'<div class="cv-bullet">{b}</div>' for b in exp["bullets"]])
+            exp_html += f"""
+            <div class="exp-item">
+              <div class="exp-header">
+                <span class="exp-job">{exp['title']}</span>
+                <span class="exp-date">{exp['dates']}</span>
+              </div>
+              <div class="exp-org">{exp['org']}</div>
+              {bullets_str}
+            </div>
+            """
+
         html = self.cv_template
-        for k, v in data.items():
-            html = html.replace(f"{{{{ {k} }}}}", v)
+        html = html.replace("{{ target_title }}", title_clean)
+        html = html.replace("{{ target_title_upper }}", title_clean.upper())
+        html = html.replace("{{ summary }}", summary)
+        html = html.replace("{{ key_skills_html }}", key_skills_html)
+        html = html.replace("{{ points_forts_html }}", points_forts_html)
+        html = html.replace("{{ experiences_html }}", exp_html)
+        
         return html

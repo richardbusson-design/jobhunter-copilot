@@ -14,7 +14,9 @@
       padding: 0;
     }
     body {
-      font-family: Arial, Calibri, 'Segoe UI', Helvetica, sans-serif;
+      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
+      font-size: 10.8pt;
+      line-height: 1.44;
       color: #000000;
       background: #ffffff;
       width: 794px;
@@ -23,181 +25,159 @@
       padding: 40px 48px 36px 48px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Occupe 100% de la hauteur sans vide */
+      justify-content: space-between;
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
     .header-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
-    .sender-top {
-      width: 48%;
+    .header-table td {
       vertical-align: top;
-      font-size: 10.2pt;
-      line-height: 1.35;
-      color: #000000;
+      padding: 0;
+    }
+    .sender-box {
+      width: 50%;
+      font-size: 9.8pt;
+      line-height: 1.38;
+      color: #111111;
     }
     .sender-name {
-      font-size: 11.5pt;
+      font-weight: bold;
       color: #000000;
-      margin-bottom: 2px;
-    }
-    .sender-bottom {
-      width: 48%;
-      vertical-align: top;
       font-size: 10.2pt;
-      line-height: 1.35;
-      color: #000000;
     }
     .recipient-box {
-      width: 52%;
-      vertical-align: top;
-      font-size: 10.2pt;
-      line-height: 1.35;
+      width: 50%;
+      font-size: 9.8pt;
+      line-height: 1.38;
       color: #000000;
+      padding-left: 20px;
     }
     .recipient-name {
-      font-weight: bold; /* GRAS AUTORISÉ */
-      color: #000000;
+      font-weight: bold;
     }
-    .date-text {
-      margin-top: 12px;
-      font-size: 10.2pt;
-      color: #000000;
+    .date-line {
+      margin-top: 10px;
+      font-size: 9.8pt;
     }
-    .object-box {
+    .object-line {
       font-size: 10.8pt;
-      font-weight: bold; /* GRAS AUTORISÉ */
+      margin: 10px 0 12px 0;
       color: #000000;
-      margin-top: 14px;
-      margin-bottom: 12px;
-    }
-    .salutation {
-      font-size: 10.5pt;
-      color: #000000;
-      margin-bottom: 10px;
     }
     .body-content {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .body-content p {
+      margin-bottom: 9px;
       text-align: justify;
       text-justify: inter-word;
-      font-size: 10.5pt;
-      line-height: 1.42;
-      color: #000000;
-      font-weight: normal; /* STRICTEMENT AUCUN GRAS DANS LE CORPS */
-    }
-    .attachment-box {
-      margin-top: 6px;
-      font-size: 10.2pt;
-    }
-    .attachment-bullet {
-      margin-left: 18px;
-      margin-top: 2px;
-    }
-    .politeness {
-      margin-top: 8px;
-      font-size: 10.5pt;
       color: #000000;
     }
-    .signature-area {
+    .pj-block {
+      margin-top: 4px;
+      font-size: 9.5pt;
+      color: #111111;
+    }
+    .pj-block ul {
+      margin: 2px 0 0 16px;
+      list-style-type: disc;
+    }
+    .politesse {
+      margin: 9px 0 6px 0;
+      text-align: justify;
+    }
+    .signature-container {
       display: flex;
       justify-content: flex-end;
-      padding-right: 40px;
-      margin-top: 6px;
+      margin-top: 2px;
     }
     .signature-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 180px;
+      width: 170px;
     }
     .signature-svg {
-      width: 140px;
-      height: 44px;
+      width: 90px;
+      height: 40px;
+      margin-bottom: 2px;
     }
-    .signer-name {
-      font-size: 11pt;
+    .signature-name {
+      font-size: 10pt;
+      font-weight: 500;
       color: #000000;
-      margin-top: 2px;
     }
   </style>
 </head>
 <body>
 
+  <!-- En-tête avec alignement exact ligne 6 -->
   <div>
-    <!-- En-tête : Alignement structurel où le destinataire démarre sur la ligne kairos-paye.fr -->
-    <table class="header-table" cellpadding="0" cellspacing="0">
-      <!-- Rangée 1 : Lignes 1 à 5 de l'expéditeur / Droite vide -->
+    <table class="header-table">
       <tr>
-        <td class="sender-top">
+        <td class="sender-box">
           <div class="sender-name">Richard BUSSON</div>
           <div>98, allée Paul Cézanne</div>
           <div>60100 CREIL</div>
           <div>09 39 20 08 70</div>
           <div>richard.busson@kairos-paye.fr</div>
         </td>
-        <td style="width: 52%;"></td>
+        <td class="recipient-box"></td>
       </tr>
-
-      <!-- Rangée 2 : Ligne 6 (kairos-paye.fr) & Début du Destinataire sur la MÊME ligne -->
       <tr>
-        <td class="sender-bottom">
+        <td class="sender-box">
           <div>linkedin.com/in/richard-busson . kairos-paye.fr</div>
         </td>
         <td class="recipient-box">
-          <div class="recipient-name">À l’attention de Monsieur le Directeur Régional de la Formation</div>
-          <div>Direction Régionale de la Formation</div>
+          <div class="recipient-name">À l’attention de Monsieur le Directeur Régional de la Formation, Direction Régionale de la Formation</div>
           <div>Chambre de Métiers et de l'Artisanat Hauts-de-France</div>
           <div>Place de la Gare</div>
-          <div>Antenne Formation Continue & Apprentissage</div>
           <div>60200 COMPIÈGNE</div>
-          <div class="date-text">À Creil, le 27 août 2026</div>
+          <div class="date-line">À Creil, le 27 août 2026</div>
         </td>
       </tr>
     </table>
 
-    <!-- Objet (EN GRAS) -->
-    <div class="object-box">
-      Objet : Candidature : Formateur paie, ressources humaines et gestion (H/F)
+    <!-- Objet (Gras autorisé) -->
+    <div class="object-line">
+      <strong>Objet : Candidature : Formateur paie, ressources humaines et gestion</strong>
     </div>
+  </div>
 
-    <!-- Salutation -->
-    <div class="salutation">
-      Madame, Monsieur,
-    </div>
-
-    <!-- Corps de la lettre (SANS AUCUN CARACTÈRE GRAS) -->
-    <div class="body-content">
-      <p>Votre recherche d’un Formateur paie, ressources humaines et gestion (H/F) au sein de Chambre de Métiers et de l'Artisanat Hauts-de-France a retenu toute mon attention. Acteur reconnu sur notre territoire dans le développement des compétences professionnelles, votre structure représente un environnement dont je maîtrise parfaitement les enjeux techniques, opérationnels et réglementaires.</p>
+  <!-- Corps de la lettre (ZÉRO GRAS) -->
+  <div class="body-content">
+    <div>
+      <p>Madame, Monsieur,</p>
+      <p>Votre recherche pour le poste de formateur paie, ressources humaines et gestion au sein de Chambre de Métiers et de l'Artisanat Hauts-de-France retient toute mon attention. Acteur de référence dans la formation professionnelle et l’accompagnement des entreprises artisanales, votre organisme représente un environnement d’excellence dont je maîtrise parfaitement les exigences pédagogiques et réglementaires.</p>
       <p>Le premier bloc de compétences de l’ADEA, assister à la gestion des ressources humaines et au management des collaborateurs d’une entreprise artisanale, représente 84 heures que je peux animer sans période d’adaptation. Le volet gestion du Brevet de Maîtrise et la formation continue des artisans employeurs relèvent de la même matière : embauche du premier salarié, contrat d’apprentissage, bulletin de paie, DSN et obligations de l’employeur. C’est ce que j’enseigne depuis 2014.</p>
       <p>J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant aussi le plan de formation. Le cadre d’un centre de formation ne m’est pas étranger non plus : entre 2016 et 2020, je suis intervenu sur quatre centres Afpa, avec référentiel imposé, évaluations en cours de formation et parcours individualisés au sein d’un même groupe.</p>
       <p>Si c’est une fonction de coordination que vous avez à pourvoir, elle me va tout autant. Je dirige un organisme certifié Qualiopi : le Référentiel National Qualité, la traçabilité des parcours et la préparation d’audit sont mes obligations quotidiennes. J’ai conçu de bout en bout un parcours certifiant de 758 heures préparant au Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d’un site industriel en Nouvelle-Calédonie. Un Master 2 de droit public complète cette approche des cadres réglementaires.</p>
       <p>Un mot de franchise pour finir. J’ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu’un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l’embauche au titre de ma situation de demandeur d’emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est nationale, sans réserve, sur l’ensemble du réseau, et ma disponibilité immédiate.</p>
-
-      <div class="attachment-box">
-        Vous trouverez ci-joint :
-        <div class="attachment-bullet">● mon curriculum vitae.</div>
+      <div class="pj-block">
+        <div>Vous trouverez ci-joint :</div>
+        <ul>
+          <li>mon curriculum vitae.</li>
+        </ul>
       </div>
-
-      <div class="politeness">
-        Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.
-      </div>
+      <p class="politesse">Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.</p>
     </div>
-  </div>
 
-  <!-- Signature en bas à droite -->
-  <div class="signature-area">
-    <div class="signature-box">
-      <svg class="signature-svg" viewBox="0 0 160 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 45 C 26 28, 30 14, 36 7 C 40 2, 48 3, 51 9 C 54 17, 46 27, 36 28 C 53 27, 68 35, 73 47" stroke="#000000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M70 17 C 74 7, 84 5, 90 11 C 94 16, 90 23, 83 25 C 96 24, 103 31, 101 41 C 99 49, 86 51, 73 45" stroke="#000000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M28 31 L 138 27" stroke="#000000" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <div class="signer-name">Richard Busson</div>
+    <!-- Signature en bas à droite -->
+    <div class="signature-container">
+      <div class="signature-box">
+        <svg class="signature-svg" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 25 65 C 20 45, 30 15, 45 12 C 60 10, 75 25, 65 42 C 55 58, 32 55, 48 55 C 65 55, 80 50, 95 35 C 88 45, 92 65, 115 58 C 130 52, 145 42, 150 38" stroke="#000000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 38 32 C 50 30, 65 35, 75 32" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <div class="signature-name">Richard Busson</div>
+      </div>
     </div>
   </div>
 

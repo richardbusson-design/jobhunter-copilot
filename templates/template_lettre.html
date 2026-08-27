@@ -14,7 +14,9 @@
       padding: 0;
     }
     body {
-      font-family: Arial, Calibri, 'Segoe UI', Helvetica, sans-serif;
+      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
+      font-size: 10.8pt;
+      line-height: 1.44;
       color: #000000;
       background: #ffffff;
       width: 794px;
@@ -23,181 +25,159 @@
       padding: 40px 48px 36px 48px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* Occupe 100% de la hauteur sans vide */
+      justify-content: space-between;
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
     .header-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
-    .sender-top {
-      width: 48%;
+    .header-table td {
       vertical-align: top;
-      font-size: 10.2pt;
-      line-height: 1.35;
-      color: #000000;
+      padding: 0;
+    }
+    .sender-box {
+      width: 50%;
+      font-size: 9.8pt;
+      line-height: 1.38;
+      color: #111111;
     }
     .sender-name {
-      font-size: 11.5pt;
+      font-weight: bold;
       color: #000000;
-      margin-bottom: 2px;
-    }
-    .sender-bottom {
-      width: 48%;
-      vertical-align: top;
       font-size: 10.2pt;
-      line-height: 1.35;
-      color: #000000;
     }
     .recipient-box {
-      width: 52%;
-      vertical-align: top;
-      font-size: 10.2pt;
-      line-height: 1.35;
+      width: 50%;
+      font-size: 9.8pt;
+      line-height: 1.38;
       color: #000000;
+      padding-left: 20px;
     }
     .recipient-name {
-      font-weight: bold; /* GRAS AUTORISÉ */
-      color: #000000;
+      font-weight: bold;
     }
-    .date-text {
-      margin-top: 12px;
-      font-size: 10.2pt;
-      color: #000000;
+    .date-line {
+      margin-top: 10px;
+      font-size: 9.8pt;
     }
-    .object-box {
+    .object-line {
       font-size: 10.8pt;
-      font-weight: bold; /* GRAS AUTORISÉ */
+      margin: 10px 0 12px 0;
       color: #000000;
-      margin-top: 14px;
-      margin-bottom: 12px;
-    }
-    .salutation {
-      font-size: 10.5pt;
-      color: #000000;
-      margin-bottom: 10px;
     }
     .body-content {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+    .body-content p {
+      margin-bottom: 9px;
       text-align: justify;
       text-justify: inter-word;
-      font-size: 10.5pt;
-      line-height: 1.42;
-      color: #000000;
-      font-weight: normal; /* STRICTEMENT AUCUN GRAS DANS LE CORPS */
-    }
-    .attachment-box {
-      margin-top: 6px;
-      font-size: 10.2pt;
-    }
-    .attachment-bullet {
-      margin-left: 18px;
-      margin-top: 2px;
-    }
-    .politeness {
-      margin-top: 8px;
-      font-size: 10.5pt;
       color: #000000;
     }
-    .signature-area {
+    .pj-block {
+      margin-top: 4px;
+      font-size: 9.5pt;
+      color: #111111;
+    }
+    .pj-block ul {
+      margin: 2px 0 0 16px;
+      list-style-type: disc;
+    }
+    .politesse {
+      margin: 9px 0 6px 0;
+      text-align: justify;
+    }
+    .signature-container {
       display: flex;
       justify-content: flex-end;
-      padding-right: 40px;
-      margin-top: 6px;
+      margin-top: 2px;
     }
     .signature-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 180px;
+      width: 170px;
     }
     .signature-svg {
-      width: 140px;
-      height: 44px;
+      width: 90px;
+      height: 40px;
+      margin-bottom: 2px;
     }
-    .signer-name {
-      font-size: 11pt;
+    .signature-name {
+      font-size: 10pt;
+      font-weight: 500;
       color: #000000;
-      margin-top: 2px;
     }
   </style>
 </head>
 <body>
 
+  <!-- En-tête avec alignement exact ligne 6 -->
   <div>
-    <!-- En-tête : Alignement structurel où le destinataire démarre sur la ligne kairos-paye.fr -->
-    <table class="header-table" cellpadding="0" cellspacing="0">
-      <!-- Rangée 1 : Lignes 1 à 5 de l'expéditeur / Droite vide -->
+    <table class="header-table">
       <tr>
-        <td class="sender-top">
+        <td class="sender-box">
           <div class="sender-name">Richard BUSSON</div>
           <div>98, allée Paul Cézanne</div>
           <div>60100 CREIL</div>
           <div>09 39 20 08 70</div>
           <div>richard.busson@kairos-paye.fr</div>
         </td>
-        <td style="width: 52%;"></td>
+        <td class="recipient-box"></td>
       </tr>
-
-      <!-- Rangée 2 : Ligne 6 (kairos-paye.fr) & Début du Destinataire sur la MÊME ligne -->
       <tr>
-        <td class="sender-bottom">
+        <td class="sender-box">
           <div>linkedin.com/in/richard-busson . kairos-paye.fr</div>
         </td>
         <td class="recipient-box">
-          <div class="recipient-name">{{ recipient_contact }}</div>
-          <div>{{ recipient_title }}</div>
-          <div>{{ recipient_company }}</div>
-          <div>{{ recipient_address_1 }}</div>
-          <div>{{ recipient_address_2 }}</div>
-          <div>{{ recipient_city }}</div>
-          <div class="date-text">{{ date_line }}</div>
+          <div class="recipient-name">À l’attention de {{ contact_full }}</div>
+          <div>{{ company_name }}</div>
+          <div>{{ address_1 }}</div>
+          <div>{{ postal_code }} {{ city }}</div>
+          <div class="date-line">À Creil, le {{ current_date }}</div>
         </td>
       </tr>
     </table>
 
-    <!-- Objet (EN GRAS) -->
-    <div class="object-box">
-      Objet : {{ objet }}
+    <!-- Objet (Gras autorisé) -->
+    <div class="object-line">
+      <strong>Objet : Candidature : {{ job_title_clean }}</strong>
     </div>
+  </div>
 
-    <!-- Salutation -->
-    <div class="salutation">
-      {{ salutation }},
-    </div>
-
-    <!-- Corps de la lettre (SANS AUCUN CARACTÈRE GRAS) -->
-    <div class="body-content">
+  <!-- Corps de la lettre (ZÉRO GRAS) -->
+  <div class="body-content">
+    <div>
+      <p>Madame, Monsieur,</p>
       <p>{{ paragraph_1 }}</p>
       <p>{{ paragraph_2 }}</p>
       <p>{{ paragraph_3 }}</p>
       <p>{{ paragraph_4 }}</p>
       <p>{{ paragraph_5 }}</p>
-
-      <div class="attachment-box">
-        Vous trouverez ci-joint :
-        <div class="attachment-bullet">● mon curriculum vitae.</div>
+      <div class="pj-block">
+        <div>Vous trouverez ci-joint :</div>
+        <ul>
+          <li>mon curriculum vitae.</li>
+        </ul>
       </div>
-
-      <div class="politeness">
-        {{ closing_politeness }}
-      </div>
+      <p class="politesse">Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.</p>
     </div>
-  </div>
 
-  <!-- Signature en bas à droite -->
-  <div class="signature-area">
-    <div class="signature-box">
-      <svg class="signature-svg" viewBox="0 0 160 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 45 C 26 28, 30 14, 36 7 C 40 2, 48 3, 51 9 C 54 17, 46 27, 36 28 C 53 27, 68 35, 73 47" stroke="#000000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M70 17 C 74 7, 84 5, 90 11 C 94 16, 90 23, 83 25 C 96 24, 103 31, 101 41 C 99 49, 86 51, 73 45" stroke="#000000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M28 31 L 138 27" stroke="#000000" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <div class="signer-name">Richard Busson</div>
+    <!-- Signature en bas à droite -->
+    <div class="signature-container">
+      <div class="signature-box">
+        <svg class="signature-svg" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 25 65 C 20 45, 30 15, 45 12 C 60 10, 75 25, 65 42 C 55 58, 32 55, 48 55 C 65 55, 80 50, 95 35 C 88 45, 92 65, 115 58 C 130 52, 145 42, 150 38" stroke="#000000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 38 32 C 50 30, 65 35, 75 32" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <div class="signature-name">Richard Busson</div>
+      </div>
     </div>
   </div>
 

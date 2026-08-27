@@ -126,16 +126,21 @@ def run_pipeline(base_dir=".", auto_notify=True):
             print(f"    [💾] Copie miroir vers {gemini_dest}")
             
         # 9. Enregistrement dans le CRM
-        app_entry = {
+        app_entry = dict(job)
+        app_entry.update({
             "company": job.get("company"),
             "title": job.get("title"),
             "city": job.get("city", "France"),
             "score": score,
+            "description": job.get("description", ""),
+            "salary": job.get("salary", ""),
+            "source": job.get("source", ""),
+            "url": job.get("url", ""),
             "folder": os.path.abspath(target_dir),
             "folder_rel": os.path.relpath(target_dir, base_dir),
             "pdf_letter": os.path.abspath(pdf_letter_path),
             "pdf_cv": os.path.abspath(pdf_cv_path)
-        }
+        })
         dashboard.add_application(app_entry)
         
         # 10. Notification Email
@@ -157,4 +162,5 @@ def run_pipeline(base_dir=".", auto_notify=True):
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     run_pipeline(base_dir=base_dir, auto_notify=True)
+
 

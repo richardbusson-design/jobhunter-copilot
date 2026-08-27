@@ -4,102 +4,179 @@
   <meta charset="UTF-8">
   <title>Curriculum Vitae - Richard Busson</title>
   <style>
-    @page { size: A4 portrait; margin: 0; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
+      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
+      color: #000000;
       background: #ffffff;
-      color: #111827;
-      font-family: 'Times New Roman', Times, 'Liberation Serif', Georgia, serif;
       width: 794px;
       height: 1123px;
       margin: 0 auto;
-      padding: 36px 46px 34px 46px;
+      padding: 34px 44px 30px 44px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    .cv-title { font-size: 26px; font-weight: 900; color: #090d16; line-height: 1.1; letter-spacing: -0.01em; }
-    .cv-subtitle { font-size: 14.5px; font-weight: bold; color: #1e293b; margin-top: 2px; }
-    .cv-contacts { font-size: 10.8px; color: #334155; line-height: 1.35; margin-top: 4px; }
-    .cv-sec-title {
-      font-size: 12px;
+    .cv-header {
+      border-bottom: 2px solid #000000;
+      padding-bottom: 6px;
+    }
+    .cv-name {
+      font-size: 20pt;
       font-weight: 900;
+      color: #000000;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .cv-title {
+      font-size: 11.5pt;
+      font-weight: bold;
+      color: #111111;
+      margin-top: 2px;
+    }
+    .cv-contacts {
+      font-size: 9.2pt;
+      line-height: 1.35;
+      color: #222222;
+      margin-top: 3px;
+    }
+    .cv-section-title {
+      font-size: 10pt;
+      font-weight: bold;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #090d16;
-      border-bottom: 1.4px solid #090d16;
+      letter-spacing: 0.04em;
+      color: #000000;
+      border-bottom: 1.2px solid #000000;
       padding-bottom: 2px;
       margin-bottom: 4px;
     }
-    .cv-body { font-size: 11.2px; line-height: 1.34; color: #1f2937; }
-    .cv-bullet { position: relative; padding-left: 13px; margin-bottom: 3px; }
-    .cv-bullet::before { content: "•"; position: absolute; left: 0; font-weight: bold; color: #090d16; }
-    .text-justify { text-align: justify; text-justify: inter-word; }
+    .cv-body-text {
+      font-size: 9.4pt;
+      line-height: 1.34;
+      color: #000000;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .cv-bullet {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 3px;
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 9.3pt;
+      line-height: 1.33;
+    }
+    .cv-bullet::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: #000000;
+    }
+    .exp-item {
+      margin-bottom: 4px;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 9.5pt;
+    }
+    .exp-job {
+      font-weight: bold;
+      color: #000000;
+    }
+    .exp-date {
+      font-size: 8.8pt;
+      color: #333333;
+      font-style: italic;
+    }
+    .exp-org {
+      font-size: 9pt;
+      color: #222222;
+      font-style: italic;
+      margin-bottom: 1px;
+    }
+    .formations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      row-gap: 2px;
+    }
   </style>
 </head>
 <body>
+
   <!-- 1. En-tête -->
-  <div style="padding-bottom: 8px; border-bottom: 1.4px solid #0f172a;">
-    <h1 class="cv-title">Richard BUSSON</h1>
-    <div class="cv-subtitle">{{ target_title }}</div>
+  <div class="cv-header">
+    <div class="cv-name">Richard BUSSON</div>
+    <div class="cv-title">{{ target_title }}</div>
     <div class="cv-contacts">
       98, allée Paul Cézanne, 60100 Creil &nbsp;|&nbsp; <strong>09 39 20 08 70</strong> &nbsp;|&nbsp; richard.busson@kairos-paye.fr &nbsp;|&nbsp; Mobilité nationale<br>
-      LinkedIn : linkedin.com/in/richard-busson &nbsp;|&nbsp; kairos-paye.fr &nbsp;|&nbsp; Permis B (valide)
+      LinkedIn : linkedin.com/in/richard-busson &nbsp;|&nbsp; kairos-paye.fr &nbsp;|&nbsp; Permis B (valide) &nbsp;|&nbsp; Disponibilité immédiate
     </div>
   </div>
 
   <!-- 2. Synthèse Cadre -->
   <div>
-    <div class="cv-sec-title">{{ target_title_upper }}</div>
-    <p class="cv-body text-justify">{{ summary }}</p>
+    <div class="cv-section-title">{{ target_title_upper }}</div>
+    <p class="cv-body-text">
+      {{ summary }}
+    </p>
   </div>
 
   <!-- 3. Compétences Clés -->
   <div>
-    <div class="cv-sec-title">COMPÉTENCES CLÉS</div>
-    <div class="cv-body">
+    <div class="cv-section-title">COMPÉTENCES CLÉS</div>
+    <div>
       {{ key_skills_html }}
     </div>
   </div>
 
   <!-- 4. Points forts pour ce poste -->
   <div>
-    <div class="cv-sec-title">POINTS FORTS POUR CE POSTE</div>
-    <div class="cv-body">
+    <div class="cv-section-title">POINTS FORTS POUR CE POSTE</div>
+    <div>
       {{ points_forts_html }}
     </div>
   </div>
 
   <!-- 5. Expériences professionnelles -->
   <div>
-    <div class="cv-sec-title">EXPÉRIENCES PROFESSIONNELLES</div>
-    <div class="cv-body" style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="cv-section-title">EXPÉRIENCES PROFESSIONNELLES</div>
+    <div>
       {{ experiences_html }}
     </div>
   </div>
 
   <!-- 6. Formations -->
   <div>
-    <div class="cv-sec-title">FORMATIONS</div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="cv-body">
-      <div>
-        <div class="cv-bullet"><strong>Master RSE :</strong> IAE de Paris (en cours)</div>
-        <div class="cv-bullet"><strong>Master 2 Droit public :</strong> Univ. de Picardie</div>
-      </div>
-      <div>
-        <div class="cv-bullet"><strong>Maîtrise Sc. de Gestion :</strong> Univ. Paris XIII</div>
-        <div class="cv-bullet"><strong>DUT GEA, option RH :</strong> Univ. Paris XIII</div>
-      </div>
+    <div class="cv-section-title">FORMATIONS</div>
+    <div class="formations-grid">
+      <div class="cv-bullet"><strong>Master RSE :</strong> IAE de Paris (en cours)</div>
+      <div class="cv-bullet"><strong>Maîtrise Sc. de Gestion :</strong> Univ. Paris XIII</div>
+      <div class="cv-bullet"><strong>Master 2 Droit public :</strong> Univ. de Picardie</div>
+      <div class="cv-bullet"><strong>DUT GEA, option RH :</strong> Univ. Paris XIII</div>
     </div>
   </div>
 
   <!-- 7. Outils & Langues -->
-  <div style="padding-bottom: 2px;">
-    <div class="cv-sec-title">OUTILS & LANGUES</div>
-    <div class="cv-body">
-      <div class="cv-bullet"><strong>Outils et mobilité :</strong> {{ tools }}</div>
+  <div>
+    <div class="cv-section-title">OUTILS & LANGUES</div>
+    <div class="cv-bullet">
+      <strong>Outils et mobilité :</strong> Logiciel Silae, DSN et déclarations sociales dématérialisées, Excel, outil Métis. Mobilité nationale, disponibilité immédiate. Français (langue maternelle), anglais (débutant).
     </div>
   </div>
+
 </body>
 </html>
