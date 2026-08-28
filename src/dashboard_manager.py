@@ -79,6 +79,15 @@ class DashboardManager:
         if fp in fingerprints["company_titles"]:
             return True, f"Société et Intitulé identiques ({job.get('company')} - {job.get('title')})"
             
+        # Comparaison floue : si le nom principal de la société et du titre correspondent
+        for existing_fp in fingerprints.get("company_titles", []):
+            if "___" in existing_fp:
+                e_comp, e_tit = existing_fp.split("___", 1)
+                comp_match = (e_comp in comp_norm) or (comp_norm in e_comp) or (e_comp[:12] == comp_norm[:12] and len(e_comp) >= 12)
+                tit_match = (e_tit in tit_norm) or (tit_norm in e_tit) or ("formateur" in e_tit and "formateur" in tit_norm and "paie" in e_tit and "paie" in tit_norm)
+                if comp_match and tit_match:
+                    return True, f"Société et Titre très similaires ({existing_fp})"
+            
         return False, ""
 
     def save_tracker(self, apps: List[Dict[str, Any]]):
@@ -173,3 +182,4 @@ if __name__ == "__main__":
     dm = DashboardManager()
     fps = dm.get_existing_fingerprints()
     print(f"[OK] DashboardManager initialisé : {fps['total_count']} candidatures enregistrées.")
+
