@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 28/08/2026 à 16:16 | **Total candidatures qualifiées :** 4
+> **Dernière actualisation :** 28/08/2026 à 16:17 | **Total candidatures qualifiées :** 7
 
 ---
 
@@ -10,6 +10,24 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-28** | **LINKING TALENTS ** | **Auditeur Confirmé - Cabinet Formateur F/H**<br>[🔗 **Réf. APEC-179322854W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Auditeur Confirmé - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Wasquehal | 35 - 45 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **cadremploi** | **Collaborateur Comptable - Cabinet Formateur F/H**<br>[🔗 **Réf. APEC-179279215W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179279215W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Collaborateur Comptable - Cabinet Formateur F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Haubourdin | A partir de 30 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **LINKING TALENTS ** | **Comptable ECF - Cabinet Formateur - Radinghem F/H**<br>[🔗 **Réf. APEC-179278826W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179278826W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Comptable ECF - Cabinet Formateur - Radinghem F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Radinghem | 30 - 40 k€ brut annuel | **80%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-28** | **TRANSPORTS BERTIN** | **Responsable des ressources humaines F/H**<br>[🔗 **Réf. APEC-179321388W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179321388W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
