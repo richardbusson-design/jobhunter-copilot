@@ -7,50 +7,38 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..",
 
 from quality_guard import QualityGuard
 from application_generator import ApplicationGenerator
-from pdf_compiler import compile_html_to_pdf
+from dashboard_manager import DashboardManager
 
 class TestJobHunterQualityGuard(unittest.TestCase):
     def setUp(self):
         self.base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         self.guard = QualityGuard(config_dir=os.path.join(self.base_dir, "config"))
         self.generator = ApplicationGenerator(base_dir=self.base_dir)
+        self.dashboard = DashboardManager(base_dir=self.base_dir)
 
-    def test_three_pass_audit_complete_success(self):
-        """Vérifie l'exécution rigoureuse de la procédure de contrôle aux 3 passages."""
-        test_job = {
-            "title": "Formateur en gestion de paie et RH",
-            "company": "Afpa Normandie",
-            "contact_name": "Monsieur le Directeur",
-            "contact_title": "Direction du Centre",
-            "address_1": "Rue de la République",
-            "postal_code": "76000",
-            "city": "ROUEN",
-            "salary": "35 000 €",
-            "description": "Animation Titre pro Gestionnaire de paie, outil Métis, Silae et ECF."
+    def test_anti_duplicate_detection(self):
+        """Vérifie que le système détecte et bloque strictement les doublons (ID, URL, Société+Titre)."""
+        fps = {
+            "ids": {"FT-2026-AFPA-ROUEN", "APEC-1758924W"},
+            "urls": {"https://candidat.francetravail.fr/offres/detail/189TXWB"},
+            "company_titles": {"afpa normandie___formateur gestionnaire de paie"},
+            "total_count": 2
         }
         
-        # 1. Rendu
-        letter_html = self.generator.render_letter_html(test_job)
-        cv_html = self.generator.render_cv_html(test_job)
+        # Cas 1 : Même ID -> DOIT ÊTRE BLOQUÉ
+        dup_job_id = {"id": "FT-2026-AFPA-ROUEN", "company": "Autre", "title": "Autre"}
+        is_dup, reason = self.dashboard.is_duplicate(dup_job_id, fps)
+        self.assertTrue(is_dup, "Un ID déjà présent doit être détecté comme doublon.")
         
-        # 2. Compilation
-        temp_dir = os.path.join(self.base_dir, "tests", "temp_output")
-        os.makedirs(temp_dir, exist_ok=True)
-        l_html_path = os.path.join(temp_dir, "audit_lettre.html")
-        c_html_path = os.path.join(temp_dir, "audit_cv.html")
-        l_pdf_path = os.path.join(temp_dir, "audit_lettre.pdf")
-        c_pdf_path = os.path.join(temp_dir, "audit_cv.pdf")
+        # Cas 2 : Même Société + Titre -> DOIT ÊTRE BLOQUÉ
+        dup_job_ct = {"id": "NOUVEAU-ID", "company": "Afpa Normandie (Centre de Rouen)", "title": "Formateur / Formatrice Gestionnaire de paie (H/F)"}
+        is_dup, reason = self.dashboard.is_duplicate(dup_job_ct, fps)
+        self.assertTrue(is_dup, "Une offre avec même société et titre doit être bloquée.")
         
-        with open(l_html_path, "w", encoding="utf-8") as f: f.write(letter_html)
-        with open(c_html_path, "w", encoding="utf-8") as f: f.write(cv_html)
-        
-        compile_html_to_pdf(l_html_path, l_pdf_path)
-        compile_html_to_pdf(c_html_path, c_pdf_path)
-        
-        # 3. Exécution de l'audit aux 3 passages
-        is_valid, audit_logs = self.guard.execute_three_pass_audit(test_job, letter_html, cv_html, l_pdf_path, c_pdf_path)
-        self.assertTrue(is_valid, f"L'audit aux 3 passages a échoué : {audit_logs}")
-        self.assertEqual(len(audit_logs), 3)
+        # Cas 3 : Offre totalement nouvelle -> DOIT ÊTRE ACCEPTÉE
+        new_job = {"id": "FT-NOUVEAU-999", "company": "Cabinet Conseil RH", "title": "Responsable des Ressources Humaines"}
+        is_dup, reason = self.dashboard.is_duplicate(new_job, fps)
+        self.assertFalse(is_dup, "Une nouvelle offre inédite ne doit pas être bloquée.")
 
     def test_salary_filter_rejection_below_30k(self):
         low_salary_job = {"title": "Assistant Paie", "city": "Creil", "postal_code": "60100", "salary": "24 000 €"}

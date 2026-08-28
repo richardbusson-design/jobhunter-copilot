@@ -1,8 +1,19 @@
 # -*- coding: utf-8 -*-
 import os
 import json
+import re
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
+
+def normalize_text(text: str) -> str:
+    """Normalise un texte pour comparaison stricte anti-doublon."""
+    if not text:
+        return ""
+    text = text.lower()
+    text = re.sub(r'\(h/f\)|h/f|\(f/h\)|f/h', '', text)
+    text = re.sub(r'[^\w\s]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
 
 class DashboardManager:
     def __init__(self, base_dir="."):
@@ -11,6 +22,7 @@ class DashboardManager:
         self.tracker_file = os.path.join(base_dir, "tracker.json")
 
     def load_tracker(self) -> List[Dict[str, Any]]:
+        """Charge l'ensemble des candidatures historiques depuis le tracker JSON."""
         if os.path.exists(self.tracker_file):
             try:
                 with open(self.tracker_file, "r", encoding="utf-8") as f:
@@ -19,28 +31,78 @@ class DashboardManager:
                         return data
                     elif isinstance(data, dict):
                         return data.get("applications", [])
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"[!] Avertissement lecture tracker : {e}")
         return []
+
+    def get_existing_fingerprints(self) -> Dict[str, Any]:
+        """Extrait les empreintes uniques (ID, URL, Société+Titre) pour blocage strict des doublons."""
+        apps = self.load_tracker()
+        ids = set()
+        urls = set()
+        company_titles = set()
+        
+        for a in apps:
+            if a.get("id"):
+                ids.add(str(a.get("id")).strip())
+            if a.get("url"):
+                urls.add(str(a.get("url")).strip())
+            
+            comp_norm = normalize_text(a.get("company", ""))
+            tit_norm = normalize_text(a.get("title", ""))
+            if comp_norm and tit_norm:
+                company_titles.add(f"{comp_norm}___{tit_norm}")
+                
+        return {
+            "ids": ids,
+            "urls": urls,
+            "company_titles": company_titles,
+            "total_count": len(apps)
+        }
+
+    def is_duplicate(self, job: Dict[str, Any], fingerprints: Dict[str, Any] = None) -> Tuple[bool, str]:
+        """Vérifie si une offre d'emploi a déjà été traitée ou candidate."""
+        if fingerprints is None:
+            fingerprints = self.get_existing_fingerprints()
+            
+        jid = str(job.get("id", "")).strip()
+        if jid and jid in fingerprints["ids"]:
+            return True, f"ID déjà candidaté ({jid})"
+            
+        jurl = str(job.get("url", "")).strip()
+        if jurl and jurl in fingerprints["urls"]:
+            return True, f"URL déjà traitée ({jurl})"
+            
+        comp_norm = normalize_text(job.get("company", ""))
+        tit_norm = normalize_text(job.get("title", ""))
+        fp = f"{comp_norm}___{tit_norm}"
+        if fp in fingerprints["company_titles"]:
+            return True, f"Société et Intitulé identiques ({job.get('company')} - {job.get('title')})"
+            
+        return False, ""
 
     def save_tracker(self, apps: List[Dict[str, Any]]):
         try:
             with open(self.tracker_file, "w", encoding="utf-8") as f:
                 json.dump({"applications": apps, "last_updated": datetime.now().isoformat()}, f, indent=2, ensure_ascii=False)
         except Exception as e:
-            print(f"Erreur sauvegarde tracker : {e}")
+            print(f"[!] Erreur sauvegarde tracker : {e}")
 
     def add_application(self, app_entry: Dict[str, Any]):
         apps = self.load_tracker()
         
-        exists = False
-        for a in apps:
-            if a.get("company") == app_entry.get("company") and a.get("title") == app_entry.get("title"):
-                a.update(app_entry)
-                exists = True
+        # Vérifier si elle existe déjà pour mise à jour sans dupliquer
+        exists_idx = -1
+        for i, a in enumerate(apps):
+            if (a.get("id") and a.get("id") == app_entry.get("id")) or \
+               (normalize_text(a.get("company", "")) == normalize_text(app_entry.get("company", "")) and \
+                normalize_text(a.get("title", "")) == normalize_text(app_entry.get("title", ""))):
+                exists_idx = i
                 break
                 
-        if not exists:
+        if exists_idx >= 0:
+            apps[exists_idx].update(app_entry)
+        else:
             app_entry["date"] = app_entry.get("date", datetime.now().strftime("%Y-%m-%d"))
             relance_date = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d")
             app_entry["relance_date"] = app_entry.get("relance_date", relance_date)
@@ -58,7 +120,8 @@ class DashboardManager:
         
         md = f"""# 📊 Tableau de Bord des Candidatures & Annonces Réelles - Richard BUSSON
 
-*Dernière mise à jour automatique : {now_str}*
+*Dernière synchronisation anti-doublon : {now_str}*
+*Total candidatures actives enregistrées : **{len(apps)}***
 
 | Date | Organisme / Employeur | Intitulé & Texte Intégral de l'Annonce | Ville & Mobilité | Salaire Brut | Match | Relance (J+7) | Fichiers PDF A4 |
 | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
@@ -70,15 +133,12 @@ class DashboardManager:
             city = a.get("city", "France")
             salary = a.get("salary", "30k€ - 40k€")
             score = a.get("score", 85)
-            stat = a.get("status", "Dossier PDF Prêt")
             rel = a.get("relance_date", (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d"))
             source = a.get("source", "France Travail / Apec / Indeed")
             url = a.get("url", "")
             desc = a.get("description", "Formation Gestionnaire de paie, RH, DSN, Qualiopi.")
             
             link_annonce = f"[🔗 **Consulter l'annonce originale sur {source}**]({url})" if url else f"*(Source : {source})*"
-            
-            # Bloc texte complet de l'annonce
             annonce_block = f"**{tit}**<br>{link_annonce}<br><br>📝 **Texte de l'annonce :**<br><blockquote>{desc}</blockquote>"
             
             folder_rel = a.get("folder_rel", "").replace("\\", "/")
@@ -95,8 +155,8 @@ class DashboardManager:
 ---
 
 ### 📌 Guide du Tableau de Bord :
+* **Anti-Doublon Actif :** Aucun recandidatage sur un poste ou organisme déjà présent dans ce tableau.
 * **Texte Intégral de l'Annonce :** Le descriptif complet des missions, compétences et modalités de recrutement est intégré dans chaque ligne.
-* **Score Match :** Évaluation automatique de l'adéquation avec votre profil (Paie, RH, Qualiopi, Afpa, 580 collaborateurs, Master 2).
 * **Sécurité QualityGuard :** CV et Lettre générés sur 1 page A4 stricte en typographie haute lisibilité sans aucun gras dans le corps de lettre.
 """
         with open(self.dashboard_file, "w", encoding="utf-8") as f:
@@ -111,5 +171,5 @@ class DashboardManager:
 
 if __name__ == "__main__":
     dm = DashboardManager()
-    dm.generate_markdown_dashboard()
-    print("dashboard.md régénéré avec le texte intégral des annonces.")
+    fps = dm.get_existing_fingerprints()
+    print(f"[OK] DashboardManager initialisé : {fps['total_count']} candidatures enregistrées.")

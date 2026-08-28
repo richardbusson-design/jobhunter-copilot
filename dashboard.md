@@ -1,6 +1,7 @@
 # 📊 Tableau de Bord des Candidatures & Annonces Réelles - Richard BUSSON
 
-*Dernière mise à jour automatique : 28/08/2026 à 15:03*
+*Dernière synchronisation anti-doublon : 28/08/2026 à 16:06*
+*Total candidatures actives enregistrées : **1***
 
 | Date | Organisme / Employeur | Intitulé & Texte Intégral de l'Annonce | Ville & Mobilité | Salaire Brut | Match | Relance (J+7) | Fichiers PDF A4 |
 | :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
@@ -9,6 +10,6 @@
 ---
 
 ### 📌 Guide du Tableau de Bord :
+* **Anti-Doublon Actif :** Aucun recandidatage sur un poste ou organisme déjà présent dans ce tableau.
 * **Texte Intégral de l'Annonce :** Le descriptif complet des missions, compétences et modalités de recrutement est intégré dans chaque ligne.
-* **Score Match :** Évaluation automatique de l'adéquation avec votre profil (Paie, RH, Qualiopi, Afpa, 580 collaborateurs, Master 2).
 * **Sécurité QualityGuard :** CV et Lettre générés sur 1 page A4 stricte en typographie haute lisibilité sans aucun gras dans le corps de lettre.

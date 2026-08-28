@@ -40,11 +40,24 @@
 
 ---
 
+## 🛑 CONTRÔLE PRÉALABLE ANTI-DOUBLON (BLOCAGE ABSOLU)
+
+Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le robot a l'obligation stricte de :
+1. **Lire l'intégralité du tableau historique sur GitHub (	racker.json / dashboard.md).**
+2. **Extraire l'ensemble des empreintes déjà traitées :** ID d'offres, URL des annonces et couples normalisés (Entreprise / Intitulé du Poste).
+3. **Filtrer et éliminer immédiatement tout doublon :**
+   - Aucune offre déjà présente dans le tableau ne peut être réanalysée ni réexpédiée.
+   - **ZÉRO régénération de PDF** et **ZÉRO renvoi d'email** pour un poste déjà candidaté.
+   - Seules les **offres 100% nouvelles et inédites** passent aux étapes de rédaction.
+
+---
+
 ## 🛡️ PROCÉDURE OFFICIELLE DE CONTRÔLE EN 3 PASSAGES (QUALITYGUARD 3-PASS GATE)
 
 Chaque candidature détectée est obligatoirement soumise à un **audit séquentiel en 3 passages bloquants** :
 
 ### 🔹 PASSAGE 1 : CONTRÔLE DE FAISABILITÉ SOURCE & FILTRAGE (AVANT RÉDACTION)
+- Contrôle anti-doublon préalable contre l'historique GitHub.
 - Vérification de l'authenticité de l'offre (France Travail Flux Direct, Apec WebService, Indeed, LinkedIn).
 - Contrôle du seuil salarial (>= 30 000 € brut/an).
 - Contrôle du temps de trajet (Creil <= 2h ou Littoral Atlantique/Méditerranée ou Télétravail).
