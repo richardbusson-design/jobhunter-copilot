@@ -2,11 +2,11 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 28/08/2026 à 16:17 | **Total candidatures qualifiées :** 7
+> **Dernière actualisation :** 28/08/2026 à 16:22 | **Total candidatures qualifiées :** 7
 
 ---
 
-## 📋 SUIVI PRÉCIS DES CANDIDATURES EXPÉDIÉES & EN COURS
+## 📋 SUIVI PRÉCIS DES CANDIDATURES EXPÉDIÉES & EN COURS (PAR ORDRE ANTÉCHRONOLOGIQUE)
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
