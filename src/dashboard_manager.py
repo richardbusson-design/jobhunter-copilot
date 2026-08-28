@@ -3,7 +3,7 @@ import os
 import json
 import re
 from datetime import datetime, timedelta
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 
 def normalize_text(text: str) -> str:
     """Normalise un texte pour comparaison stricte anti-doublon."""
@@ -19,6 +19,7 @@ class DashboardManager:
     def __init__(self, base_dir="."):
         self.base_dir = base_dir
         self.dashboard_file = os.path.join(base_dir, "dashboard.md")
+        self.readme_file = os.path.join(base_dir, "README.md")
         self.tracker_file = os.path.join(base_dir, "tracker.json")
 
     def load_tracker(self) -> List[Dict[str, Any]]:
@@ -79,7 +80,7 @@ class DashboardManager:
         if fp in fingerprints["company_titles"]:
             return True, f"Société et Intitulé identiques ({job.get('company')} - {job.get('title')})"
             
-        # Comparaison floue : si le nom principal de la société et du titre correspondent
+        # Comparaison floue : société et métier
         for existing_fp in fingerprints.get("company_titles", []):
             if "___" in existing_fp:
                 e_comp, e_tit = existing_fp.split("___", 1)
@@ -100,7 +101,6 @@ class DashboardManager:
     def add_application(self, app_entry: Dict[str, Any]):
         apps = self.load_tracker()
         
-        # Vérifier si elle existe déjà pour mise à jour sans dupliquer
         exists_idx = -1
         for i, a in enumerate(apps):
             if (a.get("id") and a.get("id") == app_entry.get("id")) or \
@@ -122,64 +122,97 @@ class DashboardManager:
         self.generate_markdown_dashboard(apps)
 
     def generate_markdown_dashboard(self, apps: List[Dict[str, Any]] = None):
+        """Génère la page d'accueil GitHub (README.md) et dashboard.md avec le tableau précis en tête de page."""
         if apps is None:
             apps = self.load_tracker()
             
         now_str = datetime.now().strftime("%d/%m/%Y à %H:%M")
         
-        md = f"""# 📊 Tableau de Bord des Candidatures & Annonces Réelles - Richard BUSSON
+        # En-tête GitHub officiel
+        content = f"""# 📊 TABLEAU DE BORD OFFICIEL DES CANDIDATURES — RICHARD BUSSON
 
-*Dernière synchronisation anti-doublon : {now_str}*
-*Total candidatures actives enregistrées : **{len(apps)}***
+> **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
+> **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
+> **Dernière actualisation :** {now_str} | **Total candidatures qualifiées :** {len(apps)}
 
-| Date | Organisme / Employeur | Intitulé & Texte Intégral de l'Annonce | Ville & Mobilité | Salaire Brut | Match | Relance (J+7) | Fichiers PDF A4 |
-| :--- | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+---
+
+## 📋 SUIVI PRÉCIS DES CANDIDATURES EXPÉDIÉES & EN COURS
+
+| Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
+| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 """
+
         for a in apps:
             d = a.get("date", datetime.now().strftime("%Y-%m-%d"))
             comp = a.get("company", "Entreprise")
             tit = a.get("title", "Poste")
+            ref_id = a.get("id", "REF-AUTO")
             city = a.get("city", "France")
-            salary = a.get("salary", "30k€ - 40k€")
+            salary = a.get("salary", ">= 30 000 €")
             score = a.get("score", 85)
             rel = a.get("relance_date", (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d"))
-            source = a.get("source", "France Travail / Apec / Indeed")
+            source = a.get("source", "France Travail / Apec / Indeed / LinkedIn")
             url = a.get("url", "")
-            desc = a.get("description", "Formation Gestionnaire de paie, RH, DSN, Qualiopi.")
+            desc = a.get("description", "Détail de l'offre...")
             
-            link_annonce = f"[🔗 **Consulter l'annonce originale sur {source}**]({url})" if url else f"*(Source : {source})*"
-            annonce_block = f"**{tit}**<br>{link_annonce}<br><br>📝 **Texte de l'annonce :**<br><blockquote>{desc}</blockquote>"
+            link_ref = f"[🔗 **Réf. {ref_id} ({source})**]({url})" if url else f"*(Réf : {ref_id})*"
             
+            # Bloc Intitulé avec Accordéon Déroulant pour le Texte Intégral
+            titre_et_texte = f"""**{tit}**<br>{link_ref}<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>{desc}</blockquote>
+</details>"""
+
             folder_rel = a.get("folder_rel", "").replace("\\", "/")
             if folder_rel:
-                link_cv = f"[{comp} - CV]({folder_rel}/CV_Richard_BUSSON.pdf)"
-                link_lm = f"[Lettre de Motivation]({folder_rel}/Lettre_Motivation_Richard_BUSSON.pdf)"
-                pdf_links = f"📄 {link_cv}<br>✉️ {link_lm}"
+                link_cv = f"[📄 CV A4 Officiel]({folder_rel}/CV_Richard_BUSSON.pdf)"
+                link_lm = f"[✉️ Lettre Motivation A4]({folder_rel}/Lettre_Motivation_Richard_BUSSON.pdf)"
+                pdf_links = f"{link_cv}<br>{link_lm}"
             else:
-                pdf_links = "Dossier généré"
+                pdf_links = "Dossier PDF Prêt"
                 
-            md += f"| {d} | **{comp}** | {annonce_block} | {city} | {salary} | **{score}%** | {rel} | {pdf_links} |\n"
-            
-        md += """
+            content += f"| **{d}** | **{comp}** | {titre_et_texte} | {city} | {salary} | **{score}%** | {rel} | {pdf_links} |\n"
+
+        content += """
 ---
 
-### 📌 Guide du Tableau de Bord :
-* **Anti-Doublon Actif :** Aucun recandidatage sur un poste ou organisme déjà présent dans ce tableau.
-* **Texte Intégral de l'Annonce :** Le descriptif complet des missions, compétences et modalités de recrutement est intégré dans chaque ligne.
-* **Sécurité QualityGuard :** CV et Lettre générés sur 1 page A4 stricte en typographie haute lisibilité sans aucun gras dans le corps de lettre.
+## 🎯 LES 4 CATÉGORIES DE POSTES CIBLES
+1. **Gestionnaire de Paie** *(Production, DSN, Déclarations sociales dématérialisées, Silae, Contrôle et audit)*
+2. **Responsable RH** *(Relations sociales, CSE, Droit du travail, Masse salariale, Plan de développement)*
+3. **Formateur Gestionnaire de Paie** *(Ingénierie pédagogique, Titre pro TP-01254, Qualiopi, Afpa Métis, ECF)*
+4. **Gestionnaire Ressources Humaines** *(Administration du personnel senior, Contrats, Procédures disciplinaires)*
+
+---
+
+## 🛡️ RÈGLES QUALITYGUARD APPLIQUÉES À CHAQUE CANDIDATURE
+- **Contrôle Anti-Doublon :** Lecture préalable du tableau. Zéro régénération et zéro réexpédition pour une offre déjà enregistrée.
+- **Seuil Salarial :** Minimum `>= 30 000 € brut / an` (ou `>= 2 500 € brut / mois`).
+- **Périmètre Géographique :** Creil (60100) `<= 2h` de trajet ou **Façades Océan Atlantique / Mer Méditerranée** ou **Télétravail**.
+- **Format CV :** Strictement **1 page A4**, aucun vide en bas, typographie Arial nette.
+- **Format Lettre :** Strictement **1 page A4**, destinataire aligné sur la 6ᵉ ligne (`kairos-paye.fr`), **ZÉRO mot en gras dans le corps**, signature vectorielle manuscrite lisible.
+- **Aperçu Visuel :** Chaque dossier génère le PDF et une capture PNG haute résolution pour vérification directe sans code brut.
 """
+
+        # Sauvegarder dans README.md (Première page d'accueil GitHub)
+        with open(self.readme_file, "w", encoding="utf-8") as f:
+            f.write(content)
+
+        # Sauvegarder dans dashboard.md
         with open(self.dashboard_file, "w", encoding="utf-8") as f:
-            f.write(md)
+            f.write(content)
             
+        # Miroir local
         gemini_dash = r"C:\Users\richa\Gemini\dashboard.md"
         try:
             with open(gemini_dash, "w", encoding="utf-8") as f:
-                f.write(md)
+                f.write(content)
         except Exception:
             pass
 
 if __name__ == "__main__":
     dm = DashboardManager()
-    fps = dm.get_existing_fingerprints()
-    print(f"[OK] DashboardManager initialisé : {fps['total_count']} candidatures enregistrées.")
-
+    dm.generate_markdown_dashboard()
+    print("[OK] README.md (Accueil GitHub) et dashboard.md régénérés avec le tableau précis en première page.")

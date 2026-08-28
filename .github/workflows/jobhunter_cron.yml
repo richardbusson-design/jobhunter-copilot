@@ -50,7 +50,7 @@ jobs:
           git config --global user.name "JobHunter Cloud Bot"
           git config --global user.email "bot@kairos-paye.fr"
           git pull --rebase origin main || echo "Pas de rebase nécessaire"
-          git add candidatures/ tracker.json dashboard.md
+          git add candidatures/ tracker.json dashboard.md README.md
           git commit -m "🤖 [Cloud Bot] Mise à jour du Tableau de Bord & Candidatures $(date +'%Y-%m-%d %H:%M')" || echo "Aucune modification à commiter"
           git push origin main || echo "Échec du push"
 
@@ -60,3 +60,4 @@ jobs:
           name: candidatures-pdf
           path: candidatures/**/*.pdf
           retention-days: 30
+
