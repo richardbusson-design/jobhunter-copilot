@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 28/08/2026 à 16:22 | **Total candidatures qualifiées :** 7
+> **Dernière actualisation :** 28/08/2026 à 19:19 | **Total candidatures qualifiées :** 12
 
 ---
 
@@ -10,6 +10,36 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-28** | **OPH DE PUTEAUX** | **RESPONSABLE RESSOURCES HUMAINES F/H**<br>[🔗 **Réf. APEC-179258654W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179258654W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de RESPONSABLE RESSOURCES HUMAINES F/H chez OPH DE PUTEAUX. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Puteaux | 60 - 64 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **Umbrella** | **Responsable Ressources Humaines F/H**<br>[🔗 **Réf. APEC-179326118W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179326118W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable Ressources Humaines F/H chez Umbrella. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Lens | 50 - 60 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **CORIANCE** | **Responsable ressources humaines F/H**<br>[🔗 **Réf. APEC-179327035W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327035W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable ressources humaines F/H chez CORIANCE. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Levallois | 48 - 50 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **cadremploi** | **Gestionnaire de paie et droit social F/H**<br>[🔗 **Réf. APEC-179236493W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179236493W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie et droit social F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Mérignac | A partir de 27 k€ brut annuel | **80%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **cadremploi** | **Gestionnaire de paie et droit social junior F/H**<br>[🔗 **Réf. APEC-179241554W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179241554W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie et droit social junior F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Mont | A partir de 27 k€ brut annuel | **80%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-28** | **LINKING TALENTS ** | **Auditeur Confirmé - Cabinet Formateur F/H**<br>[🔗 **Réf. APEC-179322854W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
