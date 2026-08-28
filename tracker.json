@@ -1,8 +1,28 @@
 {
-  "processed_ids": [
-    "APEC-2026-AFPA-STNAZAIRE",
-    "IND-2026-CMA-OISE",
-    "FT-2026-AFPA-ROUEN"
+  "applications": [
+    {
+      "id": "LINKEDIN-ACN-2026",
+      "source": "LinkedIn (Anthony SOURDET)",
+      "title": "Conseiller en Formation Professionnelle",
+      "company": "Groupe ACN",
+      "contact_name": "Monsieur Anthony SOURDET",
+      "contact_title": "Co-fondateur & Direction",
+      "address_1": "Direction du Développement & Recrutement",
+      "address_2": "contact@groupe-acn.fr",
+      "postal_code": "75000",
+      "city": "ÎLE-DE-FRANCE",
+      "salary": "36 000 € - 42 000 € brut annuel + Véhicule de service",
+      "contract_type": "CDI",
+      "description": "[ON RECRUTE UN CONSEILLER·ÈRE FORMATION ÎLE-DE-FRANCE] Groupe ACN grandit, et notre équipe doit grandir avec lui. Nous recherchons un·e Conseiller·ère en Formation Professionnelle pour développer notre portefeuille clients sur les Yvelines, l'Essonne, la Seine-Saint-Denis et le Val-de-Marne. Un territoire dense (industrie, logistique, BTP, santé) : des entreprises qui veulent former leurs équipes pour qu'elles rentrent saines et sauves chez elles le soir. Un professionnel qui décroche son téléphone, va sur le terrain, comprend ce dont un responsable HSE a vraiment besoin avant de lui proposer quoi que ce soit. Trois ans d'expérience en négociation et fidélisation B2B. En échange : un territoire à piloter en autonomie, une voiture de service, un catalogue solide et une équipe à taille humaine. Les parcours atypiques et reconversions nous intéressent. Candidatures : contact@groupe-acn.fr",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:groupe-acn-conseiller-formation",
+      "score": 96,
+      "status": "Dossier PDF Prêt",
+      "folder_rel": "candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle",
+      "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle\\Lettre_Motivation_Richard_BUSSON.pdf",
+      "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle\\CV_Richard_BUSSON.pdf",
+      "date": "2026-08-28",
+      "relance_date": "2026-09-04"
+    }
   ],
-  "last_run": "2026-08-28T01:20:29.235967"
+  "last_updated": "2026-08-28T15:03:05.928283"
 }

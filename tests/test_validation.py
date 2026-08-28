@@ -2,13 +2,12 @@
 import os
 import sys
 import unittest
-import json
-import re
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 from quality_guard import QualityGuard
 from application_generator import ApplicationGenerator
+from pdf_compiler import compile_html_to_pdf
 
 class TestJobHunterQualityGuard(unittest.TestCase):
     def setUp(self):
@@ -16,8 +15,8 @@ class TestJobHunterQualityGuard(unittest.TestCase):
         self.guard = QualityGuard(config_dir=os.path.join(self.base_dir, "config"))
         self.generator = ApplicationGenerator(base_dir=self.base_dir)
 
-    def test_three_trials_tournament_selection(self):
-        """Vérifie que la procédure à 3 essais génère 3 variantes et sélectionne la meilleure."""
+    def test_three_pass_audit_complete_success(self):
+        """Vérifie l'exécution rigoureuse de la procédure de contrôle aux 3 passages."""
         test_job = {
             "title": "Formateur en gestion de paie et RH",
             "company": "Afpa Normandie",
@@ -26,15 +25,32 @@ class TestJobHunterQualityGuard(unittest.TestCase):
             "address_1": "Rue de la République",
             "postal_code": "76000",
             "city": "ROUEN",
+            "salary": "35 000 €",
             "description": "Animation Titre pro Gestionnaire de paie, outil Métis, Silae et ECF."
         }
-        best_html, best_score, best_idx = self.generator.generate_best_of_three_letter(test_job)
-        self.assertIn(best_idx, [1, 2, 3])
-        self.assertGreaterEqual(best_score, 80.0)
         
-        # Vérification de conformité stricte de la version retenue
-        is_ok, msg = self.guard.validate_html_letter(best_html)
-        self.assertTrue(is_ok, f"La meilleure variante retenue doit être 100% conforme : {msg}")
+        # 1. Rendu
+        letter_html = self.generator.render_letter_html(test_job)
+        cv_html = self.generator.render_cv_html(test_job)
+        
+        # 2. Compilation
+        temp_dir = os.path.join(self.base_dir, "tests", "temp_output")
+        os.makedirs(temp_dir, exist_ok=True)
+        l_html_path = os.path.join(temp_dir, "audit_lettre.html")
+        c_html_path = os.path.join(temp_dir, "audit_cv.html")
+        l_pdf_path = os.path.join(temp_dir, "audit_lettre.pdf")
+        c_pdf_path = os.path.join(temp_dir, "audit_cv.pdf")
+        
+        with open(l_html_path, "w", encoding="utf-8") as f: f.write(letter_html)
+        with open(c_html_path, "w", encoding="utf-8") as f: f.write(cv_html)
+        
+        compile_html_to_pdf(l_html_path, l_pdf_path)
+        compile_html_to_pdf(c_html_path, c_pdf_path)
+        
+        # 3. Exécution de l'audit aux 3 passages
+        is_valid, audit_logs = self.guard.execute_three_pass_audit(test_job, letter_html, cv_html, l_pdf_path, c_pdf_path)
+        self.assertTrue(is_valid, f"L'audit aux 3 passages a échoué : {audit_logs}")
+        self.assertEqual(len(audit_logs), 3)
 
     def test_salary_filter_rejection_below_30k(self):
         low_salary_job = {"title": "Assistant Paie", "city": "Creil", "postal_code": "60100", "salary": "24 000 €"}

@@ -40,35 +40,32 @@
 
 ---
 
-## 🏆 PROCÉDURE DE CONTRÔLE QUALITÉ & SÉLECTION À 3 ESSAIS (BEST-OF-3)
+## 🛡️ PROCÉDURE OFFICIELLE DE CONTRÔLE EN 3 PASSAGES (QUALITYGUARD 3-PASS GATE)
 
-Pour chaque candidature générée, le robot applique obligatoirement un protocole de **comparaison à 3 essais** :
-1. **Génération de 3 variantes de lettres :**
-   - *Variante 1 :* Axe Pédagogie d'Expertise, Titre Pro TP-01254 & Certification Qualiopi.
-   - *Variante 2 :* Axe Direction Opérationnelle, Management RH (580 pers.) & Dialogue Social (CSE).
-   - *Variante 3 :* Axe Polyvalence Droit Social, Gestion de la Paie & Conseil Entreprise (ADEA / Brevet de Maîtrise).
-2. **Évaluation QualityGuard sur 100 points :**
-   - Conformité A4 stricte (1123px) : 50 points (bloquant).
-   - Zéro gras dans le corps de texte : bloquant.
-   - Résonance lexicale avec l'annonce d'origine : 30 points.
-   - Personnalisation de l'organisme et du contact : 20 points.
-3. **Sélection Automatique :** Seule la variante obtenant le **score maximal** est retenue et compilée en PDF.
+Chaque candidature détectée est obligatoirement soumise à un **audit séquentiel en 3 passages bloquants** :
 
----
+### 🔹 PASSAGE 1 : CONTRÔLE DE FAISABILITÉ SOURCE & FILTRAGE (AVANT RÉDACTION)
+- Vérification de l'authenticité de l'offre (France Travail Flux Direct, Apec WebService, Indeed, LinkedIn).
+- Contrôle du seuil salarial (>= 30 000 € brut/an).
+- Contrôle du temps de trajet (Creil <= 2h ou Littoral Atlantique/Méditerranée ou Télétravail).
+- Élimination des profils débutants (< 3 ans) et des offres hors cible.
 
-## 🛡️ SÉCURITÉ AUTOMATIQUE & QUALITY GUARD (NON NÉGOCIABLE)
+### 🔹 PASSAGE 2 : TOURNOI COMPARATIF & RÈGLES RÉDACTIONNELLES A4 (PENDANT RÉDACTION)
+- Génération de 3 variantes de lettres (Pédagogie Qualiopi, Direction RH 580 pers., Conseil Entreprise/ADEA).
+- Évaluation comparative sur 100 points (Résonance lexicale de l'annonce, personnalisation du destinataire).
+- Contrôle bloquant de typographie : **ZÉRO caractère gras dans le corps de lettre**.
+- Alignement strict du destinataire sur la 6ᵉ ligne (kairos-paye.fr) et signature vectorielle nette (*RB*).
+- Calibrage du CV sur 1 page A4 sans aucun vide en bas.
 
-1. **Curriculum Vitae (1 Page A4 Stricte) :** Strictement 1 seule page, police sans empattement nette et lisible (Arial), 100% de la hauteur occupée sans aucun vide en bas, 7 sections ordonnées.
-2. **Lettre de Motivation (1 Page A4 Stricte) :** Strictement 1 seule page, expéditeur à gauche (6 lignes), destinataire à droite aligné très exactement sur la 6ᵉ ligne (*kairos-paye.fr*).
-3. **Règle stricte du GRAS :** **AUCUN mot en gras dans le corps de la lettre**. Le gras est STRICTEMENT RÉSERVÉ à l'**Objet : ...** et à **À l’attention de...**.
-4. **Signature Manuscrite Lisible :** Signature vectorielle cursive nette et élégante en bas à droite au-dessus de *Richard Busson*.
-5. **Aperçu Visuel Obligatoire & Zéro Code Brut :** Chaque dossier génère automatiquement le PDF officiel ET son aperçu graphique visuel (PNG haute résolution) pour un contrôle immédiat à l'écran sans jamais ouvrir de code brut.
-6. **Orthographe & Typographie :** Respect scrupuleux des majuscules accentuées (À), accents circonflexes (Maîtrise), cédilles (conçu).
+### 🔹 PASSAGE 3 : CONTRÔLE GRAPHIQUE, PDF & APERÇU VISUEL DIRECT (POST-COMPILATION)
+- Contrôle mathématique de la géométrie PDF (exactement 1 page A4, 1123px, aucun débordement).
+- **Génération automatique de la capture d'écran visuelle haute résolution (PNG)** pour affichage immédiat sans code brut.
+- Enregistrement du texte intégral de l'annonce d'origine dans le tableau de bord.
+- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur ichard.busson@kairos-paye.fr.
 
 ---
 
 ## ☁️ VEILLE MULTI-SOURCES & EXÉCUTION CLOUD
-- Recherche en direct sur **France Travail** (API officielle), **l'Apec** et **Indeed**.
+- Recherche en direct sur **France Travail** (Flux direct), **l'Apec** (WebService direct) et **Indeed**.
 - Exécution autonome dans le Cloud via GitHub Actions (08h, 13h, 18h).
 - Tableau de bord enrichi avec le **texte intégral de l'annonce d'origine**.
-- Alertes emails automatiques sur **ichard.busson@kairos-paye.fr** avec pièces jointes PDF.
