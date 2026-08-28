@@ -56,7 +56,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
         
     validated_count = 0
     
-    for job in new_qualified_jobs:
+    for job in new_qualified_jobs[:3]:
         score = generator.evaluate_match(job)
         job["score"] = score
         
@@ -94,7 +94,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
         compile_html_to_pdf(cv_html_path, pdf_cv_path)
         
         # 6. Audit QualityGuard en 3 Passages
-        is_valid, audit_logs = guard.execute_three_pass_audit(job, letter_html_path, cv_html_path, pdf_letter_path, pdf_cv_path)
+        is_valid, audit_logs = guard.execute_three_pass_audit(job, best_letter_html, cv_html, pdf_letter_path, pdf_cv_path)
         for alog in audit_logs:
             print(f"    {alog}")
             
@@ -137,3 +137,6 @@ def run_pipeline(base_dir=".", auto_notify=True):
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     run_pipeline(base_dir=base_dir, auto_notify=True)
+
+
+
