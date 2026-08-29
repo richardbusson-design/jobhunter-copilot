@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 28/08/2026 à 19:19 | **Total candidatures qualifiées :** 12
+> **Dernière actualisation :** 29/08/2026 à 13:01 | **Total candidatures qualifiées :** 18
 
 ---
 
@@ -10,6 +10,42 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-29** | **DEFI TECHNOLOGY** | **Gestionnaire paie F/H**<br>[🔗 **Réf. APEC-179235303W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235303W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire paie F/H chez DEFI TECHNOLOGY. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Pantin | 36 - 42 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **111 CONSEILS** | **Gestionnaire de paie F/H**<br>[🔗 **Réf. APEC-179271806W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271806W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie F/H chez 111 CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Carcassonne | 25 - 35 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Gestionnaire Paie F/H**<br>[🔗 **Réf. APEC-179274617W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179274617W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire Paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Franconville | 30 - 40 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Gestionnaire de paie F/H**<br>[🔗 **Réf. APEC-179289239W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179289239W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Paris 15 | 35 - 45 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Responsable ressources humaines F/H**<br>[🔗 **Réf. APEC-179273087W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273087W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable ressources humaines F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Viroflay | 50 - 55 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **APTIC** | **Responsable des Ressources Humaines F/H**<br>[🔗 **Réf. APEC-179273982W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273982W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable des Ressources Humaines F/H chez APTIC. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Aubervilliers | A partir de 60 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-28** | **OPH DE PUTEAUX** | **RESPONSABLE RESSOURCES HUMAINES F/H**<br>[🔗 **Réf. APEC-179258654W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179258654W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
