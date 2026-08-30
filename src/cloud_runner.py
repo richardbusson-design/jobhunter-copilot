@@ -18,7 +18,45 @@ from notifier import ApplicationNotifier
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
 
+def ensure_desktop_app_installed():
+    """Garantit que l'application et le raccourci Bureau avec l'icône 3D restent installés de façon permanente."""
+    try:
+        install_dir = r"C:\Users\richa\JobHunter"
+        os.makedirs(install_dir, exist_ok=True)
+        
+        # 1. Copie de sécurité de l'icône
+        ico_src = r"C:\Users\richa\Gemini\red_button.ico"
+        ico_dest = os.path.join(install_dir, "app_icon.ico")
+        if os.path.exists(ico_src) and not os.path.exists(ico_dest):
+            import shutil
+            shutil.copy(ico_src, ico_dest)
+            
+        # 2. Vérification des raccourcis Bureau
+        desktop_paths = [
+            r"C:\Users\richa\OneDrive\Archives\Bureau 2021\Tableau de Bord - Candidatures.lnk",
+            r"C:\Users\richa\Desktop\Tableau de Bord - Candidatures.lnk",
+            os.path.expandvars(r"%APPDATA%\Microsoft\Windows\Start Menu\Programs\Tableau de Bord - Candidatures.lnk")
+        ]
+        
+        for sc_path in desktop_paths:
+            if not os.path.exists(sc_path):
+                import subprocess
+                ps_cmd = f'''
+                $w = New-Object -ComObject WScript.Shell
+                $s = $w.CreateShortcut("{sc_path}")
+                $s.TargetPath = "wscript.exe"
+                $s.Arguments = '"""C:\\Users\\richa\\JobHunter\\launch.vbs"""'
+                $s.WorkingDirectory = "C:\\Users\\richa\\JobHunter"
+                $s.IconLocation = "C:\\Users\\richa\\JobHunter\\app_icon.ico, 0"
+                $s.Save()
+                '''
+                subprocess.run(["powershell", "-NoProfile", "-Command", ps_cmd], capture_output=True)
+    except Exception:
+        pass
+
 def run_pipeline(base_dir=".", auto_notify=True):
+    ensure_desktop_app_installed()
+
     print("=" * 75)
     print("  [JOBHUNTER CLOUD RUNNER] - EXECUTION AVEC FILTRAGE ANTI-DOUBLON STRICT")
     print("=" * 75)
@@ -137,6 +175,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     run_pipeline(base_dir=base_dir, auto_notify=True)
+
 
 
 
