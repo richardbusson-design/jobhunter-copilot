@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 29/08/2026 à 19:39 | **Total candidatures qualifiées :** 24
+> **Dernière actualisation :** 30/08/2026 à 12:40 | **Total candidatures qualifiées :** 30
 
 ---
 
@@ -10,6 +10,49 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-30** | **ELIOR SUPPORT** | **Gestionnaire de paie  (H/F)**<br>[🔗 **Réf. FT-213BZDQ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BZDQ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Découvrez le job que vous voulez !
+Le domaine de la paie vous parle autant que celui de la gestion du personnel ?
+Vous souhaitez rejoindre une entreprise engagée, qui met ses collaborateur(rice)s au...</blockquote>
+</details> | 94 | 33 000 € - 37 000 € brut annuel | **80%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ALLIANCE EMPLOI** | **Comptable unique /gestionnaire de paie H/F**<br>[🔗 **Réf. FT-213CBHB (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CBHB)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Et si vous démarriez une nouvelle expérience avec Alliance Emploi ?
+Avec 27 ans d'expertise, 1700 salariés et un réseau de 400 entreprises dans les secteurs industriel, agroalimentaire, automobile,...</blockquote>
+</details> | 59 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ADECCO LHH** | **Gestionnaire de paie h/F (H/F)**<br>[🔗 **Réf. FT-213CHFF (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CHFF)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>LHH Recruitment Solutions, cabinet de conseil en recrutement, intérim spécialisé, management de transition, et évaluation d'expert.e.s, cadres et dirigeant.e.s, recherche pour son client un(e)...</blockquote>
+</details> | 85 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **OKIDOKI** | **Gestionnaire de paie H/F - Cabinet d'expertise comptable (H/F)**<br>[🔗 **Réf. FT-213CMRC (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CMRC)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous aimez la paie, mais vous recherchez un poste qui ne consiste pas uniquement à produire des bulletins à la chaîne ?
+
+OKIDOKI recrute, pour le compte de son client, un cabinet d'expertise...</blockquote>
+</details> | 59 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **85** | **Formateur Gestionnaire de paie (H/F)**<br>[🔗 **Réf. FT-3921092 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/3921092)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</blockquote>
+</details> | Roche | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ELAP** | **Gestionnaire de Paie Formateur Logiciel H/F**<br>[🔗 **Réf. FT-5642671 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/5642671)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>POSTE : Gestionnaire de Paie Formateur Logiciel H/F
+DESCRIPTION : 
+Vous maîtrisez la paie et souhaitez faire évoluer votre expertise vers le logiciel, le support fonctionnel et la formation ?...</blockquote>
+</details> | 83 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-29** | **Onepoint** | **Formateur - Certifications &amp; Accompagnement Expertise Paie H/F**<br>[🔗 **Réf. FT-5769794 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/5769794)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
