@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de Bord des Candidatures - Richard BUSSON</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      margin: 0;
+      padding: 24px;
+    }
+    .container {
+      max-width: 1700px;
+      margin: 0 auto;
+    }
+    .header-bar {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 24px 32px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    .header-bar h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .candidate-info {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .badge-pill {
+      background: #0284c7;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-green {
+      background: #059669;
+    }
+    .month-card {
+      background: #131c2e;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #1e293b;
+    }
+    .month-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #f1f5f9;
+    }
+    .month-count {
+      background: #334155;
+      color: #f8fafc;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    th {
+      background: #0b1120;
+      color: #94a3b8;
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 2px solid #334155;
+      font-weight: 600;
+    }
+    td {
+      padding: 14px;
+      border-bottom: 1px solid #1e293b;
+      vertical-align: top;
+    }
+    tr:hover {
+      background: #182235;
+    }
+    .score-badge {
+      background: #0284c7;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .btn-pdf {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      margin: 2px 0;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .btn-pdf:hover {
+      background: #1d4ed8;
+    }
+    .btn-preview {
+      display: inline-block;
+      background: #475569;
+      color: white;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin: 2px 0;
+      transition: background 0.2s;
+    }
+    .btn-preview:hover {
+      background: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <div>
+        <h1>📊 Tableau de Bord des Candidatures par Mois</h1>
+        <div class="candidate-info">
+          Candidat : <strong>Richard BUSSON</strong> (Creil, 60100) &bull; Téléphone : 09 39 20 08 70 &bull; richard.busson@kairos-paye.fr
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <div class="badge-pill badge-green">🛡️ Anti-Doublon Actif (7 dossiers)</div>
+        <div class="badge-pill">⏰ Synchro : 31/08/2026 à 00:42</div>
+      </div>
+    </div>
+
+    
+            <div class="month-card">
+              <div class="month-header">
+                <h2>📅 Août 2026</h2>
+                <span class="month-count">7 candidature(s) envoyée(s)</span>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 100px;">Date</th>
+                    <th style="width: 220px;">Entreprise / Organisme</th>
+                    <th>Intitulé du Poste & Détails Annonce</th>
+                    <th style="width: 140px;">Lieu</th>
+                    <th style="width: 140px;">Salaire Brut</th>
+                    <th style="width: 70px;">Match</th>
+                    <th style="width: 110px;">Relance (J+7)</th>
+                    <th style="width: 160px;">Documents A4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Auditeur Confirmé - Cabinet Formateur F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322854W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Auditeur Confirmé - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Wasquehal</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">35 - 45 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">cadremploi</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179279215W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179279215W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Haubourdin</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A partir de 30 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Comptable ECF - Cabinet Formateur - Radinghem F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179278826W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179278826W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Comptable ECF - Cabinet Formateur - Radinghem F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Radinghem</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">30 - 40 k€ brut annuel</td>
+                  <td><span class="score-badge">80%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">TRANSPORTS BERTIN</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable des ressources humaines F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179321388W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179321388W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable des ressources humaines F/H chez TRANSPORTS BERTIN. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Rennes</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">70 - 80 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322844W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322844W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Radinghem</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">30 - 40 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">AFPA</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur Gestionnaire de paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294860W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179294860W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Formateur Gestionnaire de paie F/H chez AFPA. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Saint</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A négocier</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">Groupe ACN</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Conseiller en Formation Professionnelle</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.linkedin.com/feed/update/urn:li:activity:groupe-acn-conseiller-formation" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 LINKEDIN-ACN-2026 (LinkedIn (Anthony SOURDET))</a></div>
+                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">[ON RECRUTE UN CONSEILLER·ÈRE FORMATION ÎLE-DE-FRANCE] Groupe ACN grandit, et notre équipe doit grandir avec lui. Nous recherchons un·e Conseiller·ère en Formation Professionnelle pour développer notre portefeuille clients sur les Yvelines, l'Essonne, la Seine-Saint-Denis et le Val-de-Marne. Un territoire dense (industrie, logistique, BTP, santé) : des entreprises qui veulent former leurs équipes pour qu'elles rentrent saines et sauves chez elles le soir. Un professionnel qui décroche son téléphone, va sur le terrain, comprend ce dont un responsable HSE a vraiment besoin avant de lui proposer quoi que ce soit. Trois ans d'expérience en négociation et fidélisation B2B. En échange : un territoire à piloter en autonomie, une voiture de service, un catalogue solide et une équipe à taille humaine. Les parcours atypiques et reconversions nous intéressent. Candidatures : contact@groupe-acn.fr</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">ÎLE-DE-FRANCE</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">36 000 € - 42 000 € brut annuel + Véhicule de service</td>
+                  <td><span class="score-badge">96%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <a class="btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
+                    <a class="btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
+                    <a class="btn-preview" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    </td>
+                </tr>
+                
+                </tbody>
+              </table>
+            </div>
+            
+
+    <div style="text-align: center; color: #64748b; font-size: 13px; margin-top: 40px;">
+      JobHunter Copilot &bull; Système automatisé de candidatures sur-mesure conforme Qualiopi & Direction RH &bull; Richard Busson
+    </div>
+  </div>
+</body>
+</html>
