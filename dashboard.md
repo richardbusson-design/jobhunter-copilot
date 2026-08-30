@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 30/08/2026 à 12:40 | **Total candidatures qualifiées :** 30
+> **Dernière actualisation :** 30/08/2026 à 19:41 | **Total candidatures qualifiées :** 35
 
 ---
 
@@ -10,6 +10,42 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-30** | **ASSOCIATION REGIONALE POUR L INTEGRATION** | **GESTIONNAIRE DE PAIE H/F (H/F)**<br>[🔗 **Réf. FT-213BMFV (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BMFV)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Présentation de l'établissement :
+
+Pour une  Association à but non lucratif qui emploie 1500 salariés et gère plus de 50 établissements et services médico-sociaux en Provence ; nos actions sont...</blockquote>
+</details> | 13 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **FRANCE IMAGERIES** | **Gestionnaire de Paie (H/F)**<br>[🔗 **Réf. FT-213BQFK (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BQFK)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Description du poste
+Vous souhaitez intégrer un réseau dynamique, innovant et en plein développement ?
+Le Réseau France Imageries Territoires se développe depuis 6 ans en mettant son expertise au...</blockquote>
+</details> | 33 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **EXPERTISE ET AUDIT LAFARGE** | **Gestionnaire de paie expérimenté (H/F)**<br>[🔗 **Réf. FT-213BQLB (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BQLB)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Depuis 1963, EAL - Expertise et Audit Lafarge - accompagne les entreprises dans les missions de comptabilité, d'audit et de paie au quotidien, assure également des missions de conseils et...</blockquote>
+</details> | 75 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_expérimenté__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_expérimenté__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **MANPOWER FRANCE** | **Gestionnaire paie (H/F)**<br>[🔗 **Réf. FT-213BVTJ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BVTJ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Rejoignez EUROAPI, acteur majeur de l'industrie chimique ! 
+Manpower LOUVIERS PHARMA recrute un Gestionnaire Paie (H/F) pour une mission de 5 mois à Saint-Aubin-lès-Elbeuf. 
+Au sein de l'équipe RH et...</blockquote>
+</details> | 76 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ADECCO FRANCE** | **Gestionnaire de paie et ADP (h/f) (H/F)**<br>[🔗 **Réf. FT-213BXCD (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BXCD)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Gestionnaire Paie et Administration du Personnel H/F . Vous maîtrisez la gestion de la paie et souhaitez rejoindre un environnement structuré et dynamique ? Votre rigueur, votre sens du service et...</blockquote>
+</details> | 44 | 33 000 € - 37 000 € brut annuel | **80%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-30** | **ELIOR SUPPORT** | **Gestionnaire de paie  (H/F)**<br>[🔗 **Réf. FT-213BZDQ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BZDQ)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
