@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 11:51 | **Total candidatures qualifiées :** 35
+> **Dernière actualisation :** 31/08/2026 à 14:55 | **Total candidatures qualifiées :** 41
 
 ---
 
@@ -10,6 +10,59 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-31** | **MAIRIE** | **GESTIONNAIRE CARRIERE-PAIE (H/F)**<br>[🔗 **Réf. FT-213DJBV (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DJBV)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>NOTRE TERRITOIRE ET NOTRE PROJET
+Vertou, avec ses 26 000 habitants, est la 7ème ville du département de Loire-Atlantique. 
+Bordée par la Sèvre nantaise, elle est reconnue comme une Ville naturelle et...</blockquote>
+</details> | 44 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **LUMIAN RH** | **Gestionnaire Paie &amp; Social Paimpol (H/F)**<br>[🔗 **Réf. FT-213DKHY (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DKHY)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Gestionnaire Paie &amp; Social H/F - Paimpol
+
+Vous souhaitez exercer un métier complet, mêlant technicité paie, droit social et véritable relation client ?
+
+Lumian RH recrute pour son client, un cabinet...</blockquote>
+</details> | 22 | 33 000 € - 37 000 € brut annuel | **88%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **LUMIAN RH** | **Gestionnaire Paie &amp; Social H/F - Plérin (H/F)**<br>[🔗 **Réf. FT-213DKRR (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DKRR)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Gestionnaire Paie &amp; Social H/F - Plérin
+
+Lumian RH recrute pour son client, un cabinet d'expertise comptable structuré, un Gestionnaire Paie &amp; Social H/F en CDI à Plérin.
+
+Vous recherchez un poste...</blockquote>
+</details> | 22 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **COMPAGNIE DE SAINT** | **Gestionnaire paie F/H -  CDD 7 month (H/F)**<br>[🔗 **Réf. FT-213DMFS (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DMFS)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Pourquoi a-t-on besoin de vous ?
+En tant que Gestionnaire de Paie, vous assurez la préparation, la production et la fiabilisation de la paie d'un portefeuille dédié.
+
+ 
+
+Votre quotidien :
+
+Collecter...</blockquote>
+</details> | GOBAIN | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **ADECCO FRANCE** | **Gestionnaire paie H/F**<br>[🔗 **Réf. FT-213DNQB (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DNQB)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>LHH Recruitment Solutions, cabinet de conseil en recrutement, travail temporaire spécialisé, gestion de transition et évaluation d'experts, cadres et dirigeants recherche pour son client, et basé à...</blockquote>
+</details> | 29 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **CRIT** | **GESTIONNAIRE DE PAIE  H/F**<br>[🔗 **Réf. FT-213DQBQ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DQBQ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>En tant que Gestionnaire paie et administration du personnel vous rejoignez une équipe RH composée de 7 personnes et évoluez dans un environnement industriel stimulant, sous la convention collective...</blockquote>
+</details> | 95 | 33 000 € - 37 000 € brut annuel | **88%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-30** | **ASSOCIATION REGIONALE POUR L INTEGRATION** | **GESTIONNAIRE DE PAIE H/F (H/F)**<br>[🔗 **Réf. FT-213BMFV (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BMFV)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
