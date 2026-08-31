@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 17:10 | **Total candidatures qualifiées :** 45
+> **Dernière actualisation :** 31/08/2026 à 17:16 | **Total candidatures qualifiées :** 46
 
 ---
 
@@ -10,12 +10,18 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **2026-08-31** | **Hellowork** | **Responsable RH & Paie F/H**<br>[🔗 **Réf. APEC-179252557W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179252557W)<br>
+| **2026-08-31** | **cadremploi** | **Responsable rh et paie F/H**<br>[🔗 **Réf. APEC-179311438W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179311438W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable rh et paie F/H chez cadremploi. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Conflans | A partir de 42 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_cadremploi_Responsable_rh_et_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_cadremploi_Responsable_rh_et_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **Hellowork** | **Responsable RH & Paie F/H**<br>[🔗 **Réf. APEC-179271029W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271029W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
 <br>
 <blockquote>Poste de Responsable RH & Paie F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
-</details> | Montrouge | 55 - 60 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_Hellowork_Responsable_RH___Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_Hellowork_Responsable_RH___Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+</details> | Port | 40 - 50 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_Hellowork_Responsable_RH___Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_Hellowork_Responsable_RH___Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-31** | **76** | **Gestionnaire RH et Paie (H/F)**<br>[🔗 **Réf. FT-213CVPJ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CVPJ)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
