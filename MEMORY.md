@@ -6,7 +6,7 @@
 - **Téléphone :** 09 39 20 08 70
 - **Email :** richard.busson@kairos-paye.fr
 - **Réseaux & Web :** LinkedIn : linkedin.com/in/richard-busson . kairos-paye.fr
-- **Statut & Atouts :** 59 ans, profil senior/expert (+15 ans d'expérience), grande stabilité professionnelle, engagement durable, éligible aux aides à l'embauche pour demandeur d'emploi senior, permis B (valide), mobilité nationale (Littoral Atlantique / Méditerranée), disponibilité immédiate.
+- **Statut & Atouts :** 59 ans, profil senior/expert (+15 ans d'expérience), grande stabilité professionnelle, engagement durable, éligible aux aides à l'embauche pour demandeur d'emploi senior, permis B (valide), mobilité nationale (Façades Atlantique / Méditerranée), disponibilité immédiate.
 - **Cœur d'expertise :** Ressources Humaines, Gestion de la Paie, Droit social & Relations collectives, Ingénierie Pédagogique & Formation, Comptabilité / Métiers du chiffre.
 - **Expériences clés :**
   - **Responsable RH & Paie** (Secours Populaire, 2003-2010) : Pilotage RH et paie de 580 collaborateurs (salariés et bénévoles), administration du personnel, plan de développement des compétences, dialogue social (CSE/DP/CE), gestion de crise.
@@ -71,9 +71,16 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 - Alignement strict du destinataire sur la 6ᵉ ligne (kairos-paye.fr) et signature vectorielle nette (*RB*).
 - Calibrage du CV sur 1 page A4 sans aucun vide en bas.
 
-### 🔹 PASSAGE 3 : CONTRÔLE GRAPHIQUE, PDF & APERÇU VISUEL DIRECT (POST-COMPILATION)
-- Contrôle mathématique de la géométrie PDF (exactement 1 page A4, 1123px, aucun débordement).
-- **Génération automatique de la capture d'écran visuelle haute résolution (PNG)** pour affichage immédiat sans code brut.
+### 🔹 PASSAGE 3 : CONTRÔLE DES FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE (POST-COMPILATION)
+- **Génération Obligatoire des 6 Fichiers par Dossier :**
+  1. Lettre_Motivation_Richard_BUSSON.html
+  2. Lettre_Motivation_Richard_BUSSON.pdf (Strictement 1 page A4, 1123px)
+  3. Lettre_Motivation_Richard_BUSSON.png (Capture haute résolution 794x1123)
+  4. CV_Richard_BUSSON.html
+  5. CV_Richard_BUSSON.pdf (Strictement 1 page A4)
+  6. CV_Richard_BUSSON.png (Capture haute résolution 794x1123)
+- **Vérification de taille non nulle :** Blocage immédiat si l'un des fichiers PDF ou PNG fait 0 octet.
+- **Visionneuse Multi-Mode Auto-Secours (Fail-Safe) :** Affichage direct de l'image haute définition avec bascule vectorielle instantanée (onerror fallback) pour garantir un affichage réel et sans faille.
 - Enregistrement du texte intégral de l'annonce d'origine dans le tableau de bord.
 - Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur ichard.busson@kairos-paye.fr.
 
@@ -82,4 +89,5 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 ## 📊 TABLEAU DE BORD LOCAL PAR MOIS & APPLICATION BUREAU
 - **Emplacement permanent :** C:\Users\richa\JobHunter avec icône 3D rouge permanente.
 - **Raccourci Bureau :** C:\Users\richa\OneDrive\Archives\Bureau 2021\Tableau de Bord - Candidatures.lnk
+- **Auto-Synchronisation Cloud :** launch.py effectue un téléchargement Git automatique silencieux avant chaque ouverture pour afficher immédiatement les candidatures du jour traitées dans le Cloud.
 - **Visionneuse Interactive Plein Écran intégrée :** Consultation instantanée de la lettre et du CV en haute définition sans quitter le navigateur, avec boutons d'ouverture et téléchargement PDF direct.
