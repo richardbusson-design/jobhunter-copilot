@@ -1,6 +1,31 @@
 {
   "applications": [
     {
+      "id": "APEC-179252557W",
+      "source": "L'Apec (Direct WebService)",
+      "title": "Responsable RH & Paie F/H",
+      "company": "Hellowork",
+      "contact_name": "Monsieur le Responsable du Recrutement",
+      "contact_title": "Direction des Ressources Humaines",
+      "address_1": "Pôle Recrutement Cadres & Formation",
+      "postal_code": "92000",
+      "city": "Montrouge",
+      "salary": "55 - 60 k€ brut annuel",
+      "contract_type": "CDI",
+      "description": "Poste de Responsable RH & Paie F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
+      "url": "https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179252557W",
+      "eligibility_status": "ELIGIBLE",
+      "eligibility_reason": "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)",
+      "score": 94,
+      "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_Hellowork_Responsable_RH___Paie_F_H",
+      "folder_rel": "candidatures/2026-08-31_Hellowork_Responsable_RH___Paie_F_H",
+      "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_Hellowork_Responsable_RH___Paie_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
+      "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_Hellowork_Responsable_RH___Paie_F_H\\CV_Richard_BUSSON.pdf",
+      "status": "Dossier PDF & Visuel Prêt",
+      "date": "2026-08-31",
+      "relance_date": "2026-09-07"
+    },
+    {
       "id": "FT-213CVPJ",
       "source": "France Travail (Flux Direct)",
       "title": "Gestionnaire RH et Paie (H/F)",
@@ -1099,5 +1124,5 @@
       "relance_date": "2026-09-04"
     }
   ],
-  "last_updated": "2026-08-31T17:05:30.132499"
+  "last_updated": "2026-08-31T17:10:19.135290"
 }
