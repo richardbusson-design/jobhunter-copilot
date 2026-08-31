@@ -33,190 +33,105 @@ class ApplicationGenerator:
 
     def evaluate_match(self, job: Dict[str, Any]) -> int:
         text = (job.get("title", "") + " " + job.get("description", "") + " " + job.get("company", "")).lower()
-        score = 70
+        score = 72
         
-        if "paie" in text or "gestionnaire de paie" in text or "bulletin" in text:
-            score += 8
-        if "ressources humaines" in text or " rh " in text or "rh," in text or text.startswith("rh ") or text.endswith(" rh"):
-            score += 8
-        if "formation" in text or "formateur" in text or "pédagogique" in text or "coordinateur" in text or "tp-" in text:
-            score += 8
-        if "responsable rh" in text or "rrh" in text or "relations sociales" in text or "chargé rh" in text or "gestionnaire rh" in text:
-            score += 8
+        # Reconnaissance des postes cibles clés (Nomenclature ROME)
+        if "responsable rh et paie" in text or "responsable rh & paie" in text or ("responsable" in text and "paie" in text and "rh" in text):
+            score += 16
+        elif "formateur paie" in text or "formateur gestionnaire de paie" in text or ("formateur" in text and "rh" in text):
+            score += 15
+        elif "responsable paie" in text or "responsable des ressources humaines" in text or "rrh" in text:
+            score += 14
+        elif "gestionnaire de paie" in text or "gestionnaire paie" in text:
+            score += 12
+        elif "coordinateur" in text or "ingénieur pédagogique" in text:
+            score += 12
+            
+        if "paie" in text or "bulletin" in text or "dsn" in text or "silae" in text:
+            score += 6
+        if "ressources humaines" in text or "relations sociales" in text or "droit social" in text or "cse" in text:
+            score += 6
 
         tech_keywords = [
             "dsn", "silae", "titre professionnel", "qualiopi", "droit social", "droit du travail",
             "cse", "contrat", "contrats", "administration du personnel", "gestion du personnel",
             "masse salariale", "alternance", "cfa", "adea", "métis", "ecf"
         ]
-        
         matched_tech = sum(1 for kw in tech_keywords if kw in text)
-        score += min(matched_tech * 2, 16)
+        score += min(matched_tech * 2, 12)
                 
         return min(score, 98)
 
     def render_letter_variant(self, job: Dict[str, Any], variant_index: int) -> str:
         """Génère une variante spécifique de lettre de motivation (1, 2 ou 3)."""
         company = job.get("company", "Organisme")
-        raw_title = job.get("title", "Formateur en gestion de paie et RH")
-        title_clean = self.clean_job_title(raw_title)
-        contact_name = job.get("contact_name", "")
-        contact_title = job.get("contact_title", "Direction du Centre")
-        city = job.get("city", "Creil")
-        postal_code = str(job.get("postal_code", "60100"))
-        address_1 = job.get("address_1", "")
-        contact_full = f"{contact_name}, {contact_title}".strip(", ") if contact_name else contact_title
-        today_str = datetime.now().strftime("%d %B %Y").replace("August", "août").replace("September", "septembre").replace("October", "octobre")
+        raw_title = job.get("title", "Formateur Paie et RH")
+        job_title = self.clean_job_title(raw_title)
+        
+        contact_name = job.get("contact_name", "Madame, Monsieur les Membres du Jury")
+        contact_title = job.get("contact_title", "Direction des Ressources Humaines")
+        address_1 = job.get("address_1", "Service Recrutement & Pédagogie")
+        address_2 = job.get("address_2", "")
+        postal_code = job.get("postal_code", "60000")
+        city = job.get("city", "BEAUVAIS").upper()
 
-        # --- VARIANTE 1 : Axe Ingénierie Pédagogique & Certification Qualiopi ---
         if variant_index == 1:
-            if "afpa" in company.lower():
-                p1 = f"Votre recherche d’un {title_clean.lower()} au centre de formation Afpa retient toute mon attention. Intervenu entre 2016 et 2020 sur quatre centres Afpa (Vervins, Beauvais, Creil et Amiens), je connais parfaitement les exigences de vos dispositifs, l’outil Métis, les évaluations en cours de formation (ECF) et la gestion de groupes à entrées échelonnées et parcours individualisés."
-            elif "cma" in company.lower():
-                p1 = f"Votre recherche pour le poste de {title_clean.lower()} au sein de {company} retient toute mon attention. Acteur de référence dans la formation des artisans et de leurs équipes, votre établissement propose un cadre d’intervention dont je maîtrise parfaitement les exigences pédagogiques et réglementaires."
-            else:
-                p1 = f"Votre recherche pour le poste de {title_clean.lower()} au sein de {company} retient toute mon attention. Acteur reconnu dans le développement des compétences professionnelles, votre organisme représente un environnement d’excellence dont je maîtrise parfaitement les enjeux techniques et pédagogiques."
-            p2 = "Le premier bloc de compétences de l’ADEA, assister à la gestion des ressources humaines et au management des collaborateurs d’une entreprise artisanale, représente 84 heures que je peux animer sans période d’adaptation. Le volet gestion du Brevet de Maîtrise et la formation continue des artisans employeurs relèvent de la même matière : embauche du premier salarié, contrat d’apprentissage, bulletin de paie, DSN et obligations de l’employeur. C’est ce que j’enseigne depuis 2014."
-
-        # --- VARIANTE 2 : Axe Direction Opérationnelle, Management RH & Dialogue Social ---
+            # AXE 1 : Ingénierie Pédagogique, Titre Pro TP-01254 & Conformité Qualiopi
+            accr = f"Dirigeant d'organisme de formation certifié Qualiopi et formateur référent sur le Titre professionnel Gestionnaire de paie (TP-01254), je vous propose mon expertise pédagogique et technique pour accompagner vos apprenants au sein de {company} sur le poste de {job_title}."
+            par1 = "Fort de la conception d'un parcours certifiant de 758 heures et de vacations régulières au sein des centres Afpa des Hauts-de-France (groupes individualisés, outil Métis, évaluations ECF), je transmets la pratique du bulletin de paie, la DSN, le paramétrage sur Silae et la rigueur du droit social avec une pédagogie axée sur l'employabilité immédiate."
+            par2 = "Mon parcours conjugue la maîtrise des référentiels RNCP, l'animation des blocs RH/Paie de l'ADEA pour les Chambres de Métiers et une expérience managériale de 580 collaborateurs. Cette polyvalence garantit à vos promotions un encadrement bienveillant, structuré et conforme aux exigences Qualiopi."
+            par3 = "Disponible sans délai et titulaire du permis B, je serais ravi d'échanger lors d'un entretien pour vous exposer la mise en œuvre opérationnelle de mes méthodes au service de vos stagiaires."
         elif variant_index == 2:
-            p1 = f"L'opportunité de rejoindre {company} en qualité de {title_clean.lower()} s'inscrit au cœur de mon parcours professionnel. Fort d'une double expertise en direction des ressources humaines et en ingénierie de la formation pour adultes, je souhaite mettre ma rigueur technique et mon expérience opérationnelle au service de vos objectifs."
-            p2 = "J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant l'administration du personnel, la paie, les contrats et le plan de développement des compétences. Cette maîtrise du terrain garantit une vision concrète et directement opérationnelle des problématiques RH."
-
-        # --- VARIANTE 3 : Axe Hybride Réglementaire, Droit Social & Pilotage Qualiopi ---
+            # AXE 2 : Direction RH Opérationnelle, Relations Sociales & 580 Collaborateurs
+            accr = f"Fort d'une solide expérience de Responsable des Ressources Humaines et de la Paie, enrichie par le pilotage social de 580 collaborateurs et la direction d'un organisme certifié Qualiopi, je vous soumets ma candidature pour le poste de {job_title} chez {company}."
+            par1 = "Mon parcours m'a conduit à superviser l'administration du personnel, la sécurisation des paies complexes, les déclarations sociales et le dialogue avec les instances représentatives (CSE, CE, DP) dans des contextes à forts enjeux. Cette pratique concrète du terrain me permet d'aborder la fonction avec une vision stratégique et pragmatique."
+            par2 = "Titulaire d'un Master 2 en Droit public, d'une Maîtrise en Sciences de Gestion et engagé dans un Master RSE à l'IAE de Paris, j'apporte à votre structure une expertise éprouvée des obligations légales, du pilotage de la masse salariale et du développement des compétences."
+            par3 = "Totalement disponible et mobile, je me tiens à votre disposition pour vous détailler la valeur ajoutée et la rigueur que je peux apporter immédiatement à vos équipes."
         else:
-            p1 = f"Votre recherche d’un {title_clean.lower()} au sein de {company} a retenu toute mon attention. Connaissant la rigueur exigée par vos parcours de qualification et le niveau d'exigence attendu par vos apprenants, je vous propose une collaboration immédiatement opérationnelle, appuyée sur plus de quinze années de pratique métier."
-            p2 = "En tant que dirigeant d’un organisme certifié Qualiopi (ICPF, QUA007374), la conformité au Référentiel National Qualité, la traçabilité des parcours et l'évaluation rigoureuse des compétences font partie de mon quotidien. J’ai notamment conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254)."
-
-        p3 = "J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant aussi le plan de formation. Le cadre d’un centre de formation ne m’est pas étranger non plus : entre 2016 et 2020, je suis intervenu sur quatre centres Afpa, avec référentiel imposé, évaluations en cours de formation et parcours individualisés au sein d’un même groupe."
-        p4 = "Si c’est une fonction de coordination que vous avez à pourvoir, elle me va tout autant. Je dirige un organisme certifié Qualiopi : le Référentiel National Qualité, la traçabilité des parcours et la préparation d’audit sont mes obligations quotidiennes. J’ai conçu de bout en bout un parcours certifiant de 758 heures préparant au Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d’un site industriel en Nouvelle-Calédonie. Un Master 2 de droit public complète cette approche des cadres réglementaires."
-        p5 = "Un mot de franchise pour finir. J’ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu’un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l’embauche au titre de ma situation de demandeur d’emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est nationale, sans réserve, sur l’ensemble du réseau, et ma disponibilité immédiate."
-
-        # Nettoyage absolu du gras dans les paragraphes
-        p1 = re.sub(r'</?[bi]>|</?strong>', '', p1)
-        p2 = re.sub(r'</?[bi]>|</?strong>', '', p2)
-        p3 = re.sub(r'</?[bi]>|</?strong>', '', p3)
-        p4 = re.sub(r'</?[bi]>|</?strong>', '', p4)
-        p5 = re.sub(r'</?[bi]>|</?strong>', '', p5)
+            # AXE 3 : Conseil Social, Audit de Paie & Accompagnement Métiers du Chiffre
+            accr = f"Formateur expert en droit social, gestion de la paie et ressources humaines, je souhaite mettre mes compétences techniques et mon sens du conseil au service du développement de {company} en qualité de {job_title}."
+            par1 = "Intervenant auprès de chefs d'entreprise, d'experts-comptables et de gestionnaires en reconversion, j'ai développé une méthode rigoureuse d'audit de paie, de contrôle DSN et de veille juridique continue, garantissant une conformité sociale irréprochable."
+            par2 = "Mon expérience auprès de publics diversifiés (Afpa, CMA, TPE-PME) et ma maîtrise avancée des outils du chiffre (Silae, Excel, Métis) constituent des atouts majeurs pour structurer vos missions et assurer un encadrement de haut niveau."
+            par3 = "Je serais très honoré de convenir d'une rencontre pour vous exposer mon engagement durable et mon enthousiasme à rejoindre votre organisation."
 
         html = self.letter_template
-        html = html.replace("{{ contact_full }}", contact_full)
-        html = html.replace("{{ company_name }}", company)
-        html = html.replace("{{ address_1 }}", address_1 if address_1 else "Direction des Ressources Humaines")
-        html = html.replace("{{ postal_code }}", postal_code)
-        html = html.replace("{{ city }}", city.upper())
-        html = html.replace("{{ current_date }}", today_str)
-        html = html.replace("{{ job_title_clean }}", title_clean)
-        html = html.replace("{{ paragraph_1 }}", p1)
-        html = html.replace("{{ paragraph_2 }}", p2)
-        html = html.replace("{{ paragraph_3 }}", p3)
-        html = html.replace("{{ paragraph_4 }}", p4)
-        html = html.replace("{{ paragraph_5 }}", p5)
+        html = html.replace("{{COMPANY_NAME}}", company)
+        html = html.replace("{{CONTACT_NAME}}", contact_name)
+        html = html.replace("{{CONTACT_TITLE}}", contact_title)
+        html = html.replace("{{ADDRESS_LINE1}}", address_1)
+        html = html.replace("{{ADDRESS_LINE2}}", address_2)
+        html = html.replace("{{POSTAL_CODE}}", postal_code)
+        html = html.replace("{{CITY}}", city)
+        html = html.replace("{{DATE_NOW}}", datetime.now().strftime("%d %B %Y").replace("August", "août").replace("September", "septembre"))
+        html = html.replace("{{JOB_TITLE}}", job_title)
+        html = html.replace("{{ACCROCHE}}", accr)
+        html = html.replace("{{PARAGRAPH_1}}", par1)
+        html = html.replace("{{PARAGRAPH_2}}", par2)
+        html = html.replace("{{PARAGRAPH_3}}", par3)
         
         return html
 
     def generate_best_of_three_letter(self, job: Dict[str, Any]) -> Tuple[str, float, int]:
-        """Génère 3 essais de lettres, les évalue et sélectionne la meilleure."""
-        candidates = []
-        for i in [1, 2, 3]:
-            html_variant = self.render_letter_variant(job, variant_index=i)
-            score = self.guard.score_letter_candidate(html_variant, job)
-            candidates.append((html_variant, score, i))
-            print(f"      - Essai {i} évalué : Score = {score:.1f}/100")
+        """Génère 3 variantes, les évalue avec le QualityGuard et retient la meilleure."""
+        scored_variants = []
+        for i in range(1, 4):
+            candidate_html = self.render_letter_variant(job, variant_index=i)
+            score = self.guard.score_letter_candidate(candidate_html, job)
+            scored_variants.append((candidate_html, score, i))
             
-        # Sélection du meilleur essai (score le plus élevé)
-        best_variant, best_score, best_idx = max(candidates, key=lambda c: c[1])
-        print(f"      -> Essai retenu : Variante {best_idx} (Score maximal : {best_score:.1f}/100)")
-        return best_variant, best_score, best_idx
-
-    def render_letter_html(self, job: Dict[str, Any]) -> str:
-        best_letter, _, _ = self.generate_best_of_three_letter(job)
-        return best_letter
+        scored_variants.sort(key=lambda x: x[1], reverse=True)
+        best_html, best_score, best_idx = scored_variants[0]
+        return best_html, best_score, best_idx
 
     def render_cv_html(self, job: Dict[str, Any]) -> str:
-        raw_title = job.get("title", "Formateur en gestion de paie et RH")
-        title_clean = self.clean_job_title(raw_title)
+        raw_title = job.get("title", "Formateur Paie et RH")
+        job_title = self.clean_job_title(raw_title).upper()
         
-        summary = (
-            "Dirigeant d’un organisme de formation certifié Qualiopi, formateur expert et ancien responsable des ressources humaines d’une structure de 580 collaborateurs. "
-            "Ingénierie complète de parcours certifiants, conformité au Référentiel National Qualité, marchés publics de formation et gestion de site opérationnel. "
-            "Master 2 de droit public. Mobilité nationale, disponibilité immédiate."
-        )
-
-        key_skills = [
-            ("Formation d’adultes et d’alternants", "douze ans d’animation continue devant des publics adultes et alternants ; ingénierie de parcours certifiants, du référentiel d'activité à l’évaluation finale."),
-            ("Gestion du personnel et paie en entreprise", "embauche, contrats d’apprentissage, administration de la paie, DSN, conventions collectives : la matière du bloc RH de l’ADEA et du Brevet de Maîtrise."),
-            ("Qualité et conformité de la formation", "dirigeant d’un organisme certifié Qualiopi (ICPF, QUA007374) : maîtrise du Référentiel National Qualité, traçabilité, indicateurs et audits."),
-            ("Coordination et pilotage", "direction de site opérationnel, pilotage RH de 580 collaborateurs, gestion de marchés publics et dialogue social.")
-        ]
-        key_skills_html = "".join([f'<div class="cv-bullet"><strong>{k} :</strong> {v}</div>' for k, v in key_skills])
-
-        points_forts = [
-            ("La qualité en formation, vécue de l’intérieur", "direction d’un organisme certifié Qualiopi : maîtrise du RNQ, traçabilité des parcours, indicateurs de performance, suivi d’audit et relations avec les financeurs."),
-            ("Ingénierie complète, du référentiel au déroulé de séance", "parcours certifiant de 758 heures conçu de bout en bout (Titre pro Gestionnaire de paie), macro-planning, cadrage des évaluations et modules courts pour salariés."),
-            ("Encadrement et gestion administrative maîtrisés", "direction d’un site opérationnel, pilotage RH de 580 collaborateurs, plan de développement des compétences et conduite de marchés publics.")
-        ]
-        points_forts_html = "".join([f'<div class="cv-bullet"><strong>{k} :</strong> {v}</div>' for k, v in points_forts])
-
-        exp_data = [
-            {
-                "title": "Formateur et consultant en paie, ressources humaines et droit social",
-                "org": "Kairos Formation, organisme certifié Qualiopi, président",
-                "dates": "2014 – aujourd’hui",
-                "bullets": [
-                    "Conception et animation de parcours certifiants pour adultes, dont un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254, millésime 04) : référentiel, macro-planning, cadrage des évaluations, déroulés de séance.",
-                    "Formation de dirigeants et de collaborateurs de TPE et PME à la gestion du personnel : embauche, contrats, apprentissage, paie, DSN, obligations de l’employeur, avec veille réglementaire continue.",
-                    "Direction d’un organisme certifié Qualiopi : construction de l’offre, conformité au Référentiel National Qualité, indicateurs, relations avec les financeurs."
-                ]
-            },
-            {
-                "title": "Formateur en gestion de paie, en sous-traitance pédagogique pour l’Afpa",
-                "org": "Centres Afpa de Vervins, Beauvais, Creil et Amiens",
-                "dates": "2016 – 2020",
-                "bullets": [
-                    "Interventions sur quatre centres pour le compte d’organismes titulaires du marché : référentiel du donneur d’ordre, outil Métis, évaluations en cours de formation, traçabilité du suivi des stagiaires.",
-                    "Formation en entrée permanente : groupes à entrées échelonnées et parcours individualisés, organisation proche de celle d’un centre de formation d’apprentis."
-                ]
-            },
-            {
-                "title": "Responsable des relations sociales et des ressources humaines",
-                "org": "Secours Populaire, structure de 580 collaborateurs",
-                "dates": "2003 – 2010",
-                "bullets": [
-                    "Paie et administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail.",
-                    "Pilotage du plan de formation, conduite de marchés publics RH et formation, animation du dialogue social."
-                ]
-            },
-            {
-                "title": "Responsable de site, management opérationnel",
-                "org": "ETV, Nouvelle-Calédonie",
-                "dates": "2010 – 2014",
-                "bullets": [
-                    "Montage et exploitation d’un site industriel : encadrement des équipes, organisation de la production, conformité réglementaire et prévention des risques."
-                ]
-            }
-        ]
-
-        exp_html = ""
-        for exp in exp_data:
-            bullets_str = "".join([f'<div class="cv-bullet">{b}</div>' for b in exp["bullets"]])
-            exp_html += f"""
-            <div class="exp-item">
-              <div class="exp-header">
-                <span class="exp-job">{exp['title']}</span>
-                <span class="exp-date">{exp['dates']}</span>
-              </div>
-              <div class="exp-org">{exp['org']}</div>
-              {bullets_str}
-            </div>
-            """
-
         html = self.cv_template
-        html = html.replace("{{ target_title }}", title_clean)
-        html = html.replace("{{ target_title_upper }}", title_clean.upper())
-        html = html.replace("{{ summary }}", summary)
-        html = html.replace("{{ key_skills_html }}", key_skills_html)
-        html = html.replace("{{ points_forts_html }}", points_forts_html)
-        html = html.replace("{{ experiences_html }}", exp_html)
-        
+        html = html.replace("{{CV_TITLE}}", f"EXPERT PAIE, RESSOURCES HUMAINES & FORMATION — {job_title}")
+        html = html.replace("{{TARGET_POSTE_KEY}}", job_title)
         return html
+
+    def render_letter_html(self, job: Dict[str, Any]) -> str:
+        best_html, _, _ = self.generate_best_of_three_letter(job)
+        return best_html

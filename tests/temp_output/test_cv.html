@@ -120,7 +120,7 @@
   <!-- 1. En-tête -->
   <div class="cv-header">
     <div class="cv-name">Richard BUSSON</div>
-    <div class="cv-title">Formateur en gestion de paie et RH</div>
+    <div class="cv-title">{{ target_title }}</div>
     <div class="cv-contacts">
       98, allée Paul Cézanne, 60100 Creil &nbsp;|&nbsp; <strong>09 39 20 08 70</strong> &nbsp;|&nbsp; richard.busson@kairos-paye.fr &nbsp;|&nbsp; Mobilité nationale<br>
       LinkedIn : linkedin.com/in/richard-busson &nbsp;|&nbsp; kairos-paye.fr &nbsp;|&nbsp; Permis B (valide) &nbsp;|&nbsp; Disponibilité immédiate
@@ -129,9 +129,9 @@
 
   <!-- 2. Synthèse Cadre -->
   <div>
-    <div class="cv-section-title">FORMATEUR EN GESTION DE PAIE ET RH</div>
+    <div class="cv-section-title">{{ target_title_upper }}</div>
     <p class="cv-body-text">
-      Dirigeant d’un organisme de formation certifié Qualiopi, formateur expert et ancien responsable des ressources humaines d’une structure de 580 collaborateurs. Ingénierie complète de parcours certifiants, conformité au Référentiel National Qualité, marchés publics de formation et gestion de site opérationnel. Master 2 de droit public. Mobilité nationale, disponibilité immédiate.
+      {{ summary }}
     </p>
   </div>
 
@@ -139,7 +139,7 @@
   <div>
     <div class="cv-section-title">COMPÉTENCES CLÉS</div>
     <div>
-      <div class="cv-bullet"><strong>Formation d’adultes et d’alternants :</strong> douze ans d’animation continue devant des publics adultes et alternants ; ingénierie de parcours certifiants, du référentiel d'activité à l’évaluation finale.</div><div class="cv-bullet"><strong>Gestion du personnel et paie en entreprise :</strong> embauche, contrats d’apprentissage, administration de la paie, DSN, conventions collectives : la matière du bloc RH de l’ADEA et du Brevet de Maîtrise.</div><div class="cv-bullet"><strong>Qualité et conformité de la formation :</strong> dirigeant d’un organisme certifié Qualiopi (ICPF, QUA007374) : maîtrise du Référentiel National Qualité, traçabilité, indicateurs et audits.</div><div class="cv-bullet"><strong>Coordination et pilotage :</strong> direction de site opérationnel, pilotage RH de 580 collaborateurs, gestion de marchés publics et dialogue social.</div>
+      {{ key_skills_html }}
     </div>
   </div>
 
@@ -147,7 +147,7 @@
   <div>
     <div class="cv-section-title">POINTS FORTS POUR CE POSTE</div>
     <div>
-      <div class="cv-bullet"><strong>La qualité en formation, vécue de l’intérieur :</strong> direction d’un organisme certifié Qualiopi : maîtrise du RNQ, traçabilité des parcours, indicateurs de performance, suivi d’audit et relations avec les financeurs.</div><div class="cv-bullet"><strong>Ingénierie complète, du référentiel au déroulé de séance :</strong> parcours certifiant de 758 heures conçu de bout en bout (Titre pro Gestionnaire de paie), macro-planning, cadrage des évaluations et modules courts pour salariés.</div><div class="cv-bullet"><strong>Encadrement et gestion administrative maîtrisés :</strong> direction d’un site opérationnel, pilotage RH de 580 collaborateurs, plan de développement des compétences et conduite de marchés publics.</div>
+      {{ points_forts_html }}
     </div>
   </div>
 
@@ -155,43 +155,7 @@
   <div>
     <div class="cv-section-title">EXPÉRIENCES PROFESSIONNELLES</div>
     <div>
-      
-            <div class="exp-item">
-              <div class="exp-header">
-                <span class="exp-job">Formateur et consultant en paie, ressources humaines et droit social</span>
-                <span class="exp-date">2014 – aujourd’hui</span>
-              </div>
-              <div class="exp-org">Kairos Formation, organisme certifié Qualiopi, président</div>
-              <div class="cv-bullet">Conception et animation de parcours certifiants pour adultes, dont un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254, millésime 04) : référentiel, macro-planning, cadrage des évaluations, déroulés de séance.</div><div class="cv-bullet">Formation de dirigeants et de collaborateurs de TPE et PME à la gestion du personnel : embauche, contrats, apprentissage, paie, DSN, obligations de l’employeur, avec veille réglementaire continue.</div><div class="cv-bullet">Direction d’un organisme certifié Qualiopi : construction de l’offre, conformité au Référentiel National Qualité, indicateurs, relations avec les financeurs.</div>
-            </div>
-            
-            <div class="exp-item">
-              <div class="exp-header">
-                <span class="exp-job">Formateur en gestion de paie, en sous-traitance pédagogique pour l’Afpa</span>
-                <span class="exp-date">2016 – 2020</span>
-              </div>
-              <div class="exp-org">Centres Afpa de Vervins, Beauvais, Creil et Amiens</div>
-              <div class="cv-bullet">Interventions sur quatre centres pour le compte d’organismes titulaires du marché : référentiel du donneur d’ordre, outil Métis, évaluations en cours de formation, traçabilité du suivi des stagiaires.</div><div class="cv-bullet">Formation en entrée permanente : groupes à entrées échelonnées et parcours individualisés, organisation proche de celle d’un centre de formation d’apprentis.</div>
-            </div>
-            
-            <div class="exp-item">
-              <div class="exp-header">
-                <span class="exp-job">Responsable des relations sociales et des ressources humaines</span>
-                <span class="exp-date">2003 – 2010</span>
-              </div>
-              <div class="exp-org">Secours Populaire, structure de 580 collaborateurs</div>
-              <div class="cv-bullet">Paie et administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail.</div><div class="cv-bullet">Pilotage du plan de formation, conduite de marchés publics RH et formation, animation du dialogue social.</div>
-            </div>
-            
-            <div class="exp-item">
-              <div class="exp-header">
-                <span class="exp-job">Responsable de site, management opérationnel</span>
-                <span class="exp-date">2010 – 2014</span>
-              </div>
-              <div class="exp-org">ETV, Nouvelle-Calédonie</div>
-              <div class="cv-bullet">Montage et exploitation d’un site industriel : encadrement des équipes, organisation de la production, conformité réglementaire et prévention des risques.</div>
-            </div>
-            
+      {{ experiences_html }}
     </div>
   </div>
 

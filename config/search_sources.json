@@ -1,45 +1,85 @@
 {
-  "sources": [
+  "rome_classifications": [
     {
-      "name": "France Travail",
-      "enabled": true,
-      "type": "api_and_web",
-      "searchQueries": [
-        "Formateur gestion de la paie",
-        "Formateur ressources humaines",
-        "Formateur comptabilité gestion",
-        "Coordinateur de formation",
-        "Responsable des ressources humaines"
+      "code": "M1503",
+      "libelle": "Management des ressources humaines",
+      "metiers_cibles": [
+        "Responsable des ressources humaines (RRH)",
+        "Responsable RH et Paie",
+        "Responsable Paie et Administration du Personnel (ADP)",
+        "Adjoint au Directeur des Ressources Humaines (DRH)",
+        "Responsable Relations Sociales & Gestion Sociale"
+      ],
+      "keywords": [
+        "responsable rh et paie",
+        "responsable paie et adp",
+        "responsable ressources humaines",
+        "responsable paie",
+        "rrh paie",
+        "responsable gestion sociale"
       ]
     },
     {
-      "name": "Apec",
-      "enabled": true,
-      "type": "web_search",
-      "searchQueries": [
-        "Formateur Paie RH Apec",
-        "Responsable pédagogique formation professionnelle Apec",
-        "Responsable RH administration du personnel Apec"
+      "code": "K2111",
+      "libelle": "Formation professionnelle des adultes",
+      "metiers_cibles": [
+        "Formateur / Formatrice en gestion de la paie",
+        "Formateur / Formatrice Paie et RH",
+        "Formateur Titre professionnel Gestionnaire de paie (TP-01254)",
+        "Consultant Formateur Paie et Droit Social",
+        "Ingénieur pédagogique Paie & RH"
+      ],
+      "keywords": [
+        "formateur paie et rh",
+        "formateur gestionnaire de paie",
+        "formateur paie",
+        "formateur rh",
+        "consultant formateur paie",
+        "formateur silae paie"
       ]
     },
     {
-      "name": "Indeed",
-      "enabled": true,
-      "type": "web_search",
-      "searchQueries": [
-        "Formateur Titre Pro Gestionnaire de paie Indeed",
-        "Formateur RH droit social Indeed",
-        "Coordinateur pédagogique formation continue Indeed"
+      "code": "K2102",
+      "libelle": "Coordination pédagogique",
+      "metiers_cibles": [
+        "Coordinateur / Coordinatrice pédagogique filière RH et Paie",
+        "Responsable pédagogique métiers du chiffre et de la paie"
+      ],
+      "keywords": [
+        "coordinateur pedagogique rh",
+        "responsable pedagogique paie",
+        "coordinateur de formation rh"
+      ]
+    },
+    {
+      "code": "M1203",
+      "libelle": "Comptabilité et gestion (Option Paie & Social)",
+      "metiers_cibles": [
+        "Gestionnaire de paie",
+        "Gestionnaire de paie et droit social",
+        "Spécialiste Paie & DSN",
+        "Responsable de pôle paie"
+      ],
+      "keywords": [
+        "gestionnaire de paie et rh",
+        "gestionnaire de paie",
+        "specialiste paie",
+        "gestionnaire paie silae"
+      ]
+    },
+    {
+      "code": "M1501",
+      "libelle": "Assistanat en ressources humaines",
+      "metiers_cibles": [
+        "Gestionnaire Ressources Humaines et Paie",
+        "Chargé(e) des Ressources Humaines et Paie",
+        "Gestionnaire ADP et Paie confirmé"
+      ],
+      "keywords": [
+        "gestionnaire ressources humaines",
+        "charge rh et paie",
+        "gestionnaire rh et paie"
       ]
     }
-  ],
-  "targetOrganisms": [
-    "Chambre de Métiers et de l'Artisanat (CMA)",
-    "Chambre de Commerce et d'Industrie (CCI)",
-    "Centres Afpa",
-    "GRETA / Education Nationale",
-    "CFA et Organismes de formation certifiés Qualiopi",
-    "Écoles de gestion et de commerce",
-    "Entreprises (Direction RH / Service Paie)"
   ]
 }

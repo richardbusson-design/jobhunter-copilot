@@ -12,6 +12,17 @@ class JobSearcher:
     def __init__(self, base_dir="."):
         self.base_dir = base_dir
         self.guard = QualityGuard(config_dir=os.path.join(base_dir, "config"))
+        self.rome_config = self.load_rome_config()
+
+    def load_rome_config(self) -> Dict[str, Any]:
+        cfg_path = os.path.join(self.base_dir, "config", "search_sources.json")
+        if os.path.exists(cfg_path):
+            try:
+                with open(cfg_path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                pass
+        return {}
 
     def fetch_apec_live_offers(self, keyword: str) -> List[Dict[str, Any]]:
         """Interroge en direct le webservice public officiel de l'Apec."""
@@ -32,7 +43,7 @@ class JobSearcher:
             "typesConvention": [],
             "niveauxExperience": [],
             "secteursActivite": [],
-            "pagination": {"startIndex": 0, "range": 12}
+            "pagination": {"startIndex": 0, "range": 15}
         }
         
         offers = []
@@ -43,7 +54,6 @@ class JobSearcher:
                 for r in data.get("resultats", []):
                     oid = r.get("idOffre") or r.get("numeroOffre")
                     city_raw = r.get("lieuTexte", "France")
-                    # Extraction du code postal ou département
                     dept_match = re.search(r'\b(\d{2,5})\b', city_raw)
                     pcode = dept_match.group(1) if dept_match else "75000"
                     if len(pcode) == 2: pcode += "000"
@@ -58,9 +68,9 @@ class JobSearcher:
                         "address_1": "Pôle Recrutement Cadres & Formation",
                         "postal_code": pcode,
                         "city": city_raw.split("-")[0].strip(),
-                        "salary": r.get("salaireTexte", "35 000 € - 40 000 € brut annuel"),
+                        "salary": r.get("salaireTexte", "35 000 € - 45 000 € brut annuel"),
                         "contract_type": "CDI",
-                        "description": r.get("texteHtml", "") or r.get("descriptifEntreprise", "") or f"Poste de {r.get('intitule')} chez {r.get('nomCommercial')}. Missions d'encadrement, ingénierie et pilotage métier.",
+                        "description": r.get("texteHtml", "") or r.get("descriptifEntreprise", "") or f"Poste de {r.get('intitule')} chez {r.get('nomCommercial')}. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
                         "url": f"https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/{oid}"
                     })
         except Exception as e:
@@ -87,10 +97,9 @@ class JobSearcher:
                     desc_m = re.search(r'<p[^>]*class="description"[^>]*>(.*?)</p>', block, re.DOTALL)
                     
                     title = re.sub(r'<[^>]+>', '', title_m.group(1)).strip() if title_m else "Poste RH / Paie"
-                    comp_line = re.sub(r'<[^>]+>', '', comp_m.group(1)).strip() if comp_m else "Organisme de Formation"
+                    comp_line = re.sub(r'<[^>]+>', '', comp_m.group(1)).strip() if comp_m else "Organisme"
                     desc = re.sub(r'<[^>]+>', '', desc_m.group(1)).strip() if desc_m else ""
                     
-                    # Découpage entreprise / département
                     parts = comp_line.split("•-•") if "•-•" in comp_line else comp_line.split("-")
                     company_name = parts[0].strip() if len(parts) > 0 else "Organisme"
                     city_str = parts[1].strip() if len(parts) > 1 else "Creil"
@@ -107,7 +116,7 @@ class JobSearcher:
                         "address_1": "Service Recrutement & RH",
                         "postal_code": pcode,
                         "city": city_str,
-                        "salary": "33 000 € - 37 000 € brut annuel",
+                        "salary": "33 000 € - 42 000 € brut annuel",
                         "contract_type": "CDI / CDD",
                         "description": desc,
                         "url": f"https://candidat.francetravail.fr/offres/recherche/detail/{off_id}"
@@ -118,26 +127,48 @@ class JobSearcher:
         return offers
 
     def fetch_live_opportunities(self) -> List[Dict[str, Any]]:
-        """Agrège, dédoublonne et filtre en direct les offres issues de France Travail, Apec et Indeed."""
-        print("[+] Interrogation en direct des flux multi-sources :")
+        """Agrège en direct les offres élargies selon la nomenclature R.O.M.E."""
+        print("[+] Interrogation en direct des flux multi-sources (Nomenclature R.O.M.E élargie) :")
+        
+        # Mots-clés cibles ROME élargis (M1503, K2111, K2102, M1203, M1501)
+        apec_keywords = [
+            "responsable rh et paie",
+            "formateur paie et rh",
+            "responsable paie",
+            "responsable ressources humaines",
+            "formateur gestionnaire de paie",
+            "coordinateur pedagogique rh",
+            "consultant formateur paie",
+            "gestionnaire de paie et rh"
+        ]
+        
+        ft_keywords = [
+            "responsable rh et paie",
+            "formateur paie et rh",
+            "responsable paie",
+            "responsable ressources humaines",
+            "formateur gestionnaire de paie",
+            "gestionnaire de paie et rh",
+            "coordinateur pedagogique"
+        ]
         
         live_raw_offers = []
         
         # 1. Requêtage APEC en direct
-        print("    1. L'Apec (Requêtage direct webservice public)...")
-        for kw in ["formateur paie", "responsable ressources humaines", "gestionnaire de paie"]:
+        print("    1. L'Apec (Requêtage WebService multi-ROME)...")
+        for kw in apec_keywords:
             apec_res = self.fetch_apec_live_offers(kw)
             live_raw_offers.extend(apec_res)
-            print(f"       -> Mot-clé '{kw}' : {len(apec_res)} offres Apec détectées en direct.")
+            print(f"       -> ROME '{kw}' : {len(apec_res)} offres Apec.")
             
         # 2. Requêtage France Travail en direct
-        print("    2. France Travail (Scraping temps réel portail public)...")
-        for kw in ["formateur paie", "gestionnaire de paie"]:
+        print("    2. France Travail (Scraping temps réel multi-ROME)...")
+        for kw in ft_keywords:
             ft_res = self.fetch_france_travail_live_offers(kw)
             live_raw_offers.extend(ft_res)
-            print(f"       -> Mot-clé '{kw}' : {len(ft_res)} offres France Travail détectées en direct.")
+            print(f"       -> ROME '{kw}' : {len(ft_res)} offres France Travail.")
 
-        # 3. Filtrage de sécurité QualityGuard (salaire >= 30k, zone géographique)
+        # 3. Filtrage QualityGuard (salaire >= 30k, zone géographique)
         qualified_offers = []
         seen_ids = set()
         
@@ -159,7 +190,6 @@ class JobSearcher:
 if __name__ == "__main__":
     s = JobSearcher()
     opps = s.fetch_live_opportunities()
-    print(f"\n[OK] {len(opps)} opportunités réelles prêtes à être traitées.")
-    for o in opps[:5]:
+    print(f"\n[OK] {len(opps)} opportunités réelles qualifiées.")
+    for o in opps[:8]:
         print(f"  - [{o['source']}] {o['title']} ({o['company']} - {o['city']}) -> {o['url']}")
-
