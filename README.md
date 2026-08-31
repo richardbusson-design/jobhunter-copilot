@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 17:16 | **Total candidatures qualifiées :** 46
+> **Dernière actualisation :** 31/08/2026 à 17:46 | **Total candidatures qualifiées :** 46
 
 ---
 

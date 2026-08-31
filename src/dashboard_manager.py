@@ -208,6 +208,8 @@ class DashboardManager:
                     pdf_cv = f"{safe_folder}/CV_Richard_BUSSON.pdf"
                     png_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.png"
                     png_cv = f"{safe_folder}/CV_Richard_BUSSON.png"
+                    html_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.html"
+                    html_cv = f"{safe_folder}/CV_Richard_BUSSON.html"
                     
                     # Échappement pour passage en paramètre JavaScript
                     js_comp = comp.replace("'", "\\'").replace('"', '&quot;')
@@ -215,7 +217,7 @@ class DashboardManager:
                     
                     action_col = f"""
                     <div style="display: flex; flex-direction: column; gap: 4px;">
-                      <button class="btn-action btn-view" onclick="openViewerModal('{js_comp}', '{js_tit}', '{pdf_letter}', '{pdf_cv}', '{png_letter}', '{png_cv}')">
+                      <button class="btn-action btn-view" onclick="openViewerModal('{js_comp}', '{js_tit}', '{pdf_letter}', '{pdf_cv}', '{png_letter}', '{png_cv}', '{html_letter}', '{html_cv}')">
                         👁️ Consulter Dossier
                       </button>
                       <div style="display: flex; gap: 4px;">
@@ -750,4 +752,5 @@ if __name__ == "__main__":
     dm.generate_markdown_dashboard()
     dm.generate_html_dashboard()
     print("[OK] Dashboard HTML mis à jour avec la visionneuse intégrée et les liens PDF corrigés.")
+
 
