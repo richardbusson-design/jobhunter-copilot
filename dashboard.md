@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 17:46 | **Total candidatures qualifiées :** 46
+> **Dernière actualisation :** 31/08/2026 à 21:47 | **Total candidatures qualifiées :** 52
 
 ---
 
@@ -10,6 +10,42 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-31** | **LINKING TALENTS ** | **Chargé d'études RH et Paie F/H**<br>[🔗 **Réf. APEC-179294968W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294968W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Chargé d'études RH et Paie F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Paris 16 | 50 - 55 k€ brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LINKING_TALENTS__Charg%C3%A9_d_%C3%A9tudes_RH_et_Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LINKING_TALENTS__Charg%C3%A9_d_%C3%A9tudes_RH_et_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **LINKING TALENTS ** | **Payroll officer F/H**<br>[🔗 **Réf. APEC-179268763W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179268763W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Payroll officer F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Courbevoie | 35 - 45 k€ brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LINKING_TALENTS__Payroll_officer_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LINKING_TALENTS__Payroll_officer_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **LINKING TALENTS ** | **Responsable de Paie F/H**<br>[🔗 **Réf. APEC-179286299W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179286299W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable de Paie F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Gondecourt | 50 - 60 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LINKING_TALENTS__Responsable_de_Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LINKING_TALENTS__Responsable_de_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **KEYSTONE RECRUTEMENT** | **Responsable Paies - Univers Mode ou Retail obligatoire F/H**<br>[🔗 **Réf. APEC-179335168W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179335168W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable Paies - Univers Mode ou Retail obligatoire F/H chez KEYSTONE RECRUTEMENT. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Paris 08 | 40 - 68 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_KEYSTONE_RECRUTEMENT_Responsable_Paies_-_Univers_Mode_ou_Retail_oblig/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_KEYSTONE_RECRUTEMENT_Responsable_Paies_-_Univers_Mode_ou_Retail_oblig/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **FOXGROUP** | **Responsable Paie & ADP F/H**<br>[🔗 **Réf. APEC-179251266W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179251266W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable Paie & ADP F/H chez FOXGROUP. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Paris 13 | 65 - 70 k€ brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_FOXGROUP_Responsable_Paie___ADP_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_FOXGROUP_Responsable_Paie___ADP_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **Batiactu** | **Responsable RH Expatriés - Mobilité Internationale, Paie et F/H**<br>[🔗 **Réf. APEC-179269380W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179269380W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable RH Expatriés - Mobilité Internationale, Paie et F/H chez Batiactu. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Puteaux | A négocier | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_Batiactu_Responsable_RH_Expatri%C3%A9s_-_Mobilit%C3%A9_Internationale__Paie_et_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_Batiactu_Responsable_RH_Expatri%C3%A9s_-_Mobilit%C3%A9_Internationale__Paie_et_/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-31** | **cadremploi** | **Responsable rh et paie F/H**<br>[🔗 **Réf. APEC-179311438W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179311438W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
