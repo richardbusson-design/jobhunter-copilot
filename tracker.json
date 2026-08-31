@@ -1,6 +1,31 @@
 {
   "applications": [
     {
+      "id": "FT-213CVPJ",
+      "source": "France Travail (Flux Direct)",
+      "title": "Gestionnaire RH et Paie (H/F)",
+      "company": "76",
+      "contact_name": "Monsieur le Directeur de Centre",
+      "contact_title": "Direction de l'Établissement",
+      "address_1": "Service Recrutement & RH",
+      "postal_code": "60100",
+      "city": "Saint",
+      "salary": "33 000 € - 37 000 € brut annuel",
+      "contract_type": "CDI / CDD",
+      "description": "Rattaché(e) à la Responsable RH, tes missions principales seront les suivantes :\n\n- Traitement de la paie :\n\no Rassembler, calculer, contrôler et traiter les éléments de rémunération\no Assurer la...",
+      "url": "https://candidat.francetravail.fr/offres/recherche/detail/213CVPJ",
+      "eligibility_status": "ELIGIBLE",
+      "eligibility_reason": "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)",
+      "score": 94,
+      "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_",
+      "folder_rel": "candidatures/2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_",
+      "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+      "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_\\CV_Richard_BUSSON.pdf",
+      "status": "Dossier PDF & Visuel Prêt",
+      "date": "2026-08-31",
+      "relance_date": "2026-09-07"
+    },
+    {
       "id": "FT-213CWKS",
       "source": "France Travail (Flux Direct)",
       "title": "Gestionnaire Paie et ADP (H/F)",
@@ -1074,5 +1099,5 @@
       "relance_date": "2026-09-04"
     }
   ],
-  "last_updated": "2026-08-31T17:05:08.944134"
+  "last_updated": "2026-08-31T17:05:30.132499"
 }

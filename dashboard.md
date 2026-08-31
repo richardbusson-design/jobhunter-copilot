@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 17:05 | **Total candidatures qualifiées :** 43
+> **Dernière actualisation :** 31/08/2026 à 17:05 | **Total candidatures qualifiées :** 44
 
 ---
 
@@ -10,6 +10,17 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-31** | **76** | **Gestionnaire RH et Paie (H/F)**<br>[🔗 **Réf. FT-213CVPJ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CVPJ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Rattaché(e) à la Responsable RH, tes missions principales seront les suivantes :
+
+- Traitement de la paie :
+
+o Rassembler, calculer, contrôler et traiter les éléments de rémunération
+o Assurer la...</blockquote>
+</details> | Saint | 33 000 € - 37 000 € brut annuel | **94%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_76_Gestionnaire_RH_et_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-31** | **LAZARE Marie Laure** | **Gestionnaire Paie et ADP (H/F)**<br>[🔗 **Réf. FT-213CWKS (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CWKS)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
