@@ -14,7 +14,7 @@
       padding: 24px;
     }
     .container {
-      max-width: 1700px;
+      max-width: 1750px;
       margin: 0 auto;
     }
     .header-bar {
@@ -113,34 +113,141 @@
       font-weight: bold;
       font-size: 12px;
     }
-    .btn-pdf {
+    .btn-action {
       display: inline-block;
-      background: #2563eb;
-      color: white;
       text-decoration: none;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 6px;
       font-size: 12px;
-      margin: 2px 0;
-      font-weight: 500;
-      transition: background 0.2s;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-view {
+      background: #0284c7;
+      color: white;
+    }
+    .btn-view:hover {
+      background: #0369a1;
+    }
+    .btn-pdf {
+      background: #334155;
+      color: #e2e8f0;
+      flex: 1;
     }
     .btn-pdf:hover {
-      background: #1d4ed8;
-    }
-    .btn-preview {
-      display: inline-block;
       background: #475569;
       color: white;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      margin: 2px 0;
-      transition: background 0.2s;
     }
-    .btn-preview:hover {
-      background: #64748b;
+
+    /* VISIONNEUSE MODALE PLEIN ÉCRAN */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-content {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 1100px;
+      height: 94vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }
+    .modal-header {
+      padding: 16px 24px;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+    .modal-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 10px 24px;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #0284c7;
+      color: white;
+      border-color: #38bdf8;
+    }
+    .modal-body {
+      flex: 1;
+      padding: 16px;
+      background: #090d16;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }
+    .doc-preview-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      background: white;
+    }
+    .doc-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 6px;
+      background: white;
+    }
+    .modal-footer {
+      padding: 12px 24px;
+      background: #0f172a;
+      border-top: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-close {
+      background: #dc2626;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-close:hover {
+      background: #b91c1c;
     }
   </style>
 </head>
@@ -154,8 +261,8 @@
         </div>
       </div>
       <div style="display: flex; gap: 10px;">
-        <div class="badge-pill badge-green">🛡️ Anti-Doublon Actif (7 dossiers)</div>
-        <div class="badge-pill">⏰ Synchro : 31/08/2026 à 00:42</div>
+        <div class="badge-pill badge-green">🛡️ Anti-Doublon Actif (41 dossiers)</div>
+        <div class="badge-pill">⏰ Synchro : 31/08/2026 à 17:04</div>
       </div>
     </div>
 
@@ -163,30 +270,1014 @@
             <div class="month-card">
               <div class="month-header">
                 <h2>📅 Août 2026</h2>
-                <span class="month-count">7 candidature(s) envoyée(s)</span>
+                <span class="month-count">41 candidature(s) qualifiée(s)</span>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th style="width: 100px;">Date</th>
+                    <th style="width: 95px;">Date</th>
                     <th style="width: 220px;">Entreprise / Organisme</th>
-                    <th>Intitulé du Poste & Détails Annonce</th>
+                    <th>Intitulé & Annonce Complète</th>
                     <th style="width: 140px;">Lieu</th>
                     <th style="width: 140px;">Salaire Brut</th>
                     <th style="width: 70px;">Match</th>
                     <th style="width: 110px;">Relance (J+7)</th>
-                    <th style="width: 160px;">Documents A4</th>
+                    <th style="width: 170px;">Dossier & Aperçu</th>
                   </tr>
                 </thead>
                 <tbody>
                   
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">MAIRIE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE CARRIERE-PAIE (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DJBV" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DJBV (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">NOTRE TERRITOIRE ET NOTRE PROJET
+Vertou, avec ses 26 000 habitants, est la 7ème ville du département de Loire-Atlantique. 
+Bordée par la Sèvre nantaise, elle est reconnue comme une Ville naturelle et...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">44</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('MAIRIE', 'GESTIONNAIRE CARRIERE-PAIE (H/F)', 'candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_MAIRIE_GESTIONNAIRE_CARRIERE-PAIE__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LUMIAN RH</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie &amp; Social Paimpol (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DKHY" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DKHY (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie &amp; Social H/F - Paimpol
+
+Vous souhaitez exercer un métier complet, mêlant technicité paie, droit social et véritable relation client ?
+
+Lumian RH recrute pour son client, un cabinet...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">22</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">88%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LUMIAN RH', 'Gestionnaire Paie &amp; Social Paimpol (H/F)', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_Paimpol__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LUMIAN RH</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie &amp; Social H/F - Plérin (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DKRR" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DKRR (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie &amp; Social H/F - Plérin
+
+Lumian RH recrute pour son client, un cabinet d'expertise comptable structuré, un Gestionnaire Paie &amp; Social H/F en CDI à Plérin.
+
+Vous recherchez un poste...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">22</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LUMIAN RH', 'Gestionnaire Paie &amp; Social H/F - Plérin (H/F)', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_LUMIAN_RH_Gestionnaire_Paie__amp__Social_H_F_-_Pl%C3%A9rin__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">COMPAGNIE DE SAINT</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H -  CDD 7 month (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DMFS" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DMFS (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Pourquoi a-t-on besoin de vous ?
+En tant que Gestionnaire de Paie, vous assurez la préparation, la production et la fiabilisation de la paie d'un portefeuille dédié.
+
+ 
+
+Votre quotidien :
+
+Collecter...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">GOBAIN</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('COMPAGNIE DE SAINT', 'Gestionnaire paie F/H -  CDD 7 month (H/F)', 'candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_COMPAGNIE_DE_SAINT_Gestionnaire_paie_F_H_-__CDD_7_month__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ADECCO FRANCE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie H/F</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DNQB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DNQB (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">LHH Recruitment Solutions, cabinet de conseil en recrutement, travail temporaire spécialisé, gestion de transition et évaluation d'experts, cadres et dirigeants recherche pour son client, et basé à...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">29</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ADECCO FRANCE', 'Gestionnaire paie H/F', 'candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_ADECCO_FRANCE_Gestionnaire_paie_H_F/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">CRIT</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE  H/F</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DQBQ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DQBQ (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">En tant que Gestionnaire paie et administration du personnel vous rejoignez une équipe RH composée de 7 personnes et évoluez dans un environnement industriel stimulant, sous la convention collective...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">95</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">88%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-07</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('CRIT', 'GESTIONNAIRE DE PAIE  H/F', 'candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-31_CRIT_GESTIONNAIRE_DE_PAIE__H_F/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ASSOCIATION REGIONALE POUR L INTEGRATION</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE H/F (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BMFV" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BMFV (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Présentation de l'établissement :
+
+Pour une  Association à but non lucratif qui emploie 1500 salariés et gère plus de 50 établissements et services médico-sociaux en Provence ; nos actions sont...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">13</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ASSOCIATION REGIONALE POUR L INTEGRATION', 'GESTIONNAIRE DE PAIE H/F (H/F)', 'candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">FRANCE IMAGERIES</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de Paie (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BQFK" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BQFK (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Description du poste
+Vous souhaitez intégrer un réseau dynamique, innovant et en plein développement ?
+Le Réseau France Imageries Territoires se développe depuis 6 ans en mettant son expertise au...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">33</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('FRANCE IMAGERIES', 'Gestionnaire de Paie (H/F)', 'candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">EXPERTISE ET AUDIT LAFARGE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie expérimenté (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BQLB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BQLB (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Depuis 1963, EAL - Expertise et Audit Lafarge - accompagne les entreprises dans les missions de comptabilité, d'audit et de paie au quotidien, assure également des missions de conseils et...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">75</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('EXPERTISE ET AUDIT LAFARGE', 'Gestionnaire de paie expérimenté (H/F)', 'candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">MANPOWER FRANCE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BVTJ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BVTJ (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Rejoignez EUROAPI, acteur majeur de l'industrie chimique ! 
+Manpower LOUVIERS PHARMA recrute un Gestionnaire Paie (H/F) pour une mission de 5 mois à Saint-Aubin-lès-Elbeuf. 
+Au sein de l'équipe RH et...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">76</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('MANPOWER FRANCE', 'Gestionnaire paie (H/F)', 'candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ADECCO FRANCE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et ADP (h/f) (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BXCD" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BXCD (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie et Administration du Personnel H/F . Vous maîtrisez la gestion de la paie et souhaitez rejoindre un environnement structuré et dynamique ? Votre rigueur, votre sens du service et...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">44</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">80%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ADECCO FRANCE', 'Gestionnaire de paie et ADP (h/f) (H/F)', 'candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ELIOR SUPPORT</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie  (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BZDQ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BZDQ (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Découvrez le job que vous voulez !
+Le domaine de la paie vous parle autant que celui de la gestion du personnel ?
+Vous souhaitez rejoindre une entreprise engagée, qui met ses collaborateur(rice)s au...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">94</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">80%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ELIOR SUPPORT', 'Gestionnaire de paie  (H/F)', 'candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ALLIANCE EMPLOI</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Comptable unique /gestionnaire de paie H/F</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CBHB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CBHB (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Et si vous démarriez une nouvelle expérience avec Alliance Emploi ?
+Avec 27 ans d'expertise, 1700 salariés et un réseau de 400 entreprises dans les secteurs industriel, agroalimentaire, automobile,...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">59</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ALLIANCE EMPLOI', 'Comptable unique /gestionnaire de paie H/F', 'candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ADECCO LHH</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie h/F (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CHFF" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CHFF (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">LHH Recruitment Solutions, cabinet de conseil en recrutement, intérim spécialisé, management de transition, et évaluation d'expert.e.s, cadres et dirigeant.e.s, recherche pour son client un(e)...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">85</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ADECCO LHH', 'Gestionnaire de paie h/F (H/F)', 'candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">OKIDOKI</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie H/F - Cabinet d'expertise comptable (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CMRC" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CMRC (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous aimez la paie, mais vous recherchez un poste qui ne consiste pas uniquement à produire des bulletins à la chaîne ?
+
+OKIDOKI recrute, pour le compte de son client, un cabinet d'expertise...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">59</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('OKIDOKI', 'Gestionnaire de paie H/F - Cabinet d\'expertise comptable (H/F)', 'candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">85</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur Gestionnaire de paie (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/3921092" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-3921092 (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Roche</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('85', 'Formateur Gestionnaire de paie (H/F)', 'candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-30</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">ELAP</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de Paie Formateur Logiciel H/F</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/5642671" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-5642671 (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">POSTE : Gestionnaire de Paie Formateur Logiciel H/F
+DESCRIPTION : 
+Vous maîtrisez la paie et souhaitez faire évoluer votre expertise vers le logiciel, le support fonctionnel et la formation ?...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">83</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-06</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('ELAP', 'Gestionnaire de Paie Formateur Logiciel H/F', 'candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">Onepoint</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur - Certifications &amp; Accompagnement Expertise Paie H/F</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/5769794" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-5769794 (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">POSTE : Formateur - Certifications &amp; Accompagnement Expertise Paie H/F
+DESCRIPTION : 
+Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui englobe l'ensemble de nos engagements...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">44</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('Onepoint', 'Formateur - Certifications &amp; Accompagnement Expertise Paie H/F', 'candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">INSTITUT NATIONAL DE FORMATION ET DE REC</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur/trice Gestionnaire de Paie (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/211NJHM" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-211NJHM (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Dans le cadre du développement des activités de formation, vous assurez la fonction de Formateur/trice Gestionnaire de Paie, passionné/e par la transmission des savoirs et l'accompagnement des...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">76</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('INSTITUT NATIONAL DE FORMATION ET DE REC', 'Formateur/trice Gestionnaire de Paie (H/F)', 'candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">AGENCE NATIONALE POUR LA FORMATION PROFE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur gestion de la paie (H/F)</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/212PZSP" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-212PZSP (France Travail (Flux Direct))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">44</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">33 000 € - 37 000 € brut annuel</td>
+                  <td><span class="score-badge">86%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('AGENCE NATIONALE POUR LA FORMATION PROFE', 'Formateur gestion de la paie (H/F)', 'candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">AB6RECRUT</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179329083W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179329083W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez AB6RECRUT. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Saint</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">30 - 35 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('AB6RECRUT', 'Gestionnaire de paie F/H', 'candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">MOMENTI</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179283211W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179283211W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de GESTIONNAIRE DE PAIE F/H chez MOMENTI. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Beauvais</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A partir de 25 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('MOMENTI', 'GESTIONNAIRE DE PAIE F/H', 'candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">AKXIO CONSEILS</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179267153W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179267153W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire paie F/H chez AKXIO CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">La Rochelle</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">28 - 36 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('AKXIO CONSEILS', 'Gestionnaire paie F/H', 'candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">DEFI TECHNOLOGY</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235303W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179235303W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire paie F/H chez DEFI TECHNOLOGY. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Pantin</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">36 - 42 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('DEFI TECHNOLOGY', 'Gestionnaire paie F/H', 'candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">111 CONSEILS</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271806W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179271806W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez 111 CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Carcassonne</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">25 - 35 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('111 CONSEILS', 'Gestionnaire de paie F/H', 'candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179274617W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179274617W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire Paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Franconville</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">30 - 40 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Gestionnaire Paie F/H', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179289239W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179289239W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Paris 15</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">35 - 45 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Gestionnaire de paie F/H', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable ressources humaines F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273087W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179273087W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable ressources humaines F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Viroflay</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">50 - 55 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Responsable ressources humaines F/H', 'candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-29</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">APTIC</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable des Ressources Humaines F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273982W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179273982W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable des Ressources Humaines F/H chez APTIC. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Aubervilliers</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A partir de 60 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-05</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('APTIC', 'Responsable des Ressources Humaines F/H', 'candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">OPH DE PUTEAUX</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">RESPONSABLE RESSOURCES HUMAINES F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179258654W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179258654W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de RESPONSABLE RESSOURCES HUMAINES F/H chez OPH DE PUTEAUX. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Puteaux</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">60 - 64 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('OPH DE PUTEAUX', 'RESPONSABLE RESSOURCES HUMAINES F/H', 'candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">Umbrella</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable Ressources Humaines F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179326118W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179326118W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable Ressources Humaines F/H chez Umbrella. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Lens</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">50 - 60 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('Umbrella', 'Responsable Ressources Humaines F/H', 'candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">CORIANCE</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable ressources humaines F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327035W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179327035W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable ressources humaines F/H chez CORIANCE. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Levallois</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">48 - 50 k€ brut annuel</td>
+                  <td><span class="score-badge">78%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('CORIANCE', 'Responsable ressources humaines F/H', 'candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">cadremploi</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et droit social F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179236493W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179236493W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie et droit social F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Mérignac</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A partir de 27 k€ brut annuel</td>
+                  <td><span class="score-badge">80%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('cadremploi', 'Gestionnaire de paie et droit social F/H', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                  <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
+                  <td><strong style="color: #f1f5f9; font-size: 15px;">cadremploi</strong></td>
+                  <td>
+                    <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et droit social junior F/H</div>
+                    <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179241554W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179241554W (L'Apec (Direct WebService))</a></div>
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                      <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
+                      <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie et droit social junior F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
+                    </details>
+                  </td>
+                  <td style="color: #cbd5e1;">Mont</td>
+                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">A partir de 27 k€ brut annuel</td>
+                  <td><span class="score-badge">80%</span></td>
+                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
+                  <td style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('cadremploi', 'Gestionnaire de paie et droit social junior F/H', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+                
                 <tr>
                   <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-28</td>
                   <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Auditeur Confirmé - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322854W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Auditeur Confirmé - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -196,9 +1287,15 @@
                   <td><span class="score-badge">78%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Auditeur Confirmé - Cabinet Formateur F/H', 'candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -208,7 +1305,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179279215W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179279215W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -218,9 +1315,15 @@
                   <td><span class="score-badge">78%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('cadremploi', 'Collaborateur Comptable - Cabinet Formateur F/H', 'candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_cadremploi_Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -230,7 +1333,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Comptable ECF - Cabinet Formateur - Radinghem F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179278826W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179278826W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Comptable ECF - Cabinet Formateur - Radinghem F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -240,9 +1343,15 @@
                   <td><span class="score-badge">80%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Comptable ECF - Cabinet Formateur - Radinghem F/H', 'candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Comptable_ECF_-_Cabinet_Formateur_-_Radinghem_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -252,7 +1361,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable des ressources humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179321388W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179321388W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable des ressources humaines F/H chez TRANSPORTS BERTIN. Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -262,9 +1371,15 @@
                   <td><span class="score-badge">78%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('TRANSPORTS BERTIN', 'Responsable des ressources humaines F/H', 'candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_TRANSPORTS_BERTIN_Responsable_des_ressources_humaines_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -274,7 +1389,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322844W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322844W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -284,9 +1399,15 @@
                   <td><span class="score-badge">78%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('LINKING TALENTS ', 'Collaborateur Comptable - Cabinet Formateur F/H', 'candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_LINKING_TALENTS__Collaborateur_Comptable_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -296,7 +1417,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur Gestionnaire de paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294860W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179294860W (L'Apec (Direct WebService))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Formateur Gestionnaire de paie F/H chez AFPA. Missions d'encadrement, ingénierie et pilotage métier.</div>
                     </details>
@@ -306,9 +1427,15 @@
                   <td><span class="score-badge">86%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('AFPA', 'Formateur Gestionnaire de paie F/H', 'candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-28_AFPA_Formateur_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -318,7 +1445,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Conseiller en Formation Professionnelle</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.linkedin.com/feed/update/urn:li:activity:groupe-acn-conseiller-formation" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 LINKEDIN-ACN-2026 (LinkedIn (Anthony SOURDET))</a></div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">[ON RECRUTE UN CONSEILLER·ÈRE FORMATION ÎLE-DE-FRANCE] Groupe ACN grandit, et notre équipe doit grandir avec lui. Nous recherchons un·e Conseiller·ère en Formation Professionnelle pour développer notre portefeuille clients sur les Yvelines, l'Essonne, la Seine-Saint-Denis et le Val-de-Marne. Un territoire dense (industrie, logistique, BTP, santé) : des entreprises qui veulent former leurs équipes pour qu'elles rentrent saines et sauves chez elles le soir. Un professionnel qui décroche son téléphone, va sur le terrain, comprend ce dont un responsable HSE a vraiment besoin avant de lui proposer quoi que ce soit. Trois ans d'expérience en négociation et fidélisation B2B. En échange : un territoire à piloter en autonomie, une voiture de service, un catalogue solide et une équipe à taille humaine. Les parcours atypiques et reconversions nous intéressent. Candidatures : contact@groupe-acn.fr</div>
                     </details>
@@ -328,9 +1455,15 @@
                   <td><span class="score-badge">96%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">2026-09-04</td>
                   <td style="white-space: nowrap;">
-                    <a class="btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.pdf" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.png" target="_blank">🔍 Aperçu Image</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('Groupe ACN', 'Conseiller en Formation Professionnelle', 'candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/Lettre_Motivation_Richard_BUSSON.pdf', 'candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.pdf', 'candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/Lettre_Motivation_Richard_BUSSON.png', 'candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.png')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/Lettre_Motivation_Richard_BUSSON.pdf" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="candidatures/2026-08-27_Groupe_ACN_Conseiller_en_Formation_Professionnelle/CV_Richard_BUSSON.pdf" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     </td>
                 </tr>
                 
@@ -343,5 +1476,98 @@
       JobHunter Copilot &bull; Système automatisé de candidatures sur-mesure conforme Qualiopi & Direction RH &bull; Richard Busson
     </div>
   </div>
+
+  <!-- MODAL VISIONNEUSE INTERACTIVE -->
+  <div id="docViewerModal" class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div id="modalTitle" class="modal-title">Dossier de Candidature</div>
+        <button class="btn-close" onclick="closeViewerModal()">✕ Fermer</button>
+      </div>
+      <div class="modal-tabs">
+        <button id="tabLetter" class="tab-btn active" onclick="switchTab('letter')">✉️ Lettre de Motivation A4</button>
+        <button id="tabCv" class="tab-btn" onclick="switchTab('cv')">📄 CV Professionnel A4</button>
+        <button id="tabPdf" class="tab-btn" onclick="switchTab('pdf')">📑 Visionneuse PDF Intégrée</button>
+      </div>
+      <div class="modal-body">
+        <img id="viewerImage" class="doc-preview-img" src="" alt="Aperçu Document">
+        <iframe id="viewerFrame" class="doc-iframe" src="" style="display: none;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <span id="modalMeta" style="color: #94a3b8; font-size: 13px;">Format : A4 Haute Fidélité (1 page stricte, typographie lisible)</span>
+        <div style="display: flex; gap: 10px;">
+          <a id="btnDownloadCurrent" href="#" target="_blank" class="btn-action btn-view">📥 Ouvrir / Télécharger PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentData = {};
+
+    function openViewerModal(comp, tit, pdfLetter, pdfCv, pngLetter, pngCv) {
+      currentData = {
+        comp: comp,
+        tit: tit,
+        pdfLetter: pdfLetter,
+        pdfCv: pdfCv,
+        pngLetter: pngLetter,
+        pngCv: pngCv
+      };
+
+      document.getElementById('modalTitle').innerHTML = '📋 ' + comp + ' — ' + tit;
+      switchTab('letter');
+      document.getElementById('docViewerModal').style.display = 'flex';
+    }
+
+    function closeViewerModal() {
+      document.getElementById('docViewerModal').style.display = 'none';
+      document.getElementById('viewerFrame').src = '';
+      document.getElementById('viewerImage').src = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target.id === 'docViewerModal') {
+        closeViewerModal();
+      }
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeViewerModal();
+    });
+
+    function switchTab(mode) {
+      document.getElementById('tabLetter').classList.remove('active');
+      document.getElementById('tabCv').classList.remove('active');
+      document.getElementById('tabPdf').classList.remove('active');
+
+      const img = document.getElementById('viewerImage');
+      const frame = document.getElementById('viewerFrame');
+      const btnDownload = document.getElementById('btnDownloadCurrent');
+
+      if (mode === 'letter') {
+        document.getElementById('tabLetter').classList.add('active');
+        img.style.display = 'block';
+        frame.style.display = 'none';
+        img.src = currentData.pngLetter || currentData.pngCv;
+        btnDownload.href = currentData.pdfLetter;
+        btnDownload.innerText = '📥 Télécharger la Lettre PDF';
+      } else if (mode === 'cv') {
+        document.getElementById('tabCv').classList.add('active');
+        img.style.display = 'block';
+        frame.style.display = 'none';
+        img.src = currentData.pngCv;
+        btnDownload.href = currentData.pdfCv;
+        btnDownload.innerText = '📥 Télécharger le CV PDF';
+      } else if (mode === 'pdf') {
+        document.getElementById('tabPdf').classList.add('active');
+        img.style.display = 'none';
+        frame.style.display = 'block';
+        frame.src = currentData.pdfLetter;
+        btnDownload.href = currentData.pdfLetter;
+        btnDownload.innerText = '📥 Ouvrir PDF Externe';
+      }
+    }
+  </script>
 </body>
 </html>
