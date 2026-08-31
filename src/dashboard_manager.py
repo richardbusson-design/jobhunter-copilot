@@ -2,6 +2,7 @@
 import os
 import json
 import re
+import urllib.parse
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Tuple
 from collections import defaultdict
@@ -16,6 +17,17 @@ def normalize_text(text: str) -> str:
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
+def safe_url_path(path_str: str) -> str:
+    """Encode proprement les chemins de fichiers pour les liens HTML/navigateurs."""
+    if not path_str:
+        return ""
+    # Remplacer les antislashs par des slashs
+    clean = path_str.replace("\\", "/")
+    # Encoder chaque segment du chemin
+    parts = clean.split("/")
+    encoded_parts = [urllib.parse.quote(p) for p in parts]
+    return "/".join(encoded_parts)
+
 FRENCH_MONTHS = {
     "01": "Janvier", "02": "Février", "03": "Mars", "04": "Avril",
     "05": "Mai", "06": "Juin", "07": "Juillet", "08": "Août",
@@ -24,12 +36,25 @@ FRENCH_MONTHS = {
 
 class DashboardManager:
     def __init__(self, base_dir="."):
-        self.base_dir = base_dir
-        self.dashboard_file = os.path.join(base_dir, "dashboard.md")
-        self.readme_file = os.path.join(base_dir, "README.md")
-        self.html_file = os.path.join(base_dir, "dashboard.html")
-        self.tracker_file = os.path.join(base_dir, "tracker.json")
+        self.base_dir = os.path.abspath(base_dir)
+        self.dashboard_file = os.path.join(self.base_dir, "dashboard.md")
+        self.readme_file = os.path.join(self.base_dir, "README.md")
+        self.html_file = os.path.join(self.base_dir, "dashboard.html")
+        self.tracker_file = os.path.join(self.base_dir, "tracker.json")
         self.gemini_html_file = r"C:\Users\richa\Gemini\dashboard.html"
+        self.jobhunter_dir = r"C:\Users\richa\JobHunter"
+        self.jobhunter_html_file = os.path.join(self.jobhunter_dir, "dashboard.html")
+
+    def ensure_local_junction(self):
+        """Garantit l'existence de la jonction candidatures dans le dossier JobHunter."""
+        try:
+            target_cand = os.path.join(self.base_dir, "candidatures")
+            link_cand = os.path.join(self.jobhunter_dir, "candidatures")
+            if os.path.exists(target_cand) and not os.path.exists(link_cand):
+                import subprocess
+                subprocess.run(f'cmd /c mklink /J "{link_cand}" "{target_cand}"', shell=True, capture_output=True)
+        except Exception:
+            pass
 
     def load_tracker(self) -> List[Dict[str, Any]]:
         """Charge l'ensemble des candidatures historiques depuis le tracker JSON."""
@@ -132,13 +157,13 @@ class DashboardManager:
         self.generate_html_dashboard(apps)
 
     def generate_html_dashboard(self, apps: List[Dict[str, Any]] = None):
-        """Génère un tableau de bord HTML complet, groupé par mois, pour le bouton Bureau Windows."""
+        """Génère un tableau de bord HTML complet avec visionneuse intégrée plein écran pour CV & Lettre."""
+        self.ensure_local_junction()
         if apps is None:
             apps = self.load_tracker()
             
         now_str = datetime.now().strftime("%d/%m/%Y à %H:%M")
         
-        # Grouper les candidatures par mois (ex: "2026-08" -> "Août 2026")
         apps_by_month = defaultdict(list)
         for a in apps:
             d_str = a.get("date", datetime.now().strftime("%Y-%m-%d"))
@@ -151,7 +176,6 @@ class DashboardManager:
                 month_label = "Août 2026"
             apps_by_month[(month_key, month_label)].append(a)
             
-        # Tri des mois par ordre antéchronologique
         sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
         
         sections_html = ""
@@ -159,10 +183,10 @@ class DashboardManager:
             month_apps = apps_by_month[(month_key, month_label)]
             
             rows_html = ""
-            for a in month_apps:
+            for idx, a in enumerate(month_apps):
                 d = a.get("date", datetime.now().strftime("%Y-%m-%d"))
-                comp = a.get("company", "Entreprise")
-                tit = a.get("title", "Poste")
+                comp = a.get("company", "Entreprise").replace('"', '&quot;')
+                tit = a.get("title", "Poste").replace('"', '&quot;')
                 ref_id = a.get("id", "REF-AUTO")
                 city = a.get("city", "France")
                 salary = a.get("salary", ">= 30 000 €")
@@ -175,19 +199,33 @@ class DashboardManager:
                 
                 link_ref = f'<a href="{url}" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 {ref_id} ({source})</a>' if url else f'<span style="color: #94a3b8;">Réf. {ref_id}</span>'
                 
-                # Liens PDF & Aperçu
-                pdf_col = ""
+                # Fichiers encodés pour éviter les bugs d'accents ou d'apostrophes
                 if folder_rel:
-                    pdf_letter = f"{folder_rel}/Lettre_Motivation_Richard_BUSSON.pdf"
-                    pdf_cv = f"{folder_rel}/CV_Richard_BUSSON.pdf"
-                    png_cv = f"{folder_rel}/CV_Richard_BUSSON.png"
-                    pdf_col = f"""
-                    <a class="btn-pdf" href="{pdf_letter}" target="_blank">✉️ Lettre PDF</a><br>
-                    <a class="btn-pdf" href="{pdf_cv}" target="_blank">📄 CV A4</a><br>
-                    <a class="btn-preview" href="{png_cv}" target="_blank">🔍 Aperçu Image</a>
+                    raw_folder = folder_rel
+                    safe_folder = safe_url_path(folder_rel)
+                    
+                    pdf_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.pdf"
+                    pdf_cv = f"{safe_folder}/CV_Richard_BUSSON.pdf"
+                    png_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.png"
+                    png_cv = f"{safe_folder}/CV_Richard_BUSSON.png"
+                    
+                    # Échappement pour passage en paramètre JavaScript
+                    js_comp = comp.replace("'", "\\'").replace('"', '&quot;')
+                    js_tit = tit.replace("'", "\\'").replace('"', '&quot;')
+                    
+                    action_col = f"""
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                      <button class="btn-action btn-view" onclick="openViewerModal('{js_comp}', '{js_tit}', '{pdf_letter}', '{pdf_cv}', '{png_letter}', '{png_cv}')">
+                        👁️ Consulter Dossier
+                      </button>
+                      <div style="display: flex; gap: 4px;">
+                        <a class="btn-action btn-pdf" href="{pdf_letter}" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
+                        <a class="btn-action btn-pdf" href="{pdf_cv}" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
+                      </div>
+                    </div>
                     """
                 else:
-                    pdf_col = '<span style="color: #94a3b8;">Dossier Prêt</span>'
+                    action_col = '<span style="color: #94a3b8;">Dossier Prêt</span>'
                     
                 rows_html += f"""
                 <tr>
@@ -196,7 +234,7 @@ class DashboardManager:
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">{tit}</div>
                     <div style="margin-top: 4px; font-size: 12px;">{link_ref}</div>
-                    <details style="margin-top: 8px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
+                    <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">{desc}</div>
                     </details>
@@ -205,7 +243,7 @@ class DashboardManager:
                   <td style="color: #34d399; font-weight: bold; white-space: nowrap;">{salary}</td>
                   <td><span class="score-badge">{score}%</span></td>
                   <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">{rel}</td>
-                  <td style="white-space: nowrap;">{pdf_col}</td>
+                  <td style="white-space: nowrap;">{action_col}</td>
                 </tr>
                 """
                 
@@ -213,19 +251,19 @@ class DashboardManager:
             <div class="month-card">
               <div class="month-header">
                 <h2>📅 {month_label}</h2>
-                <span class="month-count">{len(month_apps)} candidature(s) envoyée(s)</span>
+                <span class="month-count">{len(month_apps)} candidature(s) qualifiée(s)</span>
               </div>
               <table>
                 <thead>
                   <tr>
-                    <th style="width: 100px;">Date</th>
+                    <th style="width: 95px;">Date</th>
                     <th style="width: 220px;">Entreprise / Organisme</th>
-                    <th>Intitulé du Poste & Détails Annonce</th>
+                    <th>Intitulé & Annonce Complète</th>
                     <th style="width: 140px;">Lieu</th>
                     <th style="width: 140px;">Salaire Brut</th>
                     <th style="width: 70px;">Match</th>
                     <th style="width: 110px;">Relance (J+7)</th>
-                    <th style="width: 160px;">Documents A4</th>
+                    <th style="width: 170px;">Dossier & Aperçu</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -251,7 +289,7 @@ class DashboardManager:
       padding: 24px;
     }}
     .container {{
-      max-width: 1700px;
+      max-width: 1750px;
       margin: 0 auto;
     }}
     .header-bar {{
@@ -350,34 +388,141 @@ class DashboardManager:
       font-weight: bold;
       font-size: 12px;
     }}
-    .btn-pdf {{
+    .btn-action {{
       display: inline-block;
-      background: #2563eb;
-      color: white;
       text-decoration: none;
-      padding: 5px 10px;
+      padding: 6px 10px;
       border-radius: 6px;
       font-size: 12px;
-      margin: 2px 0;
-      font-weight: 500;
-      transition: background 0.2s;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      transition: all 0.2s;
+    }}
+    .btn-view {{
+      background: #0284c7;
+      color: white;
+    }}
+    .btn-view:hover {{
+      background: #0369a1;
+    }}
+    .btn-pdf {{
+      background: #334155;
+      color: #e2e8f0;
+      flex: 1;
     }}
     .btn-pdf:hover {{
-      background: #1d4ed8;
-    }}
-    .btn-preview {{
-      display: inline-block;
       background: #475569;
       color: white;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      margin: 2px 0;
-      transition: background 0.2s;
     }}
-    .btn-preview:hover {{
-      background: #64748b;
+
+    /* VISIONNEUSE MODALE PLEIN ÉCRAN */
+    .modal-overlay {{
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }}
+    .modal-content {{
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 1100px;
+      height: 94vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+    }}
+    .modal-header {{
+      padding: 16px 24px;
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+    .modal-title {{
+      font-size: 18px;
+      font-weight: bold;
+      color: #38bdf8;
+    }}
+    .modal-tabs {{
+      display: flex;
+      gap: 8px;
+      padding: 10px 24px;
+      background: #1e293b;
+      border-bottom: 1px solid #334155;
+    }}
+    .tab-btn {{
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }}
+    .tab-btn.active {{
+      background: #0284c7;
+      color: white;
+      border-color: #38bdf8;
+    }}
+    .modal-body {{
+      flex: 1;
+      padding: 16px;
+      background: #090d16;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+    }}
+    .doc-preview-img {{
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      background: white;
+    }}
+    .doc-iframe {{
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 6px;
+      background: white;
+    }}
+    .modal-footer {{
+      padding: 12px 24px;
+      background: #0f172a;
+      border-top: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+    .btn-close {{
+      background: #dc2626;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }}
+    .btn-close:hover {{
+      background: #b91c1c;
     }}
   </style>
 </head>
@@ -402,19 +547,116 @@ class DashboardManager:
       JobHunter Copilot &bull; Système automatisé de candidatures sur-mesure conforme Qualiopi & Direction RH &bull; Richard Busson
     </div>
   </div>
+
+  <!-- MODAL VISIONNEUSE INTERACTIVE -->
+  <div id="docViewerModal" class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div id="modalTitle" class="modal-title">Dossier de Candidature</div>
+        <button class="btn-close" onclick="closeViewerModal()">✕ Fermer</button>
+      </div>
+      <div class="modal-tabs">
+        <button id="tabLetter" class="tab-btn active" onclick="switchTab('letter')">✉️ Lettre de Motivation A4</button>
+        <button id="tabCv" class="tab-btn" onclick="switchTab('cv')">📄 CV Professionnel A4</button>
+        <button id="tabPdf" class="tab-btn" onclick="switchTab('pdf')">📑 Visionneuse PDF Intégrée</button>
+      </div>
+      <div class="modal-body">
+        <img id="viewerImage" class="doc-preview-img" src="" alt="Aperçu Document">
+        <iframe id="viewerFrame" class="doc-iframe" src="" style="display: none;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <span id="modalMeta" style="color: #94a3b8; font-size: 13px;">Format : A4 Haute Fidélité (1 page stricte, typographie lisible)</span>
+        <div style="display: flex; gap: 10px;">
+          <a id="btnDownloadCurrent" href="#" target="_blank" class="btn-action btn-view">📥 Ouvrir / Télécharger PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentData = {{}};
+
+    function openViewerModal(comp, tit, pdfLetter, pdfCv, pngLetter, pngCv) {{
+      currentData = {{
+        comp: comp,
+        tit: tit,
+        pdfLetter: pdfLetter,
+        pdfCv: pdfCv,
+        pngLetter: pngLetter,
+        pngCv: pngCv
+      }};
+
+      document.getElementById('modalTitle').innerHTML = '📋 ' + comp + ' — ' + tit;
+      switchTab('letter');
+      document.getElementById('docViewerModal').style.display = 'flex';
+    }}
+
+    function closeViewerModal() {{
+      document.getElementById('docViewerModal').style.display = 'none';
+      document.getElementById('viewerFrame').src = '';
+      document.getElementById('viewerImage').src = '';
+    }}
+
+    function handleOverlayClick(e) {{
+      if (e.target.id === 'docViewerModal') {{
+        closeViewerModal();
+      }}
+    }}
+
+    document.addEventListener('keydown', function(e) {{
+      if (e.key === 'Escape') closeViewerModal();
+    }});
+
+    function switchTab(mode) {{
+      document.getElementById('tabLetter').classList.remove('active');
+      document.getElementById('tabCv').classList.remove('active');
+      document.getElementById('tabPdf').classList.remove('active');
+
+      const img = document.getElementById('viewerImage');
+      const frame = document.getElementById('viewerFrame');
+      const btnDownload = document.getElementById('btnDownloadCurrent');
+
+      if (mode === 'letter') {{
+        document.getElementById('tabLetter').classList.add('active');
+        img.style.display = 'block';
+        frame.style.display = 'none';
+        img.src = currentData.pngLetter || currentData.pngCv;
+        btnDownload.href = currentData.pdfLetter;
+        btnDownload.innerText = '📥 Télécharger la Lettre PDF';
+      }} else if (mode === 'cv') {{
+        document.getElementById('tabCv').classList.add('active');
+        img.style.display = 'block';
+        frame.style.display = 'none';
+        img.src = currentData.pngCv;
+        btnDownload.href = currentData.pdfCv;
+        btnDownload.innerText = '📥 Télécharger le CV PDF';
+      }} else if (mode === 'pdf') {{
+        document.getElementById('tabPdf').classList.add('active');
+        img.style.display = 'none';
+        frame.style.display = 'block';
+        frame.src = currentData.pdfLetter;
+        btnDownload.href = currentData.pdfLetter;
+        btnDownload.innerText = '📥 Ouvrir PDF Externe';
+      }}
+    }}
+  </script>
 </body>
 </html>"""
 
-        # Sauvegarder dans le répertoire de travail
         with open(self.html_file, "w", encoding="utf-8") as f:
             f.write(html_doc)
             
-        # Sauvegarder dans le miroir local ouvert par le bouton Bureau
         try:
             with open(self.gemini_html_file, "w", encoding="utf-8") as f:
                 f.write(html_doc)
-        except Exception as e:
-            print(f"[!] Erreur écriture miroir HTML : {e}")
+        except Exception:
+            pass
+
+        try:
+            with open(self.jobhunter_html_file, "w", encoding="utf-8") as f:
+                f.write(html_doc)
+        except Exception:
+            pass
 
     def generate_markdown_dashboard(self, apps: List[Dict[str, Any]] = None):
         """Génère la page d'accueil GitHub (README.md) et dashboard.md avec le tableau précis en tête de page."""
@@ -449,6 +691,7 @@ class DashboardManager:
             source = a.get("source", "France Travail / Apec / Indeed / LinkedIn")
             url = a.get("url", "")
             desc = a.get("description", "Détail de l'offre...")
+            folder_rel = a.get("folder_rel", "").replace("\\", "/")
             
             link_ref = f"[🔗 **Réf. {ref_id} ({source})**]({url})" if url else f"*(Réf : {ref_id})*"
             
@@ -459,10 +702,10 @@ class DashboardManager:
 <blockquote>{desc}</blockquote>
 </details>"""
 
-            folder_rel = a.get("folder_rel", "").replace("\\", "/")
             if folder_rel:
-                link_cv = f"[📄 CV A4 Officiel]({folder_rel}/CV_Richard_BUSSON.pdf)"
-                link_lm = f"[✉️ Lettre Motivation A4]({folder_rel}/Lettre_Motivation_Richard_BUSSON.pdf)"
+                safe_folder = safe_url_path(folder_rel)
+                link_cv = f"[📄 CV A4 Officiel]({safe_folder}/CV_Richard_BUSSON.pdf)"
+                link_lm = f"[✉️ Lettre Motivation A4]({safe_folder}/Lettre_Motivation_Richard_BUSSON.pdf)"
                 pdf_links = f"{link_cv}<br>{link_lm}"
             else:
                 pdf_links = "Dossier PDF Prêt"
@@ -506,4 +749,5 @@ if __name__ == "__main__":
     dm = DashboardManager()
     dm.generate_markdown_dashboard()
     dm.generate_html_dashboard()
-    print("[OK] Dashboard HTML et Markdown régénérés avec regroupement par mois.")
+    print("[OK] Dashboard HTML mis à jour avec la visionneuse intégrée et les liens PDF corrigés.")
+

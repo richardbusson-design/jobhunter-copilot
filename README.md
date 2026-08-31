@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 00:42 | **Total candidatures qualifiées :** 7
+> **Dernière actualisation :** 31/08/2026 à 11:51 | **Total candidatures qualifiées :** 35
 
 ---
 
@@ -10,12 +10,195 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-30** | **ASSOCIATION REGIONALE POUR L INTEGRATION** | **GESTIONNAIRE DE PAIE H/F (H/F)**<br>[🔗 **Réf. FT-213BMFV (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BMFV)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Présentation de l'établissement :
+
+Pour une  Association à but non lucratif qui emploie 1500 salariés et gère plus de 50 établissements et services médico-sociaux en Provence ; nos actions sont...</blockquote>
+</details> | 13 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ASSOCIATION_REGIONALE_POUR_L_INTEGRATION_GESTIONNAIRE_DE_PAIE_H_F__H_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **FRANCE IMAGERIES** | **Gestionnaire de Paie (H/F)**<br>[🔗 **Réf. FT-213BQFK (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BQFK)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Description du poste
+Vous souhaitez intégrer un réseau dynamique, innovant et en plein développement ?
+Le Réseau France Imageries Territoires se développe depuis 6 ans en mettant son expertise au...</blockquote>
+</details> | 33 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_FRANCE_IMAGERIES_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **EXPERTISE ET AUDIT LAFARGE** | **Gestionnaire de paie expérimenté (H/F)**<br>[🔗 **Réf. FT-213BQLB (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BQLB)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Depuis 1963, EAL - Expertise et Audit Lafarge - accompagne les entreprises dans les missions de comptabilité, d'audit et de paie au quotidien, assure également des missions de conseils et...</blockquote>
+</details> | 75 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_EXPERTISE_ET_AUDIT_LAFARGE_Gestionnaire_de_paie_exp%C3%A9riment%C3%A9__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **MANPOWER FRANCE** | **Gestionnaire paie (H/F)**<br>[🔗 **Réf. FT-213BVTJ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BVTJ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Rejoignez EUROAPI, acteur majeur de l'industrie chimique ! 
+Manpower LOUVIERS PHARMA recrute un Gestionnaire Paie (H/F) pour une mission de 5 mois à Saint-Aubin-lès-Elbeuf. 
+Au sein de l'équipe RH et...</blockquote>
+</details> | 76 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_MANPOWER_FRANCE_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ADECCO FRANCE** | **Gestionnaire de paie et ADP (h/f) (H/F)**<br>[🔗 **Réf. FT-213BXCD (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BXCD)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Gestionnaire Paie et Administration du Personnel H/F . Vous maîtrisez la gestion de la paie et souhaitez rejoindre un environnement structuré et dynamique ? Votre rigueur, votre sens du service et...</blockquote>
+</details> | 44 | 33 000 € - 37 000 € brut annuel | **80%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ADECCO_FRANCE_Gestionnaire_de_paie_et_ADP__h_f___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ELIOR SUPPORT** | **Gestionnaire de paie  (H/F)**<br>[🔗 **Réf. FT-213BZDQ (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213BZDQ)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Découvrez le job que vous voulez !
+Le domaine de la paie vous parle autant que celui de la gestion du personnel ?
+Vous souhaitez rejoindre une entreprise engagée, qui met ses collaborateur(rice)s au...</blockquote>
+</details> | 94 | 33 000 € - 37 000 € brut annuel | **80%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ELIOR_SUPPORT_Gestionnaire_de_paie___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ALLIANCE EMPLOI** | **Comptable unique /gestionnaire de paie H/F**<br>[🔗 **Réf. FT-213CBHB (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CBHB)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Et si vous démarriez une nouvelle expérience avec Alliance Emploi ?
+Avec 27 ans d'expertise, 1700 salariés et un réseau de 400 entreprises dans les secteurs industriel, agroalimentaire, automobile,...</blockquote>
+</details> | 59 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ALLIANCE_EMPLOI_Comptable_unique__gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ADECCO LHH** | **Gestionnaire de paie h/F (H/F)**<br>[🔗 **Réf. FT-213CHFF (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CHFF)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>LHH Recruitment Solutions, cabinet de conseil en recrutement, intérim spécialisé, management de transition, et évaluation d'expert.e.s, cadres et dirigeant.e.s, recherche pour son client un(e)...</blockquote>
+</details> | 85 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ADECCO_LHH_Gestionnaire_de_paie_h_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **OKIDOKI** | **Gestionnaire de paie H/F - Cabinet d'expertise comptable (H/F)**<br>[🔗 **Réf. FT-213CMRC (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CMRC)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous aimez la paie, mais vous recherchez un poste qui ne consiste pas uniquement à produire des bulletins à la chaîne ?
+
+OKIDOKI recrute, pour le compte de son client, un cabinet d'expertise...</blockquote>
+</details> | 59 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_OKIDOKI_Gestionnaire_de_paie_H_F_-_Cabinet_d_expertise_comptable__H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **85** | **Formateur Gestionnaire de paie (H/F)**<br>[🔗 **Réf. FT-3921092 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/3921092)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</blockquote>
+</details> | Roche | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_85_Formateur_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-30** | **ELAP** | **Gestionnaire de Paie Formateur Logiciel H/F**<br>[🔗 **Réf. FT-5642671 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/5642671)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>POSTE : Gestionnaire de Paie Formateur Logiciel H/F
+DESCRIPTION : 
+Vous maîtrisez la paie et souhaitez faire évoluer votre expertise vers le logiciel, le support fonctionnel et la formation ?...</blockquote>
+</details> | 83 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-06 | [📄 CV A4 Officiel](candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-30_ELAP_Gestionnaire_de_Paie_Formateur_Logiciel_H_F/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **Onepoint** | **Formateur - Certifications &amp; Accompagnement Expertise Paie H/F**<br>[🔗 **Réf. FT-5769794 (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/5769794)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>POSTE : Formateur - Certifications &amp; Accompagnement Expertise Paie H/F
+DESCRIPTION : 
+Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui englobe l'ensemble de nos engagements...</blockquote>
+</details> | 44 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_Onepoint_Formateur_-_Certifications__amp__Accompagnement_Expertise_Pa/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **INSTITUT NATIONAL DE FORMATION ET DE REC** | **Formateur/trice Gestionnaire de Paie (H/F)**<br>[🔗 **Réf. FT-211NJHM (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/211NJHM)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Dans le cadre du développement des activités de formation, vous assurez la fonction de Formateur/trice Gestionnaire de Paie, passionné/e par la transmission des savoirs et l'accompagnement des...</blockquote>
+</details> | 76 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_INSTITUT_NATIONAL_DE_FORMATION_ET_DE_REC_Formateur_trice_Gestionnaire/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **AGENCE NATIONALE POUR LA FORMATION PROFE** | **Formateur gestion de la paie (H/F)**<br>[🔗 **Réf. FT-212PZSP (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/212PZSP)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</blockquote>
+</details> | 44 | 33 000 € - 37 000 € brut annuel | **86%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_AGENCE_NATIONALE_POUR_LA_FORMATION_PROFE_Formateur_gestion_de_la_paie/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **AB6RECRUT** | **Gestionnaire de paie F/H**<br>[🔗 **Réf. APEC-179329083W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179329083W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie F/H chez AB6RECRUT. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Saint | 30 - 35 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_AB6RECRUT_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **MOMENTI** | **GESTIONNAIRE DE PAIE F/H**<br>[🔗 **Réf. APEC-179283211W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179283211W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de GESTIONNAIRE DE PAIE F/H chez MOMENTI. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Beauvais | A partir de 25 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_MOMENTI_GESTIONNAIRE_DE_PAIE_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **AKXIO CONSEILS** | **Gestionnaire paie F/H**<br>[🔗 **Réf. APEC-179267153W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179267153W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire paie F/H chez AKXIO CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | La Rochelle | 28 - 36 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_AKXIO_CONSEILS_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **DEFI TECHNOLOGY** | **Gestionnaire paie F/H**<br>[🔗 **Réf. APEC-179235303W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235303W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire paie F/H chez DEFI TECHNOLOGY. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Pantin | 36 - 42 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_DEFI_TECHNOLOGY_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **111 CONSEILS** | **Gestionnaire de paie F/H**<br>[🔗 **Réf. APEC-179271806W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271806W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie F/H chez 111 CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Carcassonne | 25 - 35 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_111_CONSEILS_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Gestionnaire Paie F/H**<br>[🔗 **Réf. APEC-179274617W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179274617W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire Paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Franconville | 30 - 40 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_Paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Gestionnaire de paie F/H**<br>[🔗 **Réf. APEC-179289239W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179289239W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Paris 15 | 35 - 45 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **LINKING TALENTS ** | **Responsable ressources humaines F/H**<br>[🔗 **Réf. APEC-179273087W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273087W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable ressources humaines F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Viroflay | 50 - 55 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_LINKING_TALENTS__Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-29** | **APTIC** | **Responsable des Ressources Humaines F/H**<br>[🔗 **Réf. APEC-179273982W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273982W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable des Ressources Humaines F/H chez APTIC. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Aubervilliers | A partir de 60 k€ brut annuel | **78%** | 2026-09-05 | [📄 CV A4 Officiel](candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-29_APTIC_Responsable_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **OPH DE PUTEAUX** | **RESPONSABLE RESSOURCES HUMAINES F/H**<br>[🔗 **Réf. APEC-179258654W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179258654W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de RESPONSABLE RESSOURCES HUMAINES F/H chez OPH DE PUTEAUX. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Puteaux | 60 - 64 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_OPH_DE_PUTEAUX_RESPONSABLE_RESSOURCES_HUMAINES_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **Umbrella** | **Responsable Ressources Humaines F/H**<br>[🔗 **Réf. APEC-179326118W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179326118W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable Ressources Humaines F/H chez Umbrella. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Lens | 50 - 60 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_Umbrella_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **CORIANCE** | **Responsable ressources humaines F/H**<br>[🔗 **Réf. APEC-179327035W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327035W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable ressources humaines F/H chez CORIANCE. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Levallois | 48 - 50 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_CORIANCE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **cadremploi** | **Gestionnaire de paie et droit social F/H**<br>[🔗 **Réf. APEC-179236493W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179236493W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie et droit social F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Mérignac | A partir de 27 k€ brut annuel | **80%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-28** | **cadremploi** | **Gestionnaire de paie et droit social junior F/H**<br>[🔗 **Réf. APEC-179241554W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179241554W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire de paie et droit social junior F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
+</details> | Mont | A partir de 27 k€ brut annuel | **80%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_cadremploi_Gestionnaire_de_paie_et_droit_social_junior_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-28** | **LINKING TALENTS ** | **Auditeur Confirmé - Cabinet Formateur F/H**<br>[🔗 **Réf. APEC-179322854W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
 <br>
 <blockquote>Poste de Auditeur Confirmé - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</blockquote>
-</details> | Wasquehal | 35 - 45 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirmé_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+</details> | Wasquehal | 35 - 45 k€ brut annuel | **78%** | 2026-09-04 | [📄 CV A4 Officiel](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-28_LINKING_TALENTS__Auditeur_Confirm%C3%A9_-_Cabinet_Formateur_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-28** | **cadremploi** | **Collaborateur Comptable - Cabinet Formateur F/H**<br>[🔗 **Réf. APEC-179279215W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179279215W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
