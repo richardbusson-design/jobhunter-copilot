@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 17:04 | **Total candidatures qualifiées :** 41
+> **Dernière actualisation :** 31/08/2026 à 17:05 | **Total candidatures qualifiées :** 43
 
 ---
 
@@ -10,6 +10,20 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-08-31** | **LAZARE Marie Laure** | **Gestionnaire Paie et ADP (H/F)**<br>[🔗 **Réf. FT-213CWKS (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213CWKS)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Nous recherchons pour la société cliente, groupe national localisé à la Défense (92), un(e) Gestionnaire Paie &amp; Administration du Personnel pour rejoindre l'équipe RH. 
+Ce poste est proposé en CDI,...</blockquote>
+</details> | 92 | 33 000 € - 37 000 € brut annuel | **80%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-08-31** | **PARTNAIRE ILE DE FRANCE NORD OUEST** | **Gestionnaire de paie (H/F)**<br>[🔗 **Réf. FT-213DBYM (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DBYM)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Vous travaillez au sein d'un leader mondial industriel, avec près de 200 000 employés dans plus de 60 pays et une présence dans 20 pays.
+Ce client travaille pour plusieurs secteurs tels que...</blockquote>
+</details> | 60 | 33 000 € - 37 000 € brut annuel | **78%** | 2026-09-07 | [📄 CV A4 Officiel](candidatures/2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-31** | **MAIRIE** | **GESTIONNAIRE CARRIERE-PAIE (H/F)**<br>[🔗 **Réf. FT-213DJBV (France Travail (Flux Direct))**](https://candidat.francetravail.fr/offres/recherche/detail/213DJBV)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>

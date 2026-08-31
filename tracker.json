@@ -1,6 +1,56 @@
 {
   "applications": [
     {
+      "id": "FT-213CWKS",
+      "source": "France Travail (Flux Direct)",
+      "title": "Gestionnaire Paie et ADP (H/F)",
+      "company": "LAZARE Marie Laure",
+      "contact_name": "Monsieur le Directeur de Centre",
+      "contact_title": "Direction de l'Établissement",
+      "address_1": "Service Recrutement & RH",
+      "postal_code": "92000",
+      "city": "92",
+      "salary": "33 000 € - 37 000 € brut annuel",
+      "contract_type": "CDI / CDD",
+      "description": "Nous recherchons pour la société cliente, groupe national localisé à la Défense (92), un(e) Gestionnaire Paie &amp; Administration du Personnel pour rejoindre l'équipe RH. \nCe poste est proposé en CDI,...",
+      "url": "https://candidat.francetravail.fr/offres/recherche/detail/213CWKS",
+      "eligibility_status": "ELIGIBLE",
+      "eligibility_reason": "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)",
+      "score": 80,
+      "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_",
+      "folder_rel": "candidatures/2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_",
+      "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+      "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_LAZARE_Marie_Laure_Gestionnaire_Paie_et_ADP__H_F_\\CV_Richard_BUSSON.pdf",
+      "status": "Dossier PDF & Visuel Prêt",
+      "date": "2026-08-31",
+      "relance_date": "2026-09-07"
+    },
+    {
+      "id": "FT-213DBYM",
+      "source": "France Travail (Flux Direct)",
+      "title": "Gestionnaire de paie (H/F)",
+      "company": "PARTNAIRE ILE DE FRANCE NORD OUEST",
+      "contact_name": "Monsieur le Directeur de Centre",
+      "contact_title": "Direction de l'Établissement",
+      "address_1": "Service Recrutement & RH",
+      "postal_code": "60000",
+      "city": "60",
+      "salary": "33 000 € - 37 000 € brut annuel",
+      "contract_type": "CDI / CDD",
+      "description": "Vous travaillez au sein d'un leader mondial industriel, avec près de 200 000 employés dans plus de 60 pays et une présence dans 20 pays.\nCe client travaille pour plusieurs secteurs tels que...",
+      "url": "https://candidat.francetravail.fr/offres/recherche/detail/213DBYM",
+      "eligibility_status": "ELIGIBLE",
+      "eligibility_reason": "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)",
+      "score": 78,
+      "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_",
+      "folder_rel": "candidatures/2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_",
+      "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+      "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-08-31_PARTNAIRE_ILE_DE_FRANCE_NORD_OUEST_Gestionnaire_de_paie__H_F_\\CV_Richard_BUSSON.pdf",
+      "status": "Dossier PDF & Visuel Prêt",
+      "date": "2026-08-31",
+      "relance_date": "2026-09-07"
+    },
+    {
       "id": "FT-213DJBV",
       "source": "France Travail (Flux Direct)",
       "title": "GESTIONNAIRE CARRIERE-PAIE (H/F)",
@@ -1024,5 +1074,5 @@
       "relance_date": "2026-09-04"
     }
   ],
-  "last_updated": "2026-08-31T14:55:32.653348"
+  "last_updated": "2026-08-31T17:05:08.944134"
 }
