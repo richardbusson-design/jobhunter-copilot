@@ -2,7 +2,7 @@
 
 > **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
 > **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** 31/08/2026 à 21:47 | **Total candidatures qualifiées :** 52
+> **Dernière actualisation :** 01/09/2026 à 11:42 | **Total candidatures qualifiées :** 57
 
 ---
 
@@ -10,6 +10,36 @@
 
 | Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **2026-09-01** | **Hellowork** | **Collaborateur Comptable Confirmé F/H**<br>[🔗 **Réf. APEC-179325134W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179325134W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Collaborateur Comptable Confirmé F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Saint | 40 - 50 k€ brut annuel | **78%** | 2026-09-08 | [📄 CV A4 Officiel](candidatures/2026-09-01_Hellowork_Collaborateur_Comptable_Confirm%C3%A9_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-09-01_Hellowork_Collaborateur_Comptable_Confirm%C3%A9_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-09-01** | **Hellowork** | **Collaborateur Comptable F/H**<br>[🔗 **Réf. APEC-179327383W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327383W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Collaborateur Comptable F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Soissons | 30 - 40 k€ brut annuel | **78%** | 2026-09-08 | [📄 CV A4 Officiel](candidatures/2026-09-01_Hellowork_Collaborateur_Comptable_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-09-01_Hellowork_Collaborateur_Comptable_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-09-01** | **RATP Cap Ile-de-France** | **Responsable développement RH F/H**<br>[🔗 **Réf. APEC-179223776W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179223776W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Responsable développement RH F/H chez RATP Cap Ile-de-France. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Saint | A négocier | **94%** | 2026-09-08 | [📄 CV A4 Officiel](candidatures/2026-09-01_RATP_Cap_Ile-de-France_Responsable_d%C3%A9veloppement_RH_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-09-01_RATP_Cap_Ile-de-France_Responsable_d%C3%A9veloppement_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-09-01** | **Nextep HR** | **COLLABORATEUR COMPTABLE CONFIRMÉ F/H**<br>[🔗 **Réf. APEC-179329350W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179329350W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de COLLABORATEUR COMPTABLE CONFIRMÉ F/H chez Nextep HR. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Saint | 40 - 50 k€ brut annuel | **78%** | 2026-09-08 | [📄 CV A4 Officiel](candidatures/2026-09-01_Nextep_HR_COLLABORATEUR_COMPTABLE_CONFIRM%C3%89_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-09-01_Nextep_HR_COLLABORATEUR_COMPTABLE_CONFIRM%C3%89_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
+| **2026-09-01** | **JOBBERRY RH & Paie** | **Gestionnaire paie F/H**<br>[🔗 **Réf. APEC-178930674W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/178930674W)<br>
+<details>
+<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
+<br>
+<blockquote>Poste de Gestionnaire paie F/H chez JOBBERRY RH & Paie. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</blockquote>
+</details> | Chelles | A partir de 35 k€ brut annuel | **90%** | 2026-09-08 | [📄 CV A4 Officiel](candidatures/2026-09-01_JOBBERRY_RH___Paie_Gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf)<br>[✉️ Lettre Motivation A4](candidatures/2026-09-01_JOBBERRY_RH___Paie_Gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) |
 | **2026-08-31** | **LINKING TALENTS ** | **Chargé d'études RH et Paie F/H**<br>[🔗 **Réf. APEC-179294968W (L'Apec (Direct WebService))**](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294968W)<br>
 <details>
 <summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
