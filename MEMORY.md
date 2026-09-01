@@ -1,4 +1,4 @@
-# MÉMOIRE PERMANENTE & SKILLS OFFICIELS : CANDIDATURES RICHARD BUSSON
+# MÉMOIRE PERMANENTE, SKILLS & INTERDITS STRICTS : CANDIDATURES RICHARD BUSSON
 
 ## 👤 PROFIL EXACT DU CANDIDAT (RICHARD BUSSON) — ZÉRO HALLUCINATION
 - **Nom & Prénom :** Richard BUSSON
@@ -8,14 +8,42 @@
 - **Réseaux & Web :** LinkedIn : linkedin.com/in/richard-busson | kairos-paye.fr
 - **Statut & Atouts :** 59 ans, profil senior/expert (+15 ans d'expérience), grande stabilité professionnelle, engagement durable et loyal, éligible aux aides à l'embauche pour demandeur d'emploi senior, permis B (valide), mobilité nationale (Façades Atlantique / Méditerranée / Creil & Île-de-France), disponibilité immédiate.
 
-⚠️ **ATTENTION STRICTE (NON-NÉGOCIABLE) : Richard BUSSON n'est PAS comptable.**
-La comptabilité générale n'est PAS son cœur de métier. Le robot a l'interdiction formelle de postuler à des postes de comptabilité pure ou d'utiliser le terme de comptable pour qualifier son profil.
+---
 
-- **CŒUR D'EXPERTISE EXCLUSIF (PAIE & RESSOURCES HUMAINES) :**
-  1. **Gestion de la Paie & Déclarations Sociales (DSN) :** Cycle complet de paie, déclarations dématérialisées, paramétrage avancé sur logiciel Silae, audit de conformité de paie, relations Urssaf et caisses de retraite, veille juridique et conventionnelle.
-  2. **Management des Ressources Humaines & Dialogue Social :** Direction RH et paie de 580 collaborateurs (Secours Populaire 2003-2010), administration du personnel de l'embauche au départ, plan de développement des compétences, dialogue social (CSE/DP/CE), gestion de crise, pilotage de la masse salariale.
-  3. **Ingénierie Pédagogique & Formation Certifiante (Depuis 2014) :** Dirigeant d'organisme certifié Qualiopi (ICPF QUA007374), concepteur de bout en bout d'un parcours de 758h préparant au Titre professionnel Gestionnaire de paie (TP-01254 millésime 04), animation des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise (CMA), formateur sous-traitant Afpa (4 centres : Vervins, Beauvais, Creil, Amiens - groupes individualisés, entrées permanentes, outil Métis, évaluations ECF).
-  4. **Responsable de site opérationnel (2010-2014) :** ETV Nouvelle-Calédonie, montage technique et exploitation d'un site industriel.
+## 🚫 LES INTERDITS STRICTS DU ROBOT (BLOCAGES ABSOLUS & IRRÉVOCABLES)
+
+1. **INTERDICTION DE LA COMPTABILITÉ GÉNÉRALE :**
+   - **Richard BUSSON n'est PAS comptable.** La comptabilité générale n'est PAS son cœur de métier.
+   - Interdiction absolue de postuler à des postes de comptable général, comptable unique, trésorier, auditeur financier ou assistant comptable.
+   - Si une offre en cabinet concerne la paie/social, le poste doit être intitulé et traité strictement comme *Gestionnaire de Paie et Droit Social*, jamais comptable.
+2. **INTERDICTION DES ESPACES VIDES & CALIBRAGE PLEINE PAGE :**
+   - Interdiction formelle de laisser des espaces vides ou blancs non comblés en bas de la lettre de motivation.
+   - La lettre doit occuper **100% de la page A4 (794x1123px)** de manière dense, équilibrée et harmonieuse (Calibri 11pt, interligne 1.44, 5 paragraphes riches, texte justifié).
+   - Interdiction absolue de déborder sur une page 2 (le PDF doit faire strictement 1 page).
+3. **INTERDICTION DES BALISES OU PLACEHOLDERS NON RÉSOLUS :**
+   - **ZÉRO balise résiduelle** (`{{...}}`, `{{CONTACT_FULL}}`, `{{COMPANY_NAME}}`, etc.).
+   - Le QualityGuard bloque et détruit instantanément tout document contenant le moindre placeholder orphelin.
+4. **INTERDICTION DES CARACTÈRES GRAS DANS LE CORPS DE LETTRE :**
+   - **ZÉRO mot en gras (`<strong>`, `<b>`, `font-weight: bold`) dans le corps de la lettre de motivation**. Seul `Objet :` est autorisé en gras.
+5. **INTERDICTION DES SIGNATURES ILLISIBLES :**
+   - La signature doit être nette, calligraphique (monogramme *RB* vectoriel contrasté) avec le nom `Richard Busson` lisiblement centré en dessous en bas à droite.
+6. **INTERDICTION DES PROFILS DÉBUTANTS / JUNIORS :**
+   - Élimination automatique des offres exigeant moins de 3 ans d'expérience ou ciblant des juniors.
+7. **INTERDICTION DES SALAIRES INFÉRIEURS AU SEUIL :**
+   - Élimination automatique de toute offre proposant un salaire inférieur à **30 000 € brut/an** (ou < **2 500 € brut/mois**).
+8. **INTERDICTION DES DOUBLONS :**
+   - Zéro régénération, zéro réexpédition de PDF ni d'email pour une offre déjà présente dans le tableau historique GitHub.
+9. **INTERDICTION D'ENVOI SANS CONTRÔLE DES 6 FICHIERS :**
+   - Chaque dossier doit obligatoirement générer et valider ses 6 fichiers réels non nuls (> 0 octet) : `Lettre.html`, `Lettre.pdf`, `Lettre.png`, `CV.html`, `CV.pdf`, `CV.png`.
+
+---
+
+## 🎯 CŒUR D'EXPERTISE EXCLUSIF (PAIE & RESSOURCES HUMAINES)
+
+1. **Gestion de la Paie & Déclarations Sociales (DSN) :** Cycle complet de paie, déclarations dématérialisées, paramétrage avancé sur logiciel Silae, audit de conformité de paie, relations Urssaf et caisses de retraite, veille juridique et conventionnelle.
+2. **Management des Ressources Humaines & Dialogue Social :** Direction RH et paie de 580 collaborateurs (Secours Populaire 2003-2010), administration du personnel de l'embauche au départ, plan de développement des compétences, dialogue social (CSE/DP/CE), gestion de crise, pilotage de la masse salariale.
+3. **Ingénierie Pédagogique & Formation Certifiante (Depuis 2014) :** Dirigeant d'organisme certifié Qualiopi (ICPF QUA007374), concepteur de bout en bout d'un parcours de 758h préparant au Titre professionnel Gestionnaire de paie (TP-01254 millésime 04), animation des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise (CMA), formateur sous-traitant Afpa (4 centres : Vervins, Beauvais, Creil, Amiens - groupes individualisés, entrées permanentes, outil Métis, évaluations ECF).
+4. **Responsable de site opérationnel (2010-2014) :** ETV Nouvelle-Calédonie, montage technique et exploitation d'un site industriel.
 - **Formations supérieures :** Master RSE (IAE Paris en cours), Master 2 Droit public (Univ. Picardie), Maîtrise Sciences de Gestion (Univ. Paris XIII), DUT GEA RH (Univ. Paris XIII).
 - **Outils & Systèmes :** Logiciel Silae, DSN, Excel avancé, Outil Métis (Afpa).
 
@@ -25,30 +53,12 @@ La comptabilité générale n'est PAS son cœur de métier. Le robot a l'interdi
 
 1. **Responsable RH et Paie / Management des Ressources Humaines (Code ROME M1503)**
    - *Intitulés :* Responsable RH et Paie, Responsable Paie et ADP, Responsable des Ressources Humaines (RRH), DRH Adjoint, Responsable Relations Sociales & Gestion Sociale.
-   - *Missions :* Pilotage de la paie, DSN, administration du personnel, stratégie RH, dialogue social (CSE), pilotage de la masse salariale.
 2. **Formateur Paie et RH / Ingénierie de Formation (Codes ROME K2111 & K2102)**
    - *Intitulés :* Formateur Paie et RH, Formateur Gestionnaire de Paie (Titre Pro TP-01254), Consultant Formateur Paie & Droit Social, Coordinateur / Responsable Pédagogique filière Paie / RH.
-   - *Missions :* Ingénierie pédagogique, animation certifiante, outil Métis, ECF, conformité Qualiopi, logiciel Silae.
 3. **Gestionnaire de Paie et Droit Social (Code ROME M1203)**
    - *Intitulés :* Gestionnaire de Paie et RH, Spécialiste Paie & DSN, Responsable de pôle paie, Gestionnaire de paie multi-conventions (entreprise ou cabinet).
-   - *Missions :* Production autonome du bulletin de paie, contrôle et audit de paie, paramétrage Silae, déclarations dématérialisées.
 4. **Gestionnaire / Chargé Ressources Humaines & ADP (Code ROME M1501)**
    - *Intitulés :* Chargé(e) des Ressources Humaines et Paie, Gestionnaire ADP / RH confirmé/senior.
-   - *Missions :* Administration du personnel, gestion des contrats, procédures disciplinaires, temps de travail, veille juridique.
-
-### 🚫 EXCLUSIONS STRICTES DU ROBOT
-- **Exclusion Comptabilité Pure :** Élimination automatique de toute offre de comptabilité générale, comptable unique, trésorier, auditeur financier.
-- **Exclusion Débutants :** Élimination des offres exigeant moins de 3 ans d'expérience ou mentionnant "Junior".
-- **Seuil Salarial :** Salaire brut annuel **strictement supérieur ou égal à 30 000 €** (ou >= 2 500 € brut / mois).
-- **Périmètre Géographique :** Bassin quotidien <= 2h depuis Creil (60100) ou Façades maritimes (Atlantique / Méditerranée) ou Télétravail.
-
----
-
-## 🛑 CONTRÔLE PRÉALABLE ANTI-DOUBLON (BLOCAGE ABSOLU)
-Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le robot a l'obligation de :
-1. **Lire l'intégralité du tableau historique sur GitHub (tracker.json / dashboard.md / README.md).**
-2. **Extraire l'ensemble des empreintes déjà traitées :** ID d'offres, URL des annonces et couples normalisés *(Entreprise / Intitulé du Poste)*.
-3. **Filtrer et éliminer immédiatement tout doublon :** Zéro régénération et zéro renvoi d'email pour un poste déjà candidaté.
 
 ---
 
@@ -64,10 +74,10 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 - **Lecture attentive de l'offre d'origine :** Injection des éléments réels de l'annonce dans la lettre et le CV pour que la forme confirme le fond.
 - **Lettre de Motivation (Modèle Maître CMA) :**
   * Strictement **1 page A4 pleine (794x1123px)**, équilibrée de haut en bas sans vide disproportionné.
-  * Typographie : Calibri 11pt, interligne 1.40, texte justifié.
+  * Typographie : Calibri 11pt, interligne 1.44, texte justifié.
   * **ZÉRO caractère gras dans le corps de lettre**.
   * Structure en 5 paragraphes denses : Accroche ciblée, Cœur de métier Paie/RH, Direction RH 580 collab / Afpa, Qualiopi 758h / Droit public, Franchise senior (59 ans, aides embauche senior, mobilité, disponibilité).
-  * Signature manuscrite calligraphique monogramme `RB` + `Richard Busson`.
+  * Signature manuscrite calligraphique monogramme `RB` + `Richard Busson` lisible en dessous.
 - **CV (Modèle Maître Bleu Marine) :**
   * Strictement **1 page A4**, charte graphique `#1b365d`.
   * 6 blocs réels sans hallucination : En-tête/contact, Titre & Synthèse, Compétences clés, Points forts pour ce poste, 4 Expériences professionnelles réelles, Formations supérieures & Outils.
