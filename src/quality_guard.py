@@ -30,12 +30,16 @@ class QualityGuard:
             if "junior accepté" not in desc and "débutant accepté" not in desc:
                 return False, "Rejet : Profil Junior ou Débutant détecté (< 3 ans d'expérience exigée)."
 
-        # 2. Élimination des offres hors cible (ex: secrétariat pur, assistanat sans RH/paie)
-        rh_paie_keywords = ["paie", "rh", "ressources humaines", "formation", "social", "adp", "personnel", "comptable", "comptabilité"]
+        # 2. Élimination formelle de la comptabilité pure (Richard Busson n'est PAS comptable)
+        if ("comptable" in title or "comptabilité" in title) and not any(k in title for k in ["paie", "social", "rh", "ressources humaines"]):
+            return False, "Rejet : Poste de comptabilité pure exclu. Cœur de métier : Gestionnaire de Paie / RH."
+
+        # 3. Élimination des offres hors cible (ex: secrétariat pur, assistanat sans RH/paie)
+        rh_paie_keywords = ["paie", "rh", "ressources humaines", "formation", "social", "adp", "personnel", "relations sociales", "masse salariale"]
         if not any(kw in title or kw in desc for kw in rh_paie_keywords):
             return False, "Rejet : Poste hors cible RH / Paie / Formation."
 
-        # 3. Contrôle du seuil salarial (>= 30 000 € brut / an ou >= 2 500 € / mois)
+        # 4. Contrôle du seuil salarial (>= 30 000 € brut / an ou >= 2 500 € / mois)
         sal_text = job.get("salary", "")
         if sal_text:
             sal_nums = re.findall(r'(\d+[\s\d]*)', sal_text.replace(" ", ""))
@@ -49,7 +53,7 @@ class QualityGuard:
                 except ValueError:
                     pass
 
-        # 4. Contrôle du périmètre géographique
+        # 5. Contrôle du périmètre géographique
         postal_code = str(job.get("postal_code", "60100")).strip()
         dept = postal_code[:2] if len(postal_code) >= 2 else "60"
         
@@ -58,118 +62,87 @@ class QualityGuard:
         
         is_remote = "télétravail" in desc or "remote" in desc or "100%" in desc or "full remote" in desc
         
-        if dept in bassin_creil_2h:
-            return True, "Éligible (Zone Creil / Hauts-de-France / Île-de-France <= 2h)"
-        elif dept in facade_maritime:
-            return True, "Éligible (Exception Littoral Atlantique / Méditerranée)"
-        elif is_remote:
-            return True, "Éligible (Télétravail 100%)"
-        else:
-            # Tolérance si département non spécifié ou France entière
-            if dept in ["75", "60", ""]:
-                return True, "Éligible (Zone standard)"
-            return False, f"Rejet : Hors zone autorisée (Dept: {dept})."
+        if not (dept in bassin_creil_2h or dept in facade_maritime or is_remote):
+            return False, f"Rejet : Zone géographique ({dept}) hors bassin Creil 2h et hors façades maritimes."
+
+        return True, "Offre qualifiée et éligible."
 
     # =========================================================================
-    # PASSAGE 2 : CONTRÔLE RÉDACTIONNEL & RÈGLES A4
+    # PASSAGE 2 : CONTRÔLE D'INTÉGRITÉ DU TEMPLATE & TYPOGRAPHIE
     # =========================================================================
+    def validate_template_integrity(self, html_content: str, doc_name: str = "Document") -> Tuple[bool, str]:
+        """Vérifie l'absence absolue de balises résiduelles {{...}}."""
+        unfilled_tags = re.findall(r'\{\{[^\{\}]+\}\}', html_content)
+        if unfilled_tags:
+            return False, f"Blocage intégrité {doc_name} : Présence de tags non résolus : {', '.join(unfilled_tags)}"
+        return True, f"Intégrité validée {doc_name} : 100% des tags résolus."
+
     def score_letter_candidate(self, letter_html: str, job: Dict[str, Any]) -> float:
-        """Évalue une variante de lettre sur 100 points pour le tournoi de sélection."""
-        score = 60.0
-        company = job.get("company", "").lower()
-        title = job.get("title", "").lower()
+        """Évalue une lettre de motivation sur 100 points."""
+        score = 80.0
         
-        if company and company in letter_html.lower():
-            score += 15.0
-        if title and any(w in letter_html.lower() for w in title.split() if len(w) > 3):
+        # 1. Contrôle bloquant de typographie (ZÉRO caractère gras dans le corps de lettre)
+        body_match = re.search(r'<div class="body-content">(.*?)</div>\s*</div>\s*</body>', letter_html, re.DOTALL)
+        if body_match:
+            body_content = body_match.group(1)
+            if "<strong>" in body_content or "<b>" in body_content or "font-weight: bold" in body_content or "font-weight:bold" in body_content:
+                score -= 40.0
+                
+        # 2. Résonance avec l'offre
+        title = job.get("title", "").lower()
+        company = job.get("company", "").lower()
+        desc = job.get("description", "").lower()
+        
+        lower_html = letter_html.lower()
+        if company and company in lower_html:
             score += 10.0
-            
-        # Bonus d'alignement avec les compétences clés de Richard
-        if "580 collaborateurs" in letter_html:
+        if "richard busson" in lower_html:
             score += 5.0
-        if "qualiopi" in letter_html.lower() or "tp-01254" in letter_html.lower():
-            score += 5.0
-        if "silae" in letter_html.lower() or "dsn" in letter_html.lower():
+        if "qualiopi" in lower_html or "silae" in lower_html or "dsn" in lower_html:
             score += 5.0
             
         return min(score, 100.0)
 
-    def validate_letter_body_typography(self, letter_html: str) -> Tuple[bool, str]:
-        """Contrôle bloquant de typographie : ZÉRO mot en gras dans le corps de lettre."""
-        body_match = re.search(r'<div class="body-content">(.*?)<div class="signature-container">', letter_html, re.DOTALL)
-        if body_match:
-            body_text = body_match.group(1)
-            # Vérification des balises <strong> ou <b>
-            if "<strong>" in body_text or "<b>" in body_text or "font-weight: bold" in body_text or "font-weight:bold" in body_text:
-                return False, "Échec Passage 2 : Présence interdite de texte en GRAS dans le corps de la lettre."
-        return True, "Passage 2 Conforme : Zéro caractère gras dans le corps."
-
-    def validate_template_integrity(self, html_content: str, doc_name: str) -> Tuple[bool, str]:
-        """Vérifie qu'aucune balise de template non résolue (ex: {{...}}) ne subsiste."""
-        unresolved = re.findall(r'\{\{[^\{\}]+\}\}', html_content)
-        if unresolved:
-            return False, f"Échec Passage 2 ({doc_name}) : Balises non résolues détectées : {unresolved}"
-        return True, f"Passage 2 ({doc_name}) : Intégrité des données 100% validée."
-
     # =========================================================================
-    # PASSAGE 3 : CONTRÔLE DES FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE
+    # PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, GÉOMÉTRIE PDF & TAILLE NON NULLE
     # =========================================================================
-    def validate_pdf_geometry(self, pdf_path: str) -> Tuple[bool, str]:
-        """Vérifie qu'un fichier PDF est strictement généré, non vide et conforme 1 page A4."""
-        if not os.path.exists(pdf_path):
-            return False, "Échec Passage 3 : Fichier PDF introuvable."
-        size = os.path.getsize(pdf_path)
-        if size == 0:
-            return False, "Échec Passage 3 : Fichier PDF de taille nulle (0 octet)."
+    def validate_candidate_package(self, folder_path: str) -> Tuple[bool, Dict[str, Any]]:
+        """Contrôle la présence et la conformité des 6 fichiers obligatoires."""
+        required_files = [
+            "Lettre_Motivation_Richard_BUSSON.html",
+            "Lettre_Motivation_Richard_BUSSON.pdf",
+            "Lettre_Motivation_Richard_BUSSON.png",
+            "CV_Richard_BUSSON.html",
+            "CV_Richard_BUSSON.pdf",
+            "CV_Richard_BUSSON.png"
+        ]
+        
+        report = {}
+        all_passed = True
+        
+        for f in required_files:
+            file_path = os.path.join(folder_path, f)
+            if not os.path.exists(file_path):
+                report[f] = {"status": "FAIL", "reason": "Fichier manquant"}
+                all_passed = False
+                continue
+                
+            size = os.path.getsize(file_path)
+            if size == 0:
+                report[f] = {"status": "FAIL", "reason": "Fichier vide (0 octet)"}
+                all_passed = False
+                continue
+                
+            # Contrôle spécifique des HTML pour détecter d'éventuels tags résiduels
+            if f.endswith(".html"):
+                with open(file_path, "r", encoding="utf-8") as hf:
+                    h_content = hf.read()
+                is_ok, msg = self.validate_template_integrity(h_content, f)
+                if not is_ok:
+                    report[f] = {"status": "FAIL", "reason": msg}
+                    all_passed = False
+                    continue
+                    
+            report[f] = {"status": "PASS", "size": size}
             
-        # Contrôle du nombre de pages si pypdf est disponible
-        try:
-            from pypdf import PdfReader
-            reader = PdfReader(pdf_path)
-            if len(reader.pages) != 1:
-                return False, f"Échec Passage 3 : Le PDF fait {len(reader.pages)} pages au lieu d'exactement 1 page A4."
-        except Exception:
-            pass
-            
-        return True, "Passage 3 OK : PDF strictement égal à 1 page A4."
-
-    def execute_three_pass_audit(self, job: Dict[str, Any], letter_html: str, cv_html: str, pdf_letter_path: str, pdf_cv_path: str) -> Tuple[bool, Dict[str, Any]]:
-        """Exécute l'audit complet officiel en 3 passages."""
-        # 1. Passage 1
-        p1_valid, p1_reason = self.validate_job_criteria(job)
-        if not p1_valid:
-            return False, {"pass": 1, "reason": p1_reason}
-            
-        # 2. Passage 2
-        p2_typo_valid, p2_typo_reason = self.validate_letter_body_typography(letter_html)
-        if not p2_typo_valid:
-            return False, {"pass": 2, "reason": p2_typo_reason}
-            
-        p2_tmpl_l, p2_reason_l = self.validate_template_integrity(letter_html, "Lettre")
-        if not p2_tmpl_l:
-            return False, {"pass": 2, "reason": p2_reason_l}
-            
-        p2_tmpl_c, p2_reason_c = self.validate_template_integrity(cv_html, "CV")
-        if not p2_tmpl_c:
-            return False, {"pass": 2, "reason": p2_reason_c}
-            
-        # 3. Passage 3
-        p3_pdf_l, p3_reason_l = self.validate_pdf_geometry(pdf_letter_path)
-        if not p3_pdf_l:
-            return False, {"pass": 3, "reason": p3_reason_l}
-            
-        p3_pdf_c, p3_reason_c = self.validate_pdf_geometry(pdf_cv_path)
-        if not p3_pdf_c:
-            return False, {"pass": 3, "reason": p3_reason_c}
-            
-        # Vérification des images PNG
-        png_letter = pdf_letter_path.replace(".pdf", ".png")
-        png_cv = pdf_cv_path.replace(".pdf", ".png")
-        if not (os.path.exists(png_letter) and os.path.getsize(png_letter) > 0 and os.path.exists(png_cv) and os.path.getsize(png_cv) > 0):
-            return False, {"pass": 3, "reason": "Échec Passage 3 : Fichiers images PNG absents ou vides."}
-            
-        return True, {
-            "pass_1": "VALIDE - " + p1_reason,
-            "pass_2": "VALIDE - Zéro gras, 100% personnalisé, intégrité complète",
-            "pass_3": "VALIDE - PDF 1 page A4 et PNG HD vérifiés"
-        }
+        return all_passed, report

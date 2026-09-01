@@ -29,6 +29,9 @@ class ApplicationGenerator:
         cleaned = re.sub(r'\(H/F\)|H/F|\(F/H\)|F/H', '', raw_title, flags=re.IGNORECASE)
         cleaned = cleaned.replace("/ Formatrice", "").replace("/ formatrice", "")
         cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+        # Si un titre contient 'Collaborateur Comptable' ou 'Comptable', on le recadre strictement sur son volet Paie / Social
+        if "comptab" in cleaned.lower() and "paie" not in cleaned.lower():
+            cleaned = "Gestionnaire de Paie et Droit Social"
         return cleaned
 
     def detect_category(self, job: Dict[str, Any]) -> str:
@@ -39,9 +42,8 @@ class ApplicationGenerator:
             return "RRH_PAIE"
         elif "chargé rh" in text or "chargé des ressources" in text or "gestionnaire rh" in text or "gestionnaire adp" in text:
             return "GESTIONNAIRE_RH"
-        elif "collaborateur comptable" in text or "comptable" in text or "cabinet" in text:
-            return "COMPTABILITE_SOCIALE"
         else:
+            # 100% Gestionnaire de Paie et Droit Social (ZÉRO comptabilité pure)
             return "GESTIONNAIRE_PAIE"
 
     def evaluate_match(self, job: Dict[str, Any]) -> int:
@@ -56,8 +58,6 @@ class ApplicationGenerator:
             score += 14
         elif cat == "GESTIONNAIRE_RH":
             score += 12
-        elif cat == "COMPTABILITE_SOCIALE":
-            score += 10
             
         if "paie" in text or "bulletin" in text or "dsn" in text or "silae" in text:
             score += 4
@@ -112,7 +112,7 @@ class ApplicationGenerator:
             call_formula = "Madame, Monsieur,"
             politesse_formula = "Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée."
 
-        # 5 paragraphes denses et calibrés basés scrupuleusement sur le modèle PDF officiel
+        # 5 paragraphes denses 100% PAIE & RESSOURCES HUMAINES (ZÉRO COMPTABILITÉ)
         if cat == "FORMATEUR_PAIE_RH":
             job_object_clean = f"Candidature : {job_title}"
             p1 = f"Votre recherche pour le poste de {job_title} au sein de {company} a retenu toute mon attention. Acteur reconnu dans le développement des compétences professionnelles, votre organisme représente un environnement d’excellence dont je connais parfaitement les enjeux pédagogiques et techniques."
@@ -127,13 +127,6 @@ class ApplicationGenerator:
             p3 = "J'ai exercé ce métier avec une responsabilité d'envergure : de 2003 à 2010, j'ai dirigé les ressources humaines d'une organisation de 580 collaborateurs, salariés et bénévoles, en y pilotant le plan de développement des compétences, les procédures contractuelles et le dialogue social avec les instances représentatives (CSE, CE, DP). Cette expérience m'a appris à concilier le strict respect de la réglementation avec l'instauration d'un climat social serein et constructif."
             p4 = "Je dirige par ailleurs un organisme de formation certifié Qualiopi où j'ai conçu de bout en bout un parcours certifiant de 758 heures pour le Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d'un site industriel en Nouvelle-Calédonie. Titulaire d'un Master 2 en Droit public, d'une Maîtrise en Sciences de Gestion et engagé dans un Master RSE à l'IAE de Paris, j'apporte une vision stratégique, éthique et sécurisée de vos relations de travail."
             p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est totale sur l'ensemble de votre secteur, et ma disponibilité immédiate."
-        elif cat == "COMPTABILITE_SOCIALE":
-            job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre recherche pour le poste de {job_title} au sein de {company} a retenu toute mon attention. Expert autonome de la paie, du droit social et de la gestion comptable du personnel, je souhaite mettre ma rigueur technique, mon sens de la relation client et ma polyvalence au service de votre structure et de vos portefeuilles clients."
-            p2 = "Habitué à la gestion de dossiers multi-conventions collectives aux spécificités techniques exigeantes, j'assure en toute autonomie l'intégralité du cycle de paie : collecte des variables, traitement des absences et congés, calcul des cotisations sociales, établissement des soldes de tout compte et télédéclarations DSN mensuelles et événementielles avec contrôle de cohérence rigoureux et régularisations annuelles."
-            p3 = "J'ai exercé ce métier avec une grande exigence opérationnelle : de 2003 à 2010, j'ai dirigé les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles. J'ai également dispensé la pratique du bulletin et du droit social sur quatre centres Afpa (Vervins, Beauvais, Creil, Amiens) et auprès d'artisans employeurs dans le cadre des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise."
-            p4 = "Je dirige par ailleurs un organisme de formation certifié Qualiopi où j'ai conçu un parcours certifiant de 758 heures pour le Titre professionnel Gestionnaire de paie. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, je maîtrise parfaitement l'environnement logiciel Silae et l'exploitation experte d'Excel, garantissant une sécurité juridique absolue et un conseil fiable face aux contrôles Urssaf."
-            p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Titulaire du permis B, je dispose d'une disponibilité immédiate."
         elif cat == "GESTIONNAIRE_RH":
             job_object_clean = f"Candidature : {job_title}"
             p1 = f"Votre offre d'emploi pour le poste de {job_title} au sein de {company} correspond parfaitement à mes compétences et à mon projet professionnel. Spécialiste confirmé de l'administration du personnel, du suivi contractuel et de la gestion sociale avec plus de 15 ans de pratique, je vous propose mon autonomie opérationnelle et ma réactivité pour renforcer votre service RH."
@@ -143,7 +136,7 @@ class ApplicationGenerator:
             p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Titulaire du permis B, je dispose d'une mobilité complète et d'une disponibilité immédiate."
         else: # GESTIONNAIRE_PAIE
             job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre offre d'emploi pour le poste de {job_title} au sein de {company} retient toute mon attention. Gestionnaire de paie confirmé et expert du droit social, je vous propose mon autonomie complète pour assurer la production irréprochable de vos bulletins de paie, sécuriser vos déclarations sociales et optimiser vos procédures administratives."
+            p1 = f"Votre offre d'emploi pour le poste de {job_title} au sein de {company} retient toute mon attention. Gestionnaire de paie confirmé et expert du droit social, je vous propose mon autonomie complète pour assurer la production irréprochable de vos bulletins de paie, sécuriser vos déclarations sociales et fiabiliser vos procédures administratives."
             p2 = "De la collecte méthodique des variables jusqu'au virement des salaires et au contrôle minutieux des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je prends en charge l'intégralité du cycle de paie. Mon expertise technique couvre le paramétrage approfondi sur logiciel Silae, le traitement des cotisations spécifiques, la régularisation des plafonds et la relation suivie avec l'Urssaf, les caisses de retraite et les organismes de prévoyance."
             p3 = "J'ai exercé ce métier avec une responsabilité concrète avant de l'enseigner : de 2003 à 2010, j'ai piloté les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles. J'ai également dispensé la pratique du bulletin et du droit social sur quatre centres Afpa (Vervins, Beauvais, Creil, Amiens) et auprès d'artisans employeurs dans le cadre des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise."
             p4 = "Je dirige par ailleurs un organisme certifié Qualiopi où j'ai conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double maîtrise du chiffre et de la règle juridique, garantissant des réponses documentées aux collaborateurs et une sécurité sans faille face aux audits de paie."
@@ -223,7 +216,7 @@ class ApplicationGenerator:
       <div class="cv-bullet"><strong>Rigueur réglementaire :</strong> Diplômé d'un Master 2 en Droit public et d'une Maîtrise en Gestion, garantissant une conformité juridique sans faille.</div>
       <div class="cv-bullet"><strong>Fidélité & Disponibilité :</strong> 59 ans, recherche d'un engagement pérenne, éligible aux aides à l'embauche senior, disponible immédiatement.</div>
             """.strip()
-        else: # GESTIONNAIRE_PAIE & COMPTABILITE_SOCIALE
+        else: # GESTIONNAIRE_PAIE (100% Paie & Droit Social)
             cv_subtitle = "Gestionnaire de Paie et Droit Social Confirmé"
             target_title = f"GESTIONNAIRE DE PAIE ET DROIT SOCIAL — {job_title.upper()}"
             summary = "Spécialiste autonome de la gestion de la paie et de l'administration du personnel avec plus de 15 ans d'expérience. Maîtrise de bout en bout du cycle de paie, du paramétrage logiciel Silae, du contrôle de cohérence DSN et de la législation sociale. Concepteur d'un parcours certifiant de 758 heures pour le Titre pro Gestionnaire de paie et ex-responsable RH de 580 collaborateurs."
