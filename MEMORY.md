@@ -33,20 +33,11 @@
    - *Intitulés :* Chargé(e) des Ressources Humaines et Paie, Gestionnaire ADP / RH confirmé/senior.
    - *Missions :* Administration du personnel, gestion des contrats, procédures disciplinaires, temps de travail, veille juridique.
 
-### 🚫 RÈGLES DE FILTRAGE & EXCLUSIONS STRICTES DU ROBOT
-- **Exclusion Débutants :** Élimination automatique des offres mentionnant "Junior", "Débutant" ou exigeant "moins de 3 ans d'expérience".
-- **Exclusion Hors Cible :** Élimination des offres d'assistanat pur ou de comptabilité générale où la paie/RH représente moins de 50% du poste.
-- **Seuil Salarial :** Salaire brut annuel **strictement supérieur ou égal à 30 000 €** (ou >= 2 500 € brut / mois).
-- **Périmètre Géographique :**
-  - Bassin quotidien : Maximum **2 heures de trajet** depuis CREIL (60100) (Oise 60, Paris/Île-de-France, Somme 80, Aisne 02, Hauts-de-France...).
-  - Mobilité Façades Maritimes : **Océan Atlantique** (Nouvelle-Aquitaine, Bretagne, Pays de la Loire...) et **Mer Méditerranée** (Occitanie, PACA...).
-  - Télétravail : 100% éligible.
-
 ---
 
 ## 🛑 CONTRÔLE PRÉALABLE ANTI-DOUBLON (BLOCAGE ABSOLU)
 Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le robot a l'obligation de :
-1. **Lire l'intégralité du tableau historique sur GitHub (	racker.json / dashboard.md / README.md).**
+1. **Lire l'intégralité du tableau historique sur GitHub (tracker.json / dashboard.md / README.md).**
 2. **Extraire l'ensemble des empreintes déjà traitées :** ID d'offres, URL des annonces et couples normalisés *(Entreprise / Intitulé du Poste)*.
 3. **Filtrer et éliminer immédiatement tout doublon :**
    - Aucune offre déjà présente dans le tableau ne peut être réanalysée ni réexpédiée.
@@ -60,34 +51,32 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 ### 🔹 PASSAGE 1 : CONTRÔLE DE FAISABILITÉ SOURCE & FILTRAGE (AVANT RÉDACTION)
 - Contrôle anti-doublon préalable contre l'historique GitHub.
 - Vérification de l'authenticité de l'offre (France Travail Flux Direct, Apec WebService, Indeed, LinkedIn).
-- Contrôle du seuil salarial (>= 30 000 € brut/an).
+- Contrôle du seuil salarial (>= 30 000 € brut/an ou >= 2 500 € brut/mois).
 - Contrôle du temps de trajet (Creil <= 2h ou Littoral Atlantique/Méditerranée ou Télétravail).
-- Élimination des profils débutants (< 3 ans) et des offres hors cible.
+- Élimination automatique des profils débutants (< 3 ans) et des offres hors cible.
 
-### 🔹 PASSAGE 2 : TOURNOI COMPARATIF & RÈGLES RÉDACTIONNELLES A4 (PENDANT RÉDACTION)
-- Génération de 3 variantes de lettres (1: Ingénierie Pédagogique Qualiopi, 2: Direction RH 580 collab, 3: Conseil Entreprise / ADEA).
-- Évaluation comparative sur 100 points (Résonance lexicale de l'annonce, personnalisation du destinataire).
-- Contrôle bloquant de typographie : **ZÉRO caractère gras dans le corps de lettre**.
-- Alignement strict du destinataire sur la 6ᵉ ligne (kairos-paye.fr) et signature vectorielle nette (*RB*).
-- Calibrage du CV sur 1 page A4 sans aucun vide en bas.
+### 🔹 PASSAGE 2 : PERSONNALISATION SUR-MESURE & CONTRÔLE D'INTÉGRITÉ (PENDANT RÉDACTION)
+- **Contrôle d'intégrité anti-tags résiduels (VERROU ABSOLU) :** Analyse regex `\{\{[^\}]+\}\}` sur le CV et la Lettre. **ZÉRO balise résiduelle autorisée**. Tout document contenant un tag non résolu est détruit et bloqué immédiatement.
+- **Résonance contextuelle sur-mesure :** L'argumentaire de la lettre et la synthèse du CV s'adaptent dynamiquement à la cible réelle (Entreprise privée vs Centre de formation vs Cabinet comptable). Interdiction absolue d'insérer des paragraphes hors-sujet.
+- **Typographie stricte :** **ZÉRO caractère gras dans le corps de la lettre de motivation**.
+- **Alignement strict du destinataire :** 6ᵉ ligne alignée sur `kairos-paye.fr` et signature vectorielle nette (*Richard Busson*).
 
-### 🔹 PASSAGE 3 : CONTRÔLE DES FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE (POST-COMPILATION)
+### 🔹 PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE (POST-COMPILATION)
 - **Génération Obligatoire des 6 Fichiers par Dossier :**
   1. Lettre_Motivation_Richard_BUSSON.html
-  2. Lettre_Motivation_Richard_BUSSON.pdf (Strictement 1 page A4, 1123px)
+  2. Lettre_Motivation_Richard_BUSSON.pdf (Strictement 1 page A4)
   3. Lettre_Motivation_Richard_BUSSON.png (Capture haute résolution 794x1123)
   4. CV_Richard_BUSSON.html
   5. CV_Richard_BUSSON.pdf (Strictement 1 page A4)
   6. CV_Richard_BUSSON.png (Capture haute résolution 794x1123)
 - **Vérification de taille non nulle :** Blocage immédiat si l'un des fichiers PDF ou PNG fait 0 octet.
-- **Visionneuse Multi-Mode Auto-Secours (Fail-Safe) :** Affichage direct de l'image haute définition avec bascule vectorielle instantanée (onerror fallback) pour garantir un affichage réel et sans faille.
-- Enregistrement du texte intégral de l'annonce d'origine dans le tableau de bord.
-- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur ichard.busson@kairos-paye.fr.
+- **Visionneuse Multi-Mode Auto-Secours (Fail-Safe) :** Affichage direct de l'image haute définition avec bascule vectorielle instantanée (`onerror fallback`) pour garantir un affichage réel et sans faille.
+- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur `richard.busson@kairos-paye.fr`.
 
 ---
 
 ## 📊 TABLEAU DE BORD LOCAL PAR MOIS & APPLICATION BUREAU
 - **Emplacement permanent :** C:\Users\richa\JobHunter avec icône 3D rouge permanente.
 - **Raccourci Bureau :** C:\Users\richa\OneDrive\Archives\Bureau 2021\Tableau de Bord - Candidatures.lnk
-- **Auto-Synchronisation Cloud :** launch.py effectue un téléchargement Git automatique silencieux avant chaque ouverture pour afficher immédiatement les candidatures du jour traitées dans le Cloud.
+- **Auto-Synchronisation Cloud :** `launch.py` effectue un téléchargement Git automatique silencieux avant chaque ouverture pour afficher immédiatement les candidatures du jour traitées dans le Cloud.
 - **Visionneuse Interactive Plein Écran intégrée :** Consultation instantanée de la lettre et du CV en haute définition sans quitter le navigateur, avec boutons d'ouverture et téléchargement PDF direct.

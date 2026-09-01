@@ -15,14 +15,14 @@
     }
     body {
       font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
-      font-size: 10.8pt;
-      line-height: 1.44;
+      font-size: 10.4pt;
+      line-height: 1.42;
       color: #000000;
       background: #ffffff;
       width: 794px;
       height: 1123px;
       margin: 0 auto;
-      padding: 40px 48px 36px 48px;
+      padding: 38px 46px 34px 46px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -40,8 +40,8 @@
     }
     .sender-box {
       width: 50%;
-      font-size: 9.8pt;
-      line-height: 1.38;
+      font-size: 9.6pt;
+      line-height: 1.36;
       color: #111111;
     }
     .sender-name {
@@ -51,8 +51,8 @@
     }
     .recipient-box {
       width: 50%;
-      font-size: 9.8pt;
-      line-height: 1.38;
+      font-size: 9.6pt;
+      line-height: 1.36;
       color: #000000;
       padding-left: 20px;
     }
@@ -60,12 +60,12 @@
       font-weight: bold;
     }
     .date-line {
-      margin-top: 10px;
-      font-size: 9.8pt;
+      margin-top: 8px;
+      font-size: 9.6pt;
     }
     .object-line {
-      font-size: 10.8pt;
-      margin: 10px 0 12px 0;
+      font-size: 10.5pt;
+      margin: 10px 0 10px 0;
       color: #000000;
     }
     .body-content {
@@ -75,14 +75,14 @@
       flex-grow: 1;
     }
     .body-content p {
-      margin-bottom: 9px;
+      margin-bottom: 8px;
       text-align: justify;
       text-justify: inter-word;
       color: #000000;
     }
     .pj-block {
       margin-top: 4px;
-      font-size: 9.5pt;
+      font-size: 9.3pt;
       color: #111111;
     }
     .pj-block ul {
@@ -90,7 +90,7 @@
       list-style-type: disc;
     }
     .politesse {
-      margin: 9px 0 6px 0;
+      margin: 8px 0 4px 0;
       text-align: justify;
     }
     .signature-container {
@@ -106,11 +106,11 @@
     }
     .signature-svg {
       width: 140px;
-      height: 48px;
+      height: 46px;
       margin-bottom: 2px;
     }
     .signature-name {
-      font-size: 10.5pt;
+      font-size: 10.2pt;
       font-weight: bold;
       color: #000000;
       letter-spacing: 0.01em;
@@ -137,18 +137,18 @@
           <div>linkedin.com/in/richard-busson . kairos-paye.fr</div>
         </td>
         <td class="recipient-box">
-          <div class="recipient-name">À l’attention de {{ contact_full }}</div>
-          <div>{{ company_name }}</div>
-          <div>{{ address_1 }}</div>
-          <div>{{ postal_code }} {{ city }}</div>
-          <div class="date-line">À Creil, le {{ current_date }}</div>
+          <div class="recipient-name">À l’attention de Monsieur le Responsable du Recrutement, Direction des Ressources Humaines</div>
+          <div>Hellowork</div>
+          <div>Pôle Recrutement Cadres & Formation</div>
+          <div>11000 PORT</div>
+          <div class="date-line">À Creil, le 01 septembre 2026</div>
         </td>
       </tr>
     </table>
 
     <!-- Objet (Gras autorisé) -->
     <div class="object-line">
-      <strong>Objet : Candidature : {{ job_title_clean }}</strong>
+      <strong>Objet : Candidature au poste de Responsable RH & Paie</strong>
     </div>
   </div>
 
@@ -156,11 +156,10 @@
   <div class="body-content">
     <div>
       <p>Madame, Monsieur,</p>
-      <p>{{ paragraph_1 }}</p>
-      <p>{{ paragraph_2 }}</p>
-      <p>{{ paragraph_3 }}</p>
-      <p>{{ paragraph_4 }}</p>
-      <p>{{ paragraph_5 }}</p>
+      <p>Votre offre pour le poste de Responsable RH & Paie au sein de Hellowork correspond parfaitement à mon parcours et à mes compétences. Fort d'une solide expérience de Responsable des Ressources Humaines et de la Paie, j'ai piloté l'ensemble des dimensions sociales, administratives et juridiques au service de la performance de l'organisation.</p>
+<p>De 2003 à 2010, j'ai dirigé les ressources humaines d'une structure de 580 collaborateurs (salariés et bénévoles), supervisant l'administration du personnel, la sécurisation des paies complexes, les déclarations dématérialisées (DSN) et le dialogue social avec les instances représentatives (CSE, CE, DP) dans des contextes à forts enjeux.</p>
+<p>Titulaire d'un Master 2 en Droit public, d'une Maîtrise en Sciences de Gestion et engagé dans un Master RSE à l'IAE de Paris, j'apporte à votre entreprise une maîtrise rigoureuse de la réglementation du travail, de l'audit de paie et du pilotage de la masse salariale. Ma double casquette de dirigeant d'organisme de formation garantit également un accompagnement de haut niveau sur le développement des compétences.</p>
+<p>À 59 ans, j'offre une stabilité professionnelle exemplaire et je m'inscris dans un engagement durable. Mon recrutement est par ailleurs éligible aux aides à l'embauche pour demandeur d'emploi senior. Totalement disponible et mobile, je me tiens à votre disposition pour convenir d'une rencontre.</p>
       <div class="pj-block">
         <div>Vous trouverez ci-joint :</div>
         <ul>
@@ -174,7 +173,6 @@
     <div class="signature-container">
       <div class="signature-box">
         <svg class="signature-svg" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tracé calligraphique lisible 'R. Busson' -->
           <path d="M 18 48 C 14 32, 22 14, 34 10 C 44 7, 54 15, 48 26 C 40 37, 25 35, 35 35 C 46 35, 58 32, 66 24 C 60 30, 64 42, 78 38 C 88 34, 98 28, 102 24" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M 28 22 C 37 20, 48 24, 54 21" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
           <path d="M 75 36 C 85 28, 92 32, 102 26 C 110 22, 118 28, 126 24 C 134 20, 142 26, 150 22 C 158 18, 166 22, 172 18" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>

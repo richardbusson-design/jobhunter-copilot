@@ -20,7 +20,7 @@
       width: 794px;
       height: 1123px;
       margin: 0 auto;
-      padding: 34px 44px 30px 44px;
+      padding: 34px 44px 28px 44px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -61,7 +61,7 @@
       margin-bottom: 4px;
     }
     .cv-body-text {
-      font-size: 9.4pt;
+      font-size: 9.3pt;
       line-height: 1.34;
       color: #000000;
       text-align: justify;
@@ -73,8 +73,8 @@
       margin-bottom: 3px;
       text-align: justify;
       text-justify: inter-word;
-      font-size: 9.3pt;
-      line-height: 1.33;
+      font-size: 9.2pt;
+      line-height: 1.32;
     }
     .cv-bullet::before {
       content: "•";
@@ -90,7 +90,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      font-size: 9.5pt;
+      font-size: 9.4pt;
     }
     .exp-job {
       font-weight: bold;
@@ -120,7 +120,7 @@
   <!-- 1. En-tête -->
   <div class="cv-header">
     <div class="cv-name">Richard BUSSON</div>
-    <div class="cv-title">{{ target_title }}</div>
+    <div class="cv-title">{{TARGET_TITLE}}</div>
     <div class="cv-contacts">
       98, allée Paul Cézanne, 60100 Creil &nbsp;|&nbsp; <strong>09 39 20 08 70</strong> &nbsp;|&nbsp; richard.busson@kairos-paye.fr &nbsp;|&nbsp; Mobilité nationale<br>
       LinkedIn : linkedin.com/in/richard-busson &nbsp;|&nbsp; kairos-paye.fr &nbsp;|&nbsp; Permis B (valide) &nbsp;|&nbsp; Disponibilité immédiate
@@ -129,39 +129,39 @@
 
   <!-- 2. Synthèse Cadre -->
   <div>
-    <div class="cv-section-title">{{ target_title_upper }}</div>
+    <div class="cv-section-title">PROFIL & SYNTHÈSE PROFESSIONNELLE</div>
     <p class="cv-body-text">
-      {{ summary }}
+      {{SUMMARY}}
     </p>
   </div>
 
   <!-- 3. Compétences Clés -->
   <div>
-    <div class="cv-section-title">COMPÉTENCES CLÉS</div>
+    <div class="cv-section-title">COMPÉTENCES CLÉS CIBLÉES</div>
     <div>
-      {{ key_skills_html }}
+      {{KEY_SKILLS_HTML}}
     </div>
   </div>
 
   <!-- 4. Points forts pour ce poste -->
   <div>
-    <div class="cv-section-title">POINTS FORTS POUR CE POSTE</div>
+    <div class="cv-section-title">POINTS FORTS & ATOUTS SENIOR</div>
     <div>
-      {{ points_forts_html }}
+      {{POINTS_FORTS_HTML}}
     </div>
   </div>
 
   <!-- 5. Expériences professionnelles -->
   <div>
-    <div class="cv-section-title">EXPÉRIENCES PROFESSIONNELLES</div>
+    <div class="cv-section-title">EXPÉRIENCES PROFESSIONNELLES SIGNIFICATIVES</div>
     <div>
-      {{ experiences_html }}
+      {{EXPERIENCES_HTML}}
     </div>
   </div>
 
   <!-- 6. Formations -->
   <div>
-    <div class="cv-section-title">FORMATIONS</div>
+    <div class="cv-section-title">FORMATIONS SUPÉRIEURES</div>
     <div class="formations-grid">
       <div class="cv-bullet"><strong>Master RSE :</strong> IAE de Paris (en cours)</div>
       <div class="cv-bullet"><strong>Maîtrise Sc. de Gestion :</strong> Univ. Paris XIII</div>
@@ -170,11 +170,11 @@
     </div>
   </div>
 
-  <!-- 7. Outils & Langues -->
+  <!-- 7. Outils & Systèmes -->
   <div>
-    <div class="cv-section-title">OUTILS & LANGUES</div>
+    <div class="cv-section-title">LOGICIELS, OUTILS & ENVIRONNEMENTS</div>
     <div class="cv-bullet">
-      <strong>Outils et mobilité :</strong> Logiciel Silae, DSN et déclarations sociales dématérialisées, Excel, outil Métis. Mobilité nationale, disponibilité immédiate. Français (langue maternelle), anglais (débutant).
+      <strong>Outils et systèmes :</strong> Logiciel Silae, DSN et déclarations sociales dématérialisées, Excel avancé, outil Métis (Afpa). Mobilité géographique complète (Façades Atlantique / Méditerranée / Creil & Île-de-France), éligible aux aides senior à l'embauche.
     </div>
   </div>
 
