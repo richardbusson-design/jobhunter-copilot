@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 import json
 import re
 import urllib.parse
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Tuple
 from collections import defaultdict
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 def normalize_text(text: str) -> str:
     """Normalise un texte pour comparaison stricte anti-doublon."""
@@ -21,9 +25,7 @@ def safe_url_path(path_str: str) -> str:
     """Encode proprement les chemins de fichiers pour les liens HTML/navigateurs."""
     if not path_str:
         return ""
-    # Remplacer les antislashs par des slashs
     clean = path_str.replace("\\", "/")
-    # Encoder chaque segment du chemin
     parts = clean.split("/")
     encoded_parts = [urllib.parse.quote(p) for p in parts]
     return "/".join(encoded_parts)
@@ -71,7 +73,7 @@ class DashboardManager:
         return []
 
     def get_existing_fingerprints(self) -> Dict[str, Any]:
-        """Extrait les empreintes uniques (ID, URL, Société+Titre) pour blocage strict des doublons."""
+        """Extrait les empreintes uniques pour blocage strict des doublons."""
         apps = self.load_tracker()
         ids = set()
         urls = set()
@@ -83,94 +85,65 @@ class DashboardManager:
             if a.get("url"):
                 urls.add(str(a.get("url")).strip())
             
-            comp_norm = normalize_text(a.get("company", ""))
-            tit_norm = normalize_text(a.get("title", ""))
-            if comp_norm and tit_norm:
-                company_titles.add(f"{comp_norm}___{tit_norm}")
+            c_norm = normalize_text(a.get("company", ""))
+            t_norm = normalize_text(a.get("title", ""))
+            if c_norm and t_norm:
+                company_titles.add(f"{c_norm}|{t_norm}")
                 
         return {
             "ids": ids,
             "urls": urls,
             "company_titles": company_titles,
-            "total_count": len(apps)
+            "count": len(apps)
         }
 
-    def is_duplicate(self, job: Dict[str, Any], fingerprints: Dict[str, Any] = None) -> Tuple[bool, str]:
-        """Vérifie si une offre d'emploi a déjà été traitée ou candidate."""
-        if fingerprints is None:
-            fingerprints = self.get_existing_fingerprints()
-            
-        jid = str(job.get("id", "")).strip()
-        if jid and jid in fingerprints["ids"]:
-            return True, f"ID déjà candidaté ({jid})"
-            
-        jurl = str(job.get("url", "")).strip()
-        if jurl and jurl in fingerprints["urls"]:
-            return True, f"URL déjà traitée ({jurl})"
-            
-        comp_norm = normalize_text(job.get("company", ""))
-        tit_norm = normalize_text(job.get("title", ""))
-        fp = f"{comp_norm}___{tit_norm}"
-        if fp in fingerprints["company_titles"]:
-            return True, f"Société et Intitulé identiques ({job.get('company')} - {job.get('title')})"
-            
-        # Comparaison floue : société et métier
-        for existing_fp in fingerprints.get("company_titles", []):
-            if "___" in existing_fp:
-                e_comp, e_tit = existing_fp.split("___", 1)
-                comp_match = (e_comp in comp_norm) or (comp_norm in e_comp) or (e_comp[:10] == comp_norm[:10] and len(e_comp) >= 10)
-                tit_match = (e_tit in tit_norm) or (tit_norm in e_tit) or ("formateur" in e_tit and "formateur" in tit_norm and "paie" in e_tit and "paie" in tit_norm)
-                if comp_match and tit_match:
-                    return True, f"Société et Titre très similaires ({existing_fp})"
-            
-        return False, ""
-
-    def save_tracker(self, apps: List[Dict[str, Any]]):
-        try:
-            with open(self.tracker_file, "w", encoding="utf-8") as f:
-                json.dump({"applications": apps, "last_updated": datetime.now().isoformat()}, f, indent=2, ensure_ascii=False)
-        except Exception as e:
-            print(f"[!] Erreur sauvegarde tracker : {e}")
-
-    def add_application(self, app_entry: Dict[str, Any]):
+    def add_application(self, application_data: Dict[str, Any]):
+        """Ajoute une nouvelle candidature dans le tracker JSON après vérification anti-doublon."""
         apps = self.load_tracker()
+        fingerprints = self.get_existing_fingerprints()
         
-        exists_idx = -1
-        for i, a in enumerate(apps):
-            if (a.get("id") and a.get("id") == app_entry.get("id")) or \
-               (normalize_text(a.get("company", "")) == normalize_text(app_entry.get("company", "")) and \
-                normalize_text(a.get("title", "")) == normalize_text(app_entry.get("title", ""))):
-                exists_idx = i
-                break
-                
-        if exists_idx >= 0:
-            apps[exists_idx].update(app_entry)
-        else:
-            app_entry["date"] = app_entry.get("date", datetime.now().strftime("%Y-%m-%d"))
-            relance_date = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d")
-            app_entry["relance_date"] = app_entry.get("relance_date", relance_date)
-            app_entry["status"] = app_entry.get("status", "Dossier PDF Prêt")
-            apps.insert(0, app_entry)
+        app_id = str(application_data.get("id", "")).strip()
+        app_url = str(application_data.get("url", "")).strip()
+        c_norm = normalize_text(application_data.get("company", ""))
+        t_norm = normalize_text(application_data.get("title", ""))
+        ct_pair = f"{c_norm}|{t_norm}"
+        
+        if app_id and app_id in fingerprints["ids"]:
+            print(f"[!] BLOCAGE DOUBLON : ID {app_id} déjà existant dans le tableau.")
+            return
+        if app_url and app_url in fingerprints["urls"]:
+            print(f"[!] BLOCAGE DOUBLON : URL {app_url} déjà existante dans le tableau.")
+            return
+        if ct_pair in fingerprints["company_titles"]:
+            print(f"[!] BLOCAGE DOUBLON : Couple '{application_data.get('company')}' / '{application_data.get('title')}' déjà existant.")
+            return
             
-        self.save_tracker(apps)
-        self.generate_markdown_dashboard(apps)
-        self.generate_html_dashboard(apps)
+        if "date" not in application_data:
+            application_data["date"] = datetime.now().strftime("%Y-%m-%d")
+        if "relance_date" not in application_data:
+            application_data["relance_date"] = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d")
+            
+        apps.append(application_data)
+        
+        with open(self.tracker_file, "w", encoding="utf-8") as f:
+            json.dump(apps, f, ensure_ascii=False, indent=2)
+            
+        self.generate_markdown_dashboard()
+        self.generate_html_dashboard()
 
-    def generate_html_dashboard(self, apps: List[Dict[str, Any]] = None):
-        """Génère un tableau de bord HTML complet avec visionneuse intégrée plein écran pour CV & Lettre."""
-        self.ensure_local_junction()
-        if apps is None:
-            apps = self.load_tracker()
-            
-        now_str = datetime.now().strftime("%d/%m/%Y à %H:%M")
-        
+    def generate_html_dashboard(self):
+        """Génère un tableau de bord HTML complet avec visionneuse multi-mode et statut recruteur."""
+        apps = self.load_tracker()
         apps_by_month = defaultdict(list)
+        
         for a in apps:
-            d_str = a.get("date", datetime.now().strftime("%Y-%m-%d"))
+            date_str = a.get("date", "2026-08-01")
             try:
-                dt = datetime.strptime(d_str[:10], "%Y-%m-%d")
-                month_key = dt.strftime("%Y-%m")
-                month_label = f"{FRENCH_MONTHS.get(dt.strftime('%m'), dt.strftime('%B'))} {dt.year}"
+                parts = date_str.split("-")
+                year, month = parts[0], parts[1]
+                month_name = FRENCH_MONTHS.get(month, month)
+                month_key = f"{year}-{month}"
+                month_label = f"{month_name} {year}"
             except Exception:
                 month_key = "2026-08"
                 month_label = "Août 2026"
@@ -192,18 +165,25 @@ class DashboardManager:
                 salary = a.get("salary", ">= 30 000 €")
                 score = a.get("score", 85)
                 rel = a.get("relance_date", (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d"))
-                source = a.get("source", "France Travail / Apec / Indeed / LinkedIn")
+                source = a.get("source", "France Travail / Apec")
                 url = a.get("url", "")
                 desc = a.get("description", "Détail de l'offre...")
                 folder_rel = a.get("folder_rel", "").replace("\\", "/")
                 
+                # Statut d'expédition au recruteur
+                rec_delivery = a.get("recruiter_delivery", {})
+                if rec_delivery.get("sent"):
+                    rec_mail = rec_delivery.get("recruiter_email", "")
+                    delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✉️ Transmis Recruteur ({rec_mail})</span></div>'
+                elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
+                    delivery_badge = '<div style="margin-top:4px;"><span style="background: #854d0e; color: #fde047; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🌐 Postulation Web requise</span></div>'
+                else:
+                    delivery_badge = '<div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>'
+                
                 link_ref = f'<a href="{url}" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 {ref_id} ({source})</a>' if url else f'<span style="color: #94a3b8;">Réf. {ref_id}</span>'
                 
-                # Fichiers encodés pour éviter les bugs d'accents ou d'apostrophes
                 if folder_rel:
-                    raw_folder = folder_rel
                     safe_folder = safe_url_path(folder_rel)
-                    
                     pdf_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.pdf"
                     pdf_cv = f"{safe_folder}/CV_Richard_BUSSON.pdf"
                     png_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.png"
@@ -211,7 +191,6 @@ class DashboardManager:
                     html_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.html"
                     html_cv = f"{safe_folder}/CV_Richard_BUSSON.html"
                     
-                    # Échappement pour passage en paramètre JavaScript
                     js_comp = comp.replace("'", "\\'").replace('"', '&quot;')
                     js_tit = tit.replace("'", "\\'").replace('"', '&quot;')
                     
@@ -236,6 +215,7 @@ class DashboardManager:
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">{tit}</div>
                     <div style="margin-top: 4px; font-size: 12px;">{link_ref}</div>
+                    {delivery_badge}
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">{desc}</div>
@@ -251,394 +231,312 @@ class DashboardManager:
                 
             sections_html += f"""
             <div class="month-card">
-              <div class="month-header">
-                <h2>📅 {month_label}</h2>
-                <span class="month-count">{len(month_apps)} candidature(s) qualifiée(s)</span>
+              <div class="month-header" onclick="toggleMonth('{month_key}')">
+                <div class="month-title">
+                  <span class="badge-count">{len(month_apps)}</span>
+                  <span>🗓️ {month_label}</span>
+                </div>
+                <span id="icon-{month_key}" class="toggle-icon">▼</span>
               </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th style="width: 95px;">Date</th>
-                    <th style="width: 220px;">Entreprise / Organisme</th>
-                    <th>Intitulé & Annonce Complète</th>
-                    <th style="width: 140px;">Lieu</th>
-                    <th style="width: 140px;">Salaire Brut</th>
-                    <th style="width: 70px;">Match</th>
-                    <th style="width: 110px;">Relance (J+7)</th>
-                    <th style="width: 170px;">Dossier & Aperçu</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rows_html}
-                </tbody>
-              </table>
+              <div id="content-{month_key}" class="month-content">
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Entreprise</th>
+                        <th>Poste & Annonce Source</th>
+                        <th>Localisation</th>
+                        <th>Rémunération</th>
+                        <th>Match</th>
+                        <th>Relance</th>
+                        <th>Dossier Officiel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows_html}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
             """
-            
-        html_doc = f"""<!DOCTYPE html>
+
+        full_html = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tableau de Bord des Candidatures - Richard BUSSON</title>
+  <title>Tableau de Bord - Candidatures Richard BUSSON</title>
   <style>
-    * {{ box-sizing: border-box; }}
+    :root {{
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #34d399;
+      --border-color: #334155;
+    }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #090d16;
-      color: #f8fafc;
-      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
       padding: 24px;
+      line-height: 1.5;
     }}
-    .container {{
-      max-width: 1750px;
-      margin: 0 auto;
-    }}
-    .header-bar {{
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 1px solid #334155;
+    .container {{ max-width: 1500px; margin: 0 auto; }}
+    .header {{
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 24px 32px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }}
-    .header-bar h1 {{
-      margin: 0;
-      font-size: 24px;
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .header h1 {{ font-size: 26px; color: #ffffff; margin-bottom: 6px; }}
+    .header p {{ color: var(--text-muted); font-size: 14px; }}
+    .stats-bar {{ display: flex; gap: 16px; }}
+    .stat-badge {{
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-align: center;
     }}
-    .candidate-info {{
-      color: #94a3b8;
-      font-size: 14px;
-      margin-top: 6px;
-    }}
-    .badge-pill {{
-      background: #0284c7;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }}
-    .badge-green {{
-      background: #059669;
-    }}
+    .stat-badge .val {{ font-size: 22px; font-weight: bold; color: var(--accent-blue); }}
+    .stat-badge .lbl {{ font-size: 11px; color: var(--text-muted); text-transform: uppercase; }}
     .month-card {{
-      background: #131c2e;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 28px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
     }}
     .month-header {{
+      background: #1e293b;
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 2px solid #1e293b;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+      user-select: none;
     }}
-    .month-header h2 {{
-      margin: 0;
-      font-size: 20px;
-      color: #f1f5f9;
-    }}
-    .month-count {{
-      background: #334155;
-      color: #f8fafc;
-      padding: 4px 12px;
-      border-radius: 12px;
+    .month-title {{ display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: bold; }}
+    .badge-count {{
+      background: var(--accent-blue);
+      color: #0f172a;
       font-size: 13px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }}
+    .table-responsive {{ overflow-x: auto; }}
+    .data-table {{ width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }}
+    .data-table th {{
+      background: #0f172a;
+      padding: 12px 16px;
+      color: var(--text-muted);
       font-weight: 600;
+      border-bottom: 2px solid var(--border-color);
     }}
-    table {{
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-    }}
-    th {{
-      background: #0b1120;
-      color: #94a3b8;
-      padding: 12px 14px;
-      text-align: left;
-      border-bottom: 2px solid #334155;
-      font-weight: 600;
-    }}
-    td {{
-      padding: 14px;
-      border-bottom: 1px solid #1e293b;
+    .data-table td {{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
       vertical-align: top;
     }}
-    tr:hover {{
-      background: #182235;
-    }}
     .score-badge {{
-      background: #0284c7;
-      color: white;
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--accent-green);
       padding: 4px 10px;
-      border-radius: 12px;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 12px;
+      display: inline-block;
     }}
     .btn-action {{
-      display: inline-block;
-      text-decoration: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      text-align: center;
       border: none;
       transition: all 0.2s;
     }}
-    .btn-view {{
-      background: #0284c7;
-      color: white;
-    }}
-    .btn-view:hover {{
-      background: #0369a1;
-    }}
-    .btn-pdf {{
-      background: #334155;
-      color: #e2e8f0;
-      flex: 1;
-    }}
-    .btn-pdf:hover {{
-      background: #475569;
-      color: white;
-    }}
-
-    /* VISIONNEUSE MODALE PLEIN ÉCRAN */
+    .btn-view {{ background: #2563eb; color: #ffffff; width: 100%; margin-bottom: 4px; }}
+    .btn-view:hover {{ background: #1d4ed8; }}
+    .btn-pdf {{ background: #334155; color: #f8fafc; flex: 1; }}
+    .btn-pdf:hover {{ background: #475569; }}
+    
+    /* MODAL DE VISIONNEUSE HD AUTO-SECOURS */
     .modal-overlay {{
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.85);
-      z-index: 10000;
+      z-index: 9999;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      backdrop-filter: blur(4px);
     }}
-    .modal-content {{
+    .modal-box {{
       background: #1e293b;
-      border: 1px solid #475569;
-      border-radius: 14px;
-      width: 100%;
-      max-width: 1100px;
-      height: 94vh;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      width: 95%;
+      max-width: 1200px;
+      height: 92vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
       overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }}
     .modal-header {{
-      padding: 16px 24px;
       background: #0f172a;
-      border-bottom: 1px solid #334155;
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }}
-    .modal-title {{
-      font-size: 18px;
-      font-weight: bold;
-      color: #38bdf8;
-    }}
-    .modal-tabs {{
-      display: flex;
-      gap: 8px;
-      padding: 10px 24px;
-      background: #1e293b;
-      border-bottom: 1px solid #334155;
-    }}
-    .tab-btn {{
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid #334155;
-      background: #0f172a;
-      color: #94a3b8;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }}
-    .tab-btn.active {{
-      background: #0284c7;
-      color: white;
-      border-color: #38bdf8;
+      border-bottom: 1px solid var(--border-color);
     }}
     .modal-body {{
+      display: flex;
       flex: 1;
-      padding: 16px;
-      background: #090d16;
+      overflow: hidden;
+      background: #0f172a;
+    }}
+    .viewer-tab-content {{
+      flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       overflow-y: auto;
+      padding: 20px;
     }}
-    .doc-preview-img {{
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 6px;
+    .doc-page {{
+      background: #ffffff;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      background: white;
-    }}
-    .doc-iframe {{
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 6px;
-      background: white;
-    }}
-    .modal-footer {{
-      padding: 12px 24px;
-      background: #0f172a;
-      border-top: 1px solid #334155;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }}
-    .btn-close {{
-      background: #dc2626;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }}
-    .btn-close:hover {{
-      background: #b91c1c;
+      border-radius: 4px;
+      max-width: 100%;
+      height: auto;
     }}
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header-bar">
+    <div class="header">
       <div>
-        <h1>📊 Tableau de Bord des Candidatures par Mois</h1>
-        <div class="candidate-info">
-          Candidat : <strong>Richard BUSSON</strong> (Creil, 60100) &bull; Téléphone : 09 39 20 08 70 &bull; richard.busson@kairos-paye.fr
-        </div>
+        <h1>📋 Tableau de Bord - Candidatures Richard BUSSON</h1>
+        <p>Expert Paie & Ressources Humaines • Suivi en temps réel des candidatures certifiées</p>
       </div>
-      <div style="display: flex; gap: 10px;">
-        <div class="badge-pill badge-green">🛡️ Anti-Doublon Actif ({len(apps)} dossiers)</div>
-        <div class="badge-pill">⏰ Synchro : {now_str}</div>
+      <div class="stats-bar">
+        <div class="stat-badge">
+          <div class="val">{len(apps)}</div>
+          <div class="lbl">Dossiers Qualifiés</div>
+        </div>
+        <div class="stat-badge">
+          <div class="val">{len(sorted_months)}</div>
+          <div class="lbl">Mois d'Activité</div>
+        </div>
       </div>
     </div>
 
     {sections_html}
-
-    <div style="text-align: center; color: #64748b; font-size: 13px; margin-top: 40px;">
-      JobHunter Copilot &bull; Système automatisé de candidatures sur-mesure conforme Qualiopi & Direction RH &bull; Richard Busson
-    </div>
   </div>
 
-  <!-- MODAL VISIONNEUSE INTERACTIVE -->
-  <div id="docViewerModal" class="modal-overlay" onclick="handleOverlayClick(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
+  <!-- MODAL VISIONNEUSE MULTI-MODE -->
+  <div id="viewerModal" class="modal-overlay" onclick="closeViewerModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <div id="modalTitle" class="modal-title">Dossier de Candidature</div>
-        <button class="btn-close" onclick="closeViewerModal()">✕ Fermer</button>
-      </div>
-      <div class="modal-tabs">
-        <button id="tabLetter" class="tab-btn active" onclick="switchTab('letter')">✉️ Lettre de Motivation A4</button>
-        <button id="tabCv" class="tab-btn" onclick="switchTab('cv')">📄 CV Professionnel A4</button>
-        <button id="tabPdf" class="tab-btn" onclick="switchTab('pdf')">📑 Visionneuse PDF Intégrée</button>
+        <div>
+          <h3 id="modalTitle" style="color: #f8fafc; font-size: 16px;">Dossier de Candidature</h3>
+          <div id="modalSub" style="color: #94a3b8; font-size: 13px;"></div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="background: #0f172a; border-radius: 8px; padding: 4px; display: flex; gap: 4px;">
+            <button id="tabBtnLettre" class="btn-action" style="background: #2563eb; color: #fff;" onclick="switchDocTab('lettre')">✉️ Lettre de Motivation</button>
+            <button id="tabBtnCv" class="btn-action" style="background: #334155; color: #fff;" onclick="switchDocTab('cv')">📄 Curriculum Vitae</button>
+          </div>
+          <a id="btnDownloadPdf" href="#" target="_blank" class="btn-action" style="background: #059669; color: #fff;">⬇️ Ouvrir PDF</a>
+          <button class="btn-action" style="background: #ef4444; color: #fff;" onclick="closeViewerModal()">✕ Fermer</button>
+        </div>
       </div>
       <div class="modal-body">
-        <img id="viewerImage" class="doc-preview-img" src="" alt="Aperçu Document">
-        <iframe id="viewerFrame" class="doc-iframe" src="" style="display: none;"></iframe>
-      </div>
-      <div class="modal-footer">
-        <span id="modalMeta" style="color: #94a3b8; font-size: 13px;">Format : A4 Haute Fidélité (1 page stricte, typographie lisible)</span>
-        <div style="display: flex; gap: 10px;">
-          <a id="btnDownloadCurrent" href="#" target="_blank" class="btn-action btn-view">📥 Ouvrir / Télécharger PDF</a>
+        <div class="viewer-tab-content">
+          <div id="viewContainerLettre" style="display: flex; justify-content: center; width: 100%;">
+            <img id="imgLettre" class="doc-page" src="" alt="Lettre de Motivation" onerror="handleImageError(this, 'lettre')" />
+            <iframe id="frameLettre" style="display: none; width: 794px; height: 1123px; border: none; background: #fff;" src=""></iframe>
+          </div>
+          <div id="viewContainerCv" style="display: none; justify-content: center; width: 100%;">
+            <img id="imgCv" class="doc-page" src="" alt="Curriculum Vitae" onerror="handleImageError(this, 'cv')" />
+            <iframe id="frameCv" style="display: none; width: 794px; height: 1123px; border: none; background: #fff;" src=""></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    let currentData = {{}};
-
-    function openViewerModal(comp, tit, pdfLetter, pdfCv, pngLetter, pngCv) {{
-      currentData = {{
-        comp: comp,
-        tit: tit,
-        pdfLetter: pdfLetter,
-        pdfCv: pdfCv,
-        pngLetter: pngLetter,
-        pngCv: pngCv
-      }};
-
-      document.getElementById('modalTitle').innerHTML = '📋 ' + comp + ' — ' + tit;
-      switchTab('letter');
-      document.getElementById('docViewerModal').style.display = 'flex';
-    }}
-
-    function closeViewerModal() {{
-      document.getElementById('docViewerModal').style.display = 'none';
-      document.getElementById('viewerFrame').src = '';
-      document.getElementById('viewerImage').src = '';
-    }}
-
-    function handleOverlayClick(e) {{
-      if (e.target.id === 'docViewerModal') {{
-        closeViewerModal();
+    let currentDossier = {{}};
+    function toggleMonth(k) {{
+      const c = document.getElementById('content-' + k);
+      const ic = document.getElementById('icon-' + k);
+      if (c.style.display === 'none') {{
+        c.style.display = 'block';
+        ic.innerText = '▼';
+      }} else {{
+        c.style.display = 'none';
+        ic.innerText = '▶';
       }}
     }}
+    function openViewerModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC) {{
+      currentDossier = {{ comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC }};
+      document.getElementById('modalTitle').innerText = comp;
+      document.getElementById('modalSub').innerText = tit;
+      switchDocTab('lettre');
+      document.getElementById('viewerModal').style.display = 'flex';
+    }}
+    function closeViewerModal() {{
+      document.getElementById('viewerModal').style.display = 'none';
+    }}
+    function switchDocTab(tab) {{
+      const bL = document.getElementById('tabBtnLettre');
+      const bC = document.getElementById('tabBtnCv');
+      const vL = document.getElementById('viewContainerLettre');
+      const vC = document.getElementById('viewContainerCv');
+      const dPdf = document.getElementById('btnDownloadPdf');
 
-    document.addEventListener('keydown', function(e) {{
-      if (e.key === 'Escape') closeViewerModal();
-    }});
-
-    function switchTab(mode) {{
-      document.getElementById('tabLetter').classList.remove('active');
-      document.getElementById('tabCv').classList.remove('active');
-      document.getElementById('tabPdf').classList.remove('active');
-
-      const img = document.getElementById('viewerImage');
-      const frame = document.getElementById('viewerFrame');
-      const btnDownload = document.getElementById('btnDownloadCurrent');
-
-      if (mode === 'letter') {{
-        document.getElementById('tabLetter').classList.add('active');
-        img.style.display = 'block';
-        frame.style.display = 'none';
-        img.src = currentData.pngLetter || currentData.pngCv;
-        btnDownload.href = currentData.pdfLetter;
-        btnDownload.innerText = '📥 Télécharger la Lettre PDF';
-      }} else if (mode === 'cv') {{
-        document.getElementById('tabCv').classList.add('active');
-        img.style.display = 'block';
-        frame.style.display = 'none';
-        img.src = currentData.pngCv;
-        btnDownload.href = currentData.pdfCv;
-        btnDownload.innerText = '📥 Télécharger le CV PDF';
-      }} else if (mode === 'pdf') {{
-        document.getElementById('tabPdf').classList.add('active');
-        img.style.display = 'none';
-        frame.style.display = 'block';
-        frame.src = currentData.pdfLetter;
-        btnDownload.href = currentData.pdfLetter;
-        btnDownload.innerText = '📥 Ouvrir PDF Externe';
+      if (tab === 'lettre') {{
+        bL.style.background = '#2563eb';
+        bC.style.background = '#334155';
+        vL.style.display = 'flex';
+        vC.style.display = 'none';
+        dPdf.href = currentDossier.pdfL;
+        document.getElementById('imgLettre').src = currentDossier.pngL;
+        document.getElementById('frameLettre').src = currentDossier.htmlL;
+      }} else {{
+        bL.style.background = '#334155';
+        bC.style.background = '#2563eb';
+        vL.style.display = 'none';
+        vC.style.display = 'flex';
+        dPdf.href = currentDossier.pdfC;
+        document.getElementById('imgCv').src = currentDossier.pngC;
+        document.getElementById('frameCv').src = currentDossier.htmlC;
+      }}
+    }}
+    function handleImageError(imgEl, type) {{
+      imgEl.style.display = 'none';
+      if (type === 'lettre') {{
+        document.getElementById('frameLettre').style.display = 'block';
+      }} else {{
+        document.getElementById('frameCv').style.display = 'block';
       }}
     }}
   </script>
@@ -646,111 +544,84 @@ class DashboardManager:
 </html>"""
 
         with open(self.html_file, "w", encoding="utf-8") as f:
-            f.write(html_doc)
+            f.write(full_html)
             
         try:
             with open(self.gemini_html_file, "w", encoding="utf-8") as f:
-                f.write(html_doc)
+                f.write(full_html)
         except Exception:
             pass
-
+            
         try:
+            os.makedirs(self.jobhunter_dir, exist_ok=True)
             with open(self.jobhunter_html_file, "w", encoding="utf-8") as f:
-                f.write(html_doc)
+                f.write(full_html)
+            self.ensure_local_junction()
         except Exception:
             pass
 
-    def generate_markdown_dashboard(self, apps: List[Dict[str, Any]] = None):
-        """Génère la page d'accueil GitHub (README.md) et dashboard.md avec le tableau précis en tête de page."""
-        if apps is None:
-            apps = self.load_tracker()
-            
-        now_str = datetime.now().strftime("%d/%m/%Y à %H:%M")
+    def generate_markdown_dashboard(self):
+        """Génère le dashboard Markdown et le README.md."""
+        apps = self.load_tracker()
+        apps_by_month = defaultdict(list)
         
-        content = f"""# 📊 TABLEAU DE BORD OFFICIEL DES CANDIDATURES — RICHARD BUSSON
-
-> **🛡️ SYSTÈME ANTI-DOUBLON ACTIF :** Avant toute nouvelle recherche, l'historique complet ci-dessous est analysé pour garantir que seules des **opportunités 100% fraîches et inédites** sont traitées.
-> **⏰ Horaires d'exécution Cloud autonome :** 08h00, 13h00, 18h00 UTC *(09h, 14h, 19h Paris)*
-> **Dernière actualisation :** {now_str} | **Total candidatures qualifiées :** {len(apps)}
-
----
-
-## 📋 SUIVI PRÉCIS DES CANDIDATURES EXPÉDIÉES & EN COURS (PAR ORDRE ANTÉCHRONOLOGIQUE)
-
-| Date | Nom de l'Entreprise / Organisme | Intitulé & Réf. Annonce | Lieu / Département | Salaire Brut Annuel | Match | Relance (J+7) | Fichiers PDF Officiels (A4) |
-| :---: | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-"""
-
         for a in apps:
-            d = a.get("date", datetime.now().strftime("%Y-%m-%d"))
-            comp = a.get("company", "Entreprise")
-            tit = a.get("title", "Poste")
-            ref_id = a.get("id", "REF-AUTO")
-            city = a.get("city", "France")
-            salary = a.get("salary", ">= 30 000 €")
-            score = a.get("score", 85)
-            rel = a.get("relance_date", (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d"))
-            source = a.get("source", "France Travail / Apec / Indeed / LinkedIn")
-            url = a.get("url", "")
-            desc = a.get("description", "Détail de l'offre...")
-            folder_rel = a.get("folder_rel", "").replace("\\", "/")
+            date_str = a.get("date", "2026-08-01")
+            try:
+                parts = date_str.split("-")
+                year, month = parts[0], parts[1]
+                month_name = FRENCH_MONTHS.get(month, month)
+                month_key = f"{year}-{month}"
+                month_label = f"{month_name} {year}"
+            except Exception:
+                month_key = "2026-08"
+                month_label = "Août 2026"
+            apps_by_month[(month_key, month_label)].append(a)
             
-            link_ref = f"[🔗 **Réf. {ref_id} ({source})**]({url})" if url else f"*(Réf : {ref_id})*"
+        sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
+        
+        md_content = f"# 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON\n\n"
+        md_content += f"> **Total candidatures certifiées :** {len(apps)} dossiers | **Mise à jour :** {datetime.now().strftime('%d/%m/%Y %H:%M')}\n\n"
+        
+        for month_key, month_label in sorted_months:
+            month_apps = apps_by_month[(month_key, month_label)]
+            md_content += f"## 🗓️ {month_label} ({len(month_apps)} candidatures)\n\n"
+            md_content += "| Date | Entreprise | Poste & Annonce Source | Ville | Salaire | Score | Statut Envoi | Dossier PDF |\n"
+            md_content += "| :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- |\n"
             
-            titre_et_texte = f"""**{tit}**<br>{link_ref}<br>
-<details>
-<summary>📝 <b>Lire le texte intégral de l'annonce</b></summary>
-<br>
-<blockquote>{desc}</blockquote>
-</details>"""
-
-            if folder_rel:
-                safe_folder = safe_url_path(folder_rel)
-                link_cv = f"[📄 CV A4 Officiel]({safe_folder}/CV_Richard_BUSSON.pdf)"
-                link_lm = f"[✉️ Lettre Motivation A4]({safe_folder}/Lettre_Motivation_Richard_BUSSON.pdf)"
-                pdf_links = f"{link_cv}<br>{link_lm}"
-            else:
-                pdf_links = "Dossier PDF Prêt"
+            for a in month_apps:
+                d = a.get("date", "")
+                comp = a.get("company", "Entreprise").replace("|", "-")
+                tit = a.get("title", "Poste").replace("|", "-")
+                city = a.get("city", "France")
+                salary = a.get("salary", ">= 30k€")
+                score = a.get("score", 85)
+                url = a.get("url", "")
+                folder_rel = a.get("folder_rel", "").replace("\\", "/")
                 
-            content += f"| **{d}** | **{comp}** | {titre_et_texte} | {city} | {salary} | **{score}%** | {rel} | {pdf_links} |\n"
-
-        content += """
----
-
-## 🎯 LES 4 CATÉGORIES DE POSTES CIBLES
-1. **Gestionnaire de Paie** *(Production, DSN, Déclarations sociales dématérialisées, Silae, Contrôle et audit)*
-2. **Responsable RH** *(Relations sociales, CSE, Droit du travail, Masse salariale, Plan de développement)*
-3. **Formateur Gestionnaire de Paie** *(Ingénierie pédagogique, Titre pro TP-01254, Qualiopi, Afpa Métis, ECF)*
-4. **Gestionnaire Ressources Humaines** *(Administration du personnel senior, Contrats, Procédures disciplinaires)*
-
----
-
-## 🛡️ RÈGLES QUALITYGUARD APPLIQUÉES À CHAQUE CANDIDATURE
-- **Contrôle Anti-Doublon :** Lecture préalable du tableau. Zéro régénération et zéro réexpédition pour une offre déjà enregistrée.
-- **Seuil Salarial :** Minimum `>= 30 000 € brut / an` (ou `>= 2 500 € brut / mois`).
-- **Périmètre Géographique :** Creil (60100) `<= 2h` de trajet ou **Façades Océan Atlantique / Mer Méditerranée** ou **Télétravail**.
-- **Format CV :** Strictement **1 page A4**, aucun vide en bas, typographie Arial nette.
-- **Format Lettre :** Strictement **1 page A4**, destinataire aligné sur la 6ᵉ ligne (`kairos-paye.fr`), **ZÉRO mot en gras dans le corps**, signature vectorielle manuscrite lisible.
-- **Aperçu Visuel :** Chaque dossier génère le PDF et une capture PNG haute résolution pour vérification directe sans code brut.
-"""
-
-        with open(self.readme_file, "w", encoding="utf-8") as f:
-            f.write(content)
-
-        with open(self.dashboard_file, "w", encoding="utf-8") as f:
-            f.write(content)
+                rec_delivery = a.get("recruiter_delivery", {})
+                if rec_delivery.get("sent"):
+                    send_status = f"🟢 Transmis ({rec_delivery.get('recruiter_email', '')})"
+                elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
+                    send_status = "🌐 Portail Web"
+                else:
+                    send_status = "📁 Prêt"
+                    
+                tit_link = f"[{tit}]({url})" if url else tit
+                pdf_letter_link = f"[Lettre]({safe_url_path(folder_rel)}/Lettre_Motivation_Richard_BUSSON.pdf)" if folder_rel else "-"
+                pdf_cv_link = f"[CV]({safe_url_path(folder_rel)}/CV_Richard_BUSSON.pdf)" if folder_rel else "-"
+                
+                md_content += f"| {d} | **{comp}** | {tit_link} | {city} | {salary} | {score}% | {send_status} | {pdf_letter_link} / {pdf_cv_link} |\n"
+                
+            md_content += "\n"
             
-        gemini_dash = r"C:\Users\richa\Gemini\dashboard.md"
-        try:
-            with open(gemini_dash, "w", encoding="utf-8") as f:
-                f.write(content)
-        except Exception:
-            pass
+        with open(self.dashboard_file, "w", encoding="utf-8") as f:
+            f.write(md_content)
+        with open(self.readme_file, "w", encoding="utf-8") as f:
+            f.write(md_content)
 
 if __name__ == "__main__":
     dm = DashboardManager()
-    dm.generate_markdown_dashboard()
     dm.generate_html_dashboard()
-    print("[OK] Dashboard HTML mis à jour avec la visionneuse intégrée et les liens PDF corrigés.")
-
-
+    dm.generate_markdown_dashboard()
+    print("[✓] Tableaux de bord HTML et Markdown régénérés avec succès.")

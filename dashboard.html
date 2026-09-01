@@ -2,297 +2,221 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tableau de Bord des Candidatures - Richard BUSSON</title>
+  <title>Tableau de Bord - Candidatures Richard BUSSON</title>
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #34d399;
+      --border-color: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #090d16;
-      color: #f8fafc;
-      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
       padding: 24px;
+      line-height: 1.5;
     }
-    .container {
-      max-width: 1750px;
-      margin: 0 auto;
-    }
-    .header-bar {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 1px solid #334155;
+    .container { max-width: 1500px; margin: 0 auto; }
+    .header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: 24px 32px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
-    .header-bar h1 {
-      margin: 0;
-      font-size: 24px;
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .header h1 { font-size: 26px; color: #ffffff; margin-bottom: 6px; }
+    .header p { color: var(--text-muted); font-size: 14px; }
+    .stats-bar { display: flex; gap: 16px; }
+    .stat-badge {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-align: center;
     }
-    .candidate-info {
-      color: #94a3b8;
-      font-size: 14px;
-      margin-top: 6px;
-    }
-    .badge-pill {
-      background: #0284c7;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .badge-green {
-      background: #059669;
-    }
+    .stat-badge .val { font-size: 22px; font-weight: bold; color: var(--accent-blue); }
+    .stat-badge .lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
     .month-card {
-      background: #131c2e;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 28px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
     }
     .month-header {
+      background: #1e293b;
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 2px solid #1e293b;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-color);
+      user-select: none;
     }
-    .month-header h2 {
-      margin: 0;
-      font-size: 20px;
-      color: #f1f5f9;
-    }
-    .month-count {
-      background: #334155;
-      color: #f8fafc;
-      padding: 4px 12px;
-      border-radius: 12px;
+    .month-title { display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: bold; }
+    .badge-count {
+      background: var(--accent-blue);
+      color: #0f172a;
       font-size: 13px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .table-responsive { overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    .data-table th {
+      background: #0f172a;
+      padding: 12px 16px;
+      color: var(--text-muted);
       font-weight: 600;
+      border-bottom: 2px solid var(--border-color);
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13.5px;
-    }
-    th {
-      background: #0b1120;
-      color: #94a3b8;
-      padding: 12px 14px;
-      text-align: left;
-      border-bottom: 2px solid #334155;
-      font-weight: 600;
-    }
-    td {
-      padding: 14px;
-      border-bottom: 1px solid #1e293b;
+    .data-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
       vertical-align: top;
     }
-    tr:hover {
-      background: #182235;
-    }
     .score-badge {
-      background: #0284c7;
-      color: white;
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--accent-green);
       padding: 4px 10px;
-      border-radius: 12px;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 12px;
+      display: inline-block;
     }
     .btn-action {
-      display: inline-block;
-      text-decoration: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      text-align: center;
       border: none;
       transition: all 0.2s;
     }
-    .btn-view {
-      background: #0284c7;
-      color: white;
-    }
-    .btn-view:hover {
-      background: #0369a1;
-    }
-    .btn-pdf {
-      background: #334155;
-      color: #e2e8f0;
-      flex: 1;
-    }
-    .btn-pdf:hover {
-      background: #475569;
-      color: white;
-    }
-
-    /* VISIONNEUSE MODALE PLEIN ÉCRAN */
+    .btn-view { background: #2563eb; color: #ffffff; width: 100%; margin-bottom: 4px; }
+    .btn-view:hover { background: #1d4ed8; }
+    .btn-pdf { background: #334155; color: #f8fafc; flex: 1; }
+    .btn-pdf:hover { background: #475569; }
+    
+    /* MODAL DE VISIONNEUSE HD AUTO-SECOURS */
     .modal-overlay {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.85);
-      z-index: 10000;
+      z-index: 9999;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      backdrop-filter: blur(4px);
     }
-    .modal-content {
+    .modal-box {
       background: #1e293b;
-      border: 1px solid #475569;
-      border-radius: 14px;
-      width: 100%;
-      max-width: 1100px;
-      height: 94vh;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      width: 95%;
+      max-width: 1200px;
+      height: 92vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
       overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
     .modal-header {
-      padding: 16px 24px;
       background: #0f172a;
-      border-bottom: 1px solid #334155;
+      padding: 16px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .modal-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #38bdf8;
-    }
-    .modal-tabs {
-      display: flex;
-      gap: 8px;
-      padding: 10px 24px;
-      background: #1e293b;
-      border-bottom: 1px solid #334155;
-    }
-    .tab-btn {
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid #334155;
-      background: #0f172a;
-      color: #94a3b8;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .tab-btn.active {
-      background: #0284c7;
-      color: white;
-      border-color: #38bdf8;
+      border-bottom: 1px solid var(--border-color);
     }
     .modal-body {
+      display: flex;
       flex: 1;
-      padding: 16px;
-      background: #090d16;
+      overflow: hidden;
+      background: #0f172a;
+    }
+    .viewer-tab-content {
+      flex: 1;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       overflow-y: auto;
+      padding: 20px;
     }
-    .doc-preview-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 6px;
+    .doc-page {
+      background: #ffffff;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      background: white;
-    }
-    .doc-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 6px;
-      background: white;
-    }
-    .modal-footer {
-      padding: 12px 24px;
-      background: #0f172a;
-      border-top: 1px solid #334155;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .btn-close {
-      background: #dc2626;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-close:hover {
-      background: #b91c1c;
+      border-radius: 4px;
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header-bar">
+    <div class="header">
       <div>
-        <h1>📊 Tableau de Bord des Candidatures par Mois</h1>
-        <div class="candidate-info">
-          Candidat : <strong>Richard BUSSON</strong> (Creil, 60100) &bull; Téléphone : 09 39 20 08 70 &bull; richard.busson@kairos-paye.fr
-        </div>
+        <h1>📋 Tableau de Bord - Candidatures Richard BUSSON</h1>
+        <p>Expert Paie & Ressources Humaines • Suivi en temps réel des candidatures certifiées</p>
       </div>
-      <div style="display: flex; gap: 10px;">
-        <div class="badge-pill badge-green">🛡️ Anti-Doublon Actif (57 dossiers)</div>
-        <div class="badge-pill">⏰ Synchro : 01/09/2026 à 16:51</div>
+      <div class="stats-bar">
+        <div class="stat-badge">
+          <div class="val">57</div>
+          <div class="lbl">Dossiers Qualifiés</div>
+        </div>
+        <div class="stat-badge">
+          <div class="val">2</div>
+          <div class="lbl">Mois d'Activité</div>
+        </div>
       </div>
     </div>
 
     
             <div class="month-card">
-              <div class="month-header">
-                <h2>📅 Septembre 2026</h2>
-                <span class="month-count">5 candidature(s) qualifiée(s)</span>
+              <div class="month-header" onclick="toggleMonth('2026-09')">
+                <div class="month-title">
+                  <span class="badge-count">5</span>
+                  <span>🗓️ Septembre 2026</span>
+                </div>
+                <span id="icon-2026-09" class="toggle-icon">▼</span>
               </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th style="width: 95px;">Date</th>
-                    <th style="width: 220px;">Entreprise / Organisme</th>
-                    <th>Intitulé & Annonce Complète</th>
-                    <th style="width: 140px;">Lieu</th>
-                    <th style="width: 140px;">Salaire Brut</th>
-                    <th style="width: 70px;">Match</th>
-                    <th style="width: 110px;">Relance (J+7)</th>
-                    <th style="width: 170px;">Dossier & Aperçu</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
+              <div id="content-2026-09" class="month-content">
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Entreprise</th>
+                        <th>Poste & Annonce Source</th>
+                        <th>Localisation</th>
+                        <th>Rémunération</th>
+                        <th>Match</th>
+                        <th>Relance</th>
+                        <th>Dossier Officiel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
                 <tr>
                   <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-09-01</td>
                   <td><strong style="color: #f1f5f9; font-size: 15px;">Hellowork</strong></td>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable Confirmé F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179325134W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179325134W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable Confirmé F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -321,6 +245,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327383W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179327383W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -349,6 +274,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable développement RH F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179223776W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179223776W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable développement RH F/H chez RATP Cap Ile-de-France. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -377,6 +303,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">COLLABORATEUR COMPTABLE CONFIRMÉ F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179329350W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179329350W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de COLLABORATEUR COMPTABLE CONFIRMÉ F/H chez Nextep HR. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -405,6 +332,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/178930674W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-178930674W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire paie F/H chez JOBBERRY RH & Paie. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -427,36 +355,44 @@
                     </td>
                 </tr>
                 
-                </tbody>
-              </table>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
             
             <div class="month-card">
-              <div class="month-header">
-                <h2>📅 Août 2026</h2>
-                <span class="month-count">52 candidature(s) qualifiée(s)</span>
+              <div class="month-header" onclick="toggleMonth('2026-08')">
+                <div class="month-title">
+                  <span class="badge-count">52</span>
+                  <span>🗓️ Août 2026</span>
+                </div>
+                <span id="icon-2026-08" class="toggle-icon">▼</span>
               </div>
-              <table>
-                <thead>
-                  <tr>
-                    <th style="width: 95px;">Date</th>
-                    <th style="width: 220px;">Entreprise / Organisme</th>
-                    <th>Intitulé & Annonce Complète</th>
-                    <th style="width: 140px;">Lieu</th>
-                    <th style="width: 140px;">Salaire Brut</th>
-                    <th style="width: 70px;">Match</th>
-                    <th style="width: 110px;">Relance (J+7)</th>
-                    <th style="width: 170px;">Dossier & Aperçu</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
+              <div id="content-2026-08" class="month-content">
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Entreprise</th>
+                        <th>Poste & Annonce Source</th>
+                        <th>Localisation</th>
+                        <th>Rémunération</th>
+                        <th>Match</th>
+                        <th>Relance</th>
+                        <th>Dossier Officiel</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
                 <tr>
                   <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">2026-08-31</td>
                   <td><strong style="color: #f1f5f9; font-size: 15px;">LINKING TALENTS </strong></td>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Chargé d'études RH et Paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294968W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179294968W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Chargé d'études RH et Paie F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -485,6 +421,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Payroll officer F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179268763W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179268763W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Payroll officer F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -513,6 +450,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable de Paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179286299W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179286299W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable de Paie F/H chez LINKING TALENTS . Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -541,6 +479,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable Paies - Univers Mode ou Retail obligatoire F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179335168W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179335168W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable Paies - Univers Mode ou Retail obligatoire F/H chez KEYSTONE RECRUTEMENT. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -569,6 +508,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable Paie & ADP F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179251266W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179251266W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable Paie & ADP F/H chez FOXGROUP. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -597,6 +537,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable RH Expatriés - Mobilité Internationale, Paie et F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179269380W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179269380W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable RH Expatriés - Mobilité Internationale, Paie et F/H chez Batiactu. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -625,6 +566,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable rh et paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179311438W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179311438W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable rh et paie F/H chez cadremploi. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -653,6 +595,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable RH & Paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271029W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179271029W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable RH & Paie F/H chez Hellowork. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.</div>
@@ -681,6 +624,7 @@
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire RH et Paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CVPJ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CVPJ (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Rattaché(e) à la Responsable RH, tes missions principales seront les suivantes :
@@ -714,6 +658,7 @@ o Assurer la...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie et ADP (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CWKS" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CWKS (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Nous recherchons pour la société cliente, groupe national localisé à la Défense (92), un(e) Gestionnaire Paie &amp; Administration du Personnel pour rejoindre l'équipe RH. 
@@ -743,6 +688,7 @@ Ce poste est proposé en CDI,...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DBYM" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DBYM (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous travaillez au sein d'un leader mondial industriel, avec près de 200 000 employés dans plus de 60 pays et une présence dans 20 pays.
@@ -772,6 +718,7 @@ Ce client travaille pour plusieurs secteurs tels que...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE CARRIERE-PAIE (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DJBV" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DJBV (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">NOTRE TERRITOIRE ET NOTRE PROJET
@@ -802,6 +749,7 @@ Bordée par la Sèvre nantaise, elle est reconnue comme une Ville naturelle et..
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie &amp; Social Paimpol (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DKHY" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DKHY (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie &amp; Social H/F - Paimpol
@@ -834,6 +782,7 @@ Lumian RH recrute pour son client, un cabinet...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie &amp; Social H/F - Plérin (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DKRR" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DKRR (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie &amp; Social H/F - Plérin
@@ -866,6 +815,7 @@ Vous recherchez un poste...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H -  CDD 7 month (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DMFS" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DMFS (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Pourquoi a-t-on besoin de vous ?
@@ -901,6 +851,7 @@ Collecter...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie H/F</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DNQB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DNQB (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">LHH Recruitment Solutions, cabinet de conseil en recrutement, travail temporaire spécialisé, gestion de transition et évaluation d'experts, cadres et dirigeants recherche pour son client, et basé à...</div>
@@ -929,6 +880,7 @@ Collecter...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE  H/F</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213DQBQ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213DQBQ (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">En tant que Gestionnaire paie et administration du personnel vous rejoignez une équipe RH composée de 7 personnes et évoluez dans un environnement industriel stimulant, sous la convention collective...</div>
@@ -957,6 +909,7 @@ Collecter...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE H/F (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BMFV" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BMFV (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Présentation de l'établissement :
@@ -987,6 +940,7 @@ Pour une  Association à but non lucratif qui emploie 1500 salariés et gère pl
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de Paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BQFK" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BQFK (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Description du poste
@@ -1017,6 +971,7 @@ Le Réseau France Imageries Territoires se développe depuis 6 ans en mettant so
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie expérimenté (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BQLB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BQLB (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Depuis 1963, EAL - Expertise et Audit Lafarge - accompagne les entreprises dans les missions de comptabilité, d'audit et de paie au quotidien, assure également des missions de conseils et...</div>
@@ -1045,6 +1000,7 @@ Le Réseau France Imageries Territoires se développe depuis 6 ans en mettant so
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BVTJ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BVTJ (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Rejoignez EUROAPI, acteur majeur de l'industrie chimique ! 
@@ -1075,6 +1031,7 @@ Au sein de l'équipe RH et...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et ADP (h/f) (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BXCD" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BXCD (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Gestionnaire Paie et Administration du Personnel H/F . Vous maîtrisez la gestion de la paie et souhaitez rejoindre un environnement structuré et dynamique ? Votre rigueur, votre sens du service et...</div>
@@ -1103,6 +1060,7 @@ Au sein de l'équipe RH et...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie  (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213BZDQ" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213BZDQ (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Découvrez le job que vous voulez !
@@ -1133,6 +1091,7 @@ Vous souhaitez rejoindre une entreprise engagée, qui met ses collaborateur(rice
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Comptable unique /gestionnaire de paie H/F</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CBHB" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CBHB (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Et si vous démarriez une nouvelle expérience avec Alliance Emploi ?
@@ -1162,6 +1121,7 @@ Avec 27 ans d'expertise, 1700 salariés et un réseau de 400 entreprises dans le
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie h/F (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CHFF" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CHFF (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">LHH Recruitment Solutions, cabinet de conseil en recrutement, intérim spécialisé, management de transition, et évaluation d'expert.e.s, cadres et dirigeant.e.s, recherche pour son client un(e)...</div>
@@ -1190,6 +1150,7 @@ Avec 27 ans d'expertise, 1700 salariés et un réseau de 400 entreprises dans le
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie H/F - Cabinet d'expertise comptable (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/213CMRC" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-213CMRC (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous aimez la paie, mais vous recherchez un poste qui ne consiste pas uniquement à produire des bulletins à la chaîne ?
@@ -1220,6 +1181,7 @@ OKIDOKI recrute, pour le compte de son client, un cabinet d'expertise...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur Gestionnaire de paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/3921092" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-3921092 (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</div>
@@ -1248,6 +1210,7 @@ OKIDOKI recrute, pour le compte de son client, un cabinet d'expertise...</div>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de Paie Formateur Logiciel H/F</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/5642671" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-5642671 (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">POSTE : Gestionnaire de Paie Formateur Logiciel H/F
@@ -1278,6 +1241,7 @@ Vous maîtrisez la paie et souhaitez faire évoluer votre expertise vers le logi
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur - Certifications &amp; Accompagnement Expertise Paie H/F</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/5769794" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-5769794 (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">POSTE : Formateur - Certifications &amp; Accompagnement Expertise Paie H/F
@@ -1308,6 +1272,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur/trice Gestionnaire de Paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/211NJHM" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-211NJHM (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Dans le cadre du développement des activités de formation, vous assurez la fonction de Formateur/trice Gestionnaire de Paie, passionné/e par la transmission des savoirs et l'accompagnement des...</div>
@@ -1336,6 +1301,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur gestion de la paie (H/F)</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://candidat.francetravail.fr/offres/recherche/detail/212PZSP" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 FT-212PZSP (France Travail (Flux Direct))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Vous rejoignez l'Afpa, premier organisme de formation des actifs en France. Vous intégrez un collectif de travail pour qui l'utilité sociale est une fierté, un moteur au quotidien pour accompagner...</div>
@@ -1364,6 +1330,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179329083W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179329083W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez AB6RECRUT. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1392,6 +1359,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">GESTIONNAIRE DE PAIE F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179283211W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179283211W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de GESTIONNAIRE DE PAIE F/H chez MOMENTI. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1420,6 +1388,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179267153W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179267153W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire paie F/H chez AKXIO CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1448,6 +1417,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235303W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179235303W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire paie F/H chez DEFI TECHNOLOGY. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1476,6 +1446,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179271806W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179271806W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez 111 CONSEILS. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1504,6 +1475,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire Paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179274617W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179274617W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire Paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1532,6 +1504,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179289239W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179289239W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1560,6 +1533,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable ressources humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273087W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179273087W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable ressources humaines F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1588,6 +1562,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable des Ressources Humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179273982W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179273982W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable des Ressources Humaines F/H chez APTIC. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1616,6 +1591,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">RESPONSABLE RESSOURCES HUMAINES F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179258654W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179258654W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de RESPONSABLE RESSOURCES HUMAINES F/H chez OPH DE PUTEAUX. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1644,6 +1620,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable Ressources Humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179326118W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179326118W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable Ressources Humaines F/H chez Umbrella. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1672,6 +1649,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable ressources humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179327035W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179327035W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable ressources humaines F/H chez CORIANCE. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1700,6 +1678,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et droit social F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179236493W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179236493W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie et droit social F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1728,6 +1707,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Gestionnaire de paie et droit social junior F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179241554W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179241554W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Gestionnaire de paie et droit social junior F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1756,6 +1736,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Auditeur Confirmé - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322854W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322854W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Auditeur Confirmé - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1784,6 +1765,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179279215W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179279215W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez cadremploi. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1812,6 +1794,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Comptable ECF - Cabinet Formateur - Radinghem F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179278826W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179278826W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Comptable ECF - Cabinet Formateur - Radinghem F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1840,6 +1823,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Responsable des ressources humaines F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179321388W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179321388W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Responsable des ressources humaines F/H chez TRANSPORTS BERTIN. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1868,6 +1852,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Collaborateur Comptable - Cabinet Formateur F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179322844W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179322844W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Collaborateur Comptable - Cabinet Formateur F/H chez LINKING TALENTS . Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1896,6 +1881,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Formateur Gestionnaire de paie F/H</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179294860W" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 APEC-179294860W (L'Apec (Direct WebService))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">Poste de Formateur Gestionnaire de paie F/H chez AFPA. Missions d'encadrement, ingénierie et pilotage métier.</div>
@@ -1924,6 +1910,7 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">Conseiller en Formation Professionnelle</div>
                     <div style="margin-top: 4px; font-size: 12px;"><a href="https://www.linkedin.com/feed/update/urn:li:activity:groupe-acn-conseiller-formation" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 LINKEDIN-ACN-2026 (LinkedIn (Anthony SOURDET))</a></div>
+                    <div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">[ON RECRUTE UN CONSEILLER·ÈRE FORMATION ÎLE-DE-FRANCE] Groupe ACN grandit, et notre équipe doit grandir avec lui. Nous recherchons un·e Conseiller·ère en Formation Professionnelle pour développer notre portefeuille clients sur les Yvelines, l'Essonne, la Seine-Saint-Denis et le Val-de-Marne. Un territoire dense (industrie, logistique, BTP, santé) : des entreprises qui veulent former leurs équipes pour qu'elles rentrent saines et sauves chez elles le soir. Un professionnel qui décroche son téléphone, va sur le terrain, comprend ce dont un responsable HSE a vraiment besoin avant de lui proposer quoi que ce soit. Trois ans d'expérience en négociation et fidélisation B2B. En échange : un territoire à piloter en autonomie, une voiture de service, un catalogue solide et une équipe à taille humaine. Les parcours atypiques et reconversions nous intéressent. Candidatures : contact@groupe-acn.fr</div>
@@ -1946,105 +1933,100 @@ Au-delà de la RSE, nous avons développé notre propre approche, RESET, qui eng
                     </td>
                 </tr>
                 
-                </tbody>
-              </table>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
             
-
-    <div style="text-align: center; color: #64748b; font-size: 13px; margin-top: 40px;">
-      JobHunter Copilot &bull; Système automatisé de candidatures sur-mesure conforme Qualiopi & Direction RH &bull; Richard Busson
-    </div>
   </div>
 
-  <!-- MODAL VISIONNEUSE INTERACTIVE -->
-  <div id="docViewerModal" class="modal-overlay" onclick="handleOverlayClick(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
+  <!-- MODAL VISIONNEUSE MULTI-MODE -->
+  <div id="viewerModal" class="modal-overlay" onclick="closeViewerModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <div id="modalTitle" class="modal-title">Dossier de Candidature</div>
-        <button class="btn-close" onclick="closeViewerModal()">✕ Fermer</button>
-      </div>
-      <div class="modal-tabs">
-        <button id="tabLetter" class="tab-btn active" onclick="switchTab('letter')">✉️ Lettre de Motivation A4</button>
-        <button id="tabCv" class="tab-btn" onclick="switchTab('cv')">📄 CV Professionnel A4</button>
-        <button id="tabPdf" class="tab-btn" onclick="switchTab('pdf')">📑 Visionneuse PDF Intégrée</button>
+        <div>
+          <h3 id="modalTitle" style="color: #f8fafc; font-size: 16px;">Dossier de Candidature</h3>
+          <div id="modalSub" style="color: #94a3b8; font-size: 13px;"></div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <div style="background: #0f172a; border-radius: 8px; padding: 4px; display: flex; gap: 4px;">
+            <button id="tabBtnLettre" class="btn-action" style="background: #2563eb; color: #fff;" onclick="switchDocTab('lettre')">✉️ Lettre de Motivation</button>
+            <button id="tabBtnCv" class="btn-action" style="background: #334155; color: #fff;" onclick="switchDocTab('cv')">📄 Curriculum Vitae</button>
+          </div>
+          <a id="btnDownloadPdf" href="#" target="_blank" class="btn-action" style="background: #059669; color: #fff;">⬇️ Ouvrir PDF</a>
+          <button class="btn-action" style="background: #ef4444; color: #fff;" onclick="closeViewerModal()">✕ Fermer</button>
+        </div>
       </div>
       <div class="modal-body">
-        <img id="viewerImage" class="doc-preview-img" src="" alt="Aperçu Document">
-        <iframe id="viewerFrame" class="doc-iframe" src="" style="display: none;"></iframe>
-      </div>
-      <div class="modal-footer">
-        <span id="modalMeta" style="color: #94a3b8; font-size: 13px;">Format : A4 Haute Fidélité (1 page stricte, typographie lisible)</span>
-        <div style="display: flex; gap: 10px;">
-          <a id="btnDownloadCurrent" href="#" target="_blank" class="btn-action btn-view">📥 Ouvrir / Télécharger PDF</a>
+        <div class="viewer-tab-content">
+          <div id="viewContainerLettre" style="display: flex; justify-content: center; width: 100%;">
+            <img id="imgLettre" class="doc-page" src="" alt="Lettre de Motivation" onerror="handleImageError(this, 'lettre')" />
+            <iframe id="frameLettre" style="display: none; width: 794px; height: 1123px; border: none; background: #fff;" src=""></iframe>
+          </div>
+          <div id="viewContainerCv" style="display: none; justify-content: center; width: 100%;">
+            <img id="imgCv" class="doc-page" src="" alt="Curriculum Vitae" onerror="handleImageError(this, 'cv')" />
+            <iframe id="frameCv" style="display: none; width: 794px; height: 1123px; border: none; background: #fff;" src=""></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    let currentData = {};
-
-    function openViewerModal(comp, tit, pdfLetter, pdfCv, pngLetter, pngCv) {
-      currentData = {
-        comp: comp,
-        tit: tit,
-        pdfLetter: pdfLetter,
-        pdfCv: pdfCv,
-        pngLetter: pngLetter,
-        pngCv: pngCv
-      };
-
-      document.getElementById('modalTitle').innerHTML = '📋 ' + comp + ' — ' + tit;
-      switchTab('letter');
-      document.getElementById('docViewerModal').style.display = 'flex';
-    }
-
-    function closeViewerModal() {
-      document.getElementById('docViewerModal').style.display = 'none';
-      document.getElementById('viewerFrame').src = '';
-      document.getElementById('viewerImage').src = '';
-    }
-
-    function handleOverlayClick(e) {
-      if (e.target.id === 'docViewerModal') {
-        closeViewerModal();
+    let currentDossier = {};
+    function toggleMonth(k) {
+      const c = document.getElementById('content-' + k);
+      const ic = document.getElementById('icon-' + k);
+      if (c.style.display === 'none') {
+        c.style.display = 'block';
+        ic.innerText = '▼';
+      } else {
+        c.style.display = 'none';
+        ic.innerText = '▶';
       }
     }
+    function openViewerModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC) {
+      currentDossier = { comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC };
+      document.getElementById('modalTitle').innerText = comp;
+      document.getElementById('modalSub').innerText = tit;
+      switchDocTab('lettre');
+      document.getElementById('viewerModal').style.display = 'flex';
+    }
+    function closeViewerModal() {
+      document.getElementById('viewerModal').style.display = 'none';
+    }
+    function switchDocTab(tab) {
+      const bL = document.getElementById('tabBtnLettre');
+      const bC = document.getElementById('tabBtnCv');
+      const vL = document.getElementById('viewContainerLettre');
+      const vC = document.getElementById('viewContainerCv');
+      const dPdf = document.getElementById('btnDownloadPdf');
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeViewerModal();
-    });
-
-    function switchTab(mode) {
-      document.getElementById('tabLetter').classList.remove('active');
-      document.getElementById('tabCv').classList.remove('active');
-      document.getElementById('tabPdf').classList.remove('active');
-
-      const img = document.getElementById('viewerImage');
-      const frame = document.getElementById('viewerFrame');
-      const btnDownload = document.getElementById('btnDownloadCurrent');
-
-      if (mode === 'letter') {
-        document.getElementById('tabLetter').classList.add('active');
-        img.style.display = 'block';
-        frame.style.display = 'none';
-        img.src = currentData.pngLetter || currentData.pngCv;
-        btnDownload.href = currentData.pdfLetter;
-        btnDownload.innerText = '📥 Télécharger la Lettre PDF';
-      } else if (mode === 'cv') {
-        document.getElementById('tabCv').classList.add('active');
-        img.style.display = 'block';
-        frame.style.display = 'none';
-        img.src = currentData.pngCv;
-        btnDownload.href = currentData.pdfCv;
-        btnDownload.innerText = '📥 Télécharger le CV PDF';
-      } else if (mode === 'pdf') {
-        document.getElementById('tabPdf').classList.add('active');
-        img.style.display = 'none';
-        frame.style.display = 'block';
-        frame.src = currentData.pdfLetter;
-        btnDownload.href = currentData.pdfLetter;
-        btnDownload.innerText = '📥 Ouvrir PDF Externe';
+      if (tab === 'lettre') {
+        bL.style.background = '#2563eb';
+        bC.style.background = '#334155';
+        vL.style.display = 'flex';
+        vC.style.display = 'none';
+        dPdf.href = currentDossier.pdfL;
+        document.getElementById('imgLettre').src = currentDossier.pngL;
+        document.getElementById('frameLettre').src = currentDossier.htmlL;
+      } else {
+        bL.style.background = '#334155';
+        bC.style.background = '#2563eb';
+        vL.style.display = 'none';
+        vC.style.display = 'flex';
+        dPdf.href = currentDossier.pdfC;
+        document.getElementById('imgCv').src = currentDossier.pngC;
+        document.getElementById('frameCv').src = currentDossier.htmlC;
+      }
+    }
+    function handleImageError(imgEl, type) {
+      imgEl.style.display = 'none';
+      if (type === 'lettre') {
+        document.getElementById('frameLettre').style.display = 'block';
+      } else {
+        document.getElementById('frameCv').style.display = 'block';
       }
     }
   </script>

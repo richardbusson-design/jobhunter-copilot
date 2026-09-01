@@ -14,6 +14,7 @@ from quality_guard import QualityGuard
 from pdf_compiler import compile_html_to_pdf, render_html_to_png
 from dashboard_manager import DashboardManager
 from notifier import ApplicationNotifier
+from recruiter_dispatcher import RecruiterDispatcher
 
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
@@ -28,6 +29,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
     guard = QualityGuard(config_dir=os.path.join(base_dir, "config"))
     dashboard = DashboardManager(base_dir=base_dir)
     notifier = ApplicationNotifier()
+    dispatcher = RecruiterDispatcher(base_dir=base_dir)
     
     # 1. Chargement du tracker anti-doublon
     tracker_path = os.path.join(base_dir, "tracker.json")
@@ -115,7 +117,10 @@ def run_pipeline(base_dir=".", auto_notify=True):
             
         print("    [✓] AUDIT 3 PASSAGES VALIDE : Dossier 100% sur-mesure, zéro tag résiduel, PDF 1 page A4 et PNG HD certifiés.")
         
-        # 7. Enregistrement dans le CRM / Dashboard
+        # 7. Expédition Directe au Recruteur (Module RecruiterDispatcher)
+        dispatch_report = dispatcher.dispatch_application(job, target_dir)
+        
+        # 8. Enregistrement dans le CRM / Dashboard
         app_entry = {
             "company": job.get("company"),
             "title": job.get("title"),
@@ -127,11 +132,12 @@ def run_pipeline(base_dir=".", auto_notify=True):
             "folder": os.path.abspath(target_dir),
             "folder_rel": os.path.relpath(target_dir, base_dir),
             "pdf_letter": os.path.abspath(pdf_letter_path),
-            "pdf_cv": os.path.abspath(pdf_cv_path)
+            "pdf_cv": os.path.abspath(pdf_cv_path),
+            "recruiter_delivery": dispatch_report
         }
         dashboard.add_application(app_entry)
         
-        # 8. Notification Email
+        # 9. Notification Email personnelle à Richard Busson
         if auto_notify:
             notifier.send_application_alert(job, pdf_letter_path, pdf_cv_path)
             
@@ -139,7 +145,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
         validated_count += 1
         
     print("\n" + "=" * 75)
-    print(f"  [SUCCÈS GLOBAL] {validated_count} nouveau(x) dossier(s) certifié(s) et intégré(s) au tableau de bord.")
+    print(f"  [SUCCÈS GLOBAL] {validated_count} nouveau(x) dossier(s) certifié(s), expédié(s) et intégré(s) au tableau de bord.")
     print("=" * 75)
 
 if __name__ == "__main__":

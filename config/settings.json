@@ -1,0 +1,9 @@
+{
+  "recruiter_auto_send": true,
+  "bcc_copy_to_user": true,
+  "user_email": "richard.busson@kairos-paye.fr",
+  "sender_name": "Richard BUSSON",
+  "min_salary": 30000,
+  "max_travel_hours": 2,
+  "auto_sync_git": true
+}

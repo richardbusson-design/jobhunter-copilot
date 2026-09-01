@@ -38,6 +38,16 @@
 
 ---
 
+## 🚀 MODULE D'EXPÉDITION DIRECTE AU RECRUTEUR (`RecruiterDispatcher`)
+- **Courriel d'accompagnement personnalisé :** Rédigé sur-mesure pour chaque annonce (spécifique Formateur Paie/RH, RRH/Paie ou Gestionnaire de paie), mentionnant l'envergure, le Titre Pro 758h / 580 collab, l'atout senior (59 ans + aides embauche senior) et la disponibilité immédiate.
+- **Pièces jointes obligatoires et certifiées :**
+  1. `Lettre_Motivation_Richard_BUSSON.pdf` (Strictement 1 page A4 pleine, calibrée selon le modèle CMA).
+  2. `CV_Richard_BUSSON.pdf` (Strictement 1 page A4 bleu marine `#1b365d`).
+- **Copie conforme automatique (BCC) :** Envoi systématique d'une copie cachée à `richard.busson@kairos-paye.fr` pour traçabilité intégrale.
+- **Journalisation au Tableau de bord :** Indication en temps réel du statut d'expédition (🟢 *Transmis au recruteur* ou 🌐 *Portail Web requis*).
+
+---
+
 ## 🎯 CŒUR D'EXPERTISE EXCLUSIF (PAIE & RESSOURCES HUMAINES)
 
 1. **Gestion de la Paie & Déclarations Sociales (DSN) :** Cycle complet de paie, déclarations dématérialisées, paramétrage avancé sur logiciel Silae, audit de conformité de paie, relations Urssaf et caisses de retraite, veille juridique et conventionnelle.
@@ -83,7 +93,7 @@
   * 6 blocs réels sans hallucination : En-tête/contact, Titre & Synthèse, Compétences clés, Points forts pour ce poste, 4 Expériences professionnelles réelles, Formations supérieures & Outils.
 - **Contrôle d'intégrité anti-tags (Hard Blocker) :** Regex `\{\{[^\}]+\}\}`. Zéro tag orphelin toléré.
 
-### 🔹 PASSAGE 3 : CONTRÔLE DES 6 FICHIERS & SYNCHRONISATION (POST-COMPILATION)
+### 🔹 PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, EXPÉDITION & SYNCHRONISATION (POST-COMPILATION)
 - **Génération Obligatoire des 6 Fichiers par Dossier :**
   1. Lettre_Motivation_Richard_BUSSON.html
   2. Lettre_Motivation_Richard_BUSSON.pdf (Strictement 1 page A4)
@@ -91,9 +101,9 @@
   4. CV_Richard_BUSSON.html
   5. CV_Richard_BUSSON.pdf (Strictement 1 page A4)
   6. CV_Richard_BUSSON.png (Capture HD 794x1123)
-- Vérification de taille non nulle (> 0 octet).
+- **Expédition directe au recruteur avec pièces jointes PDF validées et copie BCC à Richard Busson.**
 - Synchronisation instantanée du tableau de bord (`dashboard.html` / `dashboard.md`).
-- Envoi automatique de l'alerte email avec les pièces jointes PDF sur `richard.busson@kairos-paye.fr`.
+- Envoi de l'alerte email personnelle sur `richard.busson@kairos-paye.fr`.
 
 ---
 
