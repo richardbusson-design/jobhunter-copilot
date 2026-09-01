@@ -14,15 +14,15 @@
       padding: 0;
     }
     body {
-      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
-      font-size: 10.4pt;
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 11pt;
       line-height: 1.42;
       color: #000000;
       background: #ffffff;
       width: 794px;
       height: 1123px;
       margin: 0 auto;
-      padding: 38px 46px 34px 46px;
+      padding: 44px 50px 32px 50px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -32,27 +32,26 @@
     .header-table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .header-table td {
       vertical-align: top;
       padding: 0;
     }
     .sender-box {
-      width: 50%;
-      font-size: 9.6pt;
-      line-height: 1.36;
-      color: #111111;
+      width: 52%;
+      font-size: 10.2pt;
+      line-height: 1.34;
+      color: #000000;
     }
     .sender-name {
-      font-weight: bold;
       color: #000000;
-      font-size: 10.2pt;
+      font-size: 10.8pt;
     }
     .recipient-box {
-      width: 50%;
-      font-size: 9.6pt;
-      line-height: 1.36;
+      width: 48%;
+      font-size: 10.2pt;
+      line-height: 1.34;
       color: #000000;
       padding-left: 20px;
     }
@@ -60,12 +59,12 @@
       font-weight: bold;
     }
     .date-line {
-      margin-top: 8px;
-      font-size: 9.6pt;
+      margin-top: 12px;
+      font-size: 10.2pt;
     }
     .object-line {
-      font-size: 10.5pt;
-      margin: 10px 0 10px 0;
+      font-size: 10.8pt;
+      margin: 11px 0 10px 0;
       color: #000000;
     }
     .body-content {
@@ -75,51 +74,50 @@
       flex-grow: 1;
     }
     .body-content p {
-      margin-bottom: 8px;
+      margin-bottom: 9.5px;
       text-align: justify;
       text-justify: inter-word;
       color: #000000;
     }
     .pj-block {
-      margin-top: 4px;
-      font-size: 9.3pt;
-      color: #111111;
+      margin-top: 3px;
+      font-size: 10pt;
+      color: #000000;
     }
     .pj-block ul {
-      margin: 2px 0 0 16px;
+      margin: 2px 0 0 18px;
       list-style-type: disc;
     }
     .politesse {
-      margin: 8px 0 4px 0;
+      margin: 9px 0 6px 0;
       text-align: justify;
     }
     .signature-container {
       display: flex;
       justify-content: flex-end;
       margin-top: 4px;
+      padding-right: 10px;
     }
     .signature-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 190px;
+      width: 170px;
     }
     .signature-svg {
-      width: 140px;
-      height: 46px;
+      width: 120px;
+      height: 42px;
       margin-bottom: 2px;
     }
     .signature-name {
-      font-size: 10.2pt;
-      font-weight: bold;
+      font-size: 10.8pt;
       color: #000000;
-      letter-spacing: 0.01em;
     }
   </style>
 </head>
 <body>
 
-  <!-- En-tête avec alignement exact ligne 6 -->
+  <!-- En-tête avec alignement exact du modèle officiel -->
   <div>
     <table class="header-table">
       <tr>
@@ -129,37 +127,34 @@
           <div>60100 CREIL</div>
           <div>09 39 20 08 70</div>
           <div>richard.busson@kairos-paye.fr</div>
-        </td>
-        <td class="recipient-box"></td>
-      </tr>
-      <tr>
-        <td class="sender-box">
           <div>linkedin.com/in/richard-busson . kairos-paye.fr</div>
         </td>
         <td class="recipient-box">
-          <div class="recipient-name">À l’attention de Monsieur le Responsable du Recrutement, Direction des Ressources Humaines</div>
-          <div>RATP Cap Ile-de-France</div>
-          <div>Pôle Recrutement Cadres & Formation</div>
-          <div>93000 SAINT</div>
+          <div class="recipient-name">À l’attention de Monsieur le Responsable du Recrutement</div>
+          <div>Direction des Ressources Humaines</div>
+<div>RATP Cap Ile-de-France</div>
+<div>Pôle Recrutement Cadres & Formation</div>
+<div>93000 SAINT</div>
           <div class="date-line">À Creil, le 01 septembre 2026</div>
         </td>
       </tr>
     </table>
 
-    <!-- Objet (Gras autorisé) -->
+    <!-- Objet (Gras autorisé sur 'Objet :') -->
     <div class="object-line">
-      <strong>Objet : Candidature au poste de Responsable développement RH</strong>
+      <strong>Objet :</strong> Candidature : Responsable développement RH
     </div>
   </div>
 
-  <!-- Corps de la lettre (ZÉRO GRAS) -->
+  <!-- Corps de la lettre (ZÉRO GRAS, 5 paragraphes denses et équilibrés) -->
   <div class="body-content">
     <div>
       <p>Madame, Monsieur,</p>
-      <p>Votre recherche pour le poste de Responsable développement RH au sein de RATP Cap Ile-de-France retient toute mon attention. Expert de la gestion de la paie et de l'administration du personnel, je vous propose mon autonomie opérationnelle pour sécuriser l'ensemble de vos cycles de paie et vos déclarations sociales.</p>
-<p>De la collecte des éléments variables jusqu'au contrôle DSN et aux relations avec les organismes sociaux (Urssaf, caisses de retraite, prévoyance), je maîtrise chaque étape du processus de paie. Mon expertise couvre le paramétrage sur logiciel Silae, le traitement des entrées/sorties et l'application stricte des conventions collectives.</p>
-<p>Mon parcours allie une pratique confirmée de la paie en entreprise (direction RH de 580 collaborateurs) et une expertise d'ingénierie reconnue (conception d'un parcours de 758 heures pour le Titre professionnel Gestionnaire de paie). Cette rigueur technique garantit une conformité sociale irréprochable et un climat social apaisé.</p>
-<p>Disponible immédiatement et titulaire du permis B, je recherche une collaboration durable au sein de laquelle mettre à profit mon sérieux et mon expertise. Je me tiens à votre entière disposition pour un entretien.</p>
+      <p>Votre offre d'emploi pour le poste de Responsable développement RH au sein de RATP Cap Ile-de-France retient toute mon attention. Gestionnaire de paie confirmé et expert du droit social, je vous propose mon autonomie complète pour assurer la production irréprochable de vos bulletins de paie, sécuriser vos déclarations sociales et optimiser vos procédures administratives.</p>
+<p>De la collecte méthodique des variables jusqu'au virement des salaires et au contrôle minutieux des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je prends en charge l'intégralité du cycle de paie. Mon expertise technique couvre le paramétrage approfondi sur logiciel Silae, le traitement des cotisations spécifiques, la régularisation des plafonds et la relation suivie avec l'Urssaf, les caisses de retraite et les organismes de prévoyance.</p>
+<p>J'ai exercé ce métier avec une responsabilité concrète avant de l'enseigner : de 2003 à 2010, j'ai piloté les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles. J'ai également dispensé la pratique du bulletin et du droit social sur quatre centres Afpa (Vervins, Beauvais, Creil, Amiens) et auprès d'artisans employeurs dans le cadre des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise.</p>
+<p>Je dirige par ailleurs un organisme certifié Qualiopi où j'ai conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double maîtrise du chiffre et de la règle juridique, garantissant des réponses documentées aux collaborateurs et une sécurité sans faille face aux audits de paie.</p>
+<p>Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Titulaire du permis B, immédiatement disponible et mobile, je me tiens à votre entière disposition pour un entretien.</p>
       <div class="pj-block">
         <div>Vous trouverez ci-joint :</div>
         <ul>
@@ -169,14 +164,15 @@
       <p class="politesse">Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.</p>
     </div>
 
-    <!-- Signature manuscrite lisible en bas à droite -->
+    <!-- Signature manuscrite officielle 'RB' -->
     <div class="signature-container">
       <div class="signature-box">
-        <svg class="signature-svg" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 18 48 C 14 32, 22 14, 34 10 C 44 7, 54 15, 48 26 C 40 37, 25 35, 35 35 C 46 35, 58 32, 66 24 C 60 30, 64 42, 78 38 C 88 34, 98 28, 102 24" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M 28 22 C 37 20, 48 24, 54 21" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 75 36 C 85 28, 92 32, 102 26 C 110 22, 118 28, 126 24 C 134 20, 142 26, 150 22 C 158 18, 166 22, 172 18" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 82 40 C 104 38, 138 35, 168 32" stroke="#000000" stroke-width="2.0" stroke-linecap="round"/>
+        <svg class="signature-svg" viewBox="0 0 160 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Monogramme calligraphique officiel 'RB' -->
+          <path d="M 28 44 C 24 30, 30 14, 40 10 C 48 7, 56 13, 50 23 C 43 33, 32 31, 38 31 C 48 31, 60 28, 68 20 C 62 26, 66 37, 78 33 C 86 29, 94 24, 98 20" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 34 20 C 42 18, 52 22, 57 19" stroke="#000000" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M 75 32 C 84 24, 90 28, 100 22 C 107 18, 114 24, 122 20 C 129 16, 136 22, 143 18 C 150 14, 154 18, 158 15" stroke="#000000" stroke-width="1.9" stroke-linecap="round"/>
+          <path d="M 80 36 C 100 34, 128 31, 155 28" stroke="#000000" stroke-width="1.7" stroke-linecap="round"/>
         </svg>
         <div class="signature-name">Richard Busson</div>
       </div>

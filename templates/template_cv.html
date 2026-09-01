@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Curriculum Vitae - Richard Busson</title>
+  <title>CV - Richard Busson</title>
   <style>
     @page {
       size: A4 portrait;
@@ -14,8 +14,10 @@
       padding: 0;
     }
     body {
-      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
-      color: #000000;
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.30;
+      color: #111111;
       background: #ffffff;
       width: 794px;
       height: 1123px;
@@ -27,155 +29,142 @@
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    .cv-header {
-      border-bottom: 2px solid #000000;
-      padding-bottom: 6px;
+    .header-box {
+      margin-bottom: 8px;
     }
-    .cv-name {
+    .name-title {
       font-size: 20pt;
-      font-weight: 900;
-      color: #000000;
+      font-weight: bold;
+      color: #1b365d;
+      letter-spacing: -0.01em;
       line-height: 1.1;
-      letter-spacing: -0.02em;
+      margin-bottom: 3px;
     }
-    .cv-title {
-      font-size: 11.5pt;
-      font-weight: bold;
-      color: #111111;
-      margin-top: 2px;
+    .sub-title {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #1b365d;
+      margin-bottom: 5px;
     }
-    .cv-contacts {
-      font-size: 9.2pt;
-      line-height: 1.35;
+    .contact-line {
+      font-size: 8.8pt;
       color: #222222;
-      margin-top: 3px;
+      line-height: 1.35;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid #1b365d;
     }
-    .cv-section-title {
-      font-size: 10pt;
+    .section-title {
+      font-size: 10.2pt;
       font-weight: bold;
+      color: #1b365d;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #000000;
-      border-bottom: 1.2px solid #000000;
-      padding-bottom: 2px;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid #1b365d;
+      padding-bottom: 1px;
+      margin-top: 7px;
       margin-bottom: 4px;
     }
-    .cv-body-text {
-      font-size: 9.3pt;
-      line-height: 1.34;
-      color: #000000;
+    .summary-text {
+      font-size: 9.4pt;
+      line-height: 1.30;
       text-align: justify;
       text-justify: inter-word;
+      color: #111111;
+      margin-bottom: 2px;
     }
     .cv-bullet {
-      position: relative;
-      padding-left: 12px;
-      margin-bottom: 3px;
+      font-size: 9.3pt;
+      line-height: 1.28;
+      margin-bottom: 2.5px;
       text-align: justify;
       text-justify: inter-word;
-      font-size: 9.2pt;
-      line-height: 1.32;
+      padding-left: 12px;
+      position: relative;
     }
     .cv-bullet::before {
       content: "•";
       position: absolute;
-      left: 0;
+      left: 2px;
+      color: #111111;
       font-weight: bold;
+    }
+    .cv-bullet strong {
       color: #000000;
     }
     .exp-item {
       margin-bottom: 4px;
     }
     .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-size: 9.4pt;
+      font-size: 9.5pt;
+      line-height: 1.28;
+      margin-bottom: 1.5px;
     }
     .exp-job {
       font-weight: bold;
       color: #000000;
     }
-    .exp-date {
-      font-size: 8.8pt;
-      color: #333333;
-      font-style: italic;
-    }
     .exp-org {
-      font-size: 9pt;
-      color: #222222;
       font-style: italic;
-      margin-bottom: 1px;
+      color: #222222;
     }
     .formations-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 16px;
+      column-gap: 15px;
       row-gap: 2px;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. En-tête -->
-  <div class="cv-header">
-    <div class="cv-name">Richard BUSSON</div>
-    <div class="cv-title">{{TARGET_TITLE}}</div>
-    <div class="cv-contacts">
-      98, allée Paul Cézanne, 60100 Creil &nbsp;|&nbsp; <strong>09 39 20 08 70</strong> &nbsp;|&nbsp; richard.busson@kairos-paye.fr &nbsp;|&nbsp; Mobilité nationale<br>
-      LinkedIn : linkedin.com/in/richard-busson &nbsp;|&nbsp; kairos-paye.fr &nbsp;|&nbsp; Permis B (valide) &nbsp;|&nbsp; Disponibilité immédiate
+  <!-- En-tête officiel du modèle PDF -->
+  <div class="header-box">
+    <div class="name-title">Richard BUSSON</div>
+    <div class="sub-title">{{CV_SUBTITLE}}</div>
+    <div class="contact-line">
+      98, allée Paul Cézanne, 60100 Creil | 09 39 20 08 70 | richard.busson@kairos-paye.fr | Mobilité nationale | LinkedIn : linkedin.com/in/richard-busson | kairos-paye.fr | Permis B (valide)
     </div>
   </div>
 
-  <!-- 2. Synthèse Cadre -->
+  <!-- Profil & Synthèse professionnelle -->
   <div>
-    <div class="cv-section-title">PROFIL & SYNTHÈSE PROFESSIONNELLE</div>
-    <p class="cv-body-text">
-      {{SUMMARY}}
-    </p>
+    <div class="section-title">{{TARGET_TITLE}}</div>
+    <div class="summary-text">{{SUMMARY}}</div>
   </div>
 
-  <!-- 3. Compétences Clés -->
+  <!-- Compétences clés adaptées à l'offre -->
   <div>
-    <div class="cv-section-title">COMPÉTENCES CLÉS CIBLÉES</div>
-    <div>
-      {{KEY_SKILLS_HTML}}
-    </div>
+    <div class="section-title">COMPÉTENCES CLÉS</div>
+    {{KEY_SKILLS_HTML}}
   </div>
 
-  <!-- 4. Points forts pour ce poste -->
+  <!-- Points forts pour ce poste -->
   <div>
-    <div class="cv-section-title">POINTS FORTS & ATOUTS SENIOR</div>
-    <div>
-      {{POINTS_FORTS_HTML}}
-    </div>
+    <div class="section-title">POINTS FORTS POUR CE POSTE</div>
+    {{POINTS_FORTS_HTML}}
   </div>
 
-  <!-- 5. Expériences professionnelles -->
+  <!-- Expériences professionnelles réelles et non hallucinées -->
   <div>
-    <div class="cv-section-title">EXPÉRIENCES PROFESSIONNELLES SIGNIFICATIVES</div>
-    <div>
-      {{EXPERIENCES_HTML}}
-    </div>
+    <div class="section-title">EXPÉRIENCES PROFESSIONNELLES</div>
+    {{EXPERIENCES_HTML}}
   </div>
 
-  <!-- 6. Formations -->
+  <!-- Formations supérieures certifiées -->
   <div>
-    <div class="cv-section-title">FORMATIONS SUPÉRIEURES</div>
+    <div class="section-title">FORMATIONS</div>
     <div class="formations-grid">
       <div class="cv-bullet"><strong>Master RSE :</strong> IAE de Paris (en cours)</div>
-      <div class="cv-bullet"><strong>Maîtrise Sc. de Gestion :</strong> Univ. Paris XIII</div>
+      <div class="cv-bullet"><strong>Maîtrise Sciences de Gestion :</strong> Univ. Paris XIII</div>
       <div class="cv-bullet"><strong>Master 2 Droit public :</strong> Univ. de Picardie</div>
       <div class="cv-bullet"><strong>DUT GEA, option RH :</strong> Univ. Paris XIII</div>
     </div>
   </div>
 
-  <!-- 7. Outils & Systèmes -->
+  <!-- Outils, mobilité et langues -->
   <div>
-    <div class="cv-section-title">LOGICIELS, OUTILS & ENVIRONNEMENTS</div>
-    <div class="cv-bullet">
-      <strong>Outils et systèmes :</strong> Logiciel Silae, DSN et déclarations sociales dématérialisées, Excel avancé, outil Métis (Afpa). Mobilité géographique complète (Façades Atlantique / Méditerranée / Creil & Île-de-France), éligible aux aides senior à l'embauche.
-    </div>
+    <div class="section-title">OUTILS & LANGUES</div>
+    <div class="cv-bullet"><strong>Outils et mobilité :</strong> Connaissance approfondie du logiciel Silae, DSN et déclarations dématérialisées, Excel avancé. Mobilité nationale, disponibilité immédiate. Français (langue maternelle), anglais (notions).</div>
   </div>
 
 </body>

@@ -2,6 +2,10 @@
 import os
 import sys
 import json
+from concurrent.futures import ThreadPoolExecutor
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
 from application_generator import ApplicationGenerator
@@ -12,16 +16,12 @@ gen = ApplicationGenerator()
 dm = DashboardManager()
 apps = dm.load_tracker()
 
-print(f"[+] Recompilation et personnalisation intégrale de {len(apps)} candidatures...")
+print(f"[+] Recompilation parallèle et personnalisation intégrale de {len(apps)} candidatures...")
 
-success_count = 0
-for idx, a in enumerate(apps):
-    comp = a.get("company", "Organisme")
-    tit = a.get("title", "Poste RH & Paie")
+def process_app(a):
     folder_rel = a.get("folder_rel", "").replace("\\", "/")
-    
     if not folder_rel:
-        continue
+        return False
         
     folder_abs = os.path.abspath(folder_rel)
     os.makedirs(folder_abs, exist_ok=True)
@@ -50,12 +50,14 @@ for idx, a in enumerate(apps):
     compile_html_to_pdf(cv_html_path, cv_pdf_path)
     render_html_to_png(cv_html_path, cv_png_path)
     
-    success_count += 1
-    if (idx + 1) % 5 == 0 or idx == len(apps) - 1:
-        print(f"    -> {idx + 1}/{len(apps)} dossiers 100% régénérés et vérifiés.")
+    return True
+
+with ThreadPoolExecutor(max_workers=6) as executor:
+    results = list(executor.map(process_app, apps))
+
+print(f"[✓] {sum(1 for r in results if r)}/{len(apps)} dossiers régénérés et synchronisés avec succès.")
 
 # Régénération du tableau de bord
 dm.generate_markdown_dashboard()
 dm.generate_html_dashboard()
-
-print(f"\n[SUCCÈS] {success_count} dossiers entièrement reconstruits avec contenu réel, sur-mesure et certifié.")
+print("[✓] Tableau de bord régénéré avec succès.")

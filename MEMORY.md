@@ -1,82 +1,62 @@
-# MÉMOIRE PERMANENTE & SKILLS OFFICIELS : CANDIDATURES RICHARD BUSSON
+---
+name: redaction-cv
+description: Expert officiel en redaction de CV et Lettres de motivation sur-mesure pour Richard BUSSON (Creil 60100)
+---
 
-## 👤 PROFIL DU CANDIDAT
-- **Nom & Prénom :** Richard BUSSON
-- **Adresse :** 98, allée Paul Cézanne, 60100 Creil
-- **Téléphone :** 09 39 20 08 70
-- **Email :** richard.busson@kairos-paye.fr
-- **Réseaux & Web :** LinkedIn : linkedin.com/in/richard-busson . kairos-paye.fr
-- **Statut & Atouts :** 59 ans, profil senior/expert (+15 ans d'expérience), grande stabilité professionnelle, engagement durable, éligible aux aides à l'embauche pour demandeur d'emploi senior, permis B (valide), mobilité nationale (Façades Atlantique / Méditerranée), disponibilité immédiate.
-- **Cœur d'expertise :** Ressources Humaines, Gestion de la Paie, Droit social & Relations collectives, Ingénierie Pédagogique & Formation, Comptabilité / Métiers du chiffre.
-- **Expériences clés :**
-  - **Responsable RH & Paie** (Secours Populaire, 2003-2010) : Pilotage RH et paie de 580 collaborateurs (salariés et bénévoles), administration du personnel, plan de développement des compétences, dialogue social (CSE/DP/CE), gestion de crise.
-  - **Formateur & Dirigeant Qualiopi** (Kairos Formation, depuis 2014) : Conception de bout en bout d'un parcours de 758h préparant au Titre professionnel Gestionnaire de paie (TP-01254 millésime 04), animation des blocs RH/Paie de l'ADEA, du Brevet de Maîtrise, conformité RNQ / ICPF (QUA007374).
-  - **Formateur sous-traitant Afpa** (2016-2020) : Centres de Vervins, Beauvais, Creil et Amiens (groupes individualisés, entrées permanentes, outil Métis, ECF).
-  - **Responsable de site opérationnel** (ETV Nouvelle-Calédonie, 2010-2014) : Montage et exploitation d'un site industriel.
-- **Formations supérieures :** Master RSE (IAE Paris en cours), Master 2 Droit public (Univ. Picardie), Maîtrise Sciences de Gestion (Univ. Paris XIII), DUT GEA RH (Univ. Paris XIII).
-- **Outils & Systèmes :** Logiciel Silae, DSN, Excel, Outil Métis (Afpa).
+# SKILL OFFICIELLE : REDACTION SUR-MESURE CV & LETTRE DE MOTIVATION (RICHARD BUSSON)
+
+## PRINCIPE DIRECTEUR FONDAMENTAL
+Chaque candidature generee doit etre **profondement et individuellement adaptee a l offre d emploi ciblee**. Le robot a l obligation prealable de **lire et analyser l integralite de l offre (titre, entreprise, localisation, missions, competences, logiciels, conventions)** afin d injecter des arguments reels, concrets et percutants. **La forme doit confirmer le fond**, sans aucune hallucination, dans le respect scrupuleux des deux modeles officiels valides par Richard BUSSON.
 
 ---
 
-## 🎯 PÉRIMÈTRE ÉLARGI DES POSTES CIBLES (NOMENCLATURE R.O.M.E)
-
-1. **Responsable RH et Paie / Management des Ressources Humaines (Code ROME M1503)**
-   - *Intitulés :* Responsable RH et Paie, Responsable Paie et ADP, Responsable des Ressources Humaines (RRH), DRH Adjoint, Responsable Relations Sociales & Gestion Sociale.
-   - *Missions :* Pilotage de la paie, DSN, administration du personnel, stratégie RH, dialogue social (CSE), pilotage de la masse salariale.
-2. **Formateur Paie et RH / Ingénierie de Formation (Codes ROME K2111 & K2102)**
-   - *Intitulés :* Formateur Paie et RH, Formateur Gestionnaire de Paie (Titre Pro TP-01254), Consultant Formateur Paie & Droit Social, Coordinateur / Responsable Pédagogique filière Paie / RH.
-   - *Missions :* Ingénierie pédagogique, animation certifiante, outil Métis, ECF, conformité Qualiopi, logiciel Silae.
-3. **Gestionnaire de Paie et Droit Social (Code ROME M1203)**
-   - *Intitulés :* Gestionnaire de Paie et RH, Spécialiste Paie & DSN, Responsable de pôle paie, Consultant Paie.
-   - *Missions :* Production autonome du bulletin de paie, contrôle et audit de paie, paramétrage Silae, déclarations dématérialisées.
-4. **Gestionnaire / Chargé Ressources Humaines (Code ROME M1501)**
-   - *Intitulés :* Chargé(e) des Ressources Humaines et Paie, Gestionnaire ADP / RH confirmé/senior.
-   - *Missions :* Administration du personnel, gestion des contrats, procédures disciplinaires, temps de travail, veille juridique.
-
----
-
-## 🛑 CONTRÔLE PRÉALABLE ANTI-DOUBLON (BLOCAGE ABSOLU)
-Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le robot a l'obligation de :
-1. **Lire l'intégralité du tableau historique sur GitHub (tracker.json / dashboard.md / README.md).**
-2. **Extraire l'ensemble des empreintes déjà traitées :** ID d'offres, URL des annonces et couples normalisés *(Entreprise / Intitulé du Poste)*.
-3. **Filtrer et éliminer immédiatement tout doublon :**
-   - Aucune offre déjà présente dans le tableau ne peut être réanalysée ni réexpédiée.
-   - **ZÉRO régénération de PDF** et **ZÉRO renvoi d'email** pour un poste déjà candidaté.
-   - Seules les **offres 100% nouvelles et inédites** passent aux étapes de rédaction.
+## PROFIL DU CANDIDAT (RICHARD BUSSON)
+- **Identite :** Richard BUSSON (59 ans, Creil 60100)
+- **Coordonnees :** 98, allee Paul Cezanne, 60100 Creil | 09 39 20 08 70 | richard.busson@kairos-paye.fr
+- **Web & Reseaux :** linkedin.com/in/richard-busson | kairos-paye.fr
+- **Mobilite & Permis :** Permis B (valide), Mobilite nationale (Facades Atlantique / Mediterranee / Creil & Ile-de-France), Disponibilite immediate.
+- **Atout Senior :** Demandeur d emploi senior eligible aux aides a l embauche pour seniors, grande stabilite, loyaute et recherche d un engagement durable.
+- **Expertises reelles :**
+  1. **Dirigeant & Formateur Referent Titre Pro Paie TP-01254 (Depuis 2014) :** Organisme certifie Qualiopi (ICPF QUA007374), conception integrale du parcours 758h, animation des blocs RH/Paie de l ADEA et du Brevet de Maitrise (CMA), parametrage Silae, DSN.
+  2. **Formateur sous-traitant Afpa (2016-2020) :** 4 centres (Vervins, Beauvais, Creil, Amiens), parcours individualises, entrees permanentes, outil Metis, evaluations ECF.
+  3. **Responsable RH & Paie (2003-2010) :** Secours Populaire (580 collaborateurs salaries et benevoles), administration du personnel, plan de formation, dialogue social (CSE/DP/CE), masse salariale.
+  4. **Responsable de site operationnel (2010-2014) :** ETV Nouvelle-Caledonie, montage et exploitation de site industriel.
+- **Formations superieures :** Master RSE (IAE Paris en cours), Master 2 Droit public (Univ. Picardie), Maitrise Sciences de Gestion (Univ. Paris XIII), DUT GEA RH (Univ. Paris XIII).
+- **Outils & Systemes :** Silae, DSN, Excel avance, Metis (Afpa).
 
 ---
 
-## 🛡️ PROCÉDURE OFFICIELLE DE CONTRÔLE EN 3 PASSAGES (QUALITYGUARD 3-PASS GATE)
-
-### 🔹 PASSAGE 1 : CONTRÔLE DE FAISABILITÉ SOURCE & FILTRAGE (AVANT RÉDACTION)
-- Contrôle anti-doublon préalable contre l'historique GitHub.
-- Vérification de l'authenticité de l'offre (France Travail Flux Direct, Apec WebService, Indeed, LinkedIn).
-- Contrôle du seuil salarial (>= 30 000 € brut/an ou >= 2 500 € brut/mois).
-- Contrôle du temps de trajet (Creil <= 2h ou Littoral Atlantique/Méditerranée ou Télétravail).
-- Élimination automatique des profils débutants (< 3 ans) et des offres hors cible.
-
-### 🔹 PASSAGE 2 : PERSONNALISATION SUR-MESURE & CONTRÔLE D'INTÉGRITÉ (PENDANT RÉDACTION)
-- **Contrôle d'intégrité anti-tags résiduels (VERROU ABSOLU) :** Analyse regex `\{\{[^\}]+\}\}` sur le CV et la Lettre. **ZÉRO balise résiduelle autorisée**. Tout document contenant un tag non résolu est détruit et bloqué immédiatement.
-- **Résonance contextuelle sur-mesure :** L'argumentaire de la lettre et la synthèse du CV s'adaptent dynamiquement à la cible réelle (Entreprise privée vs Centre de formation vs Cabinet comptable). Interdiction absolue d'insérer des paragraphes hors-sujet.
-- **Typographie stricte :** **ZÉRO caractère gras dans le corps de la lettre de motivation**.
-- **Alignement strict du destinataire :** 6ᵉ ligne alignée sur `kairos-paye.fr` et signature vectorielle nette (*Richard Busson*).
-
-### 🔹 PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE (POST-COMPILATION)
-- **Génération Obligatoire des 6 Fichiers par Dossier :**
-  1. Lettre_Motivation_Richard_BUSSON.html
-  2. Lettre_Motivation_Richard_BUSSON.pdf (Strictement 1 page A4)
-  3. Lettre_Motivation_Richard_BUSSON.png (Capture haute résolution 794x1123)
-  4. CV_Richard_BUSSON.html
-  5. CV_Richard_BUSSON.pdf (Strictement 1 page A4)
-  6. CV_Richard_BUSSON.png (Capture haute résolution 794x1123)
-- **Vérification de taille non nulle :** Blocage immédiat si l'un des fichiers PDF ou PNG fait 0 octet.
-- **Visionneuse Multi-Mode Auto-Secours (Fail-Safe) :** Affichage direct de l'image haute définition avec bascule vectorielle instantanée (`onerror fallback`) pour garantir un affichage réel et sans faille.
-- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur `richard.busson@kairos-paye.fr`.
+## GABARIT OFFICIEL DE LA LETTRE DE MOTIVATION (MODELE MAITRE CMA)
+- **Geometrie :** Strictement **1 page A4 (794x1123px)**, equilibree, prenant toute la page du haut vers le bas sans vide disproportionne.
+- **Typographie :** Calibri ou Arial 10.5pt a 11pt, interligne 1.38 a 1.42, texte justifie.
+- **Regle Bloquante :** **ZERO caractere gras dans le corps de la lettre de motivation**. Seuls `Objet :` et les en-tetes peuvent etre en gras.
+- **Structure en 5 Paragraphes Denses :**
+  1. **Accroche ultra-ciblee :** Reference explicite au poste, a l entreprise, au secteur ou a l organisme, aux enjeux reels et a la valeur ajoutee immediate.
+  2. **Coeur de metier technique :** Missions precises (Paie autonome, Silae, DSN, audit, ADP ou Titre Pro TP-01254 / ADEA / CMA selon le profil).
+  3. **Pratique terrain & Envergure :** Direction RH de 580 collaborateurs ou vacations Afpa (4 centres, outil Metis, ECF).
+  4. **Qualiopi & Rigueur Juridique :** Organisme Qualiopi, conception 758h, Master 2 Droit public, securisation des procedures.
+  5. **Paragraphe de Franchise Senior :** « Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutot qu un passage. Mon recrutement peut par ailleurs ouvrir droit a une aide a l embauche au titre de ma situation de demandeur d emploi senior, dont je vous communiquerai volontiers les modalites. Ma mobilite est nationale, sans reserve, sur l ensemble du reseau, et ma disponibilite immediate. »
+- **Pieces jointes & Politesse :**
+  - Vous trouverez ci-joint : \n - mon curriculum vitae.
+  - Formule de politesse adaptee (Monsieur le Directeur / Madame la Directrice / Madame, Monsieur).
+- **Signature :** Signature manuscrite calligraphique officielle monogramme `RB` + `Richard Busson` lisible en dessous.
 
 ---
 
-## 📊 TABLEAU DE BORD LOCAL PAR MOIS & APPLICATION BUREAU
-- **Emplacement permanent :** C:\Users\richa\JobHunter avec icône 3D rouge permanente.
-- **Raccourci Bureau :** C:\Users\richa\OneDrive\Archives\Bureau 2021\Tableau de Bord - Candidatures.lnk
-- **Auto-Synchronisation Cloud :** `launch.py` effectue un téléchargement Git automatique silencieux avant chaque ouverture pour afficher immédiatement les candidatures du jour traitées dans le Cloud.
-- **Visionneuse Interactive Plein Écran intégrée :** Consultation instantanée de la lettre et du CV en haute définition sans quitter le navigateur, avec boutons d'ouverture et téléchargement PDF direct.
+## GABARIT OFFICIEL DU CV (MODELE MAITRE BLEU MARINE)
+- **Geometrie :** Strictement **1 page A4 (794x1123px)**, dense, aeree et calibree sans debordement.
+- **Charte Graphique :** Titre principal en `#1b365d` (bleu marine profond), sous-titre de profil, bandeau de coordonnees sur une seule ligne avec separateurs `|`, filets de separation fins `#1b365d`.
+- **Structure des 6 Blocs :**
+  1. **En-tete & Coordonnees completes** (Creil, tel, email, LinkedIn, kairos-paye.fr, permis B, mobilite).
+  2. **Titre Cible & Profil / Synthese :** Titre adapte a l offre en majuscules + Synthese de 4-5 lignes contextualisee.
+  3. **Competences Cles :** 4 puces avec intitule en gras + descriptif precis en resonance avec l offre.
+  4. **Points Forts pour ce Poste :** 3 puces avec intitule en gras prouvant la compatibilite immediate sans periode d adaptation.
+  5. **Experiences Professionnelles Significatives :** 4 postes reels detailles (Kairos Formation Qualiopi, Afpa 4 centres, Secours Populaire 580 collab, ETV site industriel).
+  6. **Formations Superieures & Outils :** Master RSE, Master 2 Droit public, Maitrise Gestion, DUT GEA RH + Silae, DSN, Excel, Metis.
+
+---
+
+## BARRIERE DE CONTROLE DE QUALITE (QUALITYGUARD 3-PASS GATE)
+1. **Passage 1 :** Filtrage source (>= 30 000 EUR brut/an, Creil <= 2h ou Littoral Atlantique/Mediterranee ou remote, elimination des juniors < 3 ans, anti-doublon absolu).
+2. **Passage 2 :** Analyse de l annonce, redaction sur-mesure en 5 familles metiers R.O.M.E, controle anti-tags residuels regex `\{\{[^\}]+\}\}` (zero tag orphelin) et verification de typographie (zero mot en gras dans le corps de lettre).
+3. **Passage 3 :** Compilation des 6 fichiers obligatoires (`.html`, `.pdf`, `.png` pour CV et Lettre), validation geometrique 1 page A4 (> 0 octet) et synchronisation instantanee du tableau de bord.
