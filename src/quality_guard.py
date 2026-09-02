@@ -25,19 +25,35 @@ class QualityGuard:
         title = job.get("title", "").lower()
         desc = job.get("description", "").lower()
         
-        # 1. Élimination des offres juniors / débutants (< 3 ans)
-        if "junior" in title or "débutant" in title or "debutant" in title or "sans expérience" in desc:
-            if "junior accepté" not in desc and "débutant accepté" not in desc:
-                return False, "Rejet : Profil Junior ou Débutant détecté (< 3 ans d'expérience exigée)."
+        # 1. Élimination formelle de TOUT assistanat, secrétariat, alternance, stage, junior ou technique hors-sujet
+        forbidden_in_title = [
+            "assistant", "assistante", "secretaire", "secrétaire", "alternant", "alternance",
+            "stagiaire", "stage", "junior", "débutant", "debutant", "aide", "technicien",
+            "maintenance", "bâtiment", "batiment", "informatique", "developpeur", "développeur",
+            "commercial", "vendeur", "teleprospecteur", "enseignant", "professeur", "commerciaux"
+        ]
+        if any(w in title for w in forbidden_in_title):
+            return False, f"Rejet : Intitulé '{job.get('title')}' non conforme au standing senior/expert de Richard Busson (interdiction formelle assistanat, alternance, technique hors RH)."
 
         # 2. Élimination formelle de la comptabilité pure (Richard Busson n'est PAS comptable)
-        if ("comptable" in title or "comptabilité" in title) and not any(k in title for k in ["paie", "social", "rh", "ressources humaines"]):
-            return False, "Rejet : Poste de comptabilité pure exclu. Cœur de métier : Gestionnaire de Paie / RH."
+        if any(w in title for w in ["comptable", "comptabilité", "comptabilite"]) and not any(k in title for k in ["gestionnaire de paie", "responsable paie"]):
+            return False, "Rejet : Poste à dominante comptable exclu. Cœur de métier exclusif : Paie & Ressources Humaines."
 
-        # 3. Élimination des offres hors cible (ex: secrétariat pur, assistanat sans RH/paie)
-        rh_paie_keywords = ["paie", "rh", "ressources humaines", "formation", "social", "adp", "personnel", "relations sociales", "masse salariale"]
-        if not any(kw in title or kw in desc for kw in rh_paie_keywords):
-            return False, "Rejet : Poste hors cible RH / Paie / Formation."
+        # 3. Validation positive stricte : le poste DOIT appartenir aux 4 piliers officiels de Richard Busson
+        target_roles = [
+            "responsable rh", "responsable des ressources humaines", "rrh", "drh",
+            "responsable paie", "responsable adp", "responsable relations sociales",
+            "formateur paie", "formatrice paie", "formateur rh", "formatrice rh",
+            "formateur gestionnaire de paie", "coordinateur pedagogique", "coordinatrice pedagogique",
+            "consultant formateur paie", "consultant paie", "consultant rh",
+            "gestionnaire de paie", "gestionnaire paie", "charge des ressources humaines",
+            "charge de gestion rh", "chargee des ressources humaines", "juriste droit social",
+            "responsable affaires sociales", "referent ingenierie de formation", "pilote social",
+            "responsable du personnel", "chef de service paie", "responsable de pôle paie"
+        ]
+        clean_title = re.sub(r'[^\w\s]', ' ', title).lower()
+        if not any(r in clean_title for r in target_roles):
+            return False, f"Rejet : Poste '{job.get('title')}' hors des piliers d'expertise de Richard Busson."
 
         # 4. Contrôle du seuil salarial (>= 30 000 € brut / an ou >= 2 500 € / mois)
         sal_text = job.get("salary", "")

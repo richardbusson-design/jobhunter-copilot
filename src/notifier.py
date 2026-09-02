@@ -121,10 +121,84 @@ class ApplicationNotifier:
                 print(f"[!] Erreur d'envoi email SMTP : {e}")
                 return False
         else:
-            print(f"[i] Simulation Notification Email (SMTP non configuré) pour {self.recipient_email} :")
-            print(f"    Sujet : {subject}")
-            print(f"    Pièces jointes : {os.path.basename(pdf_letter_path)}, {os.path.basename(pdf_cv_path)}")
+            print(f"[i] Simulation Notification Email pour {self.recipient_email} : {subject}")
             return True
+
+    def send_batch_summary(self, apps: List[Dict[str, Any]]) -> bool:
+        """Envoie un rapport de synthèse professionnel regroupant l'ensemble des candidatures traitées."""
+        if not apps:
+            return True
+            
+        subject = f"📊 [JobHunter Recap] {len(apps)} Nouvelles Candidatures Qualifiées Déposées & Certifiées"
+        
+        rows_html = ""
+        for a in apps:
+            company = a.get("company", "Entreprise")
+            title = a.get("title", "Poste")
+            city = a.get("city", "France")
+            score = a.get("score", 0)
+            channel = a.get("source", "Web")
+            url = a.get("url", "#")
+            rows_html += f"""
+            <tr style="border-bottom: 1px solid #e2e8f0;">
+                <td style="padding: 10px; font-weight: bold; color: #1e293b;">{company}</td>
+                <td style="padding: 10px;"><a href="{url}" style="color: #2563eb; text-decoration: none;">{title}</a></td>
+                <td style="padding: 10px; color: #64748b;">{city}</td>
+                <td style="padding: 10px; text-align: center;"><span style="background: #dcfce7; color: #166534; font-weight: bold; padding: 2px 8px; border-radius: 9999px;">{score}%</span></td>
+                <td style="padding: 10px; color: #475569; font-size: 13px;">{channel}</td>
+            </tr>
+            """
+            
+        body_html = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; color: #1e293b; line-height: 1.6;">
+            <div style="max-width: 700px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 10px; padding: 24px; background: #ffffff;">
+                <div style="border-bottom: 2px solid #2563eb; padding-bottom: 12px; margin-bottom: 18px;">
+                    <h2 style="color: #1e293b; margin: 0;">🚀 Bilan Quotidien : {len(apps)} Candidatures Inédites Traitées</h2>
+                    <p style="color: #64748b; font-size: 14px; margin: 4px 0 0 0;">Contrôle anti-doublon validé, dossiers certifiés QualityGuard (PDF A4, zéro gras, CV marine).</p>
+                </div>
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 15px;">
+                    <thead>
+                        <tr style="background: #f8fafc; border-bottom: 2px solid #cbd5e1; text-align: left; color: #475569;">
+                            <th style="padding: 10px;">Entreprise</th>
+                            <th style="padding: 10px;">Poste Cible</th>
+                            <th style="padding: 10px;">Lieu</th>
+                            <th style="padding: 10px; text-align: center;">Score</th>
+                            <th style="padding: 10px;">Canal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows_html}
+                    </tbody>
+                </table>
+                <div style="margin-top: 25px; padding: 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;">
+                    <p style="margin: 0; color: #166534; font-size: 13px;">
+                        <strong>✓ Tous les dossiers sont prêts :</strong> Les lettres A4 pleine page, CV A4 et captures sont enregistrés et synchronisés dans votre tableau de bord local et sur GitHub.
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        if self.smtp_user and self.smtp_password:
+            try:
+                msg = MIMEMultipart('alternative')
+                msg['Subject'] = subject
+                msg['From'] = f"JobHunter Copilot <{self.smtp_user}>"
+                msg['To'] = self.recipient_email
+                msg.attach(MIMEText(body_html, 'html', 'utf-8'))
+                
+                with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                    server.starttls()
+                    server.login(self.smtp_user, self.smtp_password)
+                    server.send_message(msg)
+                print(f"[✓] Email de synthèse journalier envoyé à {self.recipient_email}")
+                return True
+            except Exception as e:
+                print(f"[!] Erreur envoi synthèse : {e}")
+                return False
+        return True
 
 if __name__ == "__main__":
     notifier = ApplicationNotifier()

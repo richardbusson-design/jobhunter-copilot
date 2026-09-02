@@ -97,8 +97,9 @@ def run_pipeline(base_dir=".", auto_notify=True):
         return
         
     validated_count = 0
+    batch_processed = []
     
-    for job in new_qualified_jobs[:3]:
+    for job in new_qualified_jobs:
         score = generator.evaluate_match(job)
         job["score"] = score
         
@@ -199,10 +200,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
             "recruiter_delivery": dispatch_report
         }
         dashboard.add_application(app_entry)
-        
-        # 9. Envoi d'Alerte Email personnelle à Richard Busson
-        if auto_notify:
-            notifier.send_application_alert(job, pdf_letter_path, pdf_cv_path)
+        batch_processed.append(app_entry)
             
         # Mise à jour immédiate des empreintes pour éviter les doublons intra-session
         existing_fps = dashboard.get_existing_fingerprints()
@@ -211,6 +209,10 @@ def run_pipeline(base_dir=".", auto_notify=True):
     print("\n" + "=" * 75)
     print(f"  [SUCCÈS] {validated_count} nouvelle(s) candidature(s) inédite(s) traitée(s) !")
     print("=" * 75)
+    
+    if auto_notify and batch_processed:
+        print(f"\n[*] Envoi de la synthèse journalière ({len(batch_processed)} candidatures) à richard.busson@kairos-paye.fr...")
+        notifier.send_batch_summary(batch_processed)
 
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))

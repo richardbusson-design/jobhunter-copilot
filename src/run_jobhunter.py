@@ -43,6 +43,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
     print(f"    -> {len(offers)} opportunités inédites et qualifiées retenues.")
     
     validated_count = 0
+    batch_processed = []
     
     for job in offers:
         job_id = str(job.get("id", "")).strip()
@@ -56,6 +57,11 @@ def run_pipeline(base_dir=".", auto_notify=True):
            (job_url and job_url in fingerprints["urls"]) or \
            (ct_pair in fingerprints["company_titles"]):
             print(f"    [!] Doublon détecté et bloqué : {c_name} - {t_name}")
+            continue
+            
+        is_qual, qual_reason = guard.validate_job_criteria(job)
+        if not is_qual:
+            print(f"    [-] Écarté par QualityGuard : {c_name} - {t_name} -> {qual_reason}")
             continue
             
         score = generator.evaluate_match(job)
@@ -143,10 +149,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
             "recruiter_delivery": dispatch_report
         }
         dashboard.add_application(app_entry)
-        
-        # 9. Notification Email personnelle à Richard Busson
-        if auto_notify:
-            notifier.send_application_alert(job, pdf_letter_path, pdf_cv_path)
+        batch_processed.append(app_entry)
             
         fingerprints["ids"].add(job_id)
         fingerprints["urls"].add(job_url)
@@ -156,6 +159,11 @@ def run_pipeline(base_dir=".", auto_notify=True):
     print("\n" + "=" * 75)
     print(f"  [SUCCÈS GLOBAL] {validated_count} nouveau(x) dossier(s) certifié(s), expédié(s) et intégré(s) au tableau de bord.")
     print("=" * 75)
+    
+    # Envoi du rapport de synthèse par email à Richard Busson
+    if auto_notify and batch_processed:
+        print(f"\n[*] Envoi du rapport récapitulatif ({len(batch_processed)} candidatures) à richard.busson@kairos-paye.fr...")
+        notifier.send_batch_summary(batch_processed)
 
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
