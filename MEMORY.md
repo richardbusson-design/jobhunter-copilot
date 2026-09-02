@@ -111,3 +111,21 @@
 - **Emplacement permanent :** C:\Users\richa\JobHunter avec icône 3D rouge permanente.
 - **Raccourci Bureau :** C:\Users\richa\OneDrive\Archives\Bureau 2021\Tableau de Bord - Candidatures.lnk
 - **Auto-Synchronisation Cloud :** `launch.py` effectue un téléchargement Git automatique silencieux avant chaque ouverture.
+- **Compteurs Dynamiques en Tête de Tableau :**
+  * 📅 **Aujourd'hui :** Nombre de candidatures envoyées dans la journée.
+  * 📆 **Cette Semaine :** Nombre de candidatures envoyées sur 7 jours glissants.
+  * 🗓️ **Ce Mois-ci :** Nombre de candidatures envoyées sur le mois en cours.
+  * 🏆 **Total Envoyées :** Cumul global des candidatures certifiées.
+- **Colonnes Complètes Obligatoires du Tableau :**
+  1. *Date* : Date de traitement.
+  2. *Entreprise* : Nom de la société / organisme.
+  3. *Contact / Destinataire* : Personne ou organisme ciblé (ex: *M. le Responsable Recrutement*, *Direction des RH*).
+  4. *Localisation* : Ville et code postal / département.
+  5. *Téléphone* : Numéro de téléphone extrait de l'annonce/contact ou mention *Non communiqué*.
+  6. *E-mail* : Adresse email directe du recruteur (lien `mailto:`) ou badge *Portail Web*.
+  7. *Poste & Annonce Source* : Intitulé, lien officiel, salaire, score de correspondance, texte intégral dépliable.
+  8. *Statut Envoi* : Badge vert *Transmis Recruteur* (avec adresse), badge orange *Portail Web requis*.
+  9. *Dossier Officiel* : Bouton visionneuse intégrée plein écran, téléchargement direct Lettre PDF et CV PDF.
+- **Lecture Préalable Amont Anti-Doublon :**
+  * Le tableau est **obligatoirement lu en amont de toute recherche**.
+  * Zéro requête inutile ni réévaluation pour un poste déjà présent en base.
