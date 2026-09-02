@@ -1,6 +1,6 @@
 # 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON
 
-> **Total candidatures certifiées :** 125 dossiers | **Mise à jour :** 01/09/2026 22:57
+> **Total candidatures certifiées :** 125 dossiers | **Mise à jour :** 02/09/2026 02:56
 
 ## 🗓️ Septembre 2026 (73 candidatures)
 

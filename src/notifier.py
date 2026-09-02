@@ -7,9 +7,23 @@ from email.mime.application import MIMEApplication
 from typing import Dict, Any, List
 
 class ApplicationNotifier:
+    def _load_env_file(self):
+        env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+        if os.path.exists(env_path):
+            try:
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#") and "=" in line:
+                            k, v = line.split("=", 1)
+                            os.environ[k.strip()] = v.strip().strip("'\"")
+            except Exception:
+                pass
+
     def __init__(self, recipient_email="richard.busson@kairos-paye.fr"):
+        self._load_env_file()
         self.recipient_email = recipient_email
-        self.smtp_server = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
+        self.smtp_server = os.environ.get("SMTP_SERVER", "ssl0.ovh.net")
         self.smtp_port = int(os.environ.get("SMTP_PORT", "587"))
         self.smtp_user = os.environ.get("SMTP_USER", "")
         self.smtp_password = os.environ.get("SMTP_PASSWORD", "")
