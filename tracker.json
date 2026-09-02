@@ -245,16 +245,10 @@
     "folder_rel": "candidatures\\2026-09-02_Meteojob_Responsable_Paie_adjoint_e__F_H",
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_Meteojob_Responsable_Paie_adjoint_e__F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_Meteojob_Responsable_Paie_adjoint_e__F_H\\CV_Richard_BUSSON.pdf",
-    "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie adjoint(e) — Richard BUSSON",
-      "timestamp": "2026-09-02 20:14"
-    },
+    "recruiter_delivery": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
     "date": "2026-09-02",
-    "relance_date": "2026-09-09"
+    "relance_date": "2026-09-09",
+    "proof_screenshot": "payjob_confirmation_officielle.png"
   },
   {
     "id": "APEC-179295972W",
@@ -276,16 +270,10 @@
     "folder_rel": "candidatures\\2026-09-02_cadremploi_Responsable_Paie_adjoint_e__F_H",
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_cadremploi_Responsable_Paie_adjoint_e__F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_cadremploi_Responsable_Paie_adjoint_e__F_H\\CV_Richard_BUSSON.pdf",
-    "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie adjoint(e) — Richard BUSSON",
-      "timestamp": "2026-09-02 20:14"
-    },
+    "recruiter_delivery": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
     "date": "2026-09-02",
-    "relance_date": "2026-09-09"
+    "relance_date": "2026-09-09",
+    "proof_screenshot": "payjob_confirmation_officielle.png"
   },
   {
     "id": "APEC-179330423W",
