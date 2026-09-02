@@ -177,7 +177,11 @@ class JobSearcher:
             "formateur gestionnaire de paie",
             "coordinateur pedagogique rh",
             "consultant formateur paie",
-            "gestionnaire de paie et rh"
+            "gestionnaire de paie et rh",
+            "responsable paie et adp",
+            "charge de gestion rh",
+            "responsable relations sociales",
+            "formateur droit social"
         ]
         
         ft_keywords = [
@@ -187,7 +191,11 @@ class JobSearcher:
             "responsable ressources humaines",
             "formateur gestionnaire de paie",
             "gestionnaire de paie et rh",
-            "coordinateur pedagogique"
+            "coordinateur pedagogique",
+            "responsable paie et adp",
+            "charge de gestion rh",
+            "responsable relations sociales",
+            "formateur droit social"
         ]
         
         live_raw_offers = []

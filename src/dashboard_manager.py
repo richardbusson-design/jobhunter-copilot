@@ -73,13 +73,28 @@ class DashboardManager:
         return []
 
     def get_existing_fingerprints(self) -> Dict[str, Any]:
-        """Extrait les empreintes uniques pour blocage strict des doublons."""
+        """Extrait les empreintes uniques pour blocage strict des doublons (inclut l'historique archivé)."""
         apps = self.load_tracker()
+        all_tracked_apps = list(apps)
+        
+        # Charger également l'historique archivé dans data/ pour un blocage anti-doublon absolu
+        backup_dir = os.path.join(self.base_dir, "data")
+        if os.path.exists(backup_dir):
+            for fname in os.listdir(backup_dir):
+                if fname.endswith(".json") and "backup" in fname:
+                    try:
+                        with open(os.path.join(backup_dir, fname), "r", encoding="utf-8") as f:
+                            b_data = json.load(f)
+                            if isinstance(b_data, list):
+                                all_tracked_apps.extend(b_data)
+                    except Exception:
+                        pass
+                        
         ids = set()
         urls = set()
         company_titles = set()
         
-        for a in apps:
+        for a in all_tracked_apps:
             if a.get("id"):
                 ids.add(str(a.get("id")).strip())
             if a.get("url"):
@@ -94,7 +109,7 @@ class DashboardManager:
             "ids": ids,
             "urls": urls,
             "company_titles": company_titles,
-            "count": len(apps)
+            "count": len(all_tracked_apps)
         }
 
     def add_application(self, application_data: Dict[str, Any]):
@@ -205,7 +220,19 @@ class DashboardManager:
                     
                 # E-mail
                 rec_delivery = a.get("recruiter_delivery", {})
-                rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                if isinstance(rec_delivery, dict):
+                    rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                    is_sent = rec_delivery.get("sent")
+                    is_portal = rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED"
+                elif isinstance(rec_delivery, str):
+                    rec_mail = a.get("contact_email")
+                    is_sent = "SUBMITTED" in rec_delivery or "CONFIRMED" in rec_delivery
+                    is_portal = "WEB_PORTAL" in rec_delivery
+                else:
+                    rec_mail = a.get("contact_email")
+                    is_sent = False
+                    is_portal = False
+
                 if not rec_mail:
                     m_em = re.findall(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', desc)
                     for em in m_em:
@@ -218,9 +245,9 @@ class DashboardManager:
                     email_cell = '<span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px; border: 1px solid #334155; white-space: nowrap;">🌐 Portail Web</span>'
 
                 # Statut d'expédition au recruteur
-                if rec_delivery.get("sent"):
-                    delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✉️ Transmis Recruteur ({rec_mail})</span></div>'
-                elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
+                if is_sent:
+                    delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Candidature Transmise et Validée</span></div>'
+                elif is_portal:
                     delivery_badge = '<div style="margin-top:4px;"><span style="background: #854d0e; color: #fde047; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🌐 Postulation Web requise</span></div>'
                 else:
                     delivery_badge = '<div style="margin-top:4px;"><span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px;">📁 Dossier Prêt</span></div>'
@@ -683,7 +710,19 @@ class DashboardManager:
                     
                 # E-mail
                 rec_delivery = a.get("recruiter_delivery", {})
-                rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                if isinstance(rec_delivery, dict):
+                    rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                    is_sent = rec_delivery.get("sent")
+                    is_portal = rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED"
+                elif isinstance(rec_delivery, str):
+                    rec_mail = a.get("contact_email")
+                    is_sent = "SUBMITTED" in rec_delivery or "CONFIRMED" in rec_delivery
+                    is_portal = "WEB_PORTAL" in rec_delivery
+                else:
+                    rec_mail = a.get("contact_email")
+                    is_sent = False
+                    is_portal = False
+
                 if not rec_mail:
                     m_em = re.findall(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', desc)
                     for em in m_em:
@@ -692,9 +731,9 @@ class DashboardManager:
                             break
                 email_md = f"[{rec_mail}](mailto:{rec_mail})" if rec_mail else "🌐 Portail Web"
                 
-                if rec_delivery.get("sent"):
-                    send_status = f"🟢 Transmis ({rec_delivery.get('recruiter_email', '')})"
-                elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
+                if is_sent:
+                    send_status = f"🟢 Transmis & Validé ({rec_mail or 'Web ATS'})"
+                elif is_portal:
                     send_status = "🌐 Portail Web"
                 else:
                     send_status = "📁 Prêt"
