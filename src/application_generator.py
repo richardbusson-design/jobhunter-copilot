@@ -268,3 +268,32 @@ class ApplicationGenerator:
     def render_letter_html(self, job: Dict[str, Any]) -> str:
         best_html, _, _ = self.generate_best_of_three_letter(job)
         return best_html
+
+    def render_motivation_text(self, job: Dict[str, Any]) -> str:
+        """Génère le texte court de motivation pour les formulaires web (France Travail / Apec)."""
+        raw_title = job.get("title", "Responsable RH et Paie")
+        job_title = self.clean_job_title(raw_title)
+        company = job.get("company", "votre organisme")
+        city = job.get("city", "votre secteur")
+        contact_title = job.get("contact_title", "")
+        contact_name = job.get("contact_name", "")
+        
+        formula = "Madame, Monsieur,"
+        if "directeur" in contact_title.lower() or "directeur" in contact_name.lower():
+            formula = "Monsieur le Directeur,"
+        elif "directrice" in contact_title.lower() or "directrice" in contact_name.lower():
+            formula = "Madame la Directrice,"
+            
+        return f"""{formula}
+
+Titulaire d'un Master 2 en Droit public et fort d'une expérience probante de direction des Ressources Humaines et de la paie (580 collaborateurs), j'ai l'honneur de vous soumettre ma candidature au poste de {job_title} au sein de {company}.
+
+Familier des enjeux opérationnels, juridiques et conventionnels de la fonction, je maîtrise l'ensemble des missions attendues : la sécurisation des processus RH, le dialogue social constructif et serein avec les instances représentatives (CSE), l'administration du personnel et la supervision irréprochable de la paie et de la DSN. Dirigeant par ailleurs un organisme de formation certifié Qualiopi, j'allie rigueur juridique, sens de l'humain et vision stratégique.
+
+À 59 ans, en recherche d'un engagement durable et loyal, et éligible aux aides à l'embauche pour demandeur d'emploi senior, je suis immédiatement disponible pour échanger à {city}.
+
+Dans l'attente de votre retour, je vous prie d'agréer l'expression de ma considération distinguée.
+
+Richard BUSSON
+09 39 20 08 70 • richard.busson@kairos-paye.fr"""
+

@@ -14,6 +14,8 @@ from quality_guard import QualityGuard
 from pdf_compiler import compile_html_to_pdf
 from dashboard_manager import DashboardManager
 from notifier import ApplicationNotifier
+from recruiter_dispatcher import RecruiterDispatcher
+from france_travail_bot import FranceTravailBot
 
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
@@ -66,6 +68,8 @@ def run_pipeline(base_dir=".", auto_notify=True):
     generator = ApplicationGenerator(base_dir=base_dir)
     guard = QualityGuard(config_dir=os.path.join(base_dir, "config"))
     notifier = ApplicationNotifier()
+    dispatcher = RecruiterDispatcher(base_dir=base_dir)
+    ft_bot = FranceTravailBot(base_dir=base_dir)
     
     # 1. Lecture préalable de l'historique GitHub / Tracker (Anti-Doublon Préalable)
     existing_fps = dashboard.get_existing_fingerprints()
@@ -140,27 +144,63 @@ def run_pipeline(base_dir=".", auto_notify=True):
             print(f"    [!] Candidature rejetée lors de l'audit aux 3 passages.")
             continue
             
-        # 7. Copie miroir locale
-        gemini_candidatures = r"C:\Users\richa\Gemini\Candidatures"
-        if os.path.exists(gemini_candidatures):
-            gemini_dest = os.path.join(gemini_candidatures, folder_name)
-            os.makedirs(gemini_dest, exist_ok=True)
-            import shutil
-            shutil.copy(pdf_letter_path, os.path.join(gemini_dest, "Lettre_Motivation_Richard_BUSSON.pdf"))
-            shutil.copy(pdf_cv_path, os.path.join(gemini_dest, "CV_Richard_BUSSON.pdf"))
+        # 7. Expédition Automatisée (Email Recruteur Direct OU Postulation France Travail)
+        dispatch_report = {"sent": False, "mode": "PREPARED"}
+        
+        # Cas A: Offre avec adresse email recruteur directe
+        if job.get("contact_email"):
+            print(f"[*] Expédition directe au recruteur par email ({job.get('contact_email')})...")
+            dispatch_report = dispatcher.dispatch_application(job, target_dir)
+        # Cas B: Offre France Travail avec identifiants configurés dans le Cloud
+        elif "francetravail.fr" in job.get("url", "") and os.environ.get("FRANCE_TRAVAIL_USER"):
+            print(f"[*] Postulation automatisée sur France Travail dans le Cloud...")
+            motivation_msg = generator.render_motivation_text(job)
+            success, msg = ft_bot.apply_to_offer(
+                offer_url=job.get("url"),
+                cv_pdf_path=pdf_cv_path,
+                letter_pdf_path=pdf_letter_path,
+                motivation_text=motivation_msg,
+                auto_confirm=True
+            )
+            dispatch_report = {
+                "sent": success,
+                "mode": "FRANCE_TRAVAIL_AUTO",
+                "status": msg
+            }
+        else:
+            dispatch_report = {
+                "sent": False,
+                "mode": "WEB_PORTAL_REQUIRED",
+                "channel": job.get("source", "Portail Web")
+            }
             
         # 8. Enregistrement dans le Tableau de Bord
-        app_entry = dict(job)
-        app_entry.update({
+        app_entry = {
+            "id": job.get("id"),
+            "source": job.get("source"),
+            "company": job.get("company"),
+            "contact_name": job.get("contact_name", "Monsieur le Responsable du Recrutement"),
+            "contact_title": job.get("contact_title", "Direction des Ressources Humaines"),
+            "title": job.get("title"),
+            "city": job.get("city", "France"),
+            "postal_code": job.get("postal_code", ""),
+            "phone": job.get("phone", "Non communiqué"),
+            "contact_email": job.get("contact_email") or (dispatch_report.get("recruiter_email") if dispatch_report else None),
+            "salary": job.get("salary", "N/C"),
+            "contract_type": job.get("contract_type", "CDI"),
+            "url": job.get("url", ""),
+            "description": job.get("description", ""),
+            "score": score,
+            "date": date_str,
             "folder": os.path.abspath(target_dir),
             "folder_rel": f"candidatures/{folder_name}",
             "pdf_letter": os.path.abspath(pdf_letter_path),
             "pdf_cv": os.path.abspath(pdf_cv_path),
-            "status": "Dossier PDF & Visuel Prêt"
-        })
+            "recruiter_delivery": dispatch_report
+        }
         dashboard.add_application(app_entry)
         
-        # 9. Envoi d'Alerte Email
+        # 9. Envoi d'Alerte Email personnelle à Richard Busson
         if auto_notify:
             notifier.send_application_alert(job, pdf_letter_path, pdf_cv_path)
             
