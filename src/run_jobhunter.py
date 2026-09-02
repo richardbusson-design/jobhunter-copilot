@@ -31,32 +31,31 @@ def run_pipeline(base_dir=".", auto_notify=True):
     notifier = ApplicationNotifier()
     dispatcher = RecruiterDispatcher(base_dir=base_dir)
     
-    # 1. Chargement du tracker anti-doublon
-    tracker_path = os.path.join(base_dir, "tracker.json")
-    processed_ids = set()
-    if os.path.exists(tracker_path):
-        try:
-            with open(tracker_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    for item in data:
-                        job_id = item.get("id") or item.get("url") or (item.get("company", "") + "_" + item.get("title", ""))
-                        processed_ids.add(job_id)
-                elif isinstance(data, dict):
-                    processed_ids = set(data.get("processed_ids", []))
-        except Exception as e:
-            print(f"[!] Avertissement tracker : {e}")
-            
-    # 2. Récupération des opportunités
-    print("\n[+] Recherche et filtrage strict des opportunités...")
-    offers = searcher.fetch_live_opportunities()
-    print(f"    -> {len(offers)} opportunités qualifiées extraites.")
+    # 1. Lecture intégrale du tableau de bord AVANT TOUTE RECHERCHE (Anti-doublon absolu)
+    print("\n[+] 1. Lecture préalable intégrale du tableau de bord...")
+    fingerprints = dashboard.get_existing_fingerprints()
+    print(f"    -> {fingerprints['count']} candidatures historiques enregistrées en base.")
+    print(f"    -> {len(fingerprints['ids'])} IDs, {len(fingerprints['urls'])} URLs et {len(fingerprints['company_titles'])} couples Entreprise/Poste chargés pour blocage amont.")
+    
+    # 2. Récupération des opportunités avec filtrage amont immédiat
+    print("\n[+] 2. Recherche et filtrage strict des opportunités (Zéro doublon)...")
+    offers = searcher.fetch_live_opportunities(existing_fingerprints=fingerprints)
+    print(f"    -> {len(offers)} opportunités inédites et qualifiées retenues.")
     
     validated_count = 0
     
     for job in offers:
-        job_id = job.get("id") or job.get("url") or (job.get("company", "") + "_" + job.get("title", ""))
-        if job_id in processed_ids:
+        job_id = str(job.get("id", "")).strip()
+        job_url = str(job.get("url", "")).strip()
+        c_norm = dashboard.get_existing_fingerprints() # safety
+        c_name = job.get("company", "")
+        t_name = job.get("title", "")
+        ct_pair = f"{re.sub(r'[^\w\s]', ' ', c_name.lower()).strip()}|{re.sub(r'[^\w\s]', ' ', t_name.lower()).strip()}"
+        
+        if (job_id and job_id in fingerprints["ids"]) or \
+           (job_url and job_url in fingerprints["urls"]) or \
+           (ct_pair in fingerprints["company_titles"]):
+            print(f"    [!] Doublon détecté et bloqué : {c_name} - {t_name}")
             continue
             
         score = generator.evaluate_match(job)
@@ -122,10 +121,18 @@ def run_pipeline(base_dir=".", auto_notify=True):
         
         # 8. Enregistrement dans le CRM / Dashboard
         app_entry = {
+            "id": job.get("id"),
+            "source": job.get("source"),
             "company": job.get("company"),
+            "contact_name": job.get("contact_name", "Monsieur le Responsable du Recrutement"),
+            "contact_title": job.get("contact_title", "Direction des Ressources Humaines"),
             "title": job.get("title"),
             "city": job.get("city", "France"),
+            "postal_code": job.get("postal_code", ""),
+            "phone": job.get("phone", "Non communiqué"),
+            "contact_email": job.get("contact_email") or (dispatch_report.get("recruiter_email") if dispatch_report else None),
             "salary": job.get("salary", "N/C"),
+            "contract_type": job.get("contract_type", "CDI"),
             "url": job.get("url", ""),
             "description": job.get("description", ""),
             "score": score,
@@ -141,7 +148,9 @@ def run_pipeline(base_dir=".", auto_notify=True):
         if auto_notify:
             notifier.send_application_alert(job, pdf_letter_path, pdf_cv_path)
             
-        processed_ids.add(job_id)
+        fingerprints["ids"].add(job_id)
+        fingerprints["urls"].add(job_url)
+        fingerprints["company_titles"].add(ct_pair)
         validated_count += 1
         
     print("\n" + "=" * 75)

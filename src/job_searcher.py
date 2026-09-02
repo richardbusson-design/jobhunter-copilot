@@ -8,6 +8,31 @@ from typing import List, Dict, Any
 
 from quality_guard import QualityGuard
 
+def normalize_text(text: str) -> str:
+    if not text:
+        return ""
+    text = text.lower()
+    text = re.sub(r'\(h/f\)|h/f|\(f/h\)|f/h', '', text)
+    text = re.sub(r'[^\w\s]', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+def extract_phone(text: str):
+    if not text:
+        return None
+    m = re.search(r'(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}', text)
+    return m.group(0).strip() if m else None
+
+def extract_email(text: str):
+    if not text:
+        return None
+    matches = re.findall(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', text)
+    for m in matches:
+        m_low = m.lower()
+        if not m_low.endswith(('.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp')) and 'example.com' not in m_low:
+            return m.strip()
+    return None
+
 class JobSearcher:
     def __init__(self, base_dir="."):
         self.base_dir = base_dir
@@ -58,6 +83,10 @@ class JobSearcher:
                     pcode = dept_match.group(1) if dept_match else "75000"
                     if len(pcode) == 2: pcode += "000"
                     
+                    desc_text = r.get("texteHtml", "") or r.get("descriptifEntreprise", "") or f"Poste de {r.get('intitule')} chez {r.get('nomCommercial')}. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation."
+                    phone = extract_phone(desc_text)
+                    contact_email = extract_email(desc_text)
+                    
                     offers.append({
                         "id": f"APEC-{oid}",
                         "source": "L'Apec (Direct WebService)",
@@ -68,9 +97,11 @@ class JobSearcher:
                         "address_1": "Pôle Recrutement Cadres & Formation",
                         "postal_code": pcode,
                         "city": city_raw.split("-")[0].strip(),
+                        "phone": phone or "Non communiqué",
+                        "contact_email": contact_email,
                         "salary": r.get("salaireTexte", "35 000 € - 45 000 € brut annuel"),
                         "contract_type": "CDI",
-                        "description": r.get("texteHtml", "") or r.get("descriptifEntreprise", "") or f"Poste de {r.get('intitule')} chez {r.get('nomCommercial')}. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
+                        "description": desc_text,
                         "url": f"https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/{oid}"
                     })
         except Exception as e:
@@ -106,6 +137,9 @@ class JobSearcher:
                     dept_match = re.search(r'\b(\d{2})\b', city_str)
                     pcode = f"{dept_match.group(1)}000" if dept_match else "60100"
                     
+                    phone = extract_phone(desc)
+                    contact_email = extract_email(desc)
+                    
                     offers.append({
                         "id": f"FT-{off_id}",
                         "source": "France Travail (Flux Direct)",
@@ -116,6 +150,8 @@ class JobSearcher:
                         "address_1": "Service Recrutement & RH",
                         "postal_code": pcode,
                         "city": city_str,
+                        "phone": phone or "Non communiqué",
+                        "contact_email": contact_email,
                         "salary": "33 000 € - 42 000 € brut annuel",
                         "contract_type": "CDI / CDD",
                         "description": desc,
@@ -126,9 +162,11 @@ class JobSearcher:
             
         return offers
 
-    def fetch_live_opportunities(self) -> List[Dict[str, Any]]:
-        """Agrège en direct les offres élargies selon la nomenclature R.O.M.E."""
+    def fetch_live_opportunities(self, existing_fingerprints: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+        """Agrège en direct les offres élargies selon la nomenclature R.O.M.E avec contrôle anti-doublon amont."""
         print("[+] Interrogation en direct des flux multi-sources (Nomenclature R.O.M.E élargie) :")
+        if existing_fingerprints:
+            print(f"    [Anti-Doublon Amont] {existing_fingerprints.get('count', 0)} offres historiques actives en mémoire pour blocage immédiat.")
         
         # Mots-clés cibles ROME élargis (M1503, K2111, K2102, M1203, M1501)
         apec_keywords = [
@@ -173,10 +211,24 @@ class JobSearcher:
         seen_ids = set()
         
         for job in live_raw_offers:
-            jid = job.get("id", "")
+            jid = str(job.get("id", "")).strip()
+            jurl = str(job.get("url", "")).strip()
+            c_norm = normalize_text(job.get("company", ""))
+            t_norm = normalize_text(job.get("title", ""))
+            ct_pair = f"{c_norm}|{t_norm}"
+            
             if jid in seen_ids:
                 continue
             seen_ids.add(jid)
+
+            # Contrôle strict anti-doublon préalable contre le tableau de bord
+            if existing_fingerprints:
+                if jid and jid in existing_fingerprints.get("ids", set()):
+                    continue
+                if jurl and jurl in existing_fingerprints.get("urls", set()):
+                    continue
+                if ct_pair and ct_pair in existing_fingerprints.get("company_titles", set()):
+                    continue
             
             is_valid, reason = self.guard.validate_job_criteria(job)
             if is_valid:

@@ -136,6 +136,17 @@ class DashboardManager:
         apps = self.load_tracker()
         apps_by_month = defaultdict(list)
         
+        # Compteurs statistiques dynamiques
+        now = datetime.now()
+        today_str = now.strftime("%Y-%m-%d")
+        current_month_str = now.strftime("%Y-%m")
+        week_ago_str = (now - timedelta(days=7)).strftime("%Y-%m-%d")
+        
+        count_today = sum(1 for a in apps if a.get("date") == today_str)
+        count_week = sum(1 for a in apps if a.get("date", "") >= week_ago_str and a.get("date", "") <= today_str)
+        count_month = sum(1 for a in apps if a.get("date", "").startswith(current_month_str))
+        count_total = len(apps)
+        
         for a in apps:
             date_str = a.get("date", "2026-08-01")
             try:
@@ -162,6 +173,7 @@ class DashboardManager:
                 tit = a.get("title", "Poste").replace('"', '&quot;')
                 ref_id = a.get("id", "REF-AUTO")
                 city = a.get("city", "France")
+                pcode = a.get("postal_code", "")
                 salary = a.get("salary", ">= 30 000 €")
                 score = a.get("score", 85)
                 rel = a.get("relance_date", (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d"))
@@ -170,10 +182,43 @@ class DashboardManager:
                 desc = a.get("description", "Détail de l'offre...")
                 folder_rel = a.get("folder_rel", "").replace("\\", "/")
                 
-                # Statut d'expédition au recruteur
+                # Personne ou organisme contacté
+                contact_name = a.get("contact_name") or "Monsieur le Responsable du Recrutement"
+                contact_title = a.get("contact_title") or "Direction des Ressources Humaines"
+                contact_cell = f'<div style="font-weight: 600; color: #f1f5f9; font-size: 13px;">{contact_name}</div><div style="font-size: 11px; color: #94a3b8;">{contact_title}</div>'
+                
+                # Localisation
+                loc_cell = f'<div style="color: #cbd5e1; font-weight: 500;">{city}</div>'
+                if pcode:
+                    loc_cell += f'<div style="font-size: 11px; color: #94a3b8;">CP: {pcode}</div>'
+                    
+                # Téléphone
+                phone = a.get("phone")
+                if not phone or phone == "Non communiqué":
+                    m_ph = re.search(r'(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}', desc)
+                    if m_ph:
+                        phone = m_ph.group(0).strip()
+                if phone and phone != "Non communiqué":
+                    phone_cell = f'<a href="tel:{phone.replace(" ", "")}" style="color: #38bdf8; text-decoration: none; font-weight: 600; white-space: nowrap;">📞 {phone}</a>'
+                else:
+                    phone_cell = '<span style="color: #64748b; font-size: 12px;">Non communiqué</span>'
+                    
+                # E-mail
                 rec_delivery = a.get("recruiter_delivery", {})
+                rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                if not rec_mail:
+                    m_em = re.findall(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', desc)
+                    for em in m_em:
+                        if not em.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')) and 'example.com' not in em.lower():
+                            rec_mail = em.strip()
+                            break
+                if rec_mail:
+                    email_cell = f'<a href="mailto:{rec_mail}" style="color: #34d399; text-decoration: none; font-weight: 600; word-break: break-all;">✉️ {rec_mail}</a>'
+                else:
+                    email_cell = '<span style="background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 6px; border-radius: 4px; border: 1px solid #334155; white-space: nowrap;">🌐 Portail Web</span>'
+
+                # Statut d'expédition au recruteur
                 if rec_delivery.get("sent"):
-                    rec_mail = rec_delivery.get("recruiter_email", "")
                     delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✉️ Transmis Recruteur ({rec_mail})</span></div>'
                 elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
                     delivery_badge = '<div style="margin-top:4px;"><span style="background: #854d0e; color: #fde047; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🌐 Postulation Web requise</span></div>'
@@ -212,19 +257,20 @@ class DashboardManager:
                 <tr>
                   <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">{d}</td>
                   <td><strong style="color: #f1f5f9; font-size: 15px;">{comp}</strong></td>
+                  <td>{contact_cell}</td>
+                  <td>{loc_cell}</td>
+                  <td style="white-space: nowrap;">{phone_cell}</td>
+                  <td>{email_cell}</td>
                   <td>
                     <div style="font-weight: 600; color: #38bdf8; font-size: 14px;">{tit}</div>
                     <div style="margin-top: 4px; font-size: 12px;">{link_ref}</div>
-                    {delivery_badge}
+                    <div style="margin-top: 4px; font-size: 12px; color: #34d399;">💰 {salary} • <span class="score-badge">{score}%</span></div>
                     <details style="margin-top: 8px; background: #0b1120; padding: 8px 12px; border-radius: 6px; border: 1px solid #334155;">
                       <summary style="cursor: pointer; color: #94a3b8; font-size: 12px; font-weight: 600;">📝 Voir le texte intégral de l'annonce</summary>
                       <div style="margin-top: 8px; color: #cbd5e1; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">{desc}</div>
                     </details>
                   </td>
-                  <td style="color: #cbd5e1;">{city}</td>
-                  <td style="color: #34d399; font-weight: bold; white-space: nowrap;">{salary}</td>
-                  <td><span class="score-badge">{score}%</span></td>
-                  <td style="color: #f59e0b; font-weight: 600; white-space: nowrap;">{rel}</td>
+                  <td style="white-space: nowrap;">{delivery_badge}</td>
                   <td style="white-space: nowrap;">{action_col}</td>
                 </tr>
                 """
@@ -245,11 +291,12 @@ class DashboardManager:
                       <tr>
                         <th>Date</th>
                         <th>Entreprise</th>
-                        <th>Poste & Annonce Source</th>
+                        <th>Contact / Destinataire</th>
                         <th>Localisation</th>
-                        <th>Rémunération</th>
-                        <th>Match</th>
-                        <th>Relance</th>
+                        <th>Téléphone</th>
+                        <th>E-mail</th>
+                        <th>Poste & Annonce Source</th>
+                        <th>Statut Envoi</th>
                         <th>Dossier Officiel</th>
                       </tr>
                     </thead>
@@ -437,13 +484,21 @@ class DashboardManager:
         <p>Expert Paie & Ressources Humaines • Suivi en temps réel des candidatures certifiées</p>
       </div>
       <div class="stats-bar">
-        <div class="stat-badge">
-          <div class="val">{len(apps)}</div>
-          <div class="lbl">Dossiers Qualifiés</div>
+        <div class="stat-badge" style="border-color: rgba(56, 189, 248, 0.4);">
+          <div class="val" style="color: #38bdf8;">{count_today}</div>
+          <div class="lbl">Aujourd'hui</div>
         </div>
-        <div class="stat-badge">
-          <div class="val">{len(sorted_months)}</div>
-          <div class="lbl">Mois d'Activité</div>
+        <div class="stat-badge" style="border-color: rgba(129, 140, 248, 0.4);">
+          <div class="val" style="color: #818cf8;">{count_week}</div>
+          <div class="lbl">Cette Semaine</div>
+        </div>
+        <div class="stat-badge" style="border-color: rgba(245, 158, 11, 0.4);">
+          <div class="val" style="color: #f59e0b;">{count_month}</div>
+          <div class="lbl">Ce Mois-ci</div>
+        </div>
+        <div class="stat-badge" style="border-color: rgba(52, 211, 153, 0.4);">
+          <div class="val" style="color: #34d399;">{count_total}</div>
+          <div class="lbl">Total Envoyées</div>
         </div>
       </div>
     </div>
@@ -580,26 +635,63 @@ class DashboardManager:
             
         sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
         
+        # Compteurs statistiques dynamiques
+        now = datetime.now()
+        today_str = now.strftime("%Y-%m-%d")
+        current_month_str = now.strftime("%Y-%m")
+        week_ago_str = (now - timedelta(days=7)).strftime("%Y-%m-%d")
+        
+        count_today = sum(1 for a in apps if a.get("date") == today_str)
+        count_week = sum(1 for a in apps if a.get("date", "") >= week_ago_str and a.get("date", "") <= today_str)
+        count_month = sum(1 for a in apps if a.get("date", "").startswith(current_month_str))
+        count_total = len(apps)
+        
         md_content = f"# 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON\n\n"
-        md_content += f"> **Total candidatures certifiées :** {len(apps)} dossiers | **Mise à jour :** {datetime.now().strftime('%d/%m/%Y %H:%M')}\n\n"
+        md_content += f"> ### 📊 Compteurs d'Envoi et Suivi d'Activité\n"
+        md_content += f"> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Envoyées |\n"
+        md_content += f"> | :---: | :---: | :---: | :---: |\n"
+        md_content += f"> | **{count_today}** | **{count_week}** | **{count_month}** | **{count_total}** |\n"
+        md_content += f">\n"
+        md_content += f"> *Dernière mise à jour et synchronisation : {now.strftime('%d/%m/%Y %H:%M')}*\n\n"
         
         for month_key, month_label in sorted_months:
             month_apps = apps_by_month[(month_key, month_label)]
             md_content += f"## 🗓️ {month_label} ({len(month_apps)} candidatures)\n\n"
-            md_content += "| Date | Entreprise | Poste & Annonce Source | Ville | Salaire | Score | Statut Envoi | Dossier PDF |\n"
-            md_content += "| :--- | :--- | :--- | :--- | :--- | :---: | :--- | :--- |\n"
+            md_content += "| Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |\n"
+            md_content += "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
             
             for a in month_apps:
                 d = a.get("date", "")
                 comp = a.get("company", "Entreprise").replace("|", "-")
+                contact_name = a.get("contact_name") or "Monsieur le Responsable du Recrutement"
+                contact_title = a.get("contact_title") or "Direction des Ressources Humaines"
                 tit = a.get("title", "Poste").replace("|", "-")
                 city = a.get("city", "France")
+                pcode = a.get("postal_code", "")
+                loc_str = f"{city} ({pcode})" if pcode else city
                 salary = a.get("salary", ">= 30k€")
                 score = a.get("score", 85)
                 url = a.get("url", "")
+                desc = a.get("description", "")
                 folder_rel = a.get("folder_rel", "").replace("\\", "/")
                 
+                # Téléphone
+                phone = a.get("phone")
+                if not phone or phone == "Non communiqué":
+                    m_ph = re.search(r'(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}', desc)
+                    phone = m_ph.group(0).strip() if m_ph else "Non communiqué"
+                    
+                # E-mail
                 rec_delivery = a.get("recruiter_delivery", {})
+                rec_mail = a.get("contact_email") or rec_delivery.get("recruiter_email")
+                if not rec_mail:
+                    m_em = re.findall(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+', desc)
+                    for em in m_em:
+                        if not em.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')) and 'example.com' not in em.lower():
+                            rec_mail = em.strip()
+                            break
+                email_md = f"[{rec_mail}](mailto:{rec_mail})" if rec_mail else "🌐 Portail Web"
+                
                 if rec_delivery.get("sent"):
                     send_status = f"🟢 Transmis ({rec_delivery.get('recruiter_email', '')})"
                 elif rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED":
@@ -611,7 +703,7 @@ class DashboardManager:
                 pdf_letter_link = f"[Lettre]({safe_url_path(folder_rel)}/Lettre_Motivation_Richard_BUSSON.pdf)" if folder_rel else "-"
                 pdf_cv_link = f"[CV]({safe_url_path(folder_rel)}/CV_Richard_BUSSON.pdf)" if folder_rel else "-"
                 
-                md_content += f"| {d} | **{comp}** | {tit_link} | {city} | {salary} | {score}% | {send_status} | {pdf_letter_link} / {pdf_cv_link} |\n"
+                md_content += f"| {d} | **{comp}** | {contact_name} ({contact_title}) | {loc_str} | {phone} | {email_md} | {tit_link} ({salary} - {score}%) | {send_status} | {pdf_letter_link} / {pdf_cv_link} |\n"
                 
             md_content += "\n"
             
