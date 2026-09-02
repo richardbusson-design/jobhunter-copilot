@@ -5,7 +5,7 @@
 > | :---: | :---: | :---: | :---: |
 > | **12** | **12** | **12** | **12** |
 >
-> *Dernière mise à jour et synchronisation : 02/09/2026 22:12*
+> *Dernière mise à jour et synchronisation : 02/09/2026 22:17*
 
 ## 🗓️ Septembre 2026 (12 candidatures)
 
@@ -22,5 +22,5 @@
 | 2026-09-02 | **Meteojob** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Issy (92000) | Non communiqué | 🌐 Portail Web | [Responsable Paie adjoint(e) F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179296931W) (A partir de 50 k€ brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-02_Meteojob_Responsable_Paie_adjoint_e__F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-02_Meteojob_Responsable_Paie_adjoint_e__F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-02 | **cadremploi** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Issy (92000) | Non communiqué | 🌐 Portail Web | [Responsable Paie adjoint(e) F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179295972W) (A partir de 50 k€ brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-02_cadremploi_Responsable_Paie_adjoint_e__F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-02_cadremploi_Responsable_Paie_adjoint_e__F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-02 | **Orange SA** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Villeneuve (59000) | Non communiqué | 🌐 Portail Web | [Responsable Relations Sociales F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179330423W) (A négocier - 97%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-02_Orange_SA_Responsable_Relations_Sociales_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-02_Orange_SA_Responsable_Relations_Sociales_F_H/CV_Richard_BUSSON.pdf) |
-| 2026-09-02 | **Adef Résidences** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Ivry (94000) | Non communiqué | 🌐 Portail Web | [Responsable Relations Sociales F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235006W) (A négocier - 97%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-02_Adef_R%C3%A9sidences_Responsable_Relations_Sociales_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-02_Adef_R%C3%A9sidences_Responsable_Relations_Sociales_F_H/CV_Richard_BUSSON.pdf) |
+| 2026-09-02 | **Adef Résidences** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Ivry (94000) | Non communiqué | 🌐 Portail Web | [Responsable Relations Sociales F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179235006W) (A négocier - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-02_Adef_R%C3%A9sidences_Responsable_Relations_Sociales_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-02_Adef_R%C3%A9sidences_Responsable_Relations_Sociales_F_H/CV_Richard_BUSSON.pdf) |
 
