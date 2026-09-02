@@ -128,16 +128,10 @@
     "folder_rel": "candidatures\\2026-09-02_PACT_GO_Responsable_Paie___ADP_F_H",
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_PACT_GO_Responsable_Paie___ADP_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_PACT_GO_Responsable_Paie___ADP_F_H\\CV_Richard_BUSSON.pdf",
-    "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie & ADP — Richard BUSSON",
-      "timestamp": "2026-09-02 20:12"
-    },
+    "recruiter_delivery": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
     "date": "2026-09-02",
-    "relance_date": "2026-09-09"
+    "relance_date": "2026-09-09",
+    "proof_screenshot": "pactgo_hellowork_confirme_100pct.png"
   },
   {
     "id": "APEC-179286278W",
