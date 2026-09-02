@@ -146,3 +146,30 @@ class QualityGuard:
             report[f] = {"status": "PASS", "size": size}
             
         return all_passed, report
+
+    # =========================================================================
+    # CONTRÔLE GLOBAL EN 3 PASSAGES BLOQUANTS
+    # =========================================================================
+    def execute_three_pass_audit(self, job: Dict[str, Any], letter_html: str, cv_html: str, pdf_letter_path: str, pdf_cv_path: str) -> Tuple[bool, Dict[str, Any]]:
+        """Exécute l'audit global en 3 passages successifs."""
+        # 1. Passage 1 : Faisabilité & Critères
+        p1_ok, p1_msg = self.validate_job_criteria(job)
+        if not p1_ok:
+            return False, {"passage": 1, "reason": p1_msg}
+
+        # 2. Passage 2 : Intégrité des templates & typo
+        p2_let_ok, p2_let_msg = self.validate_template_integrity(letter_html, "Lettre")
+        if not p2_let_ok:
+            return False, {"passage": 2, "reason": p2_let_msg}
+            
+        p2_cv_ok, p2_cv_msg = self.validate_template_integrity(cv_html, "CV")
+        if not p2_cv_ok:
+            return False, {"passage": 2, "reason": p2_cv_msg}
+
+        # 3. Passage 3 : Contrôle des 6 fichiers et tailles
+        folder_path = os.path.dirname(pdf_letter_path)
+        p3_ok, p3_report = self.validate_candidate_package(folder_path)
+        if not p3_ok:
+            return False, {"passage": 3, "report": p3_report}
+
+        return True, {"passage_1": p1_msg, "passage_2": "Templates & typographie validés", "passage_3": p3_report}
