@@ -184,12 +184,11 @@
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_cadremploi_Responsable_Paie_et_ADP_-_Environnement_sti..._F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-02_cadremploi_Responsable_Paie_et_ADP_-_Environnement_sti..._F_H\\CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie et ADP - Environnement sti... — Richard BUSSON",
-      "timestamp": "2026-09-02 20:13"
+      "sent": true,
+      "mode": "DIRECT_RECRUITER_EMAIL",
+      "recruiter_email": "contact@le-a.fr",
+      "subject": "Candidature : Responsable Paie et ADP – Richard BUSSON",
+      "timestamp": "2026-09-02 21:56"
     },
     "date": "2026-09-02",
     "relance_date": "2026-09-09"
