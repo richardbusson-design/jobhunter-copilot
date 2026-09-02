@@ -1,11 +1,11 @@
 # 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON
 
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
-> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Envoyées |
+> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
 > | **0** | **125** | **73** | **125** |
 >
-> *Dernière mise à jour et synchronisation : 02/09/2026 19:18*
+> *Dernière mise à jour et synchronisation : 02/09/2026 19:29*
 
 ## 🗓️ Septembre 2026 (73 candidatures)
 

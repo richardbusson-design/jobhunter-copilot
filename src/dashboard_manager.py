@@ -498,7 +498,7 @@ class DashboardManager:
         </div>
         <div class="stat-badge" style="border-color: rgba(52, 211, 153, 0.4);">
           <div class="val" style="color: #34d399;">{count_total}</div>
-          <div class="lbl">Total Envoyées</div>
+          <div class="lbl">Total Traitées</div>
         </div>
       </div>
     </div>
@@ -648,7 +648,7 @@ class DashboardManager:
         
         md_content = f"# 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON\n\n"
         md_content += f"> ### 📊 Compteurs d'Envoi et Suivi d'Activité\n"
-        md_content += f"> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Envoyées |\n"
+        md_content += f"> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |\n"
         md_content += f"> | :---: | :---: | :---: | :---: |\n"
         md_content += f"> | **{count_today}** | **{count_week}** | **{count_month}** | **{count_total}** |\n"
         md_content += f">\n"
