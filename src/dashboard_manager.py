@@ -109,8 +109,41 @@ class DashboardManager:
             "ids": ids,
             "urls": urls,
             "company_titles": company_titles,
-            "count": len(all_tracked_apps)
+            "count": len(all_tracked_apps),
+            "total_count": len(all_tracked_apps)
         }
+
+    def is_duplicate(self, job: Dict[str, Any], fps: Dict[str, Any]) -> Tuple[bool, str]:
+        """Vérifie si une offre est un doublon par ID, URL ou couple Entreprise/Titre."""
+        job_id = str(job.get("id", "")).strip()
+        job_url = str(job.get("url", "")).strip()
+        c_norm = normalize_text(job.get("company", ""))
+        t_norm = normalize_text(job.get("title", ""))
+        ct_pair = f"{c_norm}|{t_norm}" if c_norm and t_norm else ""
+        
+        # Test direct sur les sets ou avec remplacement de underscores pour robustesse
+        ids = fps.get("ids", set())
+        urls = fps.get("urls", set())
+        cts = fps.get("company_titles", set())
+        
+        if job_id and job_id in ids:
+            return True, f"Identifiant unique déjà existant ({job_id})"
+        if job_url and job_url in urls:
+            return True, f"URL déjà traitée ({job_url})"
+        if ct_pair:
+            # Vérifie correspondance directe ou partielle
+            for ct in cts:
+                ct_clean = ct.replace("___", "|")
+                if ct_pair == ct_clean or ct_pair == ct:
+                    return True, f"Couple Entreprise / Titre déjà traité ({ct_pair})"
+                if "|" in ct_clean:
+                    e_part, t_part = ct_clean.split("|", 1)
+                    if e_part in c_norm or c_norm in e_part:
+                        words_t = set(t_part.split()) - {"de", "et", "le", "la", "en", "du", "des", "pour"}
+                        words_norm = set(t_norm.split())
+                        if words_t and (words_t.issubset(words_norm) or len(words_t & words_norm) >= 2):
+                            return True, f"Poste similaire détecté pour la même entreprise ({c_norm})"
+        return False, ""
 
     def add_application(self, application_data: Dict[str, Any]):
         """Ajoute une nouvelle candidature dans le tracker JSON après vérification anti-doublon."""

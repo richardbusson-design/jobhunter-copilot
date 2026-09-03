@@ -119,6 +119,23 @@ class QualityGuard:
             
         return min(score, 100.0)
 
+    def validate_html_letter(self, letter_html: str) -> Tuple[bool, str]:
+        """Vérifie que la lettre de motivation ne comporte aucun caractère gras dans son corps."""
+        body_match = re.search(r'<div class="body-content">(.*?)</div>\s*</div>\s*</body>', letter_html, re.DOTALL)
+        if body_match:
+            body_content = body_match.group(1)
+            if "<strong>" in body_content or "<b>" in body_content or "font-weight: bold" in body_content or "font-weight:bold" in body_content:
+                return False, "Présence de texte gras interdite dans le corps de lettre."
+        return True, "Lettre conforme (zéro gras)."
+
+    def validate_html_cv(self, cv_html: str) -> Tuple[bool, str]:
+        """Vérifie l'intégrité structurelle des sections clés du CV."""
+        required = ["EXPÉRIENCES PROFESSIONNELLES", "FORMATION"]
+        for r in required:
+            if r.lower() not in cv_html.lower():
+                return False, f"Section manquante dans le CV : {r}"
+        return True, "CV conforme et complet."
+
     # =========================================================================
     # PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, GÉOMÉTRIE PDF & TAILLE NON NULLE
     # =========================================================================

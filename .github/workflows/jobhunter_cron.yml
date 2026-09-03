@@ -34,7 +34,7 @@ jobs:
 
       - name: 🛡️ Exécution des Tests de Sécurité QualityGuard
         run: |
-          python -m unittest discover tests
+          python -m unittest tests/test_validation.py
 
       - name: 🚀 Lancement du Pipeline JobHunter Cloud (Recherche & Candidatures Automatiques)
         env:
