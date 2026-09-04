@@ -62,10 +62,10 @@ class QualityGuard:
             for num_str in sal_nums:
                 try:
                     num = int(num_str)
-                    if 1500 <= num < 2500: # Mensuel inférieur à 2500€
-                        return False, f"Rejet : Salaire mensuel ({num} €) inférieur au seuil minimal de 2 500 € brut."
-                    elif 10000 <= num < 30000: # Annuel inférieur à 30 000€
-                        return False, f"Rejet : Salaire annuel ({num} €) inférieur au seuil minimal de 30 000 € brut."
+                    if 1500 <= num < 2583: # Mensuel inférieur à 2583€
+                        return False, f"Rejet : Salaire mensuel ({num} €) inférieur au seuil minimal de 2 583 € brut."
+                    elif 10000 <= num < 31000: # Annuel inférieur à 31 000€
+                        return False, f"Rejet : Salaire annuel ({num} €) inférieur au seuil minimal de 31 000 € brut."
                 except ValueError:
                     pass
 

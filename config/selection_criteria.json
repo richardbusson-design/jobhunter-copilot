@@ -1,8 +1,8 @@
 {
   "salary": {
-    "min_annual_brut_eur": 30000,
-    "min_monthly_brut_eur": 2500,
-    "min_hourly_brut_eur": 16.48,
+    "min_annual_brut_eur": 31000,
+    "min_monthly_brut_eur": 2583,
+    "min_hourly_brut_eur": 17.03,
     "strict_rejection_if_below": true
   },
   "geography": {

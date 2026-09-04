@@ -18,24 +18,29 @@ from playwright.sync_api import sync_playwright
 class FranceTravailBot:
     def __init__(self, base_dir="."):
         self.base_dir = os.path.abspath(base_dir)
-        self.profile_dir = os.path.abspath("C:/Users/richa/JobHunter/browser_profile")
+        if sys.platform == "win32":
+            self.profile_dir = os.path.abspath(r"C:\Users\richa\JobHunter\browser_profile")
+            self.chrome_exe = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+        else:
+            self.profile_dir = os.path.join(self.base_dir, "browser_profile")
+            self.chrome_exe = None
         os.makedirs(self.profile_dir, exist_ok=True)
-        self.chrome_exe = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
         self.load_env_credentials()
         
     def load_env_credentials(self):
-        """Charge les identifiants France Travail depuis le .env local sécurisé."""
-        env_path = os.path.join(self.base_dir, ".env")
-        self.username = None
-        self.password = None
-        if os.path.exists(env_path):
-            with open(env_path, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if line.startswith("FRANCE_TRAVAIL_USER="):
-                        self.username = line.split("=", 1)[1].strip().strip('"').strip("'")
-                    elif line.startswith("FRANCE_TRAVAIL_PASSWORD="):
-                        self.password = line.split("=", 1)[1].strip().strip('"').strip("'")
+        """Charge les identifiants France Travail depuis le .env local sécurisé ou les secrets GitHub."""
+        self.username = os.environ.get("FRANCE_TRAVAIL_USER")
+        self.password = os.environ.get("FRANCE_TRAVAIL_PASSWORD")
+        if not self.username or not self.password:
+            env_path = os.path.join(self.base_dir, ".env")
+            if os.path.exists(env_path):
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line.startswith("FRANCE_TRAVAIL_USER="):
+                            self.username = line.split("=", 1)[1].strip().strip('"').strip("'")
+                        elif line.startswith("FRANCE_TRAVAIL_PASSWORD="):
+                            self.password = line.split("=", 1)[1].strip().strip('"').strip("'")
 
     def login_with_credentials(self, username: str = None, password: str = None) -> bool:
         """
@@ -52,14 +57,18 @@ class FranceTravailBot:
         auth_url = "https://authentification-candidat.francetravail.fr/connexion/XUI/?realm=/individu"
         print(f"[*] Connexion automatique à France Travail pour : {user}...")
         
+        is_ci = os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("CI") == "true" or sys.platform != "win32"
+        launch_opts = {
+            "user_data_dir": self.profile_dir,
+            "headless": is_ci,
+            "args": ["--disable-blink-features=AutomationControlled", "--no-sandbox", "--disable-dev-shm-usage"],
+            "viewport": {"width": 1280, "height": 900} if is_ci else None
+        }
+        if self.chrome_exe and os.path.exists(self.chrome_exe):
+            launch_opts["executable_path"] = self.chrome_exe
+        
         with sync_playwright() as p:
-            browser = p.chromium.launch_persistent_context(
-                user_data_dir=self.profile_dir,
-                executable_path=self.chrome_exe,
-                headless=False,
-                args=["--start-maximized", "--disable-blink-features=AutomationControlled"],
-                viewport=None
-            )
+            browser = p.chromium.launch_persistent_context(**launch_opts)
             
             page = browser.pages[0] if browser.pages else browser.new_page()
             page.goto(auth_url)
@@ -117,14 +126,18 @@ class FranceTravailBot:
         """
         print(f"\n[*] Lancement de la postulation automatisée sur : {offer_url}")
         
+        is_ci = os.environ.get("GITHUB_ACTIONS") == "true" or os.environ.get("CI") == "true" or sys.platform != "win32"
+        launch_opts = {
+            "user_data_dir": self.profile_dir,
+            "headless": is_ci,
+            "args": ["--disable-blink-features=AutomationControlled", "--no-sandbox", "--disable-dev-shm-usage"],
+            "viewport": {"width": 1280, "height": 900} if is_ci else None
+        }
+        if self.chrome_exe and os.path.exists(self.chrome_exe):
+            launch_opts["executable_path"] = self.chrome_exe
+        
         with sync_playwright() as p:
-            browser = p.chromium.launch_persistent_context(
-                user_data_dir=self.profile_dir,
-                executable_path=self.chrome_exe,
-                headless=False,
-                args=["--start-maximized", "--disable-blink-features=AutomationControlled"],
-                viewport=None
-            )
+            browser = p.chromium.launch_persistent_context(**launch_opts)
             
             page = browser.pages[0] if browser.pages else browser.new_page()
             page.goto(offer_url)

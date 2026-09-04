@@ -145,15 +145,18 @@ class FormAutoPilot:
         print(f"[*] Lettre sélectionnée : {letter_pdf}")
 
         with sync_playwright() as p:
-            browser = p.chromium.launch(
-                executable_path=self.chrome_exe,
-                headless=headless,
-                args=[
+            launch_args = {
+                "headless": headless or os.environ.get("GITHUB_ACTIONS") == "true" or sys.platform != "win32",
+                "args": [
                     "--disable-blink-features=AutomationControlled",
-                    "--start-maximized",
-                    "--no-sandbox"
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage"
                 ]
-            )
+            }
+            if sys.platform == "win32" and self.chrome_exe and os.path.exists(self.chrome_exe):
+                launch_args["executable_path"] = self.chrome_exe
+                
+            browser = p.chromium.launch(**launch_args)
             context = browser.new_context(
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 viewport={"width": 1280, "height": 900}

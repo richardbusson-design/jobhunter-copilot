@@ -7,21 +7,30 @@ import shutil
 def get_browser_path():
     """Détecte automatiquement le navigateur headless disponible (Windows Edge ou Linux Chromium)."""
     # 1. Sous Windows (Edge ou Chrome)
-    edge_paths = [
-        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-        r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-    ]
-    for p in edge_paths:
-        if os.path.exists(p):
-            return p
+    if sys.platform == "win32":
+        edge_paths = [
+            r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+            r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+        ]
+        for p in edge_paths:
+            if os.path.exists(p):
+                return p
             
     # 2. Sous Linux / GitHub Actions (Chromium ou Chrome)
-    linux_bins = ["chromium-browser", "chromium", "google-chrome", "google-chrome-stable"]
+    linux_bins = ["google-chrome", "google-chrome-stable", "chromium-browser", "chromium"]
     for b in linux_bins:
         path = shutil.which(b)
         if path:
             return path
+            
+    # 3. Fallback Playwright executable
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            return p.chromium.executable_path
+    except Exception:
+        pass
             
     return "chromium"
 
