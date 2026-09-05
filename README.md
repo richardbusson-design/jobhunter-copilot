@@ -3,11 +3,11 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **23** | **35** | **35** | **35** |
+> | **1** | **36** | **36** | **36** |
 >
-> *Dernière mise à jour et synchronisation : 04/09/2026 20:55*
+> *Dernière mise à jour et synchronisation : 05/09/2026 11:16*
 
-## 🗓️ Septembre 2026 (35 candidatures)
+## 🗓️ Septembre 2026 (36 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -46,4 +46,5 @@
 | 2026-09-04 | **Legal &amp; HR Talents** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 78 (78000) | Non communiqué | 🌐 Portail Web | [Responsable relations sociales (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/6496942) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-04_Legal__amp__HR_Talents_Responsable_relations_sociales__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-04_Legal__amp__HR_Talents_Responsable_relations_sociales__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-04 | **Fed Group** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 92 (92000) | Non communiqué | 🌐 Portail Web | [Responsable relations sociales min 5 ans (F/H)](https://candidat.francetravail.fr/offres/recherche/detail/6468005) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-04_Fed_Group_Responsable_relations_sociales_min_5_ans__F_H_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-04_Fed_Group_Responsable_relations_sociales_min_5_ans__F_H_/CV_Richard_BUSSON.pdf) |
 | 2026-09-04 | **972** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Martinique (60100) | Non communiqué | 🌐 Portail Web | [Formateur / Formatrice RH et Droit Social à distance (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/212XDSG) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-04_972_Formateur___Formatrice_RH_et_Droit_Social_%C3%A0_distance__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-04_972_Formateur___Formatrice_RH_et_Droit_Social_%C3%A0_distance__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-05 | **94** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Ivry (60100) | Non communiqué | 🌐 Portail Web | [Responsable Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/6657668) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-05_94_Responsable_Relations_Sociales_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-05_94_Responsable_Relations_Sociales_H_F/CV_Richard_BUSSON.pdf) |
 
