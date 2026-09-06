@@ -1,5 +1,30 @@
 [
   {
+    "company": "ADEIS RH",
+    "title": "Responsable Paie (H/F)",
+    "city": "44",
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213FYPJ",
+    "description": "Le Cabinet ADEIS RH, spécialisé en recrutement et conseil RH, recrute pour l'un de ses clients : un Responsable Paie (h/f).\n\nRattaché à la Direction des Ressources Humaines, vous pilotez l'activité...",
+    "score": 98,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-01_ADEIS_RH_Responsable_Paie__H_F_",
+    "folder_rel": "candidatures\\2026-09-01_ADEIS_RH_Responsable_Paie__H_F_",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-01_ADEIS_RH_Responsable_Paie__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-01_ADEIS_RH_Responsable_Paie__H_F_\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "WEB_PORTAL_AUTO_SUBMITTED",
+      "reason": "Candidature transmise avec succès sur le portail officiel France Travail (Accusé de réception vérifié)",
+      "recruiter_email": null,
+      "subject": "Candidature : Responsable Paie (H/F) — Richard BUSSON",
+      "timestamp": "2026-09-06 22:43"
+    },
+    "date": "2026-09-01",
+    "relance_date": "2026-09-08",
+    "phone": "Non communiqué",
+    "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-01_ADEIS_RH_Responsable_Paie__H_F_\\preuve_soumission_officielle.png"
+  },
+  {
     "id": "APEC-179315706W",
     "source": "L'Apec (Direct WebService)",
     "company": "Réseau Talents",

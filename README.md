@@ -3,15 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **35** | **35** | **35** | **35** |
+> | **35** | **36** | **36** | **36** |
 >
-> *Dernière mise à jour et synchronisation : 06/09/2026 21:55*
+> *Dernière mise à jour et synchronisation : 06/09/2026 22:43*
 
-## 🗓️ Septembre 2026 (35 candidatures)
+## 🗓️ Septembre 2026 (36 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2026-09-06 | **Réseau Talents** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Bordeaux (33000) | Non communiqué | 🌐 Portail Web | [Responsable paie F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179315706W) (40 - 50 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-06_R%C3%A9seau_Talents_Responsable_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-06_R%C3%A9seau_Talents_Responsable_paie_F_H/CV_Richard_BUSSON.pdf) |
+| 2026-09-01 | **ADEIS RH** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 44 | Non communiqué | 🌐 Portail Web | [Responsable Paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213FYPJ) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/preuve_soumission_officielle.png) |
+| 2026-09-06 | **Réseau Talents** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Bordeaux (33000) | Non communiqué | 🌐 Portail Web | [Responsable paie F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179315706W) (40 - 50 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-06_R%C3%A9seau_Talents_Responsable_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-06_R%C3%A9seau_Talents_Responsable_paie_F_H/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-06_R%C3%A9seau_Talents_Responsable_paie_F_H/preuve_soumission_officielle.png) |
 | 2026-09-06 | **AUDIT FINANCE EXPERT** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Gallargues (30000) | Non communiqué | 🌐 Portail Web | [Responsable Paie ADP F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179359951W) (45 - 55 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-06_AUDIT_FINANCE_EXPERT_Responsable_Paie_ADP_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-06_AUDIT_FINANCE_EXPERT_Responsable_Paie_ADP_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-06 | **PACT&GO** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Gallargues (30000) | Non communiqué | 🌐 Portail Web | [Responsable Paie & ADP F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179194359W) (45 - 55 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-06_PACT_GO_Responsable_Paie___ADP_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-06_PACT_GO_Responsable_Paie___ADP_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-06 | **LEA Linking Executive Associates** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Uchaud (30000) | Non communiqué | 🌐 Portail Web | [Responsable Paie et ADP- Environnement stimulant F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179286278W) (45 - 50 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-06_LEA_Linking_Executive_Associates_Responsable_Paie_et_ADP-_Environnement_stimulant_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-06_LEA_Linking_Executive_Associates_Responsable_Paie_et_ADP-_Environnement_stimulant_F_H/CV_Richard_BUSSON.pdf) |

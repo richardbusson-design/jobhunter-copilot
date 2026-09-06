@@ -15,11 +15,12 @@ from pdf_compiler import compile_html_to_pdf, render_html_to_png
 from dashboard_manager import DashboardManager
 from notifier import ApplicationNotifier
 from recruiter_dispatcher import RecruiterDispatcher
+from form_auto_pilot import FormAutoPilot
 
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
 
-def run_pipeline(base_dir=".", auto_notify=True):
+def run_pipeline(base_dir=".", auto_notify=True, auto_submit_web=True, headless=True):
     print("=" * 75)
     print("  [JOBHUNTER PIPELINE OFFICIEL] - EXECUTION & CONTROLE QUALITE STRICT")
     print("=" * 75)
@@ -28,6 +29,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
     generator = ApplicationGenerator(base_dir=base_dir)
     guard = QualityGuard(config_dir=os.path.join(base_dir, "config"))
     dashboard = DashboardManager(base_dir=base_dir)
+    form_pilot = FormAutoPilot(base_dir=base_dir) if auto_submit_web else None
     notifier = ApplicationNotifier()
     dispatcher = RecruiterDispatcher(base_dir=base_dir)
     
@@ -124,6 +126,25 @@ def run_pipeline(base_dir=".", auto_notify=True):
         
         # 7. Expédition Directe au Recruteur (Module RecruiterDispatcher)
         dispatch_report = dispatcher.dispatch_application(job, target_dir)
+        
+        # 7bis. Soumission Automatique FormAutoPilot (si formulaire web requis)
+        if auto_submit_web and form_pilot and not dispatch_report.get("sent") and job.get("url"):
+            print(f"    [🚀 FORMAUTOPILOT] Déclenchement de la soumission web automatique (mode silencieux)...")
+            try:
+                # Transmettre le dossier local pour trouver le CV et la lettre ciblés
+                job["folder"] = target_dir
+                pilot_res = form_pilot.fill_and_submit_form(url=job.get("url"), offer=job, headless=headless)
+                if pilot_res.get("success"):
+                    dispatch_report["sent"] = True
+                    dispatch_report["mode"] = "WEB_PORTAL_AUTO_SUBMITTED"
+                    dispatch_report["reason"] = "Formulaire web officiellement soumis et validé par FormAutoPilot"
+                    dispatch_report["proof_screenshot"] = pilot_res.get("proof_screenshot")
+                    print(f"    [✓ FORMAUTOPILOT] Candidature officiellement soumise et validée ! Preuve enregistrée.")
+                else:
+                    err_msg = pilot_res.get("error", "Vérification requise")
+                    print(f"    [!] FORMAUTOPILOT : Soumission web non finalisée ({err_msg}) - Dossier conservé pour postulation manuelle.")
+            except Exception as e:
+                print(f"    [!] Exception FormAutoPilot : {e}")
         
         # 8. Enregistrement dans le CRM / Dashboard
         app_entry = {

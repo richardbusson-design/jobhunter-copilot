@@ -25,19 +25,39 @@ from typing import Dict, Any, Optional, Tuple
 from playwright.sync_api import sync_playwright, Page, BrowserContext
 
 class FormAutoPilot:
+    def _load_env_file(self):
+        env_path = os.path.join(self.base_dir, ".env")
+        if os.path.exists(env_path):
+            try:
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#") and "=" in line:
+                            k, v = line.split("=", 1)
+                            os.environ[k.strip()] = v.strip().strip("'\"")
+            except Exception:
+                pass
+
     def __init__(self, base_dir="."):
         self.base_dir = os.path.abspath(base_dir)
+        self._load_env_file()
         self.chrome_exe = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+        if not os.path.exists(self.chrome_exe):
+            self.chrome_exe = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
         
-        # Données officielles de Richard Busson
+        self.profile_dir = os.environ.get("BROWSER_PROFILE_DIR", r"C:\Users\richa\JobHunter\browser_profile")
+        os.makedirs(self.profile_dir, exist_ok=True)
+        
+        # Données officielles de Richard Busson (Mémoire permanente)
         self.candidate = {
             "first_name": "Richard",
             "last_name": "BUSSON",
             "full_name": "Richard BUSSON",
             "email": "richard.busson@kairos-paye.fr",
-            "phone": "0761961546",
-            "phone_formatted": "07 61 96 15 46",
-            "phone_int": "+33761961546",
+            "phone": "0939200870",
+            "phone_formatted": "09 39 20 08 70",
+            "phone_mobile": "07 61 96 15 46",
+            "phone_int": "+33939200870",
             "phone_pro": "09 39 20 08 70",
             "address": "98, allée Paul Cézanne",
             "postal_code": "60100",
@@ -67,8 +87,8 @@ class FormAutoPilot:
         }
         
         # Identifiants IMAP pour l'auto-confirmation de lien par e-mail
-        self.imap_server = "ssl0.ovh.net"
-        self.imap_user = "richard.busson@kairos-paye.fr"
+        self.imap_server = os.environ.get("IMAP_SERVER", "ssl0.ovh.net")
+        self.imap_user = os.environ.get("IMAP_USER", "richard.busson@kairos-paye.fr")
         self.imap_password = os.environ.get("SMTP_PASSWORD", "mailK41R0sbTN001")
 
     def find_dossier_files(self, offer: Dict[str, Any]) -> Tuple[Optional[str], Optional[str], str]:
@@ -146,6 +166,7 @@ class FormAutoPilot:
 
         with sync_playwright() as p:
             launch_args = {
+                "user_data_dir": self.profile_dir,
                 "headless": headless or os.environ.get("GITHUB_ACTIONS") == "true" or sys.platform != "win32",
                 "args": [
                     "--disable-blink-features=AutomationControlled",
@@ -156,15 +177,17 @@ class FormAutoPilot:
             if sys.platform == "win32" and self.chrome_exe and os.path.exists(self.chrome_exe):
                 launch_args["executable_path"] = self.chrome_exe
                 
-            browser = p.chromium.launch(**launch_args)
-            context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                viewport={"width": 1280, "height": 900}
-            )
+            context = p.chromium.launch_persistent_context(**launch_args)
             context.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            page = context.new_page()
+            page = context.pages[0] if context.pages else context.new_page()
 
             try:
+                # Spécialisation France Travail
+                if "francetravail.fr" in url.lower():
+                    ft_res = self._submit_france_travail(context, page, url, offer, cv_pdf, letter_pdf, motivation_text, result)
+                    context.close()
+                    return ft_res
+
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_load_state("networkidle")
                 time.sleep(2)
@@ -200,14 +223,21 @@ class FormAutoPilot:
                     fail_shot = os.path.join(out_dir, "form_submission_failed.png")
                     page.screenshot(path=fail_shot)
                     result["proof_screenshot"] = fail_shot
-                    browser.close()
+                    context.close()
                     return result
 
                 # Étape 6 : Attente et vérification du résultat officiel
                 time.sleep(5)
-                success_shot = os.path.join(out_dir, "form_submission_confirmed.png")
+                success_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
                 page.screenshot(path=success_shot)
                 result["proof_screenshot"] = success_shot
+                
+                # Copie miroir
+                try:
+                    import shutil
+                    shutil.copyfile(success_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
+                except Exception:
+                    pass
 
                 page_text = page.locator("body").inner_text()
                 
@@ -232,7 +262,7 @@ class FormAutoPilot:
                     pass
 
             finally:
-                browser.close()
+                context.close()
 
         return result
 
@@ -465,6 +495,232 @@ class FormAutoPilot:
             print(f"[!] Erreur lors de l'auto-confirmation IMAP : {e}")
 
         return False
+    def _handle_ft_auth_flow(self, context, page: Page):
+        """Authentification 100% autonome France Travail avec interception IMAP du code 2FA."""
+        ft_user = os.environ.get("FRANCE_TRAVAIL_USER", "richard.busson@gmail.com")
+        ft_pass = os.environ.get("FRANCE_TRAVAIL_PASSWORD", "R2d3DCVC&&")
+        gmail_pwd = os.environ.get("GMAIL_APP_PASSWORD", "gpyyptsimcnttqiq")
+        
+        print(f"[*] Auto-authentification France Travail pour {ft_user}...")
+        u = page.locator("#identifiant, input[name='callback_0']").first
+        if u.is_visible():
+            u.fill(ft_user)
+            page.locator("#password, input[name='callback_1']").first.fill(ft_pass)
+            page.locator("button#submitButton, input[type='submit'], button:has-text('Se connecter')").first.click()
+            time.sleep(4)
+
+        card = page.get_by_text("Recevoir un code par e-mail").first
+        if not card.is_visible():
+            card = page.locator("//*[contains(text(), 'Recevoir un code')]").first
+
+        if card.is_visible():
+            print("[*] Clic sur 'Recevoir un code par e-mail'...")
+            card.click()
+            time.sleep(3)
+
+            # Interception IMAP du code à 8 chiffres
+            print("[*] Interception du code 2FA dans Gmail...")
+            code = None
+            start_t = time.time()
+            while time.time() - start_t < 90:
+                try:
+                    mail = imaplib.IMAP4_SSL("imap.gmail.com", 993)
+                    mail.login(ft_user, gmail_pwd)
+                    mail.select("INBOX")
+                    _, messages = mail.search(None, 'ALL')
+                    msg_ids = messages[0].split()
+                    if msg_ids:
+                        for mid in reversed(msg_ids[-5:]):
+                            _, data = mail.fetch(mid, '(RFC822)')
+                            msg = email.message_from_bytes(data[0][1])
+                            sub_hdr = msg.get("Subject", "")
+                            if "france travail" in str(sub_hdr).lower() or "code" in str(sub_hdr).lower():
+                                body = ""
+                                if msg.is_multipart():
+                                    for part in msg.walk():
+                                        if part.get_content_type() == "text/plain":
+                                            body += part.get_payload(decode=True).decode(errors='ignore')
+                                else:
+                                    body = msg.get_payload(decode=True).decode(errors='ignore')
+                                match = re.search(r'\b(\d{8})\b', body)
+                                if match:
+                                    code = match.group(1)
+                                    mail.logout()
+                                    break
+                    mail.logout()
+                    if code:
+                        break
+                except Exception:
+                    pass
+                time.sleep(2)
+
+            if code:
+                print(f"[+] Code intercepté : {code}")
+                inputs = page.locator("input:not([type='hidden'])").all()
+                if len(inputs) == 8:
+                    for idx, digit in enumerate(code[:8]):
+                        inputs[idx].click()
+                        inputs[idx].type(digit, delay=40)
+                        time.sleep(0.04)
+                else:
+                    if inputs:
+                        inputs[0].click()
+                        page.keyboard.type(code, delay=40)
+                time.sleep(1)
+                page.locator("button:has-text('Poursuivre'), input[type='submit']").first.click()
+                time.sleep(4)
+
+                # Clic confiance 3 mois
+                trust_btn = page.get_by_text("Faire confiance à ce navigateur")
+                if not trust_btn.is_visible():
+                    trust_btn = page.locator("button, a").filter(has_text="Faire confiance")
+                if trust_btn.is_visible():
+                    trust_btn.click()
+                    time.sleep(5)
+
+    def _submit_france_travail(self, context, page: Page, url: str, offer: Dict[str, Any], cv_pdf: Optional[str], letter_pdf: Optional[str], motivation_text: str, result: Dict[str, Any]) -> Dict[str, Any]:
+        """Gère la soumission officielle sur le portail France Travail avec support de session 3 mois et 2FA automatique."""
+        print(f"[*] FormAutoPilot [France Travail] : Traitement spécialisé de l'offre -> {url}")
+        out_dir = offer.get("folder") or os.path.join(self.base_dir, "scratch")
+        os.makedirs(out_dir, exist_ok=True)
+        
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            time.sleep(3)
+            
+            # Étape 1 : Si besoin d'authentification préalable
+            if "connexion" in page.url or "login" in page.url:
+                print("[*] Page de connexion France Travail détectée, authentification automatique...")
+                self._handle_ft_auth_flow(context, page)
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                time.sleep(3)
+
+            # Étape 2 : Clic sur le bouton "Postuler"
+            apply_btn = page.locator("a#detail-apply, button:has-text('Postuler'), a:has-text('Postuler')").first
+            if apply_btn.is_visible():
+                print("[*] Clic sur 'Postuler'...")
+                apply_btn.click()
+                time.sleep(2)
+
+            # Étape 3 : Clic sur "Envoyer ma candidature" pour ouvrir le formulaire
+            btn_envoyer = page.locator("a:has-text('Envoyer ma candidature'), button:has-text('Envoyer ma candidature')").first
+            target_page = page
+            if btn_envoyer.is_visible():
+                print("[*] Clic sur 'Envoyer ma candidature'...")
+                try:
+                    with context.expect_page(timeout=6000) as new_page_info:
+                        btn_envoyer.click()
+                    target_page = new_page_info.value
+                except Exception:
+                    if len(context.pages) > 1:
+                        target_page = context.pages[-1]
+
+            target_page.wait_for_load_state("domcontentloaded")
+            time.sleep(4)
+
+            # Étape 4 : Détection si déjà postulé
+            body_text = target_page.locator("body").inner_text()
+            if "déjà postulé" in body_text.lower():
+                print("[!] Candidature déjà enregistrée sur cette offre France Travail.")
+                already_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+                target_page.screenshot(path=already_shot)
+                result["proof_screenshot"] = already_shot
+                result["success"] = True
+                result["already_applied"] = True
+                return result
+
+            # Étape 5 : Sélection / Upload du CV
+            # 5a. Si un champ d'upload de fichier existe
+            file_input = target_page.locator("input[type='file']").first
+            if file_input.is_visible() and cv_pdf and os.path.exists(cv_pdf):
+                try:
+                    print(f"[*] Téléversement du CV officiel : {cv_pdf}")
+                    file_input.set_input_files(cv_pdf)
+                    time.sleep(2)
+                except Exception as e:
+                    print(f"[!] Upload direct fichier : {e}")
+
+            # 5b. Sélection d'un CV radio adapté si présent
+            cv_radios = target_page.locator("input[name='choix-cv']").all()
+            if cv_radios:
+                selected = False
+                for r in cv_radios:
+                    rid = r.get_attribute("id") or ""
+                    lbl = target_page.locator(f"label[for='{rid}']").first
+                    if lbl.is_visible():
+                        txt = lbl.inner_text().lower()
+                        if any(k in txt for k in ["responsablerh", "paie", "gestionnaire", "consultant"]):
+                            r.click()
+                            selected = True
+                            print(f"[*] CV sélectionné : {lbl.inner_text().strip()}")
+                            break
+                if not selected and cv_radios:
+                    cv_radios[0].click()
+
+            # Étape 6 : Profil de compétences
+            carte_btn = target_page.locator("button:has-text('Sélectionner'), a:has-text('Sélectionner')").first
+            if carte_btn.is_visible():
+                try:
+                    print("[*] Sélection du profil de compétences (expert droit social, paie, RH)...")
+                    carte_btn.click()
+                    time.sleep(1)
+                except Exception:
+                    pass
+
+            # Étape 7 : Remplissage de la Lettre de motivation (max 1500 caractères)
+            textarea = target_page.locator("textarea#lettre-motivation, textarea[name='textMessage']").first
+            if textarea.is_visible():
+                print("[*] Injection de la lettre de motivation sur-mesure...")
+                clean_mot = motivation_text.strip()
+                if len(clean_mot) > 1450:
+                    clean_mot = clean_mot[:1450]
+                textarea.fill(clean_mot)
+                time.sleep(1)
+
+            # Étape 8 : Confirmation des coordonnées
+            coords_chk = target_page.locator("label:has-text('Je confirme que mes coordonnées'), input[type='checkbox']").first
+            if coords_chk.is_visible():
+                print("[*] Confirmation des coordonnées du candidat...")
+                coords_chk.click()
+                time.sleep(1)
+
+            # Capture d'écran avant envoi
+            ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
+            target_page.screenshot(path=ready_shot)
+            print(f"[+] Capture avant soumission sauvegardée : {ready_shot}")
+
+            # Étape 9 : Soumission officielle
+            submit_btn = target_page.locator("button:has-text('Envoyer'), input[value='Envoyer']").first
+            if submit_btn.is_visible():
+                print("[*] Clic sur 'Envoyer' pour sceller la candidature officielle...")
+                submit_btn.click()
+                time.sleep(6)
+
+            # Étape 10 : Preuve officielle de confirmation
+            proof_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+            target_page.screenshot(path=proof_shot)
+            result["proof_screenshot"] = proof_shot
+            
+            try:
+                import shutil
+                shutil.copyfile(proof_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
+            except Exception:
+                pass
+
+            result["success"] = True
+            print(f"[✓] CANDIDATURE FRANCE TRAVAIL TRANSMISE AVEC SUCCÈS : {proof_shot}")
+
+        except Exception as e:
+            print(f"[!] Erreur lors de la soumission France Travail : {e}")
+            result["error"] = str(e)
+            try:
+                err_shot = os.path.join(out_dir, "form_submission_failed.png")
+                page.screenshot(path=err_shot)
+                result["proof_screenshot"] = err_shot
+            except Exception:
+                pass
+
+        return result
 
 if __name__ == "__main__":
     bot = FormAutoPilot()

@@ -279,7 +279,8 @@ class DashboardManager:
 
                 # Statut d'expédition au recruteur
                 if is_sent:
-                    delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Candidature Transmise et Validée</span></div>'
+                    mode_label = "Portail Web" if (isinstance(rec_delivery, dict) and "PORTAL" in str(rec_delivery.get("mode", ""))) else (rec_delivery.get("mode") if isinstance(rec_delivery, dict) else "Validé")
+                    delivery_badge = f'<div style="margin-top:4px;"><span style="background: #065f46; color: #34d399; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">✓ Transmise &amp; Validée ({mode_label})</span></div>'
                 elif is_portal:
                     delivery_badge = '<div style="margin-top:4px;"><span style="background: #854d0e; color: #fde047; font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🌐 Postulation Web requise</span></div>'
                 else:
@@ -296,6 +297,13 @@ class DashboardManager:
                     html_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.html"
                     html_cv = f"{safe_folder}/CV_Richard_BUSSON.html"
                     
+                    # Détection d'une capture d'écran de preuve officielle
+                    proof_path = os.path.join(self.base_dir, folder_rel, "preuve_soumission_officielle.png")
+                    proof_btn = ""
+                    if os.path.exists(proof_path):
+                        safe_proof = f"{safe_folder}/preuve_soumission_officielle.png"
+                        proof_btn = f'<a class="btn-action" style="background: #059669; color: #fff; margin-top: 4px;" href="{safe_proof}" target="_blank">📸 Preuve Officielle</a>'
+                    
                     js_comp = comp.replace("'", "\\'").replace('"', '&quot;')
                     js_tit = tit.replace("'", "\\'").replace('"', '&quot;')
                     
@@ -308,6 +316,7 @@ class DashboardManager:
                         <a class="btn-action btn-pdf" href="{pdf_letter}" target="_blank" title="Ouvrir la Lettre PDF">✉️ Lettre</a>
                         <a class="btn-action btn-pdf" href="{pdf_cv}" target="_blank" title="Ouvrir le CV PDF">📄 CV</a>
                       </div>
+                      {proof_btn}
                     </div>
                     """
                 else:
@@ -775,7 +784,13 @@ class DashboardManager:
                 pdf_letter_link = f"[Lettre]({safe_url_path(folder_rel)}/Lettre_Motivation_Richard_BUSSON.pdf)" if folder_rel else "-"
                 pdf_cv_link = f"[CV]({safe_url_path(folder_rel)}/CV_Richard_BUSSON.pdf)" if folder_rel else "-"
                 
-                md_content += f"| {d} | **{comp}** | {contact_name} ({contact_title}) | {loc_str} | {phone} | {email_md} | {tit_link} ({salary} - {score}%) | {send_status} | {pdf_letter_link} / {pdf_cv_link} |\n"
+                # Preuve dans Markdown
+                proof_path = os.path.join(self.base_dir, folder_rel, "preuve_soumission_officielle.png")
+                dossier_col = f"{pdf_letter_link} / {pdf_cv_link}"
+                if os.path.exists(proof_path):
+                    dossier_col += f" / [📸 Preuve]({safe_url_path(folder_rel)}/preuve_soumission_officielle.png)"
+                
+                md_content += f"| {d} | **{comp}** | {contact_name} ({contact_title}) | {loc_str} | {phone} | {email_md} | {tit_link} ({salary} - {score}%) | {send_status} | {dossier_col} |\n"
                 
             md_content += "\n"
             
