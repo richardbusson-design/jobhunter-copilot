@@ -20,9 +20,9 @@ from form_auto_pilot import FormAutoPilot
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
 
-def run_pipeline(base_dir=".", auto_notify=True, auto_submit_web=True, headless=True):
+def run_pipeline(base_dir=".", auto_notify=True, auto_submit_web=True, headless=True, max_offers=10):
     print("=" * 75)
-    print("  [JOBHUNTER PIPELINE OFFICIEL] - EXECUTION & CONTROLE QUALITE STRICT")
+    print(f"  [JOBHUNTER PIPELINE OFFICIEL] - EXECUTION & CONTROLE QUALITE STRICT ({max_offers} OFFRES)")
     print("=" * 75)
     
     searcher = JobSearcher(base_dir=base_dir)
@@ -177,6 +177,10 @@ def run_pipeline(base_dir=".", auto_notify=True, auto_submit_web=True, headless=
         fingerprints["company_titles"].add(ct_pair)
         validated_count += 1
         
+        if validated_count >= max_offers:
+            print(f"\n[+] Quota atteint : {max_offers} candidatures traitées et validées.")
+            break
+        
     print("\n" + "=" * 75)
     print(f"  [SUCCÈS GLOBAL] {validated_count} nouveau(x) dossier(s) certifié(s), expédié(s) et intégré(s) au tableau de bord.")
     print("=" * 75)
@@ -188,4 +192,5 @@ def run_pipeline(base_dir=".", auto_notify=True, auto_submit_web=True, headless=
 
 if __name__ == "__main__":
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    run_pipeline(base_dir=base_dir, auto_notify=True)
+    max_count = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 10
+    run_pipeline(base_dir=base_dir, auto_notify=True, max_offers=max_count)

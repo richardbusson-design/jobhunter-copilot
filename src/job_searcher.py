@@ -1,5 +1,6 @@
-# -*- coding: utf-8 -*-
 import os
+import sys
+sys.path.insert(0, os.path.dirname(__file__))
 import json
 import re
 import urllib.request
@@ -168,34 +169,40 @@ class JobSearcher:
         if existing_fingerprints:
             print(f"    [Anti-Doublon Amont] {existing_fingerprints.get('count', 0)} offres historiques actives en mémoire pour blocage immédiat.")
         
-        # Mots-clés cibles ROME élargis (M1503, K2111, K2102, M1203, M1501)
+        # Mots-clés cibles ROME élargis issus de la cartographie officielle des métiers
         apec_keywords = [
-            "responsable rh et paie",
-            "formateur paie et rh",
             "responsable paie",
+            "responsable rh",
             "responsable ressources humaines",
+            "responsable paie et adp",
+            "responsable relations sociales",
+            "formateur paie",
+            "formateur rh",
             "formateur gestionnaire de paie",
             "coordinateur pedagogique rh",
             "consultant formateur paie",
+            "gestionnaire de paie",
             "gestionnaire de paie et rh",
-            "responsable paie et adp",
+            "specialiste paie",
             "charge de gestion rh",
-            "responsable relations sociales",
-            "formateur droit social"
+            "charge ressources humaines"
         ]
         
         ft_keywords = [
-            "responsable rh et paie",
-            "formateur paie et rh",
             "responsable paie",
+            "responsable rh",
             "responsable ressources humaines",
-            "formateur gestionnaire de paie",
-            "gestionnaire de paie et rh",
-            "coordinateur pedagogique",
             "responsable paie et adp",
-            "charge de gestion rh",
             "responsable relations sociales",
-            "formateur droit social"
+            "formateur paie",
+            "formateur rh",
+            "formateur gestionnaire de paie",
+            "coordinateur pedagogique",
+            "gestionnaire de paie",
+            "gestionnaire de paie et rh",
+            "specialiste paie",
+            "charge de gestion rh",
+            "charge ressources humaines"
         ]
         
         live_raw_offers = []
@@ -235,7 +242,8 @@ class JobSearcher:
                     continue
                 if jurl and jurl in existing_fingerprints.get("urls", set()):
                     continue
-                if ct_pair and ct_pair in existing_fingerprints.get("company_titles", set()):
+                is_generic = len(c_norm) <= 3 or c_norm in ["organisme", "entreprise", "cabinet", "recrutement", "societe", "groupe"]
+                if not is_generic and ct_pair in existing_fingerprints.get("company_titles", set()):
                     continue
             
             is_valid, reason = self.guard.validate_job_criteria(job)
