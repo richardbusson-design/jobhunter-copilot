@@ -129,3 +129,18 @@
 - **Lecture Préalable Amont Anti-Doublon :**
   * Le tableau est **obligatoirement lu en amont de toute recherche**.
   * Zéro requête inutile ni réévaluation pour un poste déjà présent en base.
+---
+
+## 🇫🇷 SKILL OFFICIEL : CANDIDATURE DIRECTE SUR FRANCE TRAVAIL (ESPACE CANDIDAT)
+- **Authentification & Session :** Session candidat active et certifiée sous le nom officiel *Richard Louis BUSSON* dans le profil Chrome persistant (\`C:\Users\richa\JobHunter\browser_profile\`).
+- **Sélection des Offres Directes :** Paramétrage d'URL strict \`natureOffre=E1&offresPartenaires=false\`, garantissant l'accès au formulaire natif France Travail (\`postulerenligne/{raw_id}\`).
+- **Sélection Intelligente du CV :**
+  * Postes RH / Direction : \`CV_Bibliotheque_ResponsableRH.pdf\` (\`input#cv-83557459\`)
+  * Postes Paie / Gestionnaire : \`CV_Bibliotheque_GestionnaireDePaie.pdf\` (\`input#cv-83522771\`)
+  * Postes Formateur : \`CV_Bibliotheque_FormateurPaieRH.pdf\` (\`input#cv-83522766\`)
+  * Postes Consultant : \`CV_Bibliotheque_ConsultantPaieRH.pdf\` (\`input#cv-83557493\`)
+- **Profil de Compétences :** Sélection systématique de la carte de compétences expert (\`input#choix-carte-visite-16674788\` : *« expert en droit social, paie, RH »*).
+- **Lettre de Motivation Sur-Mesure :** Injection directe dans \`textarea#lettre-motivation\` (calibrée à < 1 450 caractères pour respecter la limite technique sans troncature).
+- **Confirmation & Envoi :** Validation de la case \`confirmcoordonnees\`, clic officiel sur \`button:has-text('Envoyer')\`.
+- **Preuve Matérielle Obligatoire (Zéro Hallucination) :** Capture intégrale \`preuve_soumission_officielle.png\` vérifiant le macaron vert *« Candidature transmise »*.
+- **Enregistrement CRM :** Mode \`FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION\` dans \`tracker.json\` et tableau de bord.
