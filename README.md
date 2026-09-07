@@ -5,7 +5,7 @@
 > | :---: | :---: | :---: | :---: |
 > | **8** | **54** | **54** | **54** |
 >
-> *Dernière mise à jour et synchronisation : 07/09/2026 00:33*
+> *Dernière mise à jour et synchronisation : 07/09/2026 07:02*
 
 ## 🗓️ Septembre 2026 (54 candidatures)
 
