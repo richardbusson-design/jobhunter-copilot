@@ -3,11 +3,11 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **80** | **126** | **126** | **126** |
+> | **83** | **129** | **129** | **129** |
 >
-> *Dernière mise à jour et synchronisation : 07/09/2026 16:57*
+> *Dernière mise à jour et synchronisation : 07/09/2026 20:35*
 
-## 🗓️ Septembre 2026 (126 candidatures)
+## 🗓️ Septembre 2026 (129 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -138,4 +138,7 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-07 | **STAF** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 94 (94000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213MTQD) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-07_STAF_GESTIONNAIRE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_STAF_GESTIONNAIRE_PAIE__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-07_STAF_GESTIONNAIRE_PAIE__H_F_/preuve_soumission_officielle.png) |
 | 2026-09-07 | **JBM BUREAU MEDICAL RANDSTAD PROFESSIONAL** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (F/H)](https://candidat.francetravail.fr/offres/recherche/detail/213MMJP) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-07_JBM_BUREAU_MEDICAL_RANDSTAD_PROFESSIONAL_Gestionnaire_de_paie__F_H_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_JBM_BUREAU_MEDICAL_RANDSTAD_PROFESSIONAL_Gestionnaire_de_paie__F_H_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-07_JBM_BUREAU_MEDICAL_RANDSTAD_PROFESSIONAL_Gestionnaire_de_paie__F_H_/preuve_soumission_officielle.png) |
 | 2026-09-07 | **Jobberry** | Monsieur le Directeur de Centre (Direction de l'Établissement) | RH &amp; Paie (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire Paie - Spécialiste Ijss H/F](https://candidat.francetravail.fr/offres/recherche/detail/6651168) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-07_Jobberry_Gestionnaire_Paie_-_Sp%C3%A9cialiste_Ijss_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_Jobberry_Gestionnaire_Paie_-_Sp%C3%A9cialiste_Ijss_H_F/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-07_Jobberry_Gestionnaire_Paie_-_Sp%C3%A9cialiste_Ijss_H_F/preuve_soumission_officielle.png) |
+| 2026-09-07 | **cadremploi** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Boulogne (92000) | Non communiqué | 🌐 Portail Web | [Chargé.e rh F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179379631W) (A négocier - 93%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-07_cadremploi_Charg%C3%A9.e_rh_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_cadremploi_Charg%C3%A9.e_rh_F_H/CV_Richard_BUSSON.pdf) |
+| 2026-09-07 | **ABIL RESSOURCES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 94 (94000) | Non communiqué | 🌐 Portail Web | [Responsable Ressources Humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213NBKJ) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-07_ABIL_RESSOURCES_Responsable_Ressources_Humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_ABIL_RESSOURCES_Responsable_Ressources_Humaines__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-07 | **TORANN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | FRANCE (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213NBWS) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-07_TORANN_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-07_TORANN_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 
