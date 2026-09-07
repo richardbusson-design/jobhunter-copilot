@@ -46,14 +46,24 @@ class QualityGuard:
             "formateur paie", "formatrice paie", "formateur rh", "formatrice rh",
             "formateur gestionnaire de paie", "coordinateur pedagogique", "coordinatrice pedagogique",
             "consultant formateur paie", "consultant paie", "consultant rh",
-            "gestionnaire de paie", "gestionnaire paie", "charge des ressources humaines",
-            "charge de gestion rh", "chargee des ressources humaines", "juriste droit social",
-            "responsable affaires sociales", "referent ingenierie de formation", "pilote social",
-            "responsable du personnel", "chef de service paie", "responsable de pôle paie"
+            "gestionnaire de paie", "gestionnaire paie", "gestionnaire rh", "gestionnaire ressources humaines",
+            "charge des ressources humaines", "charge ressources humaines", "chargee des ressources humaines",
+            "chargee ressources humaines", "charge rh", "chargee rh", "charge de mission rh", "chargee de mission rh",
+            "charge de gestion rh", "juriste droit social", "responsable affaires sociales",
+            "referent ingenierie de formation", "pilote social", "responsable du personnel",
+            "chef de service paie", "responsable de pôle paie", "responsable de pole paie",
+            "coordinateur rh", "coordinatrice rh"
         ]
+        import unicodedata
         clean_title = re.sub(r'[^\w\s]', ' ', title).lower()
-        if not any(r in clean_title for r in target_roles):
-            return False, f"Rejet : Poste '{job.get('title')}' hors des piliers d'expertise de Richard Busson."
+        clean_title_no_acc = unicodedata.normalize('NFD', clean_title).encode('ascii', 'ignore').decode('utf-8')
+        if not any(r in clean_title or r in clean_title_no_acc for r in target_roles):
+            # Vérification souple pour les couples clés ROME (ex: chargé + RH / gestionnaire + RH)
+            has_rh = " rh" in clean_title_no_acc or "ressources humaines" in clean_title_no_acc
+            has_role = any(w in clean_title_no_acc for w in ["charge", "gestionnaire", "responsable", "formateur", "consultant"])
+            if not (has_rh and has_role):
+                return False, f"Rejet : Poste '{job.get('title')}' hors des piliers d'expertise de Richard Busson."
+
 
         # 4. Contrôle du seuil salarial (>= 30 000 € brut / an ou >= 2 500 € / mois)
         sal_text = job.get("salary", "")
