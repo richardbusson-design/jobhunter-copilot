@@ -3,11 +3,11 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **11** | **140** | **140** | **140** |
+> | **13** | **142** | **142** | **142** |
 >
-> *Dernière mise à jour et synchronisation : 08/09/2026 12:11*
+> *Dernière mise à jour et synchronisation : 08/09/2026 16:24*
 
-## 🗓️ Septembre 2026 (140 candidatures)
+## 🗓️ Septembre 2026 (142 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -152,4 +152,6 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-08 | **RESIDENCE VAL DE CHEVRE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 35 (35000) | Non communiqué | 🌐 Portail Web | [Gestionnaire des Ressources Humaines et Paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213NGTX) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_RESIDENCE_VAL_DE_CHEVRE_Gestionnaire_des_Ressources_Humaines_et_Paie_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_RESIDENCE_VAL_DE_CHEVRE_Gestionnaire_des_Ressources_Humaines_et_Paie_/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **VERNET** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 91 (91000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie expérimenté ADP Décidium H/F](https://candidat.francetravail.fr/offres/recherche/detail/213NFBB) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_VERNET_Gestionnaire_paie_exp%C3%A9riment%C3%A9_ADP_D%C3%A9cidium_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_VERNET_Gestionnaire_paie_exp%C3%A9riment%C3%A9_ADP_D%C3%A9cidium_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **LISI AEROSPACE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 95 (95000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie H/F](https://candidat.francetravail.fr/offres/recherche/detail/213NDVC) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_LISI_AEROSPACE_Gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_LISI_AEROSPACE_Gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf) |
+| 2026-09-08 | **SYNERGIE** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Saint-Ouen-l (95) (95000) | Non communiqué | 🌐 Portail Web | [Gestionnaire RH F/H](https://candidat.francetravail.fr/offres/recherche/detail/212HLQB) (Salaire brut : Annuel de 35000.0 Euros à 40000.0 Euros sur 12 mois - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_SYNERGIE_Gestionnaire_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_SYNERGIE_Gestionnaire_RH_F_H/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-08_SYNERGIE_Gestionnaire_RH_F_H/preuve_soumission_officielle.png) |
+| 2026-09-08 | **MATCHMAKER RECRUTEMENT** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Paris - (75) (75000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE DE PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213MYDW) (Salaire brut : Annuel de 38000.0 Euros à 40000.0 Euros - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_MATCHMAKER_RECRUTEMENT_GESTIONNAIRE_DE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_MATCHMAKER_RECRUTEMENT_GESTIONNAIRE_DE_PAIE__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-08_MATCHMAKER_RECRUTEMENT_GESTIONNAIRE_DE_PAIE__H_F_/preuve_soumission_officielle.png) |
 
