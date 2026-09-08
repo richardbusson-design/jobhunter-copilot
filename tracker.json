@@ -8350,5 +8350,33 @@
     "url": "https://candidat.francetravail.fr/candidature/mescandidatures/374144358",
     "status": "OFFRE CLÔTURÉE",
     "source": "Espace Candidat France Travail (Historique officiel)"
+  },
+  {
+    "id": "FT-213PNXN",
+    "source": "France Travail (Flux Direct)",
+    "company": "SARL LABORATOIRE L &amp; M",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Formateur en Ressources Humaines  H/F (H/F)",
+    "city": "22",
+    "postal_code": "22000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213PNXN",
+    "description": "Description du poste :\nNous recherchons un(e) formateur(trice) en Ressources Humaines.\nVotre rôle sera d'animer des sessions de formation afin de renforcer les compétences dans le recrutement, la...",
+    "score": 94,
+    "date": "2026-09-08",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F",
+    "folder_rel": "candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-09-15"
   }
 ]

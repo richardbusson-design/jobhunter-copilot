@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **24** | **153** | **153** | **474** |
+> | **25** | **154** | **154** | **475** |
 >
-> *Dernière mise à jour et synchronisation : 08/09/2026 20:46*
+> *Dernière mise à jour et synchronisation : 08/09/2026 19:55*
 
 ## 🗓️  Mise à jour le 31/08/2026 à 17h12 Candidature envoyée le 31/08/2026 à 17h12  (1 candidatures)
 
@@ -1833,7 +1833,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Candidature envoyée le 01/08/2026 à 18h12 - Mise à jour le 01/09/2026 à 09h25 | **GIP FCIP** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 31 - Toulouse | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057785) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 
-## 🗓️ Septembre 2026 (153 candidatures)
+## 🗓️ Septembre 2026 (154 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -1991,4 +1991,5 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-08 | **30** | Monsieur le Directeur de Centre (Direction de l'Établissement) | NIMES (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/213NYYH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_30_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_30_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **38** | Monsieur le Directeur de Centre (Direction de l'Établissement) | VIENNE (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie secteur restauration H/F](https://candidat.francetravail.fr/offres/recherche/detail/213NYWQ) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_38_Gestionnaire_de_paie_secteur_restauration_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_38_Gestionnaire_de_paie_secteur_restauration_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **MANPOWER FRANCE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 40 (40000) | Non communiqué | 🌐 Portail Web | [Chargé Ressources Humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213PHXM) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_MANPOWER_FRANCE_Charg%C3%A9_Ressources_Humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_MANPOWER_FRANCE_Charg%C3%A9_Ressources_Humaines__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-08 | **SARL LABORATOIRE L &amp; M** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 22 (22000) | Non communiqué | 🌐 Portail Web | [Formateur en Ressources Humaines  H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213PNXN) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/CV_Richard_BUSSON.pdf) |
 
