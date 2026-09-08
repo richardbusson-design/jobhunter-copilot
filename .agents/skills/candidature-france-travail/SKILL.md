@@ -1,7 +1,7 @@
 ---
 name: candidature-france-travail
 description: >-
-  Automatisation 100% autonome, certifiée et sans hallucination des candidatures directes sur France Travail (espace candidat officiel Richard Louis Busson). Sélection intelligente du CV ciblé dans la bibliothèque, sélection de la carte de compétences expert droit social/paie/RH, injection de la lettre sur-mesure (<1450 car.), validation des coordonnées, soumission officielle et capture de la preuve avec macaron vert de transmission.
+  Automatisation 100% autonome, certifiée et sans hallucination des candidatures directes sur France Travail (espace candidat officiel Richard Louis Busson). Synchronisation préalable impérative de l'historique de l'espace personnel (Mes candidatures et propositions) avant toute recherche, sélection intelligente du CV ciblé dans la bibliothèque, sélection de la carte de compétences expert droit social/paie/RH, injection de la lettre sur-mesure (<1450 car.), validation des coordonnées, soumission officielle et capture de la preuve avec macaron vert de transmission.
 ---
 
 # SKILL OFFICIEL : CANDIDATURE DIRECTE AUTOMATISÉE SUR FRANCE TRAVAIL
@@ -11,7 +11,7 @@ Ce skill standardise la procédure éprouvée et certifiée pour postuler de man
 ---
 
 ## 👤 1. RÉFÉRENTIEL DU CANDIDAT (ESPACE PERSONNEL FRANCE TRAVAIL)
-- **Titulaire du compte :** Richard Louis BUSSON
+- **Titulaire du compte :** Richard Louis BUSSON (Identifiant : `10135772646`)
 - **Profil connecté :** Espace Candidat officiel France Travail (session active et certifiée)
 - **Email de contact :** `richard.busson@kairos-paye.fr` (secours compte : `richard.busson@gmail.com`)
 - **Téléphone :** `09 39 20 08 70` / `07 61 96 15 46`
@@ -21,22 +21,31 @@ Ce skill standardise la procédure éprouvée et certifiée pour postuler de man
 
 ---
 
-## 🔍 2. DÉTECTION ET SÉLECTION DES OFFRES DIRECTES (FLUX DIRECT)
+## 🛑 2. ÉTAPE 0 OBLIGATOIRE : CONTRÔLE DE L'ESPACE PERSONNEL (« MES CANDIDATURES »)
+**RÈGLE STRICTE (POUR NE PAS TRAVAILLER POUR RIEN) :**
+Avant TOUTE recherche, qualification ou génération de candidature, le robot a l'obligation absolue de :
+1. **Accéder à l'espace personnel :** `https://candidat.francetravail.fr/candidature/mescandidatures`.
+2. **Charger l'historique complet :** Cliquer sur *« Afficher plus de candidatures »* jusqu'à ce que la totalité des candidatures passées soit chargée.
+3. **Extraire les empreintes :** Récupérer tous les couples *(Entreprise, Intitulé)*, les IDs d'offres, les dates d'envoi et les statuts réels.
+4. **Mettre à jour la base anti-doublon :** Enregistrer les données dans `data/candidatures_espace_france_travail.json` et synchroniser `tracker.json`.
+5. **Blocage absolu :** Éliminer immédiatement toute offre déjà candidate lors des recherches. Zéro génération de documents inutiles, zéro candidature en doublon.
+
+---
+
+## 🔍 3. DÉTECTION ET SÉLECTION DES OFFRES DIRECTES (FLUX DIRECT)
 Seules les offres comportant le formulaire de postulation interne France Travail (non externalisées) sont ciblées par ce protocole :
 - **Paramètres d'URL obligatoires :** `natureOffre=E1&offresPartenaires=false`
 - **Contrôle anti-doublon préalable :**
-  - Vérification de l'ID offre et du couple `Entreprise | Titre` contre `tracker.json` et `data/tracker_backup_*.json`.
+  - Vérification de l'ID offre et du couple `Entreprise | Titre` contre la liste issue de l'espace personnel et de `tracker.json`.
   - Vérification visuelle sur l'espace France Travail : élimination immédiate si la bannière *« Vous avez déjà postulé sur cette offre ! »* est présente.
 
 ---
 
-## ⚙️ 3. PROCÉDURE D'EXÉCUTION EN 8 ÉTAPES SUR LE FORMULAIRE OFFICIEL
+## ⚙️ 4. PROCÉDURE D'EXÉCUTION EN 8 ÉTAPES SUR LE FORMULAIRE OFFICIEL
 
 ### Étape 1 : Accès à l'offre et ouverture du formulaire
-1. Navigation vers `https://candidat.francetravail.fr/offres/recherche/detail/{raw_id}`.
-2. Clic sur le bouton `Postuler`.
-3. Clic sur `Envoyer ma candidature` dans la fenêtre modale (s'ouvre dans un nouvel onglet `candidat.francetravail.fr/candidature/postulerenligne/{raw_id}`).
-4. Attente de la stabilisation DOM / Angular (`domcontentloaded` + attente de disparition du spinner de chargement).
+1. Navigation vers `https://candidat.francetravail.fr/candidature/postulerenligne/{raw_id}` (ou via clic sur `Postuler` puis `Envoyer ma candidature`).
+2. Attente de la stabilisation DOM / Angular (`domcontentloaded` + disparition du spinner de chargement).
 
 ### Étape 2 : Sélection ciblée du CV dans la bibliothèque
 Sélectionner automatiquement le CV correspondant à la typologie de l'offre parmi les documents pré-enregistrés sur l'espace France Travail :
@@ -53,16 +62,17 @@ Sélectionner automatiquement le CV correspondant à la typologie de l'offre par
 ### Étape 4 : Injection du texte de motivation calibré
 - Champ cible : `textarea#lettre-motivation` (ou `textarea[name='textMessage']`).
 - **Règle stricte de longueur :** Extraire les paragraphes centraux de la lettre de motivation sur-mesure (générée lors du passage 2 QualityGuard) et tronquer à **1 450 caractères maximum** pour respecter la limite technique de France Travail sans coupure abrupte.
+- **Règle de typographie :** Zéro astérisque ou balise de gras Markdown (`*_#`).
 
 ### Étape 5 : Confirmation des coordonnées
 - Cocher la case obligatoire confirmant l'exactitude des coordonnées :
   `label[for='confirmcoordonnees']` ou `input#confirmcoordonnees`.
 
 ### Étape 6 : Capture de l'état prêt à soumettre
-- Enregistrer la capture plein écran `form_ready_to_submit.png` dans le dossier de la candidature pour audit et traçabilité.
+- Enregistrer la capture plein écran `formulaire_pre_soumission.png` dans le dossier de la candidature pour audit et traçabilité.
 
 ### Étape 7 : Clic officiel sur « Envoyer »
-- Localiser et cliquer sur `button:has-text('Envoyer')`.
+- Localiser et cliquer sur `button:has-text('Envoyer ma candidature')` ou `button:has-text('Envoyer')`.
 - Attendre 6 à 8 secondes la réponse du serveur France Travail.
 
 ### Étape 8 : Capture de la preuve matérielle de soumission (Macaron Vert)
@@ -73,7 +83,7 @@ Sélectionner automatiquement le CV correspondant à la typologie de l'offre par
 
 ---
 
-## 📊 4. TRAÇABILITÉ & SYNCHRONISATION
+## 📊 5. TRAÇABILITÉ & SYNCHRONISATION
 1. Enregistrer la candidature dans `tracker.json` avec l'empreinte complète et le mode :
    `recruiter_delivery.mode = "FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION"`
 2. Régénérer les tableaux de bord Markdown et HTML (`dashboard.md` et `dashboard.html`).
