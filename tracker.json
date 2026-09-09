@@ -8378,5 +8378,63 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-09-15"
+  },
+  {
+    "id": "FT-213PZHY",
+    "source": "France Travail (Flux Direct)",
+    "company": "RAS 1230",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "Gestionnaire des ressources humaines (H/F)",
+    "city": "ST QUENTIN - (02)",
+    "postal_code": "02000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "Salaire brut : Horaire de 13.0 Euros à 14.0 Euros",
+    "contract_type": "CDI",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213PZHY",
+    "description": "- Gérer l'administration du personnel (contrats, avenants, dossiers salariés).\n- Assurer le suivi des entrées et sorties des collaborateurs.\n- Gérer les absences, congés et arrêts de travail.\n- Préparer et contrôler les éléments variables de paie.\n- Participer au recrutement et à l'intégration des nouveaux salariés.\n- Conseiller les managers et les salariés sur les questions RH.\n- Veiller au respect de la législation sociale et des procédures internes.\n- Assurer le suivi des formations et du développement des compétences.\n\n Le contrat débuterait sur la mi-septembre afin d'être formé d'abord en RH, puis en paie, pour un contrat d'une durée de 2.5 mois (fin du contrat intérim = fin novembre).\n\nLa durée de travail est de 35 heures semaine sur une amplitude de 36,25 par mois, soit 7,25 par jour.\n\nUne expérience sur un poste similaire est appréciée, le poste nécessite autonomie, rigueur et gestion des priorités.",
+    "score": 95,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_",
+    "folder_rel": "candidatures\\2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION",
+      "reason": "Candidature officiellement transmise via l'espace candidat France Travail",
+      "proof_screenshot": "preuve_soumission_officielle.png"
+    },
+    "date": "2026-09-09",
+    "relance_date": "2026-09-16"
+  },
+  {
+    "id": "FT-213QFKD",
+    "source": "France Travail (Flux Direct)",
+    "company": "Organisme",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "Chargé(e) de recrutement et de missions RH (H/F)",
+    "city": "PARIS - (75)",
+    "postal_code": "75000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "Indemnité transports",
+    "contract_type": "CDI",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213QFKD",
+    "description": "Professionnel des métiers alimentaires artisanaux et/ou industriels, lassé de la routine, vous cherchez un poste à pourvoir rapidement ? \n\nNous sommes une agence de recrutement et nous cherchons à recruter un profil comme le votre pour vous former aux métiers des ressources humaines \n\nPersonne professionnelle et courtoise ; Vous devrez justifier d'une précédant expérience dans les métiers de la grande ou moyenne distribution et/ou l'artisanat\n \nNotre agence se propose de vous intégrer dans le cadre d'un CDI temps plein \n\nNous vous proposons de vous former au recrutement, au placement, à la gestion des contrats et à la gestion générale des paie (saisie des heures entre autre)\n\nProfil recherché :\n- Expérience dans un poste de terrain significative  \n- Sens du détail et de l'organisation.\n- Ponctualité, rigueur et discrétion.\n- Capacité à travailler en équipe.\n\nDes références seront exigées \n\nNous offrons :\n- Un environnement de travail convivial et professionnel.\n- Prise en charge d'une partie des transports .\n\nComment postuler :\ndéposez votre candidature directement à via le site France travail.\nRejoignez-nous et participez à offrir une expérience unique à nos clients !",
+    "score": 95,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_Organisme_Chargé_e__de_recrutement_et_de_missions_RH__H_F_",
+    "folder_rel": "candidatures\\2026-09-09_Organisme_Chargé_e__de_recrutement_et_de_missions_RH__H_F_",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_Organisme_Chargé_e__de_recrutement_et_de_missions_RH__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-09_Organisme_Chargé_e__de_recrutement_et_de_missions_RH__H_F_\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION",
+      "reason": "Candidature officiellement transmise via l'espace candidat France Travail",
+      "proof_screenshot": "preuve_soumission_officielle.png"
+    },
+    "date": "2026-09-09",
+    "relance_date": "2026-09-16"
   }
 ]

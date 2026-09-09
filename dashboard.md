@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **0** | **153** | **154** | **475** |
+> | **2** | **155** | **156** | **477** |
 >
-> *Dernière mise à jour et synchronisation : 09/09/2026 07:02*
+> *Dernière mise à jour et synchronisation : 09/09/2026 12:29*
 
 ## 🗓️  Mise à jour le 31/08/2026 à 17h12 Candidature envoyée le 31/08/2026 à 17h12  (1 candidatures)
 
@@ -1833,7 +1833,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Candidature envoyée le 01/08/2026 à 18h12 - Mise à jour le 01/09/2026 à 09h25 | **GIP FCIP** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 31 - Toulouse | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057785) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 
-## 🗓️ Septembre 2026 (154 candidatures)
+## 🗓️ Septembre 2026 (156 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -1992,4 +1992,6 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-08 | **38** | Monsieur le Directeur de Centre (Direction de l'Établissement) | VIENNE (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie secteur restauration H/F](https://candidat.francetravail.fr/offres/recherche/detail/213NYWQ) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_38_Gestionnaire_de_paie_secteur_restauration_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_38_Gestionnaire_de_paie_secteur_restauration_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **MANPOWER FRANCE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 40 (40000) | Non communiqué | 🌐 Portail Web | [Chargé Ressources Humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213PHXM) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_MANPOWER_FRANCE_Charg%C3%A9_Ressources_Humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_MANPOWER_FRANCE_Charg%C3%A9_Ressources_Humaines__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-08 | **SARL LABORATOIRE L &amp; M** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 22 (22000) | Non communiqué | 🌐 Portail Web | [Formateur en Ressources Humaines  H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213PNXN) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-08_SARL_LABORATOIRE_L__amp__M_Formateur_en_Ressources_Humaines__H_F__H_F/CV_Richard_BUSSON.pdf) |
+| 2026-09-09 | **RAS 1230** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | ST QUENTIN - (02) (02000) | Non communiqué | 🌐 Portail Web | [Gestionnaire des ressources humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213PZHY) (Salaire brut : Horaire de 13.0 Euros à 14.0 Euros - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-09_RAS_1230_Gestionnaire_des_ressources_humaines__H_F_/preuve_soumission_officielle.png) |
+| 2026-09-09 | **Organisme** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | PARIS - (75) (75000) | Non communiqué | 🌐 Portail Web | [Chargé(e) de recrutement et de missions RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213QFKD) (Indemnité transports - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-09_Organisme_Charg%C3%A9_e__de_recrutement_et_de_missions_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-09_Organisme_Charg%C3%A9_e__de_recrutement_et_de_missions_RH__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-09_Organisme_Charg%C3%A9_e__de_recrutement_et_de_missions_RH__H_F_/preuve_soumission_officielle.png) |
 
