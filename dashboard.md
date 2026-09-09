@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **25** | **154** | **154** | **475** |
+> | **0** | **153** | **154** | **475** |
 >
-> *Dernière mise à jour et synchronisation : 08/09/2026 19:55*
+> *Dernière mise à jour et synchronisation : 09/09/2026 07:02*
 
 ## 🗓️  Mise à jour le 31/08/2026 à 17h12 Candidature envoyée le 31/08/2026 à 17h12  (1 candidatures)
 
