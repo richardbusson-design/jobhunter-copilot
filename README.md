@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **8** | **181** | **182** | **503** |
+> | **13** | **186** | **187** | **508** |
 >
-> *Dernière mise à jour et synchronisation : 10/09/2026 12:16*
+> *Dernière mise à jour et synchronisation : 10/09/2026 16:27*
 
 ## 🗓️  Mise à jour le 31/08/2026 à 17h12 Candidature envoyée le 31/08/2026 à 17h12  (1 candidatures)
 
@@ -1833,7 +1833,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Candidature envoyée le 01/08/2026 à 18h12 - Mise à jour le 01/09/2026 à 09h25 | **GIP FCIP** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 31 - Toulouse | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057785) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 
-## 🗓️ Septembre 2026 (182 candidatures)
+## 🗓️ Septembre 2026 (187 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -2020,4 +2020,9 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-10 | **01** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Saint (60100) | Non communiqué | 🌐 Portail Web | [Responsable Ressources Humaines et Relations Sociales F/H](https://candidat.francetravail.fr/offres/recherche/detail/6798534) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_01_Responsable_Ressources_Humaines_et_Relations_Sociales_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_01_Responsable_Ressources_Humaines_et_Relations_Sociales_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-10 | **LES APSYADES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Gestionnaire Paie/RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213RTKK) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_LES_APSYADES_Gestionnaire_Paie_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_LES_APSYADES_Gestionnaire_Paie_RH__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-10 | **ETRE EMPLOI** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 50 (50000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie et administration du personnel (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213RFLR) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_ETRE_EMPLOI_Gestionnaire_de_paie_et_administration_du_personnel__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_ETRE_EMPLOI_Gestionnaire_de_paie_et_administration_du_personnel__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-10 | **ORTEC Group** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Aix (13000) | Non communiqué | 🌐 Portail Web | [Chargé des Ressources Humaines F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179400792W) (A négocier - 95%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-10_ORTEC_Group_Charg%C3%A9_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_ORTEC_Group_Charg%C3%A9_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf) |
+| 2026-09-10 | **BUREAU D ETUDES LJZ ECOLOGIE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 94 (94000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie H/F](https://candidat.francetravail.fr/offres/recherche/detail/213SCNT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_BUREAU_D_ETUDES_LJZ_ECOLOGIE_Gestionnaire_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_BUREAU_D_ETUDES_LJZ_ECOLOGIE_Gestionnaire_paie_H_F/CV_Richard_BUSSON.pdf) |
+| 2026-09-10 | **WEST FINANCES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie et ADP (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213RWBX) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_WEST_FINANCES_Gestionnaire_de_paie_et_ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_WEST_FINANCES_Gestionnaire_de_paie_et_ADP__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-10 | **SAS FORCE INTERIM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 78 (78000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213RVVB) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_SAS_FORCE_INTERIM_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_SAS_FORCE_INTERIM_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-10 | **RH TRANSPORT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE DE PAIE H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213RPTR) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-10_RH_TRANSPORT_GESTIONNAIRE_DE_PAIE_H_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-10_RH_TRANSPORT_GESTIONNAIRE_DE_PAIE_H_F__H_F_/CV_Richard_BUSSON.pdf) |
 
