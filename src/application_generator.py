@@ -75,9 +75,12 @@ class ApplicationGenerator:
         return min(score, 98)
 
     def render_letter_variant(self, job: Dict[str, Any], variant_index: int) -> str:
-        company = job.get("company", "votre entreprise").replace('"', '')
+        company = job.get("company", "votre entreprise").replace('"', '').strip()
         raw_title = job.get("title", "Poste RH & Paie")
         job_title = self.clean_job_title(raw_title)
+        city = job.get("city", "").strip()
+        postal_code = str(job.get("postal_code", "")).strip()
+        desc = (job.get("description", "") + " " + job.get("title", "") + " " + job.get("company", "")).lower()
         
         contact_name = job.get("contact_name", "Monsieur le Responsable du Recrutement")
         contact_title = job.get("contact_title", "Direction des Ressources Humaines")
@@ -92,9 +95,9 @@ class ApplicationGenerator:
         if address_1 and address_1 != "Service Recrutement & RH":
             recipient_body_lines.append(f"<div>{address_1}</div>")
             
-        postal_code = job.get("postal_code", "60000")
-        city = job.get("city", "CREIL").upper()
-        recipient_body_lines.append(f"<div>{postal_code} {city}</div>")
+        if city:
+            loc_line = f"{postal_code} {city}".strip() if postal_code else city
+            recipient_body_lines.append(f"<div>{loc_line}</div>")
         
         recipient_body_html = "\n".join(recipient_body_lines)
         current_date = datetime.now().strftime("%d %B %Y").replace("August", "août").replace("September", "septembre")
@@ -110,39 +113,76 @@ class ApplicationGenerator:
             politesse_formula = "Je vous prie d’agréer, Madame la Directrice, l’expression de ma considération distinguée."
         else:
             call_formula = "Madame, Monsieur,"
-            politesse_formula = "Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée."
+            politesse_formula = "Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées."
 
-        # 5 paragraphes denses 100% PAIE & RESSOURCES HUMAINES (ZÉRO COMPTABILITÉ)
-        if cat == "FORMATEUR_PAIE_RH":
-            job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre recherche pour le poste de {job_title} au sein de {company} a retenu toute mon attention. Acteur reconnu dans le développement des compétences professionnelles, votre organisme représente un environnement d’excellence dont je connais parfaitement les enjeux pédagogiques et techniques."
-            p2 = "Le premier bloc de compétences de l’ADEA, assister à la gestion des ressources humaines et au management des collaborateurs d’une entreprise artisanale, représente 84 heures que je peux animer sans période d’adaptation. Le volet gestion du Brevet de Maîtrise et la formation continue des artisans employeurs relèvent de la même matière : embauche du premier salarié, contrat d’apprentissage, bulletin de paie, DSN et obligations de l’employeur. C’est ce que j’enseigne depuis 2014."
-            p3 = "J’ai exercé ce métier avant de l’enseigner : de 2003 à 2010, j’ai dirigé les ressources humaines d’une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant aussi le plan de formation. Le cadre d’un centre de formation ne m’est pas étranger non plus : entre 2016 et 2020, je suis intervenu sur quatre centres Afpa, à Vervins, Beauvais, Creil et Amiens, avec référentiel imposé, évaluations en cours de formation et parcours individualisés au sein d’un même groupe."
-            p4 = "Si c’est une fonction de coordination que vous avez à pourvoir, elle me va tout autant. Je dirige un organisme certifié Qualiopi : le Référentiel National Qualité, la traçabilité des parcours et la préparation d’audit sont mes obligations quotidiennes. J’ai conçu de bout en bout un parcours certifiant de 758 heures préparant au Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d’un site industriel en Nouvelle-Calédonie. Un Master 2 de droit public complète cette approche des cadres réglementaires."
-            p5 = "Un mot de franchise pour finir. J’ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu’un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l’embauche au titre de ma situation de demandeur d’emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est nationale, sans réserve, sur l’ensemble du réseau, et ma disponibilité immédiate."
+        # Détection sémantique fine de l'offre
+        overseas_terms = [r"\bmayotte\b", r"\bouangani\b", r"\bmamoudzou\b", r"\bcalédonie\b", r"\bguadeloupe\b", r"\bmartinique\b", r"\bguyane\b", r"\bdom-tom\b", r"\boutre-mer\b"]
+        is_mayotte_or_dom = (
+            any(re.search(term, desc) for term in overseas_terms)
+            or "la réunion" in desc or "île de la réunion" in desc
+            or any(c in city.lower() for c in ["ouangani", "mamoudzou", "nouméa", "cayenne", "fort-de-france", "pointe-à-pitre"])
+            or any(postal_code.startswith(d) for d in ["971", "972", "973", "974", "976", "988"])
+        )
+        is_industry = any(k in desc for k in ["industr", "agro", "avicole", "production", "usine", "fabrication", "métallurg", "technique", "chantier", "btp", "logistique", "transport"])
+        is_medico_social = any(k in desc for k in ["santé", "médico-social", "hospital", "ehpad", "clinique", "associat", "ccas", "enfance", "handicap", "sociale"])
+        is_formation = (cat == "FORMATEUR_PAIE_RH") or any(k in desc for k in ["formateur", "formatrice", "formation", "pédagogique", "cfa", "apprenant", "alternant", "enseignement"])
+        is_cse_social = any(k in desc for k in ["cse", "relations sociales", "dialogue social", "accords", "nao", "conflit", "climat social", "délégué", "représentant", "syndic"])
+        is_silae = "silae" in desc
+        is_gta = any(k in desc for k in ["gta", "temps de travail", "gestion des temps", "absences", "congés", "pointage", "planning"])
+        is_externalized = any(k in desc for k in ["externalis", "prestataire", "cabinet"])
+        is_excel = any(k in desc for k in ["excel", "tableaux de bord", "reporting", "indicateur", "indicateurs"])
+
+        loc_mention = f" à {city}" if city and city.lower() not in ["france", "inconnu", "none"] else ""
+        job_object_clean = f"Candidature au poste de {job_title}"
+
+        # ----------------- PARAGRAPHE 1 : Accroche & Résonance -----------------
+        if is_formation:
+            p1 = f"Votre recherche d'un {job_title}{loc_mention} au sein de {company} a retenu toute mon attention. Acteur reconnu dans le développement des compétences et la formation professionnelle, votre organisme représente un cadre d'excellence dont je mesure pleinement les exigences pédagogiques, la rigueur méthodologique et la volonté d'accompagner des apprenants vers une qualification certifiante reconnue."
+        elif is_mayotte_or_dom:
+            p1 = f"Votre recherche d'un {job_title}{loc_mention} au sein de {company} a retenu toute mon attention. Acteur de référence dans son domaine d'activité{loc_mention}, votre structure combine des enjeux d'organisation opérationnelle, de dialogue de proximité et de conformité sociale rigoureuse. C'est avec un vif intérêt que je vous propose mon expertise RH généraliste, ma pratique de la paie et mon sens de l'accompagnement pour soutenir durablement vos équipes."
+        elif is_industry:
+            p1 = f"Votre recherche d'un {job_title}{loc_mention} au sein de {company} correspond exactement à mes compétences et à mon projet professionnel. Entreprise industrielle dynamique aux exigences de production soutenues, votre structure requiert un pilotage RH réactif, une présence active auprès des équipes opérationnelles et une sécurisation rigoureuse de la gestion sociale dans le strict respect des cadences et du cadre conventionnel."
+        elif is_medico_social:
+            p1 = f"Votre recherche d'un {job_title}{loc_mention} au sein de {company} a retenu toute mon attention. Structure engagée aux missions humaines essentielles, votre établissement requiert une gestion des ressources humaines attentive et rigoureuse, capable de concilier la fidélisation des collaborateurs, l'accompagnement des encadrants et le strict respect des conventions collectives du secteur médico-social."
         elif cat == "RRH_PAIE":
-            job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre recherche pour le poste de {job_title} au sein de {company} a retenu toute mon attention. Structure dynamique aux enjeux humains et organisationnels exigeants, votre entreprise représente un cadre de travail de référence au sein duquel je souhaite mettre à profit mon expertise globale de la fonction RH et du pilotage de la paie."
-            p2 = "De la collecte des éléments variables jusqu'au contrôle approfondi de la DSN et à la maîtrise de la masse salariale, je supervise l'ensemble des cycles de paie et de l'administration du personnel. Ma pratique éprouvée du logiciel Silae et des plateformes déclaratives dématérialisées me permet de garantir une totale conformité sociale, une gestion rigoureuse des cotisations et un traitement irréprochable des procédures d'entrée et de sortie."
-            p3 = "J'ai exercé ce métier avec une responsabilité d'envergure : de 2003 à 2010, j'ai dirigé les ressources humaines d'une organisation de 580 collaborateurs, salariés et bénévoles, en y pilotant le plan de développement des compétences, les procédures contractuelles et le dialogue social avec les instances représentatives (CSE, CE, DP). Cette expérience m'a appris à concilier le strict respect de la réglementation avec l'instauration d'un climat social serein et constructif."
-            p4 = "Je dirige par ailleurs un organisme de formation certifié Qualiopi où j'ai conçu de bout en bout un parcours certifiant de 758 heures pour le Titre professionnel Gestionnaire de paie, et encadré quatre ans les équipes d'un site industriel en Nouvelle-Calédonie. Titulaire d'un Master 2 en Droit public, d'une Maîtrise en Sciences de Gestion et engagé dans un Master RSE à l'IAE de Paris, j'apporte une vision stratégique, éthique et sécurisée de vos relations de travail."
-            p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Ma mobilité est totale sur l'ensemble de votre secteur, et ma disponibilité immédiate."
-        elif cat == "GESTIONNAIRE_RH":
-            job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre offre d'emploi pour le poste de {job_title} au sein de {company} correspond parfaitement à mes compétences et à mon projet professionnel. Spécialiste confirmé de l'administration du personnel, du suivi contractuel et de la gestion sociale avec plus de 15 ans de pratique, je vous propose mon autonomie opérationnelle et ma réactivité pour renforcer votre service RH."
-            p2 = "Au fil de mon parcours, j'ai supervisé l'ensemble du cycle de vie des collaborateurs : formalités d'embauche (DPAE, contrats, avenants), suivi des périodes d'essai, gestion des temps et activités, suivi disciplinaire, ruptures conventionnelles et relations avec la médecine du travail et les organismes de prévoyance. J'accorde une importance primordiale à la qualité du service rendu aux managers opérationnels et aux salariés."
-            p3 = "J'ai exercé ce métier avec une responsabilité directe : de 2003 à 2010, j'ai dirigé les ressources humaines d'une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant l'administration, le plan de formation et le dialogue social avec les représentants du personnel (CSE, DP, CE). Cette pratique m'a conféré une solide aisance relationnelle et une capacité reconnue à instaurer un climat de confiance au sein des équipes."
-            p4 = "Dirigeant d'un organisme de formation certifié Qualiopi où j'ai conçu un parcours certifiant de 758 heures pour le Titre professionnel Gestionnaire de paie, je possède une parfaite maîtrise de l'environnement légal et conventionnel. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, je garantis une veille juridique permanente et une rigueur irréprochable dans le traitement de vos dossiers administratifs."
-            p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Titulaire du permis B, je dispose d'une mobilité complète et d'une disponibilité immédiate."
-        else: # GESTIONNAIRE_PAIE
-            job_object_clean = f"Candidature : {job_title}"
-            p1 = f"Votre offre d'emploi pour le poste de {job_title} au sein de {company} retient toute mon attention. Gestionnaire de paie confirmé et expert du droit social, je vous propose mon autonomie complète pour assurer la production irréprochable de vos bulletins de paie, sécuriser vos déclarations sociales et fiabiliser vos procédures administratives."
-            p2 = "De la collecte méthodique des variables jusqu'au virement des salaires et au contrôle minutieux des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je prends en charge l'intégralité du cycle de paie. Mon expertise technique couvre le paramétrage approfondi sur logiciel Silae, le traitement des cotisations spécifiques, la régularisation des plafonds et la relation suivie avec l'Urssaf, les caisses de retraite et les organismes de prévoyance."
-            p3 = "J'ai exercé ce métier avec une responsabilité concrète avant de l'enseigner : de 2003 à 2010, j'ai piloté les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles. J'ai également dispensé la pratique du bulletin et du droit social sur quatre centres Afpa (Vervins, Beauvais, Creil, Amiens) et auprès d'artisans employeurs dans le cadre des blocs RH/Paie de l'ADEA et du Brevet de Maîtrise."
-            p4 = "Je dirige par ailleurs un organisme certifié Qualiopi où j'ai conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double maîtrise du chiffre et de la règle juridique, garantissant des réponses documentées aux collaborateurs et une sécurité sans faille face aux audits de paie."
-            p5 = "Un mot de franchise pour finir. J'ai 59 ans : je suis loin de la retraite et je cherche un engagement durable plutôt qu'un passage. Mon recrutement peut par ailleurs ouvrir droit à une aide à l'embauche au titre de ma situation de demandeur d'emploi senior, dont je vous communiquerai volontiers les modalités. Titulaire du permis B, immédiatement disponible et mobile, je me tiens à votre entière disposition pour un entretien."
+            p1 = f"Votre offre d'emploi pour le poste de {job_title}{loc_mention} au sein de {company} retient toute mon attention. Organisation exigeante aux enjeux humains et organisationnels majeurs, votre structure recherche un professionnel chevronné capable de prendre en charge le pilotage global des ressources humaines tout en garantissant une maîtrise sans faille des cycles de paie et de la conformité réglementaire."
+        else:
+            p1 = f"Votre recherche d'un {job_title}{loc_mention} au sein de {company} correspond parfaitement à mes compétences et à mon projet professionnel. Entreprise reconnue dans son domaine, votre structure requiert une autonomie complète, une rigueur irréprochable dans le traitement des données du personnel et une capacité d'adaptation immédiate à vos processus de gestion sociale."
 
-        paragraphs_html = f"<p>{p1}</p>\n<p>{p2}</p>\n<p>{p3}</p>\n<p>{p4}</p>\n<p>{p5}</p>"
+        # ----------------- PARAGRAPHE 2 : Cœur de métier technique -----------------
+        if is_formation:
+            if variant_index == 2:
+                p2 = "Formateur spécialisé en paie et ressources humaines, j'anime sans période d'adaptation les cursus certifiants (Titre professionnel Gestionnaire de paie, blocs RH de l'ADEA et du Brevet de Maîtrise). Mon enseignement s'appuie sur des cas d'entreprise réels : analyse des conventions collectives, paramétrage sur logiciel Silae, télédéclarations DSN et gestion contractuelle. Je veille scrupuleusement à l'acquisition des bons réflexes professionnels et au respect des critères d'évaluation des compétences."
+            else:
+                p2 = "Mon parcours allie une longue expérience de terrain à une pratique éprouvée de l'enseignement. Je maîtrise de bout en bout l'animation des blocs RH et Paie, depuis l'embauche du premier salarié jusqu'à la production du bulletin, le contrôle approfondi de la DSN et le suivi des obligations de l'employeur. Rompu à la pédagogie active auprès d'adultes en reconversion et d'alternants, je sais contextualiser chaque règle juridique et chaque calcul pour garantir une assimilation rapide et pérenne des compétences du référentiel."
+        elif is_mayotte_or_dom:
+            p2 = "Au fil de mon parcours professionnel, j'ai développé une pratique approfondie de l'administration du personnel et de la sécurisation contractuelle. De la rédaction des contrats et des avenants au suivi des temps et activités (GTA), jusqu'à la collecte rigoureuse des variables de paie et la coordination avec les prestataires sociaux, je garantis un traitement fiable et réactif des dossiers individuels. Mon niveau avancé sur Excel représente également un appui direct pour modéliser vos tableaux de bord, piloter les indicateurs sociaux et fiabiliser le reporting opérationnel."
+        elif cat == "GESTIONNAIRE_PAIE":
+            tool_mention = "du logiciel Silae et des plateformes déclaratives" if is_silae else "des principaux logiciels de paie (notamment Silae) et des outils SIRH"
+            p2 = f"De la collecte méthodique des éléments variables jusqu'au virement des salaires et au contrôle approfondi des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je supervise l'intégralité du cycle de paie en parfaite autonomie. Ma pratique approfondie {tool_mention} me permet de gérer les régularisations complexes, d'anticiper les évolutions de plafonds et d'assurer des relations fluides avec l'Urssaf et les organismes de prévoyance. Sur le volet administratif, j'assure le suivi des entrées/sorties, les déclarations d'embauche et les soldes de tout compte."
+        elif cat == "GESTIONNAIRE_RH":
+            p2 = "Au fil de mon parcours, j'ai pris en charge l'ensemble des formalités d'administration du personnel et du suivi contractuel : préparation des contrats de travail et avenants, déclarations préalables à l'embauche, suivi des périodes d'essai, gestion des temps et des absences (GTA) et organisation des visites médicales. En interface permanente avec la paie, je fiabilise la transmission des variables et le suivi des dossiers individuels, tout en assurant un rôle d'écoute et d'information auprès des collaborateurs et des managers opérationnels."
+        else: # RRH_PAIE
+            p2 = "Généraliste confirmé des ressources humaines, je supervise l'ensemble des volets administratifs, juridiques et financiers de la fonction. De la sécurisation des contrats de travail et du suivi des procédures disciplinaires jusqu'au contrôle méthodique des cycles de paie et des déclarations DSN, je veille à la conformité absolue de chaque dossier. Ma maîtrise du logiciel Silae et des outils de reporting Excel me permet de piloter la masse salariale avec précision et d'éclairer les arbitrages de la direction par des indicateurs sociaux pertinents."
+
+        # ----------------- PARAGRAPHE 3 : Envergure & Terrain -----------------
+        if is_mayotte_or_dom:
+            p3 = "J'ai exercé ces missions avec un haut niveau de responsabilité : de 2003 à 2010, j'ai dirigé les relations sociales et les ressources humaines d'une structure de 580 collaborateurs, salariés et bénévoles. J'y ai piloté les instances représentatives du personnel (CSE, DP, CE) et instauré un dialogue social serein fondé sur l'écoute et l'équité. De 2010 à 2014, j'ai en outre dirigé un site industriel ETV en Nouvelle-Calédonie, encadrant jusqu'à 50 personnes en environnement d'usine. Cette expérience réussie outre-mer me confère une parfaite compréhension des impératifs logistiques, humains et culturels d'une exploitation insulaire."
+        elif is_formation:
+            p3 = "J'ai exercé ce métier avec une responsabilité directe avant de l'enseigner : de 2003 à 2010, j'ai dirigé les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant l'administration, le plan de formation et le dialogue social. Par ailleurs, entre 2016 et 2020, je suis intervenu sur quatre centres Afpa (Vervins, Beauvais, Creil et Amiens), avec référentiel imposé, outil Métis, parcours individualisés et passage régulier des évaluations en cours de formation (ECF). Ce double ancrage professionnel donne à mes interventions un réalisme immédiatement apprécié."
+        elif is_cse_social or cat == "RRH_PAIE":
+            p3 = "J'ai exercé ces missions avec un haut niveau d'exigence : de 2003 à 2010, j'ai dirigé les ressources humaines d'une structure de 580 collaborateurs, salariés et bénévoles. J'y ai piloté les instances représentatives du personnel (CSE, DP, CE), conduit les négociations d'accords collectifs et animé le dialogue social quotidien dans un climat d'écoute et de respect mutuel. Cette pratique éprouvée du terrain m'a conféré une grande aisance relationnelle, une forte capacité de médiation et le réflexe d'accompagner les managers opérationnels dans la gestion quotidienne de leurs équipes."
+        else:
+            p3 = "J'ai exercé ce métier avec une responsabilité d'envergure : de 2003 à 2010, j'ai piloté l'administration du personnel, la paie et les relations sociales d'une structure de 580 collaborateurs, salariés et bénévoles. Cette expérience m'a appris à gérer des volumes importants avec méthode, à traiter les situations sensibles avec diplomatie et à instaurer une relation de confiance durable avec les salariés comme avec les représentants du personnel. De 2010 à 2014, j'ai également dirigé un site opérationnel de 50 collaborateurs en environnement industriel, renforçant mon sens de la réactivité et du résultat."
+
+        # ----------------- PARAGRAPHE 4 : Qualiopi, Droit public, Atout Senior & Disponibilité -----------------
+        loc_disp = f"pour une installation sur place" if is_mayotte_or_dom else "sur l'ensemble de votre secteur géographique"
+        if is_formation:
+            p4 = f"Dirigeant d'un organisme certifié Qualiopi (ICPF QUA007374), j'ai conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254). Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double expertise juridique et managériale garantissant des contenus rigoureusement actualisés et conformes aux dernières réformes du droit du travail. À 59 ans, j'inscris ma candidature dans un engagement loyal, pérenne et constructif, tout en ouvrant droit aux aides à l'embauche pour demandeur d'emploi senior. Titulaire du permis B, immédiatement disponible et parfaitement mobile {loc_disp}, je serais honoré d'échanger avec vous lors d'un entretien pour étudier les modalités concrètes de notre future collaboration."
+        else:
+            p4 = f"Dirigeant d'un organisme certifié Qualiopi où j'ai conçu et déployé un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie, je possède une solide expertise dans la formalisation des procédures et l'accompagnement des compétences. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'assure une veille sociale rigoureuse pour sécuriser vos pratiques au quotidien : rédaction des accords, gestion des procédures disciplinaires, sécurisation des départs et conformité face aux audits et contrôles administratifs. À 59 ans, je privilégie un engagement loyal et durable, ouvrant droit aux aides à l'embauche senior. Titulaire du permis B, immédiatement disponible et parfaitement mobile {loc_disp}, je serais honoré de vous rencontrer lors d'un entretien approfondi."
+
+        paragraphs_html = f"<p>{p1}</p>\n<p>{p2}</p>\n<p>{p3}</p>\n<p>{p4}</p>"
 
         html = self.letter_template
         html = html.replace("{{CONTACT_FULL}}", contact_full)
