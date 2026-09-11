@@ -9958,5 +9958,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-09-18"
+  },
+  {
+    "id": "FT-213TRKQ",
+    "source": "France Travail (Flux Direct)",
+    "company": "POUGET CONSULTANTS",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Chargé-e des Ressources humaines (RH) (H/F)",
+    "city": "75",
+    "postal_code": "75000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213TRKQ",
+    "description": "Rattaché-e à la responsable RH, vous serez principalement en charge de l'administration du personnel mais également d'autres sujets. Nous souhaitons apporter du soutien sur les missions RH pour...",
+    "score": 96,
+    "date": "2026-09-11",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_POUGET_CONSULTANTS_Chargé-e_des_Ressources_humaines__RH___H_F_",
+    "folder_rel": "candidatures/2026-09-11_POUGET_CONSULTANTS_Chargé-e_des_Ressources_humaines__RH___H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_POUGET_CONSULTANTS_Chargé-e_des_Ressources_humaines__RH___H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_POUGET_CONSULTANTS_Chargé-e_des_Ressources_humaines__RH___H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-09-18"
   }
 ]
