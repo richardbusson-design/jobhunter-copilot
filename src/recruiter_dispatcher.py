@@ -105,7 +105,7 @@ Vous trouverez ci-joints mon curriculum vitae et ma lettre de motivation détail
 Restant à votre entière disposition pour convenir d'un prochain entretien, je vous prie d'agréer, {salutation.replace(',', '')}, l'expression de ma considération distinguée.
 
 Richard BUSSON
-09 39 20 08 70 | richard.busson@kairos-paye.fr
+07 61 96 15 46 · 09 39 20 08 70 | richard.busson@kairos-paye.fr
 98, allée Paul Cézanne, 60100 Creil
 linkedin.com/in/richard-busson | kairos-paye.fr
 """
@@ -121,7 +121,7 @@ linkedin.com/in/richard-busson | kairos-paye.fr
             <p>Restant à votre entière disposition pour convenir d'un prochain entretien, je vous prie d'agréer, {salutation.replace(',', '')}, l'expression de ma considération distinguée.</p>
             <br>
             <p style="margin-bottom: 2px;"><strong>Richard BUSSON</strong></p>
-            <p style="font-size: 10pt; color: #333333; margin: 0;">09 39 20 08 70 | <a href="mailto:richard.busson@kairos-paye.fr" style="color: #1b365d;">richard.busson@kairos-paye.fr</a></p>
+            <p style="font-size: 10pt; color: #333333; margin: 0;">07 61 96 15 46 · 09 39 20 08 70 | <a href="mailto:richard.busson@kairos-paye.fr" style="color: #1b365d;">richard.busson@kairos-paye.fr</a></p>
             <p style="font-size: 10pt; color: #333333; margin: 0;">98, allée Paul Cézanne, 60100 Creil</p>
             <p style="font-size: 10pt; color: #333333; margin: 0;"><a href="https://linkedin.com/in/richard-busson" style="color: #1b365d;">linkedin.com/in/richard-busson</a> | <a href="https://kairos-paye.fr" style="color: #1b365d;">kairos-paye.fr</a></p>
         </body>

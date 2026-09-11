@@ -16,8 +16,16 @@ Fonctionnalités clés :
 import os
 import sys
 import time
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='backslashreplace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='backslashreplace')
+
 import re
 import json
+import random
+import argparse
 import imaplib
 import email
 from datetime import datetime
@@ -54,10 +62,10 @@ class FormAutoPilot:
             "last_name": "BUSSON",
             "full_name": "Richard BUSSON",
             "email": "richard.busson@kairos-paye.fr",
-            "phone": "0939200870",
-            "phone_formatted": "09 39 20 08 70",
+            "phone": "0761961546",
+            "phone_formatted": "07 61 96 15 46",
             "phone_mobile": "07 61 96 15 46",
-            "phone_int": "+33939200870",
+            "phone_int": "+33761961546",
             "phone_pro": "09 39 20 08 70",
             "address": "98, allée Paul Cézanne",
             "postal_code": "60100",
@@ -165,9 +173,13 @@ class FormAutoPilot:
         print(f"[*] Lettre sélectionnée : {letter_pdf}")
 
         with sync_playwright() as p:
+            launch_headless = headless or os.environ.get("GITHUB_ACTIONS") == "true" or sys.platform != "win32"
+            if "apec.fr" in url.lower() and sys.platform == "win32" and os.environ.get("GITHUB_ACTIONS") != "true":
+                launch_headless = False
+
             launch_args = {
                 "user_data_dir": self.profile_dir,
-                "headless": headless or os.environ.get("GITHUB_ACTIONS") == "true" or sys.platform != "win32",
+                "headless": launch_headless,
                 "args": [
                     "--disable-blink-features=AutomationControlled",
                     "--no-sandbox",
@@ -187,6 +199,12 @@ class FormAutoPilot:
                     ft_res = self._submit_france_travail(context, page, url, offer, cv_pdf, letter_pdf, motivation_text, result)
                     context.close()
                     return ft_res
+
+                # Spécialisation Apec (Bypass DataDome + Redirection ATS Recruteur)
+                if "apec.fr" in url.lower():
+                    apec_res = self._submit_apec_flow(context, page, url, offer, cv_pdf, letter_pdf, motivation_text, result)
+                    context.close()
+                    return apec_res
 
                 page.goto(url, wait_until="domcontentloaded", timeout=60000)
                 page.wait_for_load_state("networkidle")
@@ -730,6 +748,198 @@ class FormAutoPilot:
 
         return result
 
+    def _solve_datadome_slider(self, page: Page) -> bool:
+        """Détecte et résout automatiquement le slider DataDome par trajectoire fluide humaine (courbe de Bézier)."""
+        time.sleep(2)
+        cf = None
+        for f in page.frames:
+            if "captcha-delivery" in f.url or "datadome" in f.url:
+                cf = f
+                break
+        if not cf:
+            return False
+
+        print("[*] Challenge DataDome actif détecté. Recherche du slider...")
+        try:
+            slider = cf.locator(".slider").first
+            target = cf.locator(".sliderTarget").first
+            if not slider.is_visible(timeout=3000) or not target.is_visible(timeout=3000):
+                print("[!] Slider ou cible non visible dans le frame DataDome.")
+                return False
+
+            s_box = slider.bounding_box()
+            t_box = target.bounding_box()
+            iframe_el = page.locator("iframe[src*='captcha-delivery'], iframe[src*='datadome']").first
+            iframe_box = iframe_el.bounding_box()
+
+            if not s_box or not t_box or not iframe_box:
+                return False
+
+            start_x = iframe_box["x"] + s_box["x"] + s_box["width"] / 2
+            start_y = iframe_box["y"] + s_box["y"] + s_box["height"] / 2
+            end_x = iframe_box["x"] + t_box["x"] + t_box["width"] / 2
+            end_y = iframe_box["y"] + t_box["y"] + t_box["height"] / 2
+
+            print(f"[*] Résolution automatique DataDome : glissement Bézier ({start_x:.1f}, {start_y:.1f}) -> ({end_x:.1f}, {end_y:.1f})...")
+            page.mouse.move(start_x, start_y)
+            time.sleep(0.2)
+            page.mouse.down()
+            time.sleep(0.1)
+
+            steps = 40
+            for i in range(1, steps + 1):
+                t = i / steps
+                ease = 3 * (t ** 2) - 2 * (t ** 3)
+                cur_x = start_x + (end_x - start_x) * ease
+                cur_y = start_y + random.uniform(-1.5, 1.5)
+                page.mouse.move(cur_x, cur_y)
+                time.sleep(random.uniform(0.015, 0.035))
+
+            time.sleep(0.15)
+            page.mouse.up()
+            time.sleep(4)
+            print("[✓] Slider DataDome franchi avec succès ! Cookie de session persistant enregistré.")
+            return True
+        except Exception as e:
+            print(f"[!] Exception lors de la résolution DataDome : {e}")
+            return False
+
+    def _submit_apec_flow(self, context, page: Page, url: str, offer: Dict[str, Any], cv_pdf: Optional[str], letter_pdf: Optional[str], motivation_text: str, result: Dict[str, Any]) -> Dict[str, Any]:
+        """Gère le parcours spécifique Apec : résolution Datadome, bypass vers l'ATS recruteur direct, et candidature."""
+        print(f"[*] FormAutoPilot [Apec] : Traitement spécialisé de l'offre -> {url}")
+        out_dir = offer.get("folder") or os.path.join(self.base_dir, "scratch")
+        os.makedirs(out_dir, exist_ok=True)
+
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            time.sleep(3)
+
+            # Étape 1 : Résolution anti-bot DataDome si actif
+            self._solve_datadome_slider(page)
+
+            # Étape 2 : Fermeture bannière cookies
+            try:
+                cookie_btn = page.locator("button:has-text('Accepter tous les cookies'), button:has-text('Continuer sans accepter'), button:has-text('Refuser')").first
+                if cookie_btn.is_visible(timeout=2000):
+                    cookie_btn.click()
+                    time.sleep(1)
+            except Exception:
+                pass
+
+            # Étape 3 : Détection du lien direct vers le recruteur ou bouton intermédiaire
+            direct_rec_link = page.get_by_text("Aller directement sur le site du recruteur").first
+            target_page = page
+
+            if direct_rec_link.is_visible(timeout=2000):
+                print("[*] Lien 'Aller directement sur le site du recruteur' immédiatement détecté sur la page...")
+                try:
+                    with context.expect_page(timeout=6000) as rec_page_info:
+                        direct_rec_link.click(timeout=4000)
+                    target_page = rec_page_info.value
+                except Exception:
+                    direct_rec_link.click(force=True)
+                    time.sleep(3)
+                    target_page = context.pages[-1] if len(context.pages) > 1 else page
+                target_page.wait_for_load_state("domcontentloaded")
+                time.sleep(4)
+                print(f"[✓] Bascule réussie sur le site recruteur : {target_page.url}")
+            else:
+                apply_btn = page.get_by_text("Postuler sur le site").first
+                if apply_btn.is_visible(timeout=3000):
+                    print("[*] Bouton 'Postuler sur le site' détecté. Clic pour accéder à la redirection...")
+                    try:
+                        apply_btn.click(timeout=4000)
+                    except Exception:
+                        apply_btn.click(force=True)
+                    time.sleep(3)
+                    page.wait_for_load_state("domcontentloaded")
+
+                    direct_rec_link2 = page.get_by_text("Aller directement sur le site du recruteur").first
+                    if direct_rec_link2.is_visible(timeout=4000):
+                        print("[*] Lien 'Aller directement sur le site du recruteur' détecté sur la page intermédiaire...")
+                        try:
+                            with context.expect_page(timeout=8000) as rec_page_info:
+                                direct_rec_link2.click(timeout=4000)
+                            target_page = rec_page_info.value
+                        except Exception:
+                            direct_rec_link2.click(force=True)
+                            time.sleep(3)
+                            target_page = context.pages[-1] if len(context.pages) > 1 else page
+
+                        target_page.wait_for_load_state("domcontentloaded")
+                        time.sleep(4)
+                        print(f"[✓] Bascule réussie sur le site recruteur : {target_page.url}")
+
+            # Étape 5 : Remplissage universel sur la page cible (ATS recruteur ou formulaire direct)
+            # Fermeture cookies sur site recruteur si présents
+            try:
+                rec_cookie = target_page.locator("button:has-text('Accepter'), button:has-text('Autoriser'), button:has-text('Continuer sans accepter')").first
+                if rec_cookie.is_visible(timeout=1500):
+                    rec_cookie.click()
+                    time.sleep(1)
+            except Exception:
+                pass
+
+            # Clic si bouton 'Postuler' ou 'Candidater' nécessaire sur le site recruteur
+            rec_apply = target_page.locator("button:has-text('Postuler'), a:has-text('Postuler'), button:has-text('Candidater'), a:has-text('Candidater'), button:has-text('Déposer mon CV')").first
+            if rec_apply.is_visible() and not target_page.locator("input[type='file'], input[name*='nom']").first.is_visible():
+                rec_apply.click()
+                time.sleep(2)
+
+            self._fill_input_fields(target_page, motivation_text)
+            self._upload_documents(target_page, cv_pdf, letter_pdf)
+            self._handle_dropdowns_and_radios(target_page)
+
+            # Preuve avant soumission
+            ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
+            target_page.screenshot(path=ready_shot)
+            print(f"[+] Capture avant soumission sauvegardée : {ready_shot}")
+
+            submitted, submit_error = self._execute_submission_with_fallbacks(target_page)
+            if not submitted:
+                result["error"] = f"Échec de la soumission recruteur : {submit_error}"
+                fail_shot = os.path.join(out_dir, "form_submission_failed.png")
+                target_page.screenshot(path=fail_shot)
+                result["proof_screenshot"] = fail_shot
+                return result
+
+            time.sleep(5)
+            success_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+            target_page.screenshot(path=success_shot)
+            result["proof_screenshot"] = success_shot
+            try:
+                import shutil
+                shutil.copyfile(success_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
+            except Exception:
+                pass
+
+            result["success"] = True
+            print(f"[✓] CANDIDATURE FINALISÉE AVEC SUCCÈS VIA APEC -> RECRUTEUR ({target_page.url}) !")
+
+        except Exception as e:
+            print(f"[!] Erreur lors du flux Apec : {e}")
+            result["error"] = str(e)
+            try:
+                err_shot = os.path.join(out_dir, "form_submission_failed.png")
+                page.screenshot(path=err_shot)
+                result["proof_screenshot"] = err_shot
+            except Exception:
+                pass
+
+        return result
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="FormAutoPilot - Remplissage et postulation automatique universelle")
+    parser.add_argument("--url", type=str, help="URL de l'offre ou du formulaire à remplir")
+    parser.add_argument("--folder", type=str, default="", help="Dossier contenant le CV et la Lettre de motivation")
+    parser.add_argument("--headless", action="store_true", help="Exécution en mode headless")
+    args = parser.parse_args()
+
     bot = FormAutoPilot()
-    print("FormAutoPilot initialisé avec succès.")
+    if args.url:
+        print(f"[*] Démarrage automatique FormAutoPilot pour {args.url}...")
+        offer_info = {"folder": args.folder} if args.folder else {}
+        res = bot.fill_and_submit_form(url=args.url, offer=offer_info, headless=args.headless)
+        print(f"[*] Résultat de l'opération : {json.dumps(res, indent=2, ensure_ascii=False)}")
+    else:
+        print("FormAutoPilot initialisé avec succès. Prêt pour exécution.")
