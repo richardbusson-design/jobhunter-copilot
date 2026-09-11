@@ -9986,5 +9986,37 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-09-18"
+  },
+  {
+    "id": "APEC-179381212W",
+    "source": "L'Apec (Direct WebService)",
+    "company": "MICHAEL PAGE INTERNATIONAL FRANCE",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "Responsable paie / ADP F/H",
+    "city": "Mérignac",
+    "postal_code": "33000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "60 - 70 k€ brut annuel",
+    "contract_type": "CDI",
+    "url": "https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179381212W",
+    "description": "Poste de Responsable paie / ADP F/H chez MICHAEL PAGE INTERNATIONAL FRANCE. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
+    "score": 94,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_MICHAEL_PAGE_INTERNATIONAL_FRANCE_Responsable_paie___ADP_F_H",
+    "folder_rel": "candidatures\\2026-09-11_MICHAEL_PAGE_INTERNATIONAL_FRANCE_Responsable_paie___ADP_F_H",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_MICHAEL_PAGE_INTERNATIONAL_FRANCE_Responsable_paie___ADP_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_MICHAEL_PAGE_INTERNATIONAL_FRANCE_Responsable_paie___ADP_F_H\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "WEB_PORTAL_AUTO_SUBMITTED",
+      "reason": "Formulaire web officiellement soumis et validé par FormAutoPilot",
+      "recruiter_email": null,
+      "subject": "Candidature : Responsable paie / ADP — Richard BUSSON",
+      "timestamp": "2026-09-11 22:27",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_MICHAEL_PAGE_INTERNATIONAL_FRANCE_Responsable_paie___ADP_F_H\\preuve_soumission_officielle.png"
+    },
+    "date": "2026-09-11",
+    "relance_date": "2026-09-18"
   }
 ]

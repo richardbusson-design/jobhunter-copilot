@@ -108,7 +108,7 @@ class QualityGuard:
         score = 80.0
         
         # 1. Contrôle bloquant de typographie (ZÉRO caractère gras dans le corps de lettre)
-        body_match = re.search(r'<div class="body-content">(.*?)</div>\s*</div>\s*</body>', letter_html, re.DOTALL)
+        body_match = re.search(r'<div class="(?:body-content|body-paragraphs)">(.*?)</div>', letter_html, re.DOTALL)
         if body_match:
             body_content = body_match.group(1)
             if "<strong>" in body_content or "<b>" in body_content or "font-weight: bold" in body_content or "font-weight:bold" in body_content:
@@ -131,7 +131,7 @@ class QualityGuard:
 
     def validate_html_letter(self, letter_html: str) -> Tuple[bool, str]:
         """Vérifie que la lettre de motivation ne comporte aucun caractère gras dans son corps."""
-        body_match = re.search(r'<div class="body-content">(.*?)</div>\s*</div>\s*</body>', letter_html, re.DOTALL)
+        body_match = re.search(r'<div class="(?:body-content|body-paragraphs)">(.*?)</div>', letter_html, re.DOTALL)
         if body_match:
             body_content = body_match.group(1)
             if "<strong>" in body_content or "<b>" in body_content or "font-weight: bold" in body_content or "font-weight:bold" in body_content:

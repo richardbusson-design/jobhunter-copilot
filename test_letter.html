@@ -14,103 +14,106 @@
       padding: 0;
     }
     body {
-      font-family: Arial, Helvetica, "Segoe UI", Calibri, sans-serif;
-      font-size: 10.3pt;
-      line-height: 1.46;
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      line-height: 1.53;
       color: #000000;
       background: #ffffff;
       width: 794px;
       height: 1123px;
       margin: 0 auto;
-      padding: 36px 44px 30px 44px;
+      padding: 34px 48px 24px 48px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       overflow: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    .header-table {
+    .header-container {
       width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 6px;
-    }
-    .header-table td {
-      vertical-align: top;
-      padding: 0;
+      margin-bottom: 8px;
     }
     .sender-box {
-      width: 50%;
-      font-size: 9.5pt;
-      line-height: 1.36;
+      width: 48%;
+      text-align: left;
+      font-size: 10.5pt;
+      line-height: 1.38;
       color: #111111;
     }
     .sender-name {
-      font-weight: bold;
       color: #000000;
-      font-size: 10.5pt;
+      font-size: 11.5pt;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      text-align: left;
     }
     .recipient-box {
       width: 50%;
-      font-size: 9.5pt;
-      line-height: 1.36;
-      color: #000000;
-      padding-left: 20px;
+      margin-left: auto;
+      margin-top: 12px; /* 1 ligne en dessous du bloc expéditeur */
+      text-align: left;  /* Alignement à gauche à l'intérieur du bloc */
+      font-size: 10.5pt;
+      line-height: 1.38;
+      color: #111111;
+      padding-left: 10px;
     }
     .recipient-name {
       font-weight: bold;
+      color: #000000;
+      text-align: left;
     }
     .date-line {
-      margin-top: 6px;
-      font-size: 9.5pt;
+      margin-top: 7px;
+      font-size: 10.5pt;
+      color: #222222;
+      text-align: left;
     }
     .object-line {
-      font-size: 10.4pt;
-      margin: 8px 0 10px 0;
+      font-size: 11.2pt;
+      margin: 12px 0 11px 0;
       color: #000000;
+      text-align: left;
     }
-    .body-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex-grow: 1;
-    }
-    .body-content p {
-      margin-bottom: 9px;
+    .body-paragraphs p {
+      margin-bottom: 16px;
       text-align: justify;
       text-justify: inter-word;
-      color: #000000;
-    }
-    .pj-block {
-      margin-top: 4px;
-      font-size: 9.3pt;
       color: #111111;
     }
-    .pj-block ul {
-      margin: 2px 0 0 16px;
-      list-style-type: disc;
+    .pj-block {
+      margin: 6px 0 8px 0;
+      font-size: 10.5pt;
+      color: #222222;
+      text-align: left;
+    }
+    .pj-block span {
+      font-weight: 600;
     }
     .politesse {
-      margin: 8px 0 4px 0;
+      margin: 7px 0 7px 0;
       text-align: justify;
+      text-justify: inter-word;
+      color: #111111;
     }
     .signature-container {
       display: flex;
       justify-content: flex-end;
-      margin-top: 4px;
+      padding-right: 25px;
+      margin-top: 14px;
     }
     .signature-box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 190px;
+      width: 175px;
     }
     .signature-svg {
       width: 140px;
-      height: 44px;
+      height: 48px;
       margin-bottom: 2px;
     }
     .signature-name {
-      font-size: 10.2pt;
+      font-size: 11pt;
       font-weight: bold;
       color: #000000;
       letter-spacing: 0.01em;
@@ -119,68 +122,54 @@
 </head>
 <body>
 
-  <!-- En-tête avec alignement exact ligne 6 -->
+  <!-- En-tête officiel aligné : destinataire 1 ligne sous l'expéditeur -->
   <div>
-    <table class="header-table">
-      <tr>
-        <td class="sender-box">
-          <div class="sender-name">Richard BUSSON</div>
-          <div>98, allée Paul Cézanne</div>
-          <div>60100 CREIL</div>
-          <div>09 39 20 08 70</div>
-          <div>richard.busson@kairos-paye.fr</div>
-        </td>
-        <td class="recipient-box"></td>
-      </tr>
-      <tr>
-        <td class="sender-box">
-          <div>linkedin.com/in/richard-busson . kairos-paye.fr</div>
-        </td>
-        <td class="recipient-box">
-          <div class="recipient-name">À l’attention de Monsieur le Directeur de Centre, Direction de l'établissement</div>
-          <div>PARTNAIRE ILE DE FRANCE NORD OUEST</div>
-          <div>Service Recrutement & RH</div>
-          <div>60000 BEAUVAIS</div>
-          <div class="date-line">À Creil, le 01 septembre 2026</div>
-        </td>
-      </tr>
-    </table>
+    <div class="header-container">
+      <div class="sender-box">
+        <div class="sender-name">Richard BUSSON</div>
+        <div>98, allée Paul Cézanne</div>
+        <div>60100 CREIL</div>
+        <div>09 39 20 08 70</div>
+        <div>richard.busson@kairos-paye.fr</div>
+      </div>
+      <div class="recipient-box">
+        <div class="recipient-name">À l’attention de Monsieur le Directeur de Centre</div>
+        <div>Direction de l'établissement</div>
+<div>PARTNAIRE ILE DE FRANCE NORD OUEST</div>
+<div>60000 BEAUVAIS</div>
+        <div class="date-line">À Creil, le 11 septembre 2026</div>
+      </div>
+    </div>
 
-    <!-- Objet (Gras autorisé) -->
+    <!-- Objet (Gras uniquement sur 'Objet :') -->
     <div class="object-line">
-      <strong>Objet : Candidature au poste de Gestionnaire de paie</strong>
+      <strong>Objet :</strong> Candidature au poste de Gestionnaire de paie
     </div>
   </div>
 
-  <!-- Corps de la lettre (ZÉRO GRAS, 100% calibré sur 1 page A4 pleine) -->
-  <div class="body-content">
-    <div>
-      <p>Madame, Monsieur,</p>
-      <p>Votre offre d'emploi pour le poste de Gestionnaire de paie au sein de PARTNAIRE ILE DE FRANCE NORD OUEST retient toute mon attention. Gestionnaire de paie confirmé et expert du droit social, je vous propose mon autonomie complète pour assurer la production irréprochable de vos bulletins de paie, sécuriser vos déclarations sociales et optimiser vos procédures administratives.</p>
-<p>De la collecte méthodique des variables jusqu'au virement des salaires et au contrôle minutieux des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je prends en charge l'intégralité du cycle de paie. Mon expertise technique couvre le paramétrage approfondi sur Silae, le traitement des cotisations spécifiques, la régularisation des plafonds et la relation suivie avec l'Urssaf et les caisses de retraite.</p>
-<p>Fort de plus de 15 années d'expérience en entreprise (ex-responsable RH et paie de 580 collaborateurs) et en ingénierie de formation (concepteur d'un parcours de 758h pour le Titre pro Gestionnaire de paie certifié Qualiopi), je possède une compréhension approfondie des mécanismes de rémunération, des spécificités conventionnelles et des audits de conformité de paie.</p>
-<p>Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double maîtrise du chiffre et de la règle juridique, garantissant des réponses fiables et documentées aux interrogations des collaborateurs et des managers opérationnels sur leurs droits et obligations sociales.</p>
-<p>À 59 ans, je m'inscris dans une démarche de fidélité et d'engagement professionnel durable. Mon recrutement ouvre droit aux dispositifs d'aides à l'embauche pour les demandeurs d'emploi seniors. Titulaire du permis B, immédiatement disponible et mobile, je serais très heureux d'échanger avec vous lors d'un prochain entretien.</p>
-      <div class="pj-block">
-        <div>Vous trouverez ci-joint :</div>
-        <ul>
-          <li>mon curriculum vitae.</li>
-        </ul>
-      </div>
-      <p class="politesse">Je vous prie d’agréer, Madame, Monsieur, l’expression de ma considération distinguée.</p>
+  <!-- Corps de la lettre (5 paragraphes denses équilibrés, pleine page A4 garantie) -->
+  <div class="body-paragraphs">
+    <p>Monsieur le Directeur,</p>
+    <p>Votre recherche d'un Gestionnaire de paie à BEAUVAIS au sein de PARTNAIRE ILE DE FRANCE NORD OUEST correspond parfaitement à mes compétences et à mon projet professionnel. Entreprise reconnue dans son domaine, votre structure requiert une autonomie complète, une rigueur irréprochable dans le traitement des données du personnel et une capacité d'adaptation immédiate à vos processus de gestion sociale.</p>
+<p>De la collecte méthodique des éléments variables jusqu'au virement des salaires et au contrôle approfondi des déclarations DSN (mensuelles, arrêts de travail, fins de contrat), je supervise l'intégralité du cycle de paie en parfaite autonomie. Ma pratique approfondie du logiciel Silae et des plateformes déclaratives me permet de gérer les régularisations complexes, d'anticiper les évolutions de plafonds et d'assurer des relations fluides avec l'Urssaf et les organismes de prévoyance. Sur le volet administratif, j'assure le suivi des entrées/sorties, les déclarations d'embauche et les soldes de tout compte.</p>
+<p>J'ai exercé ce métier avec une responsabilité d'envergure : de 2003 à 2010, j'ai piloté l'administration du personnel, la paie et les relations sociales d'une structure de 580 collaborateurs, salariés et bénévoles. Cette expérience m'a appris à gérer des volumes importants avec méthode, à traiter les situations sensibles avec diplomatie et à instaurer une relation de confiance durable avec les salariés comme avec les représentants du personnel. De 2010 à 2014, j'ai également dirigé un site opérationnel de 50 collaborateurs en environnement industriel, renforçant mon sens de la réactivité et du résultat.</p>
+<p>Dirigeant d'un organisme certifié Qualiopi où j'ai conçu et déployé un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie, je possède une solide expertise dans la formalisation des procédures et l'accompagnement des compétences. Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'assure une veille sociale rigoureuse pour sécuriser vos pratiques au quotidien : rédaction des accords, gestion des procédures disciplinaires, sécurisation des départs et conformité face aux audits et contrôles administratifs. À 59 ans, je privilégie un engagement loyal et durable, ouvrant droit aux aides à l'embauche senior. Titulaire du permis B, immédiatement disponible et parfaitement mobile sur l'ensemble de votre secteur géographique, je serais honoré de vous rencontrer lors d'un entretien approfondi.</p>
+    <div class="pj-block">
+      <span>Pièce jointe :</span> curriculum vitae.
     </div>
+    <p class="politesse">Je vous prie d’agréer, Monsieur le Directeur, l’expression de ma considération distinguée.</p>
+  </div>
 
-    <!-- Signature manuscrite lisible en bas à droite -->
-    <div class="signature-container">
-      <div class="signature-box">
-        <svg class="signature-svg" viewBox="0 0 180 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 18 48 C 14 32, 22 14, 34 10 C 44 7, 54 15, 48 26 C 40 37, 25 35, 35 35 C 46 35, 58 32, 66 24 C 60 30, 64 42, 78 38 C 88 34, 98 28, 102 24" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M 28 22 C 37 20, 48 24, 54 21" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 75 36 C 85 28, 92 32, 102 26 C 110 22, 118 28, 126 24 C 134 20, 142 26, 150 22 C 158 18, 166 22, 172 18" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M 82 40 C 104 38, 138 35, 168 32" stroke="#000000" stroke-width="2.0" stroke-linecap="round"/>
-        </svg>
-        <div class="signature-name">Richard Busson</div>
-      </div>
+  <!-- Signature vectorielle haute fidélité RB -->
+  <div class="signature-container">
+    <div class="signature-box">
+      <svg class="signature-svg" viewBox="0 0 160 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Monogramme authentique RB fluide et net -->
+        <path d="M 28 48 L 28 8 C 28 8, 36 6, 48 6 C 60 6, 68 14, 62 24 C 55 31, 42 31, 30 31 C 44 31, 60 30, 70 36 C 79 41, 74 50, 60 50 C 44 50, 34 46, 26 46" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 18 28 L 88 28" stroke="#000000" stroke-width="2.1" stroke-linecap="round"/>
+        <path d="M 66 33 L 138 18 C 145 16, 152 22, 143 26 C 130 30, 108 33, 98 35" stroke="#000000" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="signature-name">Richard Busson</div>
     </div>
   </div>
 

@@ -206,6 +206,10 @@ class ApplicationGenerator:
         best_html, best_score, best_idx = scored_variants[0]
         return best_html, best_score, best_idx
 
+    def render_letter_html(self, job: Dict[str, Any]) -> str:
+        best_html, _, _ = self.generate_best_of_three_letter(job)
+        return best_html
+
     def render_cv_html(self, job: Dict[str, Any]) -> str:
         raw_title = job.get("title", "Poste RH & Paie")
         job_title = self.clean_job_title(raw_title)
