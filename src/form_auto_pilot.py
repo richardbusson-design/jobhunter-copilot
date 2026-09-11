@@ -217,14 +217,26 @@ class FormAutoPilot:
                     apply_btn.click()
                     time.sleep(2)
 
-                # Étape 2 : Remplissage des champs de saisie
-                self._fill_input_fields(page, motivation_text)
-
-                # Étape 3 : Téléversement des fichiers CV et Lettre
+                # Étape 2 : Téléversement des fichiers CV et Lettre (révèle souvent le formulaire)
                 self._upload_documents(page, cv_pdf, letter_pdf)
+                time.sleep(3)
+
+                # Si un bouton intermédiaire apparaît après l'upload (ex: 'Je postule', 'Continuer', 'Suivant')
+                step_btn = page.locator("button, a, div.btn, span.btn").filter(has_text=re.compile(r"^(Je postule|Continuer|Suivant|Postuler)$", re.IGNORECASE)).first
+                if step_btn.is_visible():
+                    try:
+                        print(f"[*] Clic sur le bouton d'étape post-upload : {step_btn.inner_text().strip()}...")
+                        step_btn.click()
+                        time.sleep(3)
+                    except Exception:
+                        pass
+
+                # Étape 3 : Remplissage des champs de saisie
+                self._fill_input_fields(page, motivation_text)
 
                 # Étape 4 : Gestion des menus déroulants et sélecteurs
                 self._handle_dropdowns_and_radios(page)
+                time.sleep(1)
 
                 # Capture d'écran avant soumission
                 out_dir = offer.get("folder") or os.path.join(self.base_dir, "scratch")
@@ -320,7 +332,13 @@ class FormAutoPilot:
                 inp.fill(self.candidate["email"])
             # Téléphone
             elif any(k in tag for k in ["tel", "phone", "mobile", "portable", "06 12"]):
-                inp.fill(self.candidate["phone"])
+                inp.fill(self.candidate["phone_formatted"])
+            # Rémunération / Salaire
+            elif any(k in tag for k in ["rem", "salaire", "pretention", "salary"]):
+                inp.fill("40")
+            # Préavis / Disponibilité
+            elif any(k in tag for k in ["preavis", "dispo", "availability"]):
+                inp.fill("Sans préavis")
             # Code Postal
             elif any(k in tag for k in ["postal", "zip", "code_postal", "cp"]):
                 inp.fill(self.candidate["postal_code"])
@@ -415,8 +433,14 @@ class FormAutoPilot:
         print("[*] Déclenchement de la soumission finale...")
 
         submit_selectors = [
-            "button[type='submit']",
+            "#lt-candidature--send",
+            ".btn-candidature-send",
             "button:has-text('Envoyer ma candidature')",
+            "button[type='submit']:has-text('Postuler')",
+            "button[type='submit']:has-text('Envoyer')",
+            "div:has-text('Postuler').btn",
+            "div#lt-candidature--send",
+            "button[type='submit']",
             "button:has-text('Envoyer')",
             "button:has-text('Postuler')",
             "button:has-text('Confirmer')",
@@ -429,6 +453,8 @@ class FormAutoPilot:
             btn = page.locator(sel).first
             if btn.is_visible():
                 try:
+                    btn.scroll_into_view_if_needed()
+                    time.sleep(0.3)
                     print(f"    [Stratégie 1] Clic direct sur : {sel}")
                     btn.click(timeout=5000)
                     return True, None
@@ -446,13 +472,18 @@ class FormAutoPilot:
                 except Exception:
                     pass
 
-        # Stratégie 3 : Déclenchement JS via le formulaire
+        # Stratégie 3 : Déclenchement JS ciblé sur le formulaire de candidature
         try:
-            print("    [Stratégie 3] Déclenchement JS form.submit()...")
+            print("    [Stratégie 3] Déclenchement JS ciblé sur le formulaire de candidature...")
             has_form = page.evaluate("""() => {
-                const f = document.querySelector('form');
+                const sendBtn = document.querySelector("#lt-candidature--send, .btn-candidature-send, [id*='candidature'] button, [id*='candidature'] div.btn");
+                if (sendBtn) {
+                    sendBtn.click();
+                    return true;
+                }
+                const f = document.querySelector('#lt-candidature--form, form[id*="candidat"], form[class*="candidat"], form:has(input[type="file"]), form:has(input[name*="nom"]), form');
                 if (f) {
-                    const submitBtn = f.querySelector("button[type='submit'], button, input[type='submit']");
+                    const submitBtn = f.querySelector("button[type='submit'], button, input[type='submit'], div.btn");
                     if (submitBtn) { submitBtn.click(); return true; }
                     f.submit();
                     return true;
@@ -873,10 +904,10 @@ class FormAutoPilot:
             # Étape 5 : Remplissage universel sur la page cible (ATS recruteur ou formulaire direct)
             # Fermeture cookies sur site recruteur si présents
             try:
-                rec_cookie = target_page.locator("button:has-text('Accepter'), button:has-text('Autoriser'), button:has-text('Continuer sans accepter')").first
-                if rec_cookie.is_visible(timeout=1500):
+                rec_cookie = target_page.locator("button:has-text('TOUT ACCEPTER'), button:has-text('Tout accepter'), button:has-text('Accepter tout'), button:has-text('Accepter'), button:has-text('Autoriser'), a:has-text('Continuer sans accepter'), button:has-text('Continuer sans accepter')").first
+                if rec_cookie.is_visible(timeout=2500):
                     rec_cookie.click()
-                    time.sleep(1)
+                    time.sleep(1.5)
             except Exception:
                 pass
 
@@ -886,9 +917,22 @@ class FormAutoPilot:
                 rec_apply.click()
                 time.sleep(2)
 
-            self._fill_input_fields(target_page, motivation_text)
             self._upload_documents(target_page, cv_pdf, letter_pdf)
+            time.sleep(3)
+
+            # Si un bouton intermédiaire apparaît après l'upload (ex: 'Je postule', 'Continuer', 'Suivant')
+            step_btn = target_page.locator("button, a, div.btn, span.btn").filter(has_text=re.compile(r"^(Je postule|Continuer|Suivant|Postuler)$", re.IGNORECASE)).first
+            if step_btn.is_visible():
+                try:
+                    print(f"[*] Clic sur le bouton d'étape post-upload : {step_btn.inner_text().strip()}...")
+                    step_btn.click()
+                    time.sleep(3)
+                except Exception:
+                    pass
+
+            self._fill_input_fields(target_page, motivation_text)
             self._handle_dropdowns_and_radios(target_page)
+            time.sleep(1)
 
             # Preuve avant soumission
             ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
