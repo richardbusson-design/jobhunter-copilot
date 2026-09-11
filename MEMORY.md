@@ -3,7 +3,7 @@
 ## 👤 PROFIL EXACT DU CANDIDAT (RICHARD BUSSON) — ZÉRO HALLUCINATION
 - **Nom & Prénom :** Richard BUSSON
 - **Adresse :** 98, allée Paul Cézanne, 60100 Creil
-- **Téléphone :** 09 39 20 08 70
+- **Téléphone :** 07 61 96 15 46 · 09 39 20 08 70
 - **Email :** richard.busson@kairos-paye.fr
 - **Réseaux & Web :** LinkedIn : linkedin.com/in/richard-busson | kairos-paye.fr
 - **Statut & Atouts :** 59 ans, profil senior/expert (+15 ans d'expérience), grande stabilité professionnelle, engagement durable et loyal, éligible aux aides à l'embauche pour demandeur d'emploi senior, permis B (valide), mobilité nationale (Façades Atlantique / Méditerranée / Creil & Île-de-France), disponibilité immédiate.
@@ -18,15 +18,16 @@
    - Si une offre en cabinet concerne la paie/social, le poste doit être intitulé et traité strictement comme *Gestionnaire de Paie et Droit Social*, jamais comptable.
 2. **INTERDICTION DES ESPACES VIDES & CALIBRAGE PLEINE PAGE :**
    - Interdiction formelle de laisser des espaces vides ou blancs non comblés en bas de la lettre de motivation.
-   - La lettre doit occuper **100% de la page A4 (794x1123px)** de manière dense, équilibrée et harmonieuse (Calibri 11pt, interligne 1.44, 5 paragraphes riches, texte justifié).
+   - La lettre doit occuper **100% de la page A4 (794x1123px)** de manière dense, équilibrée et harmonieuse (Calibri 11pt, interligne 1.44, 4 paragraphes riches, texte justifié).
    - Interdiction absolue de déborder sur une page 2 (le PDF doit faire strictement 1 page).
 3. **INTERDICTION DES BALISES OU PLACEHOLDERS NON RÉSOLUS :**
    - **ZÉRO balise résiduelle** (`{{...}}`, `{{CONTACT_FULL}}`, `{{COMPANY_NAME}}`, etc.).
    - Le QualityGuard bloque et détruit instantanément tout document contenant le moindre placeholder orphelin.
 4. **INTERDICTION DES CARACTÈRES GRAS DANS LE CORPS DE LETTRE :**
    - **ZÉRO mot en gras (`<strong>`, `<b>`, `font-weight: bold`) dans le corps de la lettre de motivation**. Seul `Objet :` est autorisé en gras.
-5. **INTERDICTION DES SIGNATURES ILLISIBLES :**
-   - La signature doit être nette, calligraphique (monogramme *RB* vectoriel contrasté) avec le nom `Richard Busson` lisiblement centré en dessous en bas à droite.
+5. **INTERDICTION DES SIGNATURES FICTIVES :**
+   - La signature manuscrite authentique (fond transparent pur) de Richard Busson doit être insérée au-dessus de son nom en bas à droite.
+   - La mention `Pièce jointe : curriculum vitae.` doit figurer strictement en bas de page ferrée à gauche.
 6. **INTERDICTION DES PROFILS DÉBUTANTS / JUNIORS :**
    - Élimination automatique des offres exigeant moins de 3 ans d'expérience ou ciblant des juniors.
 7. **INTERDICTION DES SALAIRES INFÉRIEURS AU SEUIL :**
@@ -136,11 +137,29 @@
 - **Sélection des Offres Directes :** Paramétrage d'URL strict \`natureOffre=E1&offresPartenaires=false\`, garantissant l'accès au formulaire natif France Travail (\`postulerenligne/{raw_id}\`).
 - **Sélection Intelligente du CV :**
   * Postes RH / Direction : \`CV_Bibliotheque_ResponsableRH.pdf\` (\`input#cv-83557459\`)
-  * Postes Paie / Gestionnaire : \`CV_Bibliotheque_GestionnaireDePaie.pdf\` (\`input#cv-83522771\`)
-  * Postes Formateur : \`CV_Bibliotheque_FormateurPaieRH.pdf\` (\`input#cv-83522766\`)
-  * Postes Consultant : \`CV_Bibliotheque_ConsultantPaieRH.pdf\` (\`input#cv-83557493\`)
-- **Profil de Compétences :** Sélection systématique de la carte de compétences expert (\`input#choix-carte-visite-16674788\` : *« expert en droit social, paie, RH »*).
-- **Lettre de Motivation Sur-Mesure :** Injection directe dans \`textarea#lettre-motivation\` (calibrée à < 1 450 caractères pour respecter la limite technique sans troncature).
-- **Confirmation & Envoi :** Validation de la case \`confirmcoordonnees\`, clic officiel sur \`button:has-text('Envoyer')\`.
-- **Preuve Matérielle Obligatoire (Zéro Hallucination) :** Capture intégrale \`preuve_soumission_officielle.png\` vérifiant le macaron vert *« Candidature transmise »*.
-- **Enregistrement CRM :** Mode \`FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION\` dans \`tracker.json\` et tableau de bord.
+  * Postes RH / Direction : `CV_Bibliotheque_ResponsableRH.pdf` (`input#cv-83557459`)
+  * Postes Paie / Gestionnaire : `CV_Bibliotheque_GestionnaireDePaie.pdf` (`input#cv-83522771`)
+  * Postes Formateur : `CV_Bibliotheque_FormateurPaieRH.pdf` (`input#cv-83522766`)
+  * Postes Consultant : `CV_Bibliotheque_ConsultantPaieRH.pdf` (`input#cv-83557493`)
+- **Profil de Compétences :** Sélection systématique de la carte de compétences expert (`input#choix-carte-visite-16674788` : *« expert en droit social, paie, RH »*).
+- **Lettre de Motivation Sur-Mesure :** Injection directe dans `textarea#lettre-motivation` (calibrée à < 1 450 caractères pour respecter la limite technique sans troncature).
+- **Confirmation & Envoi :** Validation de la case `confirmcoordonnees`, clic officiel sur `button:has-text('Envoyer')`.
+- **Preuve Matérielle Obligatoire (Zéro Hallucination) :** Capture intégrale `preuve_soumission_officielle.png` vérifiant le macaron vert *« Candidature transmise »*.
+- **Enregistrement CRM :** Mode `FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION` dans `tracker.json` et tableau de bord.
+
+---
+
+## 🌐 SKILL OFFICIEL : REMPLISSAGE & POSTULATION AUTOMATISÉE (`remplir-formulaire`)
+- **Portée :** Tout formulaire d'emploi web (ATS recruteur, Taleez, PayJob, Apec avec redirection recruteur direct, France Travail, SmartRecruiters, Lever, Workday, HelloWork).
+- **Bypass WAF DataDome (Portail Apec) :**
+  * Lancement automatique sur profil persistant `C:\Users\richa\JobHunter\browser_profile`.
+  * Résolution furtive du slider DataDome par trajectoire fluide humaine (courbe de Bézier cubique avec micro-jitter aléatoire).
+  * Franchissement du barrage Apec via le lien `Aller directement sur le site du recruteur` pour basculer sur l'ATS entreprise direct sans exiger de compte captif Apec.
+- **Remplissage Intelligent & Exhaustif :**
+  * Coordonnées officielles : Prénom Richard, Nom BUSSON, Mobile `07 61 96 15 46` prioritaire, Fixe/Pro `09 39 20 08 70`, e-mail `richard.busson@kairos-paye.fr`, adresse à Creil (60100).
+  * Dépôt du CV et de la Lettre PDF calibrés A4 stricts dans les dropzones correspondantes.
+  * Validation des critères de rémunération (>= 30 000 €, cible 40 000 € à 45 000 €) et disponibilité immédiate.
+  * Cases à cocher RGPD & politique de confidentialité systématiquement validées.
+- **Boucle de Repli à 4 Stratégies :** Clic standard -> Clic forcé (`force=True`) -> Soumission JS `form.submit()` -> Pression touche Entrée.
+- **Validation IMAP OVH :** Détection et activation en arrière-plan des e-mails avec lien d'activation obligatoire (ex: Taleez).
+- **Preuve Matérielle Horodatée :** Double capture obligatoire `form_ready_to_submit.png` et `preuve_soumission_officielle.png`. Zéro hallucination.
