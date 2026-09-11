@@ -241,6 +241,14 @@ class FormAutoPilot:
 
                 page_text = page.locator("body").inner_text()
                 
+                # Contrôle anti-bot / accès restreint
+                anti_bot_keywords = ["accès temporairement restreint", "un robot est sur le même réseau", "cloudflare", "captcha", "datadome", "attention requise"]
+                if any(kw in page_text.lower() for kw in anti_bot_keywords):
+                    print(f"[!] Protection anti-bot / accès restreint détectée sur {url}. Soumission automatique annulée.")
+                    result["success"] = False
+                    result["error"] = "Anti-bot détecté (Accès restreint / Captcha) — Postulation manuelle requise"
+                    return result
+
                 # Étape 7 : Détection de l'e-mail de confirmation requis (ex: Taleez)
                 if "lien de confirmation" in page_text.lower() or "vérifiez vos emails" in page_text.lower() or "confirm" in page.url.lower():
                     print("[*] Détection d'une validation obligatoire par e-mail. Interception IMAP en cours...")
