@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: |
-> | **17** | **206** | **207** | **528** |
+> | **20** | **209** | **210** | **531** |
 >
-> *Dernière mise à jour et synchronisation : 11/09/2026 12:14*
+> *Dernière mise à jour et synchronisation : 11/09/2026 16:29*
 
 ## 🗓️  Mise à jour le 31/08/2026 à 17h12 Candidature envoyée le 31/08/2026 à 17h12  (1 candidatures)
 
@@ -1833,7 +1833,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Candidature envoyée le 01/08/2026 à 18h12 - Mise à jour le 01/09/2026 à 09h25 | **GIP FCIP** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 31 - Toulouse | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057785) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 
-## 🗓️ Septembre 2026 (207 candidatures)
+## 🗓️ Septembre 2026 (210 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -2045,4 +2045,7 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-11 | **ASSOCIATION CENTRE HERAULT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie et Administration du Personnel H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213SZNL) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_ASSOCIATION_CENTRE_HERAULT_Gestionnaire_de_Paie_et_Administration_du_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_ASSOCIATION_CENTRE_HERAULT_Gestionnaire_de_Paie_et_Administration_du_/CV_Richard_BUSSON.pdf) |
 | 2026-09-11 | **HOLDING JCM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 11 (11000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/213SNNF) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_HOLDING_JCM_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_HOLDING_JCM_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
 | 2026-09-11 | **PROMAN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 27 (27000) | Non communiqué | 🌐 Portail Web | [Charge de mission rh (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213SQHB) (33 000 € - 42 000 € brut annuel - 89%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_PROMAN_Charge_de_mission_rh__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_PROMAN_Charge_de_mission_rh__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-11 | **10** | Monsieur le Directeur de Centre (Direction de l'Établissement) | ROSIERES PRES TROYES (60100) | Non communiqué | 🌐 Portail Web | [Responsable de la gestion des Ressources Humaines](https://candidat.francetravail.fr/offres/recherche/detail/213TDYT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_10_Responsable_de_la_gestion_des_Ressources_Humaines/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_10_Responsable_de_la_gestion_des_Ressources_Humaines/CV_Richard_BUSSON.pdf) |
+| 2026-09-11 | **CONSEIL AD'OC** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213TLQB) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_CONSEIL_AD_OC_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_CONSEIL_AD_OC_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-11 | **DABELL RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 75 (75000) | Non communiqué | 🌐 Portail Web | [Chargé de ressources humaines H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213TMLN) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-11_DABELL_RH_Charg%C3%A9_de_ressources_humaines_H_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-11_DABELL_RH_Charg%C3%A9_de_ressources_humaines_H_F__H_F_/CV_Richard_BUSSON.pdf) |
 
