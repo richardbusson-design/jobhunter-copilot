@@ -835,8 +835,62 @@ class FormAutoPilot:
             print(f"[!] Exception lors de la résolution DataDome : {e}")
             return False
 
+    def _handle_apec_auth_flow(self, context, page: Page):
+        """Authentification 100% autonome Apec avec session persistante."""
+        apec_user = os.environ.get("APEC_USER", "richard.busson@outlook.com")
+        apec_pass = os.environ.get("APEC_PASSWORD", "Mapetiteentreprise@1966")
+
+        print(f"[*] Auto-authentification Apec pour {apec_user}...")
+        try:
+            cookie_btn = page.locator("button:has-text('Accepter tous les cookies'), button:has-text('Continuer sans accepter'), button:has-text('Refuser')").first
+            if cookie_btn.is_visible(timeout=2000):
+                cookie_btn.click()
+                time.sleep(1)
+        except Exception:
+            pass
+
+        email_input = page.locator("input#email, input[type='email'], input[placeholder*='Identifiant']").first
+        pwd_input = page.locator("input#password, input[type='password']").first
+        submit_btn = page.locator("button:has-text('Se connecter')").first
+
+        if email_input.is_visible(timeout=3000) and pwd_input.is_visible(timeout=3000):
+            print(f"[*] Saisie des identifiants Apec pour {apec_user}...")
+            email_input.fill(apec_user)
+            pwd_input.fill(apec_pass)
+            time.sleep(1)
+            print("[*] Clic sur 'Se connecter'...")
+            submit_btn.click()
+            time.sleep(6)
+            print("[✓] Connexion Apec exécutée avec succès.")
+
+    def _dismiss_all_popups(self, page: Page):
+        """Ferme agressivement toutes les bannières cookies (Didomi, OneTrust, Axeptio) et popups intrusifs."""
+        try:
+            didomi = page.locator("#didomi-notice-agree-button, button:has-text('TOUT ACCEPTER'), button:has-text('Continuer sans accepter'), a:has-text('Continuer sans accepter')").first
+            if didomi.is_visible(timeout=1500):
+                didomi.click(force=True)
+                time.sleep(1)
+        except Exception:
+            pass
+
+        try:
+            c_btn = page.locator("button:has-text('Tout accepter'), button:has-text('Accepter tous les cookies'), button:has-text('Accepter tout'), button:has-text('Accepter'), button:has-text('Autoriser')").first
+            if c_btn.is_visible(timeout=1000):
+                c_btn.click(force=True)
+                time.sleep(1)
+        except Exception:
+            pass
+
+        try:
+            close_btn = page.locator("button[aria-label='Fermer'], button.close, .didomi-popup-close").first
+            if close_btn.is_visible(timeout=1000):
+                close_btn.click(force=True)
+                time.sleep(0.5)
+        except Exception:
+            pass
+
     def _submit_apec_flow(self, context, page: Page, url: str, offer: Dict[str, Any], cv_pdf: Optional[str], letter_pdf: Optional[str], motivation_text: str, result: Dict[str, Any]) -> Dict[str, Any]:
-        """Gère le parcours spécifique Apec : résolution Datadome, bypass vers l'ATS recruteur direct, et candidature."""
+        """Gère le parcours Apec universel : résolution Datadome, authentification, flux ATS externe ou formulaire interne direct."""
         print(f"[*] FormAutoPilot [Apec] : Traitement spécialisé de l'offre -> {url}")
         out_dir = offer.get("folder") or os.path.join(self.base_dir, "scratch")
         os.makedirs(out_dir, exist_ok=True)
@@ -848,21 +902,36 @@ class FormAutoPilot:
             # Étape 1 : Résolution anti-bot DataDome si actif
             self._solve_datadome_slider(page)
 
-            # Étape 2 : Fermeture bannière cookies
-            try:
-                cookie_btn = page.locator("button:has-text('Accepter tous les cookies'), button:has-text('Continuer sans accepter'), button:has-text('Refuser')").first
-                if cookie_btn.is_visible(timeout=2000):
-                    cookie_btn.click()
-                    time.sleep(1)
-            except Exception:
-                pass
+            # Étape 2 : Fermeture bannière cookies Apec
+            self._dismiss_all_popups(page)
 
-            # Étape 3 : Détection du lien direct vers le recruteur ou bouton intermédiaire
+            # Étape 3 : Si redirection vers page de connexion Apec
+            if "mon-espace.html" in page.url or page.locator("input#email, input#password").first.is_visible():
+                print("[*] Page de connexion Apec détectée, authentification en cours...")
+                self._handle_apec_auth_flow(context, page)
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                time.sleep(3)
+
+            # Étape 4 : Détection si déjà postulé sur cette offre
+            body_text = page.locator("body").inner_text()
+            if any(k in body_text.lower() for k in ["déjà postulé à cette offre", "vous avez déjà postulé"]):
+                print("[!] Candidature déjà enregistrée sur cette offre Apec.")
+                already_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+                page.screenshot(path=already_shot)
+                result["proof_screenshot"] = already_shot
+                result["success"] = True
+                result["already_applied"] = True
+                return result
+
+            # Étape 5 : Détection du flux (Externe ATS vs Interne Apec)
             direct_rec_link = page.get_by_text("Aller directement sur le site du recruteur").first
+            apply_site_btn = page.locator("a[href*='to=ext'], a:has-text('Postuler sur le site'), button:has-text('Postuler sur le site')").first
+            is_external = False
             target_page = page
 
             if direct_rec_link.is_visible(timeout=2000):
-                print("[*] Lien 'Aller directement sur le site du recruteur' immédiatement détecté sur la page...")
+                is_external = True
+                print("[*] Lien 'Aller directement sur le site du recruteur' immédiatement détecté (Flux Externe ATS)...")
                 try:
                     with context.expect_page(timeout=6000) as rec_page_info:
                         direct_rec_link.click(timeout=4000)
@@ -874,91 +943,214 @@ class FormAutoPilot:
                 target_page.wait_for_load_state("domcontentloaded")
                 time.sleep(4)
                 print(f"[✓] Bascule réussie sur le site recruteur : {target_page.url}")
-            else:
-                apply_btn = page.get_by_text("Postuler sur le site").first
-                if apply_btn.is_visible(timeout=3000):
-                    print("[*] Bouton 'Postuler sur le site' détecté. Clic pour accéder à la redirection...")
+            elif apply_site_btn.is_visible(timeout=2000):
+                print("[*] Bouton 'Postuler sur le site du partenaire / recruteur' détecté (Flux Externe ATS)...")
+                ext_href = apply_site_btn.get_attribute("href") or ""
+                if ext_href.startswith("/"):
+                    ext_href = "https://www.apec.fr" + ext_href
+
+                if "promotion" in ext_href or "to=ext" in ext_href:
+                    page.goto(ext_href, wait_until="domcontentloaded", timeout=45000)
+                    time.sleep(3)
+                else:
                     try:
-                        apply_btn.click(timeout=4000)
+                        apply_site_btn.click(timeout=4000)
                     except Exception:
-                        apply_btn.click(force=True)
+                        apply_site_btn.click(force=True)
                     time.sleep(3)
                     page.wait_for_load_state("domcontentloaded")
 
-                    direct_rec_link2 = page.get_by_text("Aller directement sur le site du recruteur").first
-                    if direct_rec_link2.is_visible(timeout=4000):
-                        print("[*] Lien 'Aller directement sur le site du recruteur' détecté sur la page intermédiaire...")
-                        try:
-                            with context.expect_page(timeout=8000) as rec_page_info:
-                                direct_rec_link2.click(timeout=4000)
-                            target_page = rec_page_info.value
-                        except Exception:
-                            direct_rec_link2.click(force=True)
-                            time.sleep(3)
-                            target_page = context.pages[-1] if len(context.pages) > 1 else page
+                direct_rec_link2 = page.get_by_text("Aller directement sur le site du recruteur").first
+                promo_btn = page.locator("button:has-text('Postuler'), a:has-text('Postuler')").first
 
-                        target_page.wait_for_load_state("domcontentloaded")
+                if direct_rec_link2.is_visible(timeout=3000):
+                    is_external = True
+                    try:
+                        with context.expect_page(timeout=8000) as rec_page_info:
+                            direct_rec_link2.click(timeout=4000)
+                        target_page = rec_page_info.value
+                    except Exception:
+                        direct_rec_link2.click(force=True)
+                        time.sleep(3)
+                        target_page = context.pages[-1] if len(context.pages) > 1 else page
+                    target_page.wait_for_load_state("domcontentloaded")
+                    time.sleep(4)
+                    print(f"[✓] Bascule réussie sur le site recruteur : {target_page.url}")
+                elif promo_btn.is_visible(timeout=3000):
+                    is_external = True
+                    print("[*] Clic sur le bouton de redirection partenaire...")
+                    try:
+                        with context.expect_page(timeout=10000) as promo_page_info:
+                            promo_btn.click(timeout=4000)
+                        target_page = promo_page_info.value
+                    except Exception:
+                        promo_btn.click(force=True)
                         time.sleep(4)
-                        print(f"[✓] Bascule réussie sur le site recruteur : {target_page.url}")
+                        target_page = context.pages[-1] if len(context.pages) > 1 else page
+                    target_page.wait_for_load_state("domcontentloaded")
+                    time.sleep(4)
+                    print(f"[✓] Bascule réussie sur le site partenaire ATS : {target_page.url}")
 
-            # Étape 5 : Remplissage universel sur la page cible (ATS recruteur ou formulaire direct)
-            # Fermeture cookies sur site recruteur si présents
-            try:
-                rec_cookie = target_page.locator("button:has-text('TOUT ACCEPTER'), button:has-text('Tout accepter'), button:has-text('Accepter tout'), button:has-text('Accepter'), button:has-text('Autoriser'), a:has-text('Continuer sans accepter'), button:has-text('Continuer sans accepter')").first
-                if rec_cookie.is_visible(timeout=2500):
-                    rec_cookie.click()
-                    time.sleep(1.5)
-            except Exception:
-                pass
+            if is_external:
+                # ===================================================================
+                # FLUX EXTERNE : Remplissage universel sur le portail ATS recruteur
+                # ===================================================================
+                self._dismiss_all_popups(target_page)
 
-            # Clic si bouton 'Postuler' ou 'Candidater' nécessaire sur le site recruteur
-            rec_apply = target_page.locator("button:has-text('Postuler'), a:has-text('Postuler'), button:has-text('Candidater'), a:has-text('Candidater'), button:has-text('Déposer mon CV')").first
-            if rec_apply.is_visible() and not target_page.locator("input[type='file'], input[name*='nom']").first.is_visible():
-                rec_apply.click()
-                time.sleep(2)
+                rec_apply = target_page.locator("button:has-text('Postuler'), a:has-text('Postuler'), button:has-text('Candidater'), a:has-text('Candidater'), button:has-text('Déposer mon CV')").first
+                if rec_apply.is_visible() and not target_page.locator("input[type='file'], input[name*='nom']").first.is_visible():
+                    rec_apply.click()
+                    time.sleep(2)
 
-            self._upload_documents(target_page, cv_pdf, letter_pdf)
-            time.sleep(3)
+                self._upload_documents(target_page, cv_pdf, letter_pdf)
+                time.sleep(3)
 
-            # Si un bouton intermédiaire apparaît après l'upload (ex: 'Je postule', 'Continuer', 'Suivant')
-            step_btn = target_page.locator("button, a, div.btn, span.btn").filter(has_text=re.compile(r"^(Je postule|Continuer|Suivant|Postuler)$", re.IGNORECASE)).first
-            if step_btn.is_visible():
-                try:
-                    print(f"[*] Clic sur le bouton d'étape post-upload : {step_btn.inner_text().strip()}...")
-                    step_btn.click()
+                step_btn = target_page.locator("button, a, div.btn, span.btn").filter(has_text=re.compile(r"^(Je postule|Continuer|Suivant|Postuler)$", re.IGNORECASE)).first
+                if step_btn.is_visible():
+                    try:
+                        print(f"[*] Clic sur le bouton d'étape post-upload : {step_btn.inner_text().strip()}...")
+                        step_btn.click()
+                        time.sleep(3)
+                    except Exception:
+                        pass
+
+                self._dismiss_all_popups(target_page)
+                self._fill_input_fields(target_page, motivation_text)
+                self._handle_dropdowns_and_radios(target_page)
+                time.sleep(1)
+
+                ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
+                target_page.screenshot(path=ready_shot)
+                print(f"[+] Capture avant soumission sauvegardée : {ready_shot}")
+
+                self._dismiss_all_popups(target_page)
+                submitted, submit_error = self._execute_submission_with_fallbacks(target_page)
+                if not submitted:
+                    result["error"] = f"Échec de la soumission recruteur : {submit_error}"
+                    fail_shot = os.path.join(out_dir, "form_submission_failed.png")
+                    target_page.screenshot(path=fail_shot)
+                    result["proof_screenshot"] = fail_shot
+                    return result
+
+                time.sleep(5)
+                success_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+                target_page.screenshot(path=success_shot)
+
+                body_text = target_page.locator("body").inner_text().lower()
+                external_success_kw = [
+                    "candidature prise en compte", "candidature bien reçue", "candidature envoyée",
+                    "candidature transmise", "merci pour votre candidature", "nous avons bien reçu",
+                    "votre candidature a été envoyée", "merci", "félicitations", "confirmation"
+                ]
+
+                has_cookie_popup = any(k in body_text for k in ["faites un choix pour vos données", "gestion des cookies", "nos partenaires"])
+                has_block = any(k in body_text for k in ["accès temporairement restreint", "un robot est sur le même réseau", "cloudflare"])
+                has_unsubmitted = any(k in body_text for k in ["un compte existe déjà", "veuillez vous connecter", "mot de passe"])
+
+                is_valid = (
+                    any(k in body_text for k in external_success_kw) and
+                    not has_cookie_popup and
+                    not has_block and
+                    not has_unsubmitted and
+                    os.path.exists(success_shot) and os.path.getsize(success_shot) > 0
+                )
+
+                if is_valid:
+                    result["success"] = True
+                    result["proof_screenshot"] = success_shot
+                    try:
+                        import shutil
+                        shutil.copyfile(success_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
+                    except Exception:
+                        pass
+                    print(f"[✓] CANDIDATURE FINALISÉE AVEC SUCCÈS VIA APEC -> RECRUTEUR ({target_page.url}) !")
+                else:
+                    result["success"] = False
+                    result["error"] = "Soumission ATS recruteur non confirmée par un message officiel (popup cookies ou compte existant détecté)"
+                    if os.path.exists(success_shot):
+                        try:
+                            os.remove(success_shot)
+                        except Exception:
+                            pass
+                    print(f"[!] Rejet de la capture selon QualityGuard : texte de confirmation officiel manquant sur {target_page.url}")
+
+            else:
+                # ===================================================================
+                # FLUX INTERNE : Postulation officielle dans le portail Apec
+                # ===================================================================
+                print("[*] FormAutoPilot [Apec Interne] : Postulation via l'espace candidat officiel...")
+
+                yellow_btn = page.locator("button:has-text('Postuler'), a:has-text('Postuler')").first
+                if yellow_btn.is_visible(timeout=4000):
+                    print("[*] Clic sur le bouton jaune 'Postuler'...")
+                    yellow_btn.click()
+                    time.sleep(4)
+
+                if page.locator("input#email, input#password").first.is_visible(timeout=2000):
+                    self._handle_apec_auth_flow(context, page)
                     time.sleep(3)
-                except Exception:
-                    pass
+                    re_post = page.locator("button:has-text('Postuler'), a:has-text('Postuler')").first
+                    if re_post.is_visible(timeout=2000):
+                        re_post.click()
+                        time.sleep(3)
 
-            self._fill_input_fields(target_page, motivation_text)
-            self._handle_dropdowns_and_radios(target_page)
-            time.sleep(1)
+                inter_btn = page.locator("button:has-text('Postuler'), a:has-text('Postuler')").first
+                if inter_btn.is_visible(timeout=3000) and not page.locator("text=Ajouter un message au recruteur, button:has-text('Envoyer ma candidature')").first.is_visible():
+                    print("[*] Clic sur le bouton intermédiaire 'Postuler'...")
+                    inter_btn.click()
+                    time.sleep(4)
 
-            # Preuve avant soumission
-            ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
-            target_page.screenshot(path=ready_shot)
-            print(f"[+] Capture avant soumission sauvegardée : {ready_shot}")
+                msg_accordion = page.locator("text=Ajouter un message au recruteur").first
+                if msg_accordion.is_visible(timeout=3000):
+                    print("[*] Dépliage de l'accordéon 'Ajouter un message au recruteur'...")
+                    msg_accordion.click()
+                    time.sleep(1)
+                    ta = page.locator("textarea").first
+                    if ta.is_visible(timeout=2000):
+                        print("[*] Injection de la lettre de motivation sur-mesure...")
+                        clean_mot = motivation_text.strip()
+                        if len(clean_mot) > 1450:
+                            clean_mot = clean_mot[:1450]
+                        ta.fill(clean_mot)
+                        time.sleep(1)
 
-            submitted, submit_error = self._execute_submission_with_fallbacks(target_page)
-            if not submitted:
-                result["error"] = f"Échec de la soumission recruteur : {submit_error}"
-                fail_shot = os.path.join(out_dir, "form_submission_failed.png")
-                target_page.screenshot(path=fail_shot)
-                result["proof_screenshot"] = fail_shot
-                return result
+                ready_shot = os.path.join(out_dir, "form_ready_to_submit.png")
+                page.screenshot(path=ready_shot)
+                print(f"[+] Capture avant soumission sauvegardée : {ready_shot}")
 
-            time.sleep(5)
-            success_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
-            target_page.screenshot(path=success_shot)
-            result["proof_screenshot"] = success_shot
-            try:
-                import shutil
-                shutil.copyfile(success_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
-            except Exception:
-                pass
+                submit_btn = page.locator("button:has-text('Envoyer ma candidature'), button[type='submit']:has-text('Envoyer')").first
+                if submit_btn.is_visible(timeout=4000):
+                    submit_btn.scroll_into_view_if_needed()
+                    time.sleep(0.5)
+                    print("[*] Clic sur 'Envoyer ma candidature'...")
+                    submit_btn.click()
+                    time.sleep(6)
 
-            result["success"] = True
-            print(f"[✓] CANDIDATURE FINALISÉE AVEC SUCCÈS VIA APEC -> RECRUTEUR ({target_page.url}) !")
+                success_shot = os.path.join(out_dir, "preuve_soumission_officielle.png")
+                page.screenshot(path=success_shot)
+                result["proof_screenshot"] = success_shot
+
+                body_text = page.locator("body").inner_text().lower()
+                success_kw = ["votre candidature a été envoyée", "candidature envoyée", "transmise", "un e-mail de confirmation vous sera envoyé", "merci"]
+
+                is_valid = (
+                    any(k in body_text for k in success_kw) and
+                    "accès temporairement restreint" not in body_text and
+                    "faites un choix pour vos données" not in body_text and
+                    os.path.exists(success_shot) and os.path.getsize(success_shot) > 0
+                )
+
+                if is_valid:
+                    result["success"] = True
+                    try:
+                        import shutil
+                        shutil.copyfile(success_shot, os.path.join(out_dir, "form_submission_confirmed.png"))
+                    except Exception:
+                        pass
+                    print(f"[✓] CANDIDATURE INTERNE APEC SOUMISE AVEC SUCCÈS SUR {url} !")
+                else:
+                    result["error"] = "Soumission Apec non certifiée par la page de confirmation officielle"
+                    print(f"[!] Vérification textuelle non satisfaite pour {url}")
 
         except Exception as e:
             print(f"[!] Erreur lors du flux Apec : {e}")

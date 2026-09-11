@@ -74,15 +74,16 @@
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_AUDIT_FINANCE_EXPERT_Responsable_Paie_ADP_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_AUDIT_FINANCE_EXPERT_Responsable_Paie_ADP_F_H\\CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie ADP — Richard BUSSON",
-      "timestamp": "2026-09-06 21:40"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_AUDIT_FINANCE_EXPERT_Responsable_Paie_ADP_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:38"
     },
     "date": "2026-09-06",
-    "relance_date": "2026-09-13"
+    "relance_date": "2026-09-13",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:38:00"
   },
   {
     "id": "APEC-179194359W",
@@ -105,15 +106,16 @@
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_PACT_GO_Responsable_Paie___ADP_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_PACT_GO_Responsable_Paie___ADP_F_H\\CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie & ADP — Richard BUSSON",
-      "timestamp": "2026-09-06 21:41"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_PACT_GO_Responsable_Paie___ADP_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:43"
     },
     "date": "2026-09-06",
-    "relance_date": "2026-09-13"
+    "relance_date": "2026-09-13",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:43:00"
   },
   {
     "id": "APEC-179286278W",
@@ -136,15 +138,16 @@
     "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_LEA_Linking_Executive_Associates_Responsable_Paie_et_ADP-_Environnement_stimulant_F_H\\Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_LEA_Linking_Executive_Associates_Responsable_Paie_et_ADP-_Environnement_stimulant_F_H\\CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "reason": "Pas d'email recruteur direct (postulation via lien web/portail)",
-      "recruiter_email": null,
-      "subject": "Candidature : Responsable Paie et ADP- Environnement stimulant — Richard BUSSON",
-      "timestamp": "2026-09-06 21:41"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-06_LEA_Linking_Executive_Associates_Responsable_Paie_et_ADP-_Environnement_stimulant_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:45"
     },
     "date": "2026-09-06",
-    "relance_date": "2026-09-13"
+    "relance_date": "2026-09-13",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:45:00"
   },
   {
     "id": "APEC-179289573W",
@@ -1979,11 +1982,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_SOGEDO_Responsable_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_SOGEDO_Responsable_RH_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_SOGEDO_Responsable_RH_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:55"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:55:00"
   },
   {
     "id": "APEC-179345344W",
@@ -2035,11 +2042,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_FAB_GROUP_Responsable_Paie_et_ADP_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_FAB_GROUP_Responsable_Paie_et_ADP_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_FAB_GROUP_Responsable_Paie_et_ADP_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:56"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:56:00"
   },
   {
     "id": "APEC-179350951W",
@@ -2091,11 +2102,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_Agence_nationale_de_sécurité_du_médicament_et_des_Référent_Ingénierie/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_Agence_nationale_de_sécurité_du_médicament_et_des_Référent_Ingénierie/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_Agence_nationale_de_sécurité_du_médicament_et_des_Référent_Ingénierie\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:57"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:57:00"
   },
   {
     "id": "APEC-179376434W",
@@ -2119,11 +2134,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_Mon_Recruteur___Moi_gestionnaire_de_paie_et_RH_confirmé_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_Mon_Recruteur___Moi_gestionnaire_de_paie_et_RH_confirmé_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_Mon_Recruteur___Moi_gestionnaire_de_paie_et_RH_confirmé_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-11 23:58"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-11T23:58:00"
   },
   {
     "id": "APEC-179323006W",
@@ -2175,11 +2194,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_KEYSTONE_RECRUTEMENT_chargé_de_RH_et_Paies_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_KEYSTONE_RECRUTEMENT_chargé_de_RH_et_Paies_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_KEYSTONE_RECRUTEMENT_chargé_de_RH_et_Paies_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:13"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:13:35.235425"
   },
   {
     "id": "APEC-179375319W",
@@ -2203,11 +2226,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_HUMAN_STRAT_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_HUMAN_STRAT_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_HUMAN_STRAT_Responsable_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:14"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:14:01.068993"
   },
   {
     "id": "APEC-179377175W",
@@ -2260,11 +2287,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_AVENTURINE_RH_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_AVENTURINE_RH_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_AVENTURINE_RH_Responsable_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:14"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:14:26.976885"
   },
   {
     "id": "APEC-179373019W",
@@ -2288,11 +2319,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_VOLUNTAE_Chargé_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_VOLUNTAE_Chargé_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_VOLUNTAE_Chargé_des_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:14"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:14:52.979444"
   },
   {
     "id": "APEC-178900183W",
@@ -2316,11 +2351,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_JOHN_COCKERILL_HAMON_Chargé_des_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_JOHN_COCKERILL_HAMON_Chargé_des_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_JOHN_COCKERILL_HAMON_Chargé_des_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:15"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:15:19.073878"
   },
   {
     "id": "APEC-179325485W",
@@ -2344,11 +2383,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_FM_RH_Chargé_de_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_FM_RH_Chargé_de_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_FM_RH_Chargé_de_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:15"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:15:44.964637"
   },
   {
     "id": "APEC-179330512W",
@@ -2429,11 +2472,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_SUPER_U_Chargé_de_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-07_SUPER_U_Chargé_de_ressources_humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-07_SUPER_U_Chargé_de_ressources_humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:16"
     },
-    "relance_date": "2026-09-14"
+    "relance_date": "2026-09-14",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:16:11.465481"
   },
   {
     "id": "APEC-179365066W",
@@ -3938,11 +3985,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-08_B2R_CONSULTING_Chargé_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-08_B2R_CONSULTING_Chargé_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-08_B2R_CONSULTING_Chargé_Ressources_Humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:16"
     },
-    "relance_date": "2026-09-15"
+    "relance_date": "2026-09-15",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:16:37.588388"
   },
   {
     "id": "FT-213NQQW",
@@ -8972,11 +9023,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-10_ACTION_INSERTION_SOCIALE_Responsable_ressources_humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-10_ACTION_INSERTION_SOCIALE_Responsable_ressources_humaines_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-10_ACTION_INSERTION_SOCIALE_Responsable_ressources_humaines_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:17"
     },
-    "relance_date": "2026-09-17"
+    "relance_date": "2026-09-17",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:17:27.120949"
   },
   {
     "id": "APEC-179369289W",
@@ -9683,11 +9738,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_SPL_OCCITANIE_EVENTS_Responsable_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_SPL_OCCITANIE_EVENTS_Responsable_RH_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_SPL_OCCITANIE_EVENTS_Responsable_RH_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:17"
     },
-    "relance_date": "2026-09-18"
+    "relance_date": "2026-09-18",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:17:53.055198"
   },
   {
     "id": "APEC-179401366W",
@@ -9711,11 +9770,15 @@
     "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_Hays_France_Gestionnaire_de_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
     "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-11_Hays_France_Gestionnaire_de_paie_F_H/CV_Richard_BUSSON.pdf",
     "recruiter_delivery": {
-      "sent": false,
-      "mode": "WEB_PORTAL_REQUIRED",
-      "channel": "L'Apec (Direct WebService)"
+      "sent": true,
+      "mode": "OFFICIALLY_SUBMITTED_AND_CONFIRMED",
+      "portal": "Apec (Interne Direct)",
+      "proof_screenshot": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-11_Hays_France_Gestionnaire_de_paie_F_H\\preuve_soumission_officielle.png",
+      "timestamp": "2026-09-12 00:18"
     },
-    "relance_date": "2026-09-18"
+    "relance_date": "2026-09-18",
+    "auto_applied": true,
+    "applied_at": "2026-09-12T00:18:00"
   },
   {
     "id": "FT-6809121",
