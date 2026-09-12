@@ -213,15 +213,30 @@ class ApplicationGenerator:
     def render_cv_html(self, job: Dict[str, Any]) -> str:
         raw_title = job.get("title", "Poste RH & Paie")
         job_title = self.clean_job_title(raw_title)
+        company = job.get("company", "").strip()
+        city = job.get("city", "").strip()
+        desc = (job.get("description", "") + " " + job.get("title", "") + " " + job.get("company", "")).lower()
+
         cat = self.detect_category(job)
 
-        if cat == "FORMATEUR_PAIE_RH":
+        # Analyse sémantique approfondie de l'offre (Skill redaction-cv)
+        is_industry = any(k in desc for k in ["industr", "agro", "avicole", "production", "usine", "fabrication", "métallurg", "technique", "chantier", "btp", "logistique", "transport"])
+        is_medico_social = any(k in desc for k in ["santé", "médico-social", "hospital", "ehpad", "clinique", "associat", "ccas", "enfance", "handicap", "sociale"])
+        is_cse_social = any(k in desc for k in ["cse", "relations sociales", "dialogue social", "accords", "nao", "conflit", "climat social", "délégué", "représentant", "syndic"])
+        is_silae = "silae" in desc
+        is_gta = any(k in desc for k in ["gta", "temps de travail", "gestion des temps", "absences", "congés", "pointage", "planning"])
+        is_formation = (cat == "FORMATEUR_PAIE_RH") or any(k in desc for k in ["formateur", "formatrice", "formation", "pédagogique", "cfa", "apprenant", "alternant", "enseignement"])
+        is_mayotte_or_dom = any(re.search(term, desc) for term in [r"mayotte", r"ouangani", r"mamoudzou", r"calédonie", r"guadeloupe", r"martinique", r"guyane", r"dom-tom", r"outre-mer"])
+
+        if is_formation or cat == "FORMATEUR_PAIE_RH":
             cv_subtitle = "Formateur en gestion de paie, ressources humaines et droit social"
-            target_title = "FORMATEUR EN GESTION DE PAIE, RESSOURCES HUMAINES ET DROIT SOCIAL"
+            target_title = f"FORMATEUR PAIE, RH & DROIT SOCIAL — {job_title.upper()}"
             summary = "Formateur en paie et en droit social depuis douze ans, après vingt ans de pratique du métier enseigné, dont sept années à la tête des ressources humaines d'une structure de 580 collaborateurs. Intervenant sur quatre centres Afpa entre 2016 et 2020. La gestion du personnel en TPE et PME est la matière exacte du bloc RH de l'ADEA et du volet gestion du Brevet de Maîtrise. Mobilité nationale, disponibilité immédiate."
-            skills = """
+            
+            tool_kw = "logiciel Silae, DSN et conventions collectives" if is_silae else "paie, DSN, conventions collectives et gestion contractuelle"
+            skills = f"""
       <div class="cv-bullet"><strong>Formation d'adultes et d'alternants :</strong> douze ans d'animation devant des publics en reconversion ; ingénierie de parcours certifiants, du référentiel à l'évaluation.</div>
-      <div class="cv-bullet"><strong>Gestion du personnel en TPE et PME :</strong> embauche, contrat d'apprentissage, paie, DSN, conventions collectives : la matière du bloc RH de l'ADEA et du Brevet de Maîtrise.</div>
+      <div class="cv-bullet"><strong>Gestion du personnel en TPE et PME :</strong> embauche, contrat d'apprentissage, {tool_kw} : la matière du bloc RH de l'ADEA et du Brevet de Maîtrise.</div>
       <div class="cv-bullet"><strong>Qualité et conformité de la formation :</strong> dirigeant d'un organisme certifié Qualiopi (ICPF, QUA007374) : Référentiel National Qualité, traçabilité, indicateurs, suivi d'audit.</div>
       <div class="cv-bullet"><strong>Coordination et pilotage :</strong> direction d'un site opérationnel, pilotage RH de 580 collaborateurs, marchés publics du champ formation.</div>
             """.strip()
@@ -230,14 +245,25 @@ class ApplicationGenerator:
       <div class="cv-bullet"><strong>Un formateur qui a exercé le métier avant de l'enseigner :</strong> paie et administration du personnel de 580 collaborateurs, puis conseil auprès d'entreprises multi-conventionnelles : des séquences bâties sur des cas réels.</div>
       <div class="cv-bullet"><strong>L'alternance et l'entrée permanente déjà pratiquées :</strong> quatre centres Afpa entre 2016 et 2020, en parcours individualisés et groupes à entrées échelonnées, dans un cadre imposé.</div>
             """.strip()
+
         elif cat == "RRH_PAIE":
             cv_subtitle = "Responsable Ressources Humaines & Paie | Relations Sociales"
             target_title = f"RESPONSABLE RESSOURCES HUMAINES ET PAIE — {job_title.upper()}"
-            summary = "Professionnel senior des Ressources Humaines et du pilotage de la Paie (+15 ans d'expérience) ayant dirigé les RH d'une organisation de 580 collaborateurs (salariés et bénévoles). Maîtrise globale du cycle de paie, des déclarations DSN, du dialogue social (CSE/DP/CE), de la masse salariale et du plan de développement des compétences. Double formation juridique et managériale (Master 2 Droit public, Master RSE en cours)."
-            skills = """
-      <div class="cv-bullet"><strong>Direction RH & Administration du personnel :</strong> Gestion contractuelle complète, procédures disciplinaires, gestion des temps et des carrières pour 580 collaborateurs.</div>
-      <div class="cv-bullet"><strong>Supervision de la Paie & Déclarations DSN :</strong> Sécurisation des cycles de paie, déclarations sociales dématérialisées, audit de paie et contrôle Urssaf.</div>
-      <div class="cv-bullet"><strong>Dialogue Social & Relations Collectives :</strong> Animation des réunions CSE/CE/DP, négociations d'accords d'entreprise, gestion des conflits et veille en droit du travail.</div>
+            if is_industry or is_mayotte_or_dom:
+                summary = "Professionnel senior des Ressources Humaines et du pilotage de la Paie (+15 ans d'expérience) ayant dirigé les RH d'une organisation de 580 collaborateurs et un site industriel. Maîtrise globale du cycle de paie, de la gestion des temps (GTA), du dialogue social (CSE) et de la sécurisation réglementaire en environnement opérationnel exigeant. Double formation juridique et gestion (Master 2 Droit public, Master RSE en cours)."
+            elif is_medico_social:
+                summary = "Professionnel senior des Ressources Humaines et de la Paie (+15 ans d'expérience) ayant piloté les RH de 580 collaborateurs (salariés et bénévoles). Maîtrise globale du cycle de paie, des déclarations DSN, du dialogue social constructif (CSE), de la masse salariale et du cadre conventionnel associatif et médico-social. Double formation juridique et gestion (Master 2 Droit public, Master RSE en cours)."
+            else:
+                summary = "Professionnel senior des Ressources Humaines et du pilotage de la Paie (+15 ans d'expérience) ayant dirigé les RH d'une organisation de 580 collaborateurs (salariés et bénévoles). Maîtrise globale du cycle de paie, des déclarations DSN, du dialogue social (CSE/DP/CE), de la masse salariale et du plan de développement des compétences. Double formation juridique et managériale (Master 2 Droit public, Master RSE en cours)."
+
+            gta_kw = "gestion des temps (GTA), plannings et carrières pour 580 collaborateurs." if is_gta else "gestion des temps et des carrières pour 580 collaborateurs."
+            cse_kw = "Animation des réunions CSE/CE/DP, négociations d'accords d'entreprise, gestion des conflits et veille en droit du travail."
+            silae_kw = "logiciel Silae, déclarations sociales dématérialisées, audit de paie et contrôle Urssaf." if is_silae else "sécurisation des cycles de paie, déclarations sociales dématérialisées, audit de paie et contrôle Urssaf."
+            
+            skills = f"""
+      <div class="cv-bullet"><strong>Direction RH & Administration du personnel :</strong> Gestion contractuelle complète, procédures disciplinaires, {gta_kw}</div>
+      <div class="cv-bullet"><strong>Supervision de la Paie & Déclarations DSN :</strong> Maîtrise opérationnelle ({silae_kw})</div>
+      <div class="cv-bullet"><strong>Dialogue Social & Relations Collectives :</strong> {cse_kw}</div>
       <div class="cv-bullet"><strong>Ingénierie de Formation & Qualité :</strong> Dirigeant d'organisme certifié Qualiopi (ICPF QUA007374), élaboration et pilotage du plan de développement des compétences.</div>
             """.strip()
             points_forts = """
@@ -245,12 +271,15 @@ class ApplicationGenerator:
       <div class="cv-bullet"><strong>Double compétence juridique et opérationnelle :</strong> Titulaire d'un Master 2 en Droit public, maîtrise éprouvée du logiciel Silae, de la DSN et d'Excel avancé.</div>
       <div class="cv-bullet"><strong>Stabilité exemplaire & atout senior :</strong> Âgé de 59 ans, engagement durable et loyal, éligible aux aides à l'embauche pour demandeurs d'emploi seniors.</div>
             """.strip()
+
         elif cat == "GESTIONNAIRE_RH":
             cv_subtitle = "Chargé des Ressources Humaines & ADP Senior | Droit Social"
             target_title = f"CHARGÉ DES RESSOURCES HUMAINES ET ADP — {job_title.upper()}"
             summary = "Spécialiste confirmé de l'administration du personnel et du droit social opérationnel avec plus de 15 ans d'expérience. Pilotage complet des formalités d'embauche, des contrats de travail, du suivi des temps et des procédures disciplinaires. Ex-responsable RH de 580 collaborateurs, alliant rigueur juridique, réactivité et posture d'écoute."
-            skills = """
-      <div class="cv-bullet"><strong>Administration du Personnel & Contrats :</strong> Gestion intégrale des dossiers salariés, DPAE, rédaction des contrats et avenants, suivi des temps et absences.</div>
+            
+            gta_detail = "gestion informatisée des temps et absences (GTA), plannings et visites médicales." if is_gta else "suivi des temps et absences, attestations et organisation des visites médicales."
+            skills = f"""
+      <div class="cv-bullet"><strong>Administration du Personnel & Contrats :</strong> Gestion intégrale des dossiers salariés, DPAE, rédaction des contrats et avenants, {gta_detail}</div>
       <div class="cv-bullet"><strong>Sécurisation Juridique & Veille Sociale :</strong> Application du Code du travail et des conventions collectives, procédures disciplinaires et ruptures conventionnelles.</div>
       <div class="cv-bullet"><strong>Relations Sociales & Climat Social :</strong> Préparation des réunions CSE, dialogue avec les représentants du personnel et maintien du dialogue interne.</div>
       <div class="cv-bullet"><strong>Gestion des Compétences & Outils :</strong> Suivi des entretiens professionnels, intégration des embauchés, maîtrise de Silae, SIRH et Excel.</div>
@@ -260,14 +289,23 @@ class ApplicationGenerator:
       <div class="cv-bullet"><strong>Rigueur réglementaire :</strong> Diplômé d'un Master 2 en Droit public et d'une Maîtrise en Gestion, garantissant une conformité juridique sans faille.</div>
       <div class="cv-bullet"><strong>Fidélité & Disponibilité :</strong> 59 ans, recherche d'un engagement pérenne, éligible aux aides à l'embauche senior, disponible immédiatement.</div>
             """.strip()
+
         else: # GESTIONNAIRE_PAIE (100% Paie & Droit Social)
             cv_subtitle = "Gestionnaire de Paie et Droit Social Confirmé"
             target_title = f"GESTIONNAIRE DE PAIE ET DROIT SOCIAL — {job_title.upper()}"
-            summary = "Spécialiste autonome de la gestion de la paie et de l'administration du personnel avec plus de 15 ans d'expérience. Maîtrise de bout en bout du cycle de paie, du paramétrage logiciel Silae, du contrôle de cohérence DSN et de la législation sociale. Concepteur d'un parcours certifiant de 758 heures pour le Titre pro Gestionnaire de paie et ex-responsable RH de 580 collaborateurs."
-            skills = """
-      <div class="cv-bullet"><strong>Production Autonome des Bulletins de Paie :</strong> Collecte des variables, traitement des absences, congés, heures supplémentaires, primes et soldes de tout compte.</div>
+            
+            if is_silae:
+                summary = "Spécialiste autonome de la gestion de la paie et du droit social avec plus de 15 ans d'expérience, maîtrisant en profondeur le logiciel Silae et l'intégralité du cycle de paie. Concepteur d'un parcours de 758 heures préparant au Titre pro Gestionnaire de paie (Qualiopi) et ex-responsable RH de 580 collaborateurs. Contrôle rigoureux de la DSN et veille conventionnelle continue."
+            else:
+                summary = "Spécialiste autonome de la gestion de la paie et de l'administration du personnel avec plus de 15 ans d'expérience. Maîtrise de bout en bout du cycle de paie, du paramétrage logiciel Silae, du contrôle de cohérence DSN et de la législation sociale. Concepteur d'un parcours certifiant de 758 heures pour le Titre pro Gestionnaire de paie et ex-responsable RH de 580 collaborateurs."
+
+            bullet_prod = "<strong>Production Autonome des Bulletins sur Silae :</strong> Collecte méthodique des variables, paramétrage, gestion des absences, primes, congés et soldes de tout compte." if is_silae else "<strong>Production Autonome des Bulletins de Paie :</strong> Collecte des variables, traitement des absences, congés, heures supplémentaires, primes et soldes de tout compte."
+            bullet_gta = "<strong>Administration du Personnel & GTA :</strong> DPAE, contrats de travail, suivi des compteurs de temps, modulation d'horaires et déclarations obligatoires." if is_gta else "<strong>Administration du Personnel & Contrats :</strong> DPAE, rédaction des contrats et avenants, attestations France Travail et gestion des dossiers salariés."
+            
+            skills = f"""
+      <div class="cv-bullet">{bullet_prod}</div>
       <div class="cv-bullet"><strong>Déclarations Sociales Nominatives (DSN) :</strong> Déclarations mensuelles et événementielles, contrôle des cotisations Urssaf, caisses de retraite et prévoyance.</div>
-      <div class="cv-bullet"><strong>Administration du Personnel & Contrats :</strong> DPAE, rédaction des contrats et avenants, attestations France Travail et gestion des dossiers salariés.</div>
+      <div class="cv-bullet">{bullet_gta}</div>
       <div class="cv-bullet"><strong>Outils Informatiques & Audit :</strong> Maîtrise opérationnelle du logiciel Silae, expert Excel (tableaux croisés, formules avancées), veille conventionnelle.</div>
             """.strip()
             points_forts = """
@@ -308,10 +346,6 @@ class ApplicationGenerator:
         html = html.replace("{{EXPERIENCES_HTML}}", experiences)
         
         return html
-
-    def render_letter_html(self, job: Dict[str, Any]) -> str:
-        best_html, _, _ = self.generate_best_of_three_letter(job)
-        return best_html
 
     def render_motivation_text(self, job: Dict[str, Any]) -> str:
         """Génère le texte court de motivation pour les formulaires web (France Travail / Apec)."""

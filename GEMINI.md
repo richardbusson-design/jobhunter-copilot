@@ -64,12 +64,22 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 - Contrôle du temps de trajet (Creil <= 2h ou Littoral Atlantique/Méditerranée ou Télétravail).
 - Élimination des profils débutants (< 3 ans) et des offres hors cible.
 
-### 🔹 PASSAGE 2 : TOURNOI COMPARATIF & RÈGLES RÉDACTIONNELLES A4 (PENDANT RÉDACTION)
-- Génération de 3 variantes de lettres (1: Ingénierie Pédagogique Qualiopi, 2: Direction RH 580 collab, 3: Conseil Entreprise / ADEA).
-- Évaluation comparative sur 100 points (Résonance lexicale de l'annonce, personnalisation du destinataire).
-- Contrôle bloquant de typographie : **ZÉRO caractère gras dans le corps de lettre**.
-- Alignement strict du destinataire sur la 6ᵉ ligne (kairos-paye.fr) et signature vectorielle nette (*RB*).
-- Calibrage du CV sur 1 page A4 sans aucun vide en bas.
+### 🔹 PASSAGE 2 : ANALYSE DE L'OFFRE, RÉDACTION SUR-MESURE & CALIBRAGE A4 (SKILLS CV & LETTRE)
+- **Phase préalable d'analyse de l'offre (Obligatoire, Zéro Boilerplate) :**
+  * Lecture intégrale et analyse sémantique approfondie du texte de l'annonce d'origine.
+  * Extraction des exigences clés : intitulé exact, secteur (industrie, médico-social, CFA/formation, services, DOM-TOM), outils informatiques (logiciel Silae, GTA/badgeuses, DSN, Excel), missions prioritaires (cycle de paie, déclarations, droit social, CSE/accords, formation).
+- **Rédaction sur-mesure du CV (Skill 'redaction-cv') :**
+  * Titre cible dynamique et sous-titre calibrés en miroir direct de l'offre d'emploi.
+  * Synthèse professionnelle personnalisée (3-4 lignes denses) démontrant l'adéquation immédiate au besoin recruteur.
+  * Compétences clés techniques et points forts sélectionnés pour répondre chirurgicalement aux exigences relevées.
+  * 4 Expériences réelles immuables (Secours Populaire 580 collab, Kairos Formation Qualiopi TP-01254, Afpa 4 centres, ETV Nouvelle-Calédonie) valorisées selon les axes de l'annonce.
+  * Calibrage géométrique strict sur 1 page A4 pleine (794x1123px, bleu marine #1b365d), aucun vide en bas, zéro débordement sur page 2.
+- **Rédaction sur-mesure de la Lettre de Motivation (Skill 'lettre-de-motivation') :**
+  * Tournoi comparatif de 3 variantes de lettres évaluées sur 100 points avec résonance lexicale de l'annonce.
+  * Structure maîtresse en 4 paragraphes denses (Vous / Moi / Preuve terrain / Nous & Entretien) répondant à chaque attente de l'employeur.
+  * Contrôle bloquant de typographie : **ZÉRO caractère gras dans le corps de lettre**.
+  * Alignement du destinataire sur la 6ᵉ ligne (kairos-paye.fr), formule d'appel/politesse adaptée, signature manuscrite vectorielle authentique (RB) et mention PJ à gauche.
+  * Calibrage géométrique strict sur 1 page A4 pleine (794x1123px), aucun vide en bas.
 
 ### 🔹 PASSAGE 3 : CONTRÔLE DES FICHIERS, GÉOMÉTRIE PDF & VISIONNEUSE (POST-COMPILATION)
 - **Génération Obligatoire des 6 Fichiers par Dossier :**
@@ -82,7 +92,8 @@ Avant TOUTE nouvelle recherche, extraction ou génération de candidature, le ro
 - **Vérification de taille non nulle :** Blocage immédiat si l'un des fichiers PDF ou PNG fait 0 octet.
 - **Visionneuse Multi-Mode Auto-Secours (Fail-Safe) :** Affichage direct de l'image haute définition avec bascule vectorielle instantanée (onerror fallback) pour garantir un affichage réel et sans faille.
 - Enregistrement du texte intégral de l'annonce d'origine dans le tableau de bord.
-- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur ichard.busson@kairos-paye.fr.
+- Envoi automatique de l'alerte email avec les pièces jointes PDF officielles sur 
+ichard.busson@kairos-paye.fr.
 
 ---
 

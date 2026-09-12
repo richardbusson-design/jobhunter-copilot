@@ -81,18 +81,22 @@
 - Contrôle géographique (Creil <= 2h ou Littoral Atlantique/Méditerranée ou remote).
 - Élimination automatique des profils débutants et des offres hors cible (comptabilité pure).
 
-### 🔹 PASSAGE 2 : ADAPTATION SUR-MESURE & CALIBRAGE 1 PAGE PLEINE (PENDANT RÉDACTION)
-- **Lecture attentive de l'offre d'origine :** Injection des éléments réels de l'annonce dans la lettre et le CV pour que la forme confirme le fond.
-- **Lettre de Motivation (Modèle Maître CMA) :**
-  * Strictement **1 page A4 pleine (794x1123px)**, équilibrée de haut en bas sans vide disproportionné.
-  * Typographie : Calibri 11pt, interligne 1.44, texte justifié.
-  * **ZÉRO caractère gras dans le corps de lettre**.
-  * Structure en 5 paragraphes denses : Accroche ciblée, Cœur de métier Paie/RH, Direction RH 580 collab / Afpa, Qualiopi 758h / Droit public, Franchise senior (59 ans, aides embauche senior, mobilité, disponibilité).
-  * Signature manuscrite calligraphique monogramme `RB` + `Richard Busson` lisible en dessous.
-- **CV (Modèle Maître Bleu Marine) :**
-  * Strictement **1 page A4**, charte graphique `#1b365d`.
-  * 6 blocs réels sans hallucination : En-tête/contact, Titre & Synthèse, Compétences clés, Points forts pour ce poste, 4 Expériences professionnelles réelles, Formations supérieures & Outils.
-- **Contrôle d'intégrité anti-tags (Hard Blocker) :** Regex `\{\{[^\}]+\}\}`. Zéro tag orphelin toléré.
+### 🔹 PASSAGE 2 : ANALYSE DE L'OFFRE, RÉDACTION SUR-MESURE & CALIBRAGE A4 (SKILLS CV & LETTRE)
+- **Phase préalable d'analyse de l'offre (Obligatoire, Zéro Boilerplate) :**
+  * Lecture intégrale et analyse sémantique approfondie du texte de l'annonce d'origine.
+  * Extraction des exigences clés : intitulé exact, secteur (industrie, médico-social, CFA/formation, services, DOM-TOM), outils informatiques (logiciel Silae, GTA/badgeuses, DSN, Excel), missions prioritaires (cycle de paie, déclarations, droit social, CSE/accords, formation).
+- **Rédaction sur-mesure du CV (Skill 'redaction-cv') :**
+  * Titre cible dynamique et sous-titre calibrés en miroir direct de l'offre d'emploi.
+  * Synthèse professionnelle personnalisée (3-4 lignes denses) démontrant l'adéquation immédiate au besoin recruteur.
+  * Compétences clés techniques et points forts sélectionnés pour répondre chirurgicalement aux exigences relevées.
+  * 4 Expériences réelles immuables (Secours Populaire 580 collab, Kairos Formation Qualiopi TP-01254, Afpa 4 centres, ETV Nouvelle-Calédonie) valorisées selon les axes de l'annonce.
+  * Calibrage géométrique strict sur 1 page A4 pleine (794x1123px, bleu marine #1b365d), aucun vide en bas, zéro débordement sur page 2.
+- **Rédaction sur-mesure de la Lettre de Motivation (Skill 'lettre-de-motivation') :**
+  * Tournoi comparatif de 3 variantes de lettres évaluées sur 100 points avec résonance lexicale de l'annonce.
+  * Structure maîtresse en 4 paragraphes denses (Vous / Moi / Preuve terrain / Nous & Entretien) répondant à chaque attente de l'employeur.
+  * Contrôle bloquant de typographie : **ZÉRO caractère gras dans le corps de lettre**.
+  * Alignement du destinataire sur la 6ᵉ ligne (kairos-paye.fr), formule d'appel/politesse adaptée, signature manuscrite vectorielle authentique (RB) et mention PJ à gauche.
+  * Calibrage géométrique strict sur 1 page A4 pleine (794x1123px), aucun vide en bas.
 
 ### 🔹 PASSAGE 3 : CONTRÔLE DES 6 FICHIERS, EXPÉDITION & SYNCHRONISATION (POST-COMPILATION)
 - **Génération Obligatoire des 6 Fichiers par Dossier :**
