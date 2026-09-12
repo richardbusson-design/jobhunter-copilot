@@ -30,11 +30,57 @@ def safe_url_path(path_str: str) -> str:
     encoded_parts = [urllib.parse.quote(p) for p in parts]
     return "/".join(encoded_parts)
 
+def classify_sectors(title: str, desc: str) -> List[str]:
+    """Catégorise l'offre selon les 3 piliers d'expertise de Richard Busson."""
+    t = (title or "").lower()
+    d = (desc or "").lower()
+    sectors = set()
+    
+    # Formation / Ingénierie Pédagogique / Qualiopi
+    if any(k in t for k in ["format", "enseign", "pédagog", "pedagog", "qualiopi", "métis", "metis", "afpa", "titre pro", "adea", "formateur", "formatrice", "professeur", "intervenant", "tuteur", "ingénieur pédagogique"]):
+        sectors.add("formation")
+    elif any(k in d[:400] for k in ["titre professionnel", "tp-01254", "qualiopi", "ingénierie pédagogique", "ingenierie pedagogique"]):
+        sectors.add("formation")
+
+    # Paie / Gestion Sociale / Silae
+    if any(k in t for k in ["paie", "paye", "bulletin", "dsn", "salaire", "rémunération", "remuneration", "silae", "charges sociales"]):
+        sectors.add("paie")
+        
+    # Ressources Humaines / Direction RH / Relations Sociales
+    if any(k in t for k in ["rh", "ressources humaines", "drh", "rrh", "personnel", "social", "sociales", "talent", "recrutement", "adp"]):
+        sectors.add("rh")
+
+    if not sectors:
+        if any(k in d for k in ["paie", "paye", "bulletin"]):
+            sectors.add("paie")
+        if any(k in d for k in ["ressources humaines", " rh "]):
+            sectors.add("rh")
+        if not sectors:
+            sectors.add("rh")
+            
+    return list(sectors)
+
 FRENCH_MONTHS = {
     "01": "Janvier", "02": "Février", "03": "Mars", "04": "Avril",
     "05": "Mai", "06": "Juin", "07": "Juillet", "08": "Août",
     "09": "Septembre", "10": "Octobre", "11": "Novembre", "12": "Décembre"
 }
+
+def parse_date_str(date_str: str) -> Tuple[str, str, str]:
+    """Parse une date brute (YYYY-MM-DD ou texte France Travail DD/MM/YYYY) et retourne (clean_date, month_key, month_label)."""
+    if not date_str:
+        return "2026-08-01", "2026-08", "Août 2026"
+    m = re.search(r'(\d{4})-(\d{2})-(\d{2})', date_str)
+    if m:
+        y, mo, d = m.group(1), m.group(2), m.group(3)
+        month_name = FRENCH_MONTHS.get(mo, mo)
+        return f"{y}-{mo}-{d}", f"{y}-{mo}", f"{month_name} {y}"
+    m = re.search(r'(\d{2})/(\d{2})/(\d{4})', date_str)
+    if m:
+        d, mo, y = m.group(1), m.group(2), m.group(3)
+        month_name = FRENCH_MONTHS.get(mo, mo)
+        return f"{y}-{mo}-{d}", f"{y}-{mo}", f"{month_name} {y}"
+    return "2026-08-01", "2026-08", "Août 2026"
 
 class DashboardManager:
     def __init__(self, base_dir="."):
@@ -184,30 +230,51 @@ class DashboardManager:
         apps = self.load_tracker()
         apps_by_month = defaultdict(list)
         
+        for a in apps:
+            clean_d, month_key, month_label = parse_date_str(a.get("date"))
+            a["_clean_date"] = clean_d
+            apps_by_month[(month_key, month_label)].append(a)
+            
         # Compteurs statistiques dynamiques
         now = datetime.now()
         today_str = now.strftime("%Y-%m-%d")
         current_month_str = now.strftime("%Y-%m")
         week_ago_str = (now - timedelta(days=7)).strftime("%Y-%m-%d")
         
-        count_today = sum(1 for a in apps if a.get("date") == today_str)
-        count_week = sum(1 for a in apps if a.get("date", "") >= week_ago_str and a.get("date", "") <= today_str)
-        count_month = sum(1 for a in apps if a.get("date", "").startswith(current_month_str))
+        count_today = sum(1 for a in apps if a.get("_clean_date") == today_str)
+        count_week = sum(1 for a in apps if a.get("_clean_date", "") >= week_ago_str and a.get("_clean_date", "") <= today_str)
+        count_month = sum(1 for a in apps if a.get("_clean_date", "").startswith(current_month_str))
         count_total = len(apps)
+
+        def get_delivery_state(a):
+            rec_delivery = a.get("recruiter_delivery", {})
+            if isinstance(rec_delivery, dict):
+                is_sent = rec_delivery.get("sent", False)
+                is_portal = rec_delivery.get("mode") == "WEB_PORTAL_REQUIRED"
+            elif isinstance(rec_delivery, str):
+                is_sent = "SUBMITTED" in rec_delivery or "CONFIRMED" in rec_delivery
+                is_portal = "WEB_PORTAL" in rec_delivery
+            else:
+                is_sent = False
+                is_portal = False
+            proof_p = os.path.join(self.base_dir, a.get("folder_rel", ""), "preuve_soumission_officielle.png") if a.get("folder_rel") else ""
+            has_p = bool(proof_p and os.path.exists(proof_p))
+            if is_sent or has_p:
+                return "confirmed"
+            elif is_portal:
+                return "portal"
+            else:
+                return "ready"
+
+        count_proofs = sum(1 for a in apps if a.get("folder_rel") and os.path.exists(os.path.join(self.base_dir, a["folder_rel"], "preuve_soumission_officielle.png")))
+        count_confirmed = sum(1 for a in apps if get_delivery_state(a) == "confirmed")
+        count_portal = sum(1 for a in apps if get_delivery_state(a) == "portal")
+        count_ready = sum(1 for a in apps if get_delivery_state(a) == "ready")
+
+        count_formation = sum(1 for a in apps if "formation" in classify_sectors(a.get("title", ""), a.get("description", "")))
+        count_paie = sum(1 for a in apps if "paie" in classify_sectors(a.get("title", ""), a.get("description", "")))
+        count_rh = sum(1 for a in apps if "rh" in classify_sectors(a.get("title", ""), a.get("description", "")))
         
-        for a in apps:
-            date_str = a.get("date", "2026-08-01")
-            try:
-                parts = date_str.split("-")
-                year, month = parts[0], parts[1]
-                month_name = FRENCH_MONTHS.get(month, month)
-                month_key = f"{year}-{month}"
-                month_label = f"{month_name} {year}"
-            except Exception:
-                month_key = "2026-08"
-                month_label = "Août 2026"
-            apps_by_month[(month_key, month_label)].append(a)
-            
         sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
         
         sections_html = ""
@@ -216,7 +283,7 @@ class DashboardManager:
             
             rows_html = ""
             for idx, a in enumerate(month_apps):
-                d = a.get("date", datetime.now().strftime("%Y-%m-%d"))
+                d = a.get("_clean_date") or a.get("date", datetime.now().strftime("%Y-%m-%d"))
                 comp = a.get("company", "Entreprise").replace('"', '&quot;')
                 tit = a.get("title", "Poste").replace('"', '&quot;')
                 ref_id = a.get("id", "REF-AUTO")
@@ -288,6 +355,23 @@ class DashboardManager:
                 
                 link_ref = f'<a href="{url}" target="_blank" style="color: #38bdf8; text-decoration: none; font-weight: bold;">🔗 {ref_id} ({source})</a>' if url else f'<span style="color: #94a3b8;">Réf. {ref_id}</span>'
                 
+                proof_path = os.path.join(self.base_dir, folder_rel, "preuve_soumission_officielle.png") if folder_rel else ""
+                has_proof = bool(proof_path and os.path.exists(proof_path))
+                safe_proof = f"{safe_url_path(folder_rel)}/preuve_soumission_officielle.png" if (folder_rel and has_proof) else ""
+
+                if is_sent or has_proof:
+                    status_attr = "confirmed"
+                elif is_portal:
+                    status_attr = "portal"
+                else:
+                    status_attr = "ready"
+
+                secs = classify_sectors(tit, desc)
+                sectors_attr = " ".join(secs)
+
+                raw_search = f"{d} {comp} {tit} {city} {pcode} {ref_id} {source} {contact_name} {contact_title} {salary}"
+                clean_search = normalize_text(raw_search)
+
                 if folder_rel:
                     safe_folder = safe_url_path(folder_rel)
                     pdf_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.pdf"
@@ -297,19 +381,16 @@ class DashboardManager:
                     html_letter = f"{safe_folder}/Lettre_Motivation_Richard_BUSSON.html"
                     html_cv = f"{safe_folder}/CV_Richard_BUSSON.html"
                     
-                    # Détection d'une capture d'écran de preuve officielle
-                    proof_path = os.path.join(self.base_dir, folder_rel, "preuve_soumission_officielle.png")
-                    proof_btn = ""
-                    if os.path.exists(proof_path):
-                        safe_proof = f"{safe_folder}/preuve_soumission_officielle.png"
-                        proof_btn = f'<a class="btn-action" style="background: #059669; color: #fff; margin-top: 4px;" href="{safe_proof}" target="_blank">📸 Preuve Officielle</a>'
-                    
                     js_comp = comp.replace("'", "\\'").replace('"', '&quot;')
                     js_tit = tit.replace("'", "\\'").replace('"', '&quot;')
+
+                    proof_btn = ""
+                    if has_proof:
+                        proof_btn = f'<button class="btn-action" style="background: #059669; color: #fff; margin-top: 4px;" onclick="openProofModal(\'{js_comp}\', \'{js_tit}\', \'{pdf_letter}\', \'{pdf_cv}\', \'{png_letter}\', \'{png_cv}\', \'{html_letter}\', \'{html_cv}\', \'{safe_proof}\')" title="Visualiser la preuve officielle certifiée">📸 Preuve Officielle</button>'
                     
                     action_col = f"""
                     <div style="display: flex; flex-direction: column; gap: 4px;">
-                      <button class="btn-action btn-view" onclick="openViewerModal('{js_comp}', '{js_tit}', '{pdf_letter}', '{pdf_cv}', '{png_letter}', '{png_cv}', '{html_letter}', '{html_cv}')">
+                      <button class="btn-action btn-view" onclick="openViewerModal('{js_comp}', '{js_tit}', '{pdf_letter}', '{pdf_cv}', '{png_letter}', '{png_cv}', '{html_letter}', '{html_cv}', '{safe_proof}')">
                         👁️ Consulter Dossier
                       </button>
                       <div style="display: flex; gap: 4px;">
@@ -323,7 +404,7 @@ class DashboardManager:
                     action_col = '<span style="color: #94a3b8;">Dossier Prêt</span>'
                     
                 rows_html += f"""
-                <tr>
+                <tr class="job-row" data-status="{status_attr}" data-sectors="{sectors_attr}" data-has-proof="{1 if has_proof else 0}" data-search="{clean_search}">
                   <td style="white-space: nowrap; font-weight: bold; color: #cbd5e1;">{d}</td>
                   <td><strong style="color: #f1f5f9; font-size: 15px;">{comp}</strong></td>
                   <td>{contact_cell}</td>
@@ -491,6 +572,168 @@ class DashboardManager:
     .btn-pdf {{ background: #334155; color: #f8fafc; flex: 1; }}
     .btn-pdf:hover {{ background: #475569; }}
     
+    /* BARRE DE RECHERCHE ET FILTRES */
+    .filters-panel {{
+      background: rgba(30, 41, 59, 0.95);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }}
+    .search-row {{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }}
+    .search-input-wrap {{
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }}
+    .search-icon {{
+      position: absolute;
+      left: 14px;
+      font-size: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }}
+    #dashboardSearch {{
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      padding: 10px 38px 10px 42px;
+      color: #f8fafc;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }}
+    #dashboardSearch:focus {{
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    }}
+    .btn-clear {{
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+      padding: 4px;
+    }}
+    .btn-clear:hover {{ color: #f8fafc; }}
+    .results-badge {{
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      white-space: nowrap;
+    }}
+    .btn-reset-filters {{
+      background: #334155;
+      border: 1px solid #475569;
+      color: #f8fafc;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }}
+    .btn-reset-filters:hover {{
+      background: #475569;
+    }}
+    .filter-groups {{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }}
+    .filter-group {{
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .filter-group-label {{
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-muted);
+      width: 75px;
+      letter-spacing: 0.5px;
+    }}
+    .filter-pill {{
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }}
+    .filter-pill:hover {{
+      background: #1e293b;
+      color: #f8fafc;
+      border-color: #475569;
+    }}
+    .filter-pill.active {{
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }}
+    .filter-pill.pill-confirmed.active {{
+      background: #065f46;
+      border-color: #34d399;
+      color: #ecfdf5;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.3);
+    }}
+    .filter-pill.pill-proof.active {{
+      background: #059669;
+      border-color: #10b981;
+      color: #ecfdf5;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }}
+    .filter-pill.pill-portal.active {{
+      background: #854d0e;
+      border-color: #fde047;
+      color: #fef9c3;
+      box-shadow: 0 0 10px rgba(253, 224, 71, 0.3);
+    }}
+    .filter-pill.pill-ready.active {{
+      background: #475569;
+      border-color: #94a3b8;
+      color: #f8fafc;
+    }}
+    .filter-pill.pill-rh.active {{
+      background: #1e40af;
+      border-color: #60a5fa;
+      color: #eff6ff;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }}
+    .filter-pill.pill-paie.active {{
+      background: #0e7490;
+      border-color: #22d3ee;
+      color: #ecfeff;
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+    }}
+    .filter-pill.pill-formation.active {{
+      background: #6d28d9;
+      border-color: #c084fc;
+      color: #faf5ff;
+      box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
+    }}
+
     /* MODAL DE VISIONNEUSE HD AUTO-SECOURS */
     .modal-overlay {{
       display: none;
@@ -550,7 +793,7 @@ class DashboardManager:
     <div class="header">
       <div>
         <h1>📋 Tableau de Bord - Candidatures Richard BUSSON</h1>
-        <p>Expert Paie & Ressources Humaines • Suivi en temps réel des candidatures certifiées</p>
+        <p>Expert Paie &amp; Ressources Humaines • Suivi en temps réel des candidatures certifiées</p>
       </div>
       <div class="stats-bar">
         <div class="stat-badge" style="border-color: rgba(56, 189, 248, 0.4);">
@@ -572,23 +815,84 @@ class DashboardManager:
       </div>
     </div>
 
+    <!-- BARRE DE RECHERCHE ET FILTRES MULTI-CRITÈRES -->
+    <div class="filters-panel">
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="dashboardSearch" placeholder="Rechercher une entreprise, poste, ville, département, code postal, mot-clé..." oninput="applyFilters()" autocomplete="off" />
+          <button id="btnClearSearch" class="btn-clear" onclick="clearSearch()" title="Effacer la recherche">✕</button>
+        </div>
+        <div id="resultsCount" class="results-badge">
+          {count_total} dossiers
+        </div>
+        <button class="btn-reset-filters" onclick="resetAllFilters()" title="Réinitialiser tous les filtres">↺ Réinitialiser</button>
+      </div>
+      
+      <div class="filter-groups">
+        <div class="filter-group">
+          <span class="filter-group-label">STATUT :</span>
+          <button class="filter-pill active" data-filter-type="status" data-filter-val="all" onclick="setStatusFilter('all')">
+            Tous ({count_total})
+          </button>
+          <button class="filter-pill pill-confirmed" data-filter-type="status" data-filter-val="confirmed" onclick="setStatusFilter('confirmed')">
+            🟢 Transmises &amp; Certifiées ({count_confirmed})
+          </button>
+          <button class="filter-pill pill-proof" data-filter-type="status" data-filter-val="proof_only" onclick="setStatusFilter('proof_only')">
+            📸 Avec Preuve ({count_proofs})
+          </button>
+          <button class="filter-pill pill-portal" data-filter-type="status" data-filter-val="portal" onclick="setStatusFilter('portal')">
+            🌐 Postulation Web ({count_portal})
+          </button>
+          <button class="filter-pill pill-ready" data-filter-type="status" data-filter-val="ready" onclick="setStatusFilter('ready')">
+            📁 Prêtes ({count_ready})
+          </button>
+        </div>
+        
+        <div class="filter-group">
+          <span class="filter-group-label">MÉTIER :</span>
+          <button class="filter-pill active" data-filter-type="sector" data-filter-val="all" onclick="setSectorFilter('all')">
+            Tous Métiers ({count_total})
+          </button>
+          <button class="filter-pill pill-rh" data-filter-type="sector" data-filter-val="rh" onclick="setSectorFilter('rh')">
+            👔 Direction RH ({count_rh})
+          </button>
+          <button class="filter-pill pill-paie" data-filter-type="sector" data-filter-val="paie" onclick="setSectorFilter('paie')">
+            📊 Paie &amp; Silae ({count_paie})
+          </button>
+          <button class="filter-pill pill-formation" data-filter-type="sector" data-filter-val="formation" onclick="setSectorFilter('formation')">
+            🎓 Formation Qualiopi ({count_formation})
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGE AUCUN RÉSULTAT -->
+    <div id="noResultsMsg" style="display: none; background: #1e293b; border: 1px dashed #475569; border-radius: 12px; padding: 48px 24px; text-align: center; margin-bottom: 24px;">
+      <div style="font-size: 36px; margin-bottom: 12px;">🔍</div>
+      <div style="font-size: 18px; font-weight: bold; color: #f8fafc; margin-bottom: 6px;">Aucun dossier ne correspond à vos critères de recherche</div>
+      <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">Essayez d'ajuster vos mots-clés ou réinitialisez les filtres.</p>
+      <button class="btn-action" style="background: #2563eb; color: #fff; padding: 8px 18px; font-size: 13px;" onclick="resetAllFilters()">↺ Réinitialiser tous les filtres</button>
+    </div>
+
     {sections_html}
   </div>
 
-  <!-- MODAL VISIONNEUSE MULTI-MODE -->
+  <!-- MODAL VISIONNEUSE MULTI-MODE AVEC ONGLET PREUVE -->
   <div id="viewerModal" class="modal-overlay" onclick="closeViewerModal(event)">
     <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-header">
         <div>
-          <h3 id="modalTitle" style="color: #f8fafc; font-size: 16px;">Dossier de Candidature</h3>
+          <h3 id="modalTitle" style="color: #f8fafc; font-size: 16px; font-weight: 700;">Dossier de Candidature</h3>
           <div id="modalSub" style="color: #94a3b8; font-size: 13px;"></div>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
-          <div style="background: #0f172a; border-radius: 8px; padding: 4px; display: flex; gap: 4px;">
+          <div style="background: #0f172a; border-radius: 8px; padding: 4px; display: flex; gap: 4px; border: 1px solid #334155;">
             <button id="tabBtnLettre" class="btn-action" style="background: #2563eb; color: #fff;" onclick="switchDocTab('lettre')">✉️ Lettre de Motivation</button>
-            <button id="tabBtnCv" class="btn-action" style="background: #334155; color: #fff;" onclick="switchDocTab('cv')">📄 Curriculum Vitae</button>
+            <button id="tabBtnCv" class="btn-action" style="background: #334155; color: #cbd5e1;" onclick="switchDocTab('cv')">📄 Curriculum Vitae</button>
+            <button id="tabBtnPreuve" class="btn-action" style="background: #334155; color: #cbd5e1;" onclick="switchDocTab('preuve')">📸 Preuve de Dépôt</button>
           </div>
-          <a id="btnDownloadPdf" href="#" target="_blank" class="btn-action" style="background: #059669; color: #fff;">⬇️ Ouvrir PDF</a>
+          <a id="btnDownloadPdf" href="#" target="_blank" class="btn-action" style="background: #059669; color: #fff;">⬇️ Ouvrir Document</a>
           <button class="btn-action" style="background: #ef4444; color: #fff;" onclick="closeViewerModal()">✕ Fermer</button>
         </div>
       </div>
@@ -602,6 +906,21 @@ class DashboardManager:
             <img id="imgCv" class="doc-page" src="" alt="Curriculum Vitae" onerror="handleImageError(this, 'cv')" />
             <iframe id="frameCv" style="display: none; width: 794px; height: 1123px; border: none; background: #fff;" src=""></iframe>
           </div>
+          <div id="viewContainerPreuve" style="display: none; justify-content: center; width: 100%; flex-direction: column; align-items: center; gap: 14px;">
+            <div id="preuveBanner" style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #34d399; padding: 10px 20px; border-radius: 8px; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 10px; max-width: 900px; width: 100%;">
+              <span style="font-size: 18px;">✅</span>
+              <div>
+                <div>Récépissé officiel de télécandidature certifié conforme</div>
+                <div style="font-size: 11px; color: #a7f3d0; font-weight: normal;">Horodatage, contrôle anti-faux positif et preuve de dépôt vérifiée par QualityGuard.</div>
+              </div>
+            </div>
+            <img id="imgPreuve" class="doc-page" src="" alt="Preuve Officielle de Dépôt" style="max-width: 95%; max-height: 80vh; object-fit: contain; border: 1px solid #334155; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.6);" />
+            <div id="noPreuveMsg" style="display: none; color: #94a3b8; font-size: 15px; padding: 60px 20px; text-align: center;">
+              <div style="font-size: 40px; margin-bottom: 12px;">📁</div>
+              <div style="font-weight: 700; color: #f1f5f9; margin-bottom: 6px;">Aucune capture d'écran de télécandidature pour ce dossier</div>
+              <div style="font-size: 13px; color: #64748b;">Le dossier (CV et Lettre) est préparé et prêt pour soumission sur le portail recruteur.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -609,6 +928,9 @@ class DashboardManager:
 
   <script>
     let currentDossier = {{}};
+    let currentStatusFilter = 'all';
+    let currentSectorFilter = 'all';
+
     function toggleMonth(k) {{
       const c = document.getElementById('content-' + k);
       const ic = document.getElementById('icon-' + k);
@@ -620,49 +942,263 @@ class DashboardManager:
         ic.innerText = '▶';
       }}
     }}
-    function openViewerModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC) {{
-      currentDossier = {{ comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC }};
+
+    function openViewerModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC, proofUrl) {{
+      currentDossier = {{ comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC, proofUrl }};
       document.getElementById('modalTitle').innerText = comp;
       document.getElementById('modalSub').innerText = tit;
+      
+      const tabP = document.getElementById('tabBtnPreuve');
+      if (proofUrl && proofUrl.trim() !== '') {{
+        tabP.innerHTML = '📸 Preuve de Dépôt <span style="background:#10b981; color:#fff; font-size:10px; border-radius:8px; padding:1px 5px; margin-left:4px;">Certifiée</span>';
+        tabP.title = 'Preuve de dépôt certifiée disponible';
+      }} else {{
+        tabP.innerHTML = '📸 Preuve de Dépôt';
+        tabP.title = 'Aucune preuve capturée';
+      }}
+      
       switchDocTab('lettre');
       document.getElementById('viewerModal').style.display = 'flex';
     }}
-    function closeViewerModal() {{
+
+    function openProofModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC, proofUrl) {{
+      openViewerModal(comp, tit, pdfL, pdfC, pngL, pngC, htmlL, htmlC, proofUrl);
+      switchDocTab('preuve');
+    }}
+
+    function closeViewerModal(event) {{
+      if (event && event.target && event.target.id !== 'viewerModal') {{
+        return;
+      }}
       document.getElementById('viewerModal').style.display = 'none';
     }}
+
     function switchDocTab(tab) {{
       const bL = document.getElementById('tabBtnLettre');
       const bC = document.getElementById('tabBtnCv');
+      const bP = document.getElementById('tabBtnPreuve');
       const vL = document.getElementById('viewContainerLettre');
       const vC = document.getElementById('viewContainerCv');
+      const vP = document.getElementById('viewContainerPreuve');
       const dPdf = document.getElementById('btnDownloadPdf');
+
+      [bL, bC, bP].forEach(b => {{
+        b.style.background = '#334155';
+        b.style.color = '#cbd5e1';
+      }});
+      vL.style.display = 'none';
+      vC.style.display = 'none';
+      vP.style.display = 'none';
 
       if (tab === 'lettre') {{
         bL.style.background = '#2563eb';
-        bC.style.background = '#334155';
+        bL.style.color = '#fff';
         vL.style.display = 'flex';
-        vC.style.display = 'none';
         dPdf.href = currentDossier.pdfL;
+        dPdf.innerText = '⬇️ Ouvrir PDF Lettre';
+        dPdf.style.background = '#059669';
         document.getElementById('imgLettre').src = currentDossier.pngL;
         document.getElementById('frameLettre').src = currentDossier.htmlL;
-      }} else {{
-        bL.style.background = '#334155';
+      }} else if (tab === 'cv') {{
         bC.style.background = '#2563eb';
-        vL.style.display = 'none';
+        bC.style.color = '#fff';
         vC.style.display = 'flex';
         dPdf.href = currentDossier.pdfC;
+        dPdf.innerText = '⬇️ Ouvrir PDF CV';
+        dPdf.style.background = '#059669';
         document.getElementById('imgCv').src = currentDossier.pngC;
         document.getElementById('frameCv').src = currentDossier.htmlC;
+      }} else if (tab === 'preuve') {{
+        bP.style.background = '#059669';
+        bP.style.color = '#fff';
+        vP.style.display = 'flex';
+        const hasP = currentDossier.proofUrl && currentDossier.proofUrl.trim() !== '';
+        const imgP = document.getElementById('imgPreuve');
+        const banP = document.getElementById('preuveBanner');
+        const noP = document.getElementById('noPreuveMsg');
+        if (hasP) {{
+          imgP.src = currentDossier.proofUrl;
+          imgP.style.display = 'block';
+          banP.style.display = 'flex';
+          noP.style.display = 'none';
+          dPdf.href = currentDossier.proofUrl;
+          dPdf.innerText = '🔍 Plein Écran Preuve (HD)';
+          dPdf.style.background = '#059669';
+        }} else {{
+          imgP.style.display = 'none';
+          banP.style.display = 'none';
+          noP.style.display = 'block';
+          dPdf.href = '#';
+          dPdf.innerText = '📸 Aucune preuve';
+          dPdf.style.background = '#475569';
+        }}
       }}
     }}
+
     function handleImageError(imgEl, type) {{
       imgEl.style.display = 'none';
       if (type === 'lettre') {{
         document.getElementById('frameLettre').style.display = 'block';
-      }} else {{
+      }} else if (type === 'cv') {{
         document.getElementById('frameCv').style.display = 'block';
       }}
     }}
+
+    function normalizeSearch(str) {{
+      return (str || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\\s]/g, ' ')
+        .replace(/\\s+/g, ' ')
+        .trim();
+    }}
+
+    function setStatusFilter(val) {{
+      currentStatusFilter = val;
+      document.querySelectorAll('[data-filter-type="status"]').forEach(el => {{
+        el.classList.toggle('active', el.getAttribute('data-filter-val') === val);
+      }});
+      applyFilters();
+    }}
+
+    function setSectorFilter(val) {{
+      currentSectorFilter = val;
+      document.querySelectorAll('[data-filter-type="sector"]').forEach(el => {{
+        el.classList.toggle('active', el.getAttribute('data-filter-val') === val);
+      }});
+      applyFilters();
+    }}
+
+    function clearSearch() {{
+      const inp = document.getElementById('dashboardSearch');
+      if (inp) {{
+        inp.value = '';
+        inp.focus();
+      }}
+      applyFilters();
+    }}
+
+    function resetAllFilters() {{
+      const inp = document.getElementById('dashboardSearch');
+      if (inp) inp.value = '';
+      currentStatusFilter = 'all';
+      currentSectorFilter = 'all';
+      document.querySelectorAll('[data-filter-type="status"]').forEach(el => {{
+        el.classList.toggle('active', el.getAttribute('data-filter-val') === 'all');
+      }});
+      document.querySelectorAll('[data-filter-type="sector"]').forEach(el => {{
+        el.classList.toggle('active', el.getAttribute('data-filter-val') === 'all');
+      }});
+      applyFilters();
+    }}
+
+    function applyFilters() {{
+      const rawQ = document.getElementById('dashboardSearch') ? document.getElementById('dashboardSearch').value : '';
+      const q = normalizeSearch(rawQ);
+      const words = q.split(' ').filter(w => w.length > 0);
+
+      const clearBtn = document.getElementById('btnClearSearch');
+      if (clearBtn) clearBtn.style.display = rawQ.trim().length > 0 ? 'inline-flex' : 'none';
+
+      let totalVisible = 0;
+      const monthCards = document.querySelectorAll('.month-card');
+
+      monthCards.forEach(card => {{
+        const rows = card.querySelectorAll('.job-row');
+        let monthVisible = 0;
+
+        rows.forEach(row => {{
+          const rowStatus = row.getAttribute('data-status');
+          const rowSectors = row.getAttribute('data-sectors') || '';
+          const hasProof = row.getAttribute('data-has-proof') === '1';
+          const searchText = row.getAttribute('data-search') || '';
+
+          let matchStatus = false;
+          if (currentStatusFilter === 'all') matchStatus = true;
+          else if (currentStatusFilter === 'confirmed') matchStatus = (rowStatus === 'confirmed');
+          else if (currentStatusFilter === 'proof_only') matchStatus = hasProof;
+          else if (currentStatusFilter === 'portal') matchStatus = (rowStatus === 'portal');
+          else if (currentStatusFilter === 'ready') matchStatus = (rowStatus === 'ready');
+
+          let matchSector = false;
+          if (currentSectorFilter === 'all') matchSector = true;
+          else if (rowSectors.indexOf(currentSectorFilter) !== -1) matchSector = true;
+
+          let matchSearch = true;
+          if (words.length > 0) {{
+            for (let i = 0; i < words.length; i++) {{
+              if (searchText.indexOf(words[i]) === -1) {{
+                matchSearch = false;
+                break;
+              }}
+            }}
+          }}
+
+          if (matchStatus && matchSector && matchSearch) {{
+            row.style.display = '';
+            monthVisible++;
+            totalVisible++;
+          }} else {{
+            row.style.display = 'none';
+          }}
+        }});
+
+        const badge = card.querySelector('.badge-count');
+        const totalInMonth = rows.length;
+        if (monthVisible === 0) {{
+          card.style.display = 'none';
+        }} else {{
+          card.style.display = 'block';
+          if (badge) {{
+            if (monthVisible === totalInMonth) {{
+              badge.innerText = totalInMonth;
+            }} else {{
+              badge.innerText = monthVisible + ' / ' + totalInMonth;
+            }}
+          }}
+          if (words.length > 0 || currentStatusFilter !== 'all' || currentSectorFilter !== 'all') {{
+            const content = card.querySelector('.month-content');
+            const icon = card.querySelector('.toggle-icon');
+            if (content) content.style.display = 'block';
+            if (icon) icon.innerText = '▼';
+          }}
+        }}
+      }});
+
+      const resBadge = document.getElementById('resultsCount');
+      if (resBadge) {{
+        if (words.length > 0 || currentStatusFilter !== 'all' || currentSectorFilter !== 'all') {{
+          resBadge.innerText = totalVisible + ' dossier' + (totalVisible > 1 ? 's' : '') + ' filtré' + (totalVisible > 1 ? 's' : '');
+          resBadge.style.color = '#38bdf8';
+        }} else {{
+          resBadge.innerText = totalVisible + ' dossiers';
+          resBadge.style.color = '#94a3b8';
+        }}
+      }}
+
+      const noRes = document.getElementById('noResultsMsg');
+      if (noRes) {{
+        noRes.style.display = (totalVisible === 0) ? 'block' : 'none';
+      }}
+    }}
+
+    document.addEventListener('keydown', function(e) {{
+      const modal = document.getElementById('viewerModal');
+      if (modal && modal.style.display === 'flex') {{
+        if (e.key === 'Escape') {{
+          closeViewerModal();
+        }} else if (e.key === '1') {{
+          switchDocTab('lettre');
+        }} else if (e.key === '2') {{
+          switchDocTab('cv');
+        }} else if (e.key === '3') {{
+          switchDocTab('preuve');
+        }}
+      }} else if (e.key === 'Escape') {{
+        clearSearch();
+      }}
+    }});
   </script>
 </body>
 </html>"""
@@ -690,16 +1226,8 @@ class DashboardManager:
         apps_by_month = defaultdict(list)
         
         for a in apps:
-            date_str = a.get("date", "2026-08-01")
-            try:
-                parts = date_str.split("-")
-                year, month = parts[0], parts[1]
-                month_name = FRENCH_MONTHS.get(month, month)
-                month_key = f"{year}-{month}"
-                month_label = f"{month_name} {year}"
-            except Exception:
-                month_key = "2026-08"
-                month_label = "Août 2026"
+            clean_d, month_key, month_label = parse_date_str(a.get("date"))
+            a["_clean_date"] = clean_d
             apps_by_month[(month_key, month_label)].append(a)
             
         sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
@@ -710,16 +1238,18 @@ class DashboardManager:
         current_month_str = now.strftime("%Y-%m")
         week_ago_str = (now - timedelta(days=7)).strftime("%Y-%m-%d")
         
-        count_today = sum(1 for a in apps if a.get("date") == today_str)
-        count_week = sum(1 for a in apps if a.get("date", "") >= week_ago_str and a.get("date", "") <= today_str)
-        count_month = sum(1 for a in apps if a.get("date", "").startswith(current_month_str))
+        count_today = sum(1 for a in apps if a.get("_clean_date") == today_str)
+        count_week = sum(1 for a in apps if a.get("_clean_date", "") >= week_ago_str and a.get("_clean_date", "") <= today_str)
+        count_month = sum(1 for a in apps if a.get("_clean_date", "").startswith(current_month_str))
         count_total = len(apps)
+        
+        count_proofs = sum(1 for a in apps if a.get("folder_rel") and os.path.exists(os.path.join(self.base_dir, a["folder_rel"], "preuve_soumission_officielle.png")))
         
         md_content = f"# 📋 TABLEAU DE BORD DES CANDIDATURES — RICHARD BUSSON\n\n"
         md_content += f"> ### 📊 Compteurs d'Envoi et Suivi d'Activité\n"
-        md_content += f"> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 🏆 Total Traitées |\n"
-        md_content += f"> | :---: | :---: | :---: | :---: |\n"
-        md_content += f"> | **{count_today}** | **{count_week}** | **{count_month}** | **{count_total}** |\n"
+        md_content += f"> | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |\n"
+        md_content += f"> | :---: | :---: | :---: | :---: | :---: |\n"
+        md_content += f"> | **{count_today}** | **{count_week}** | **{count_month}** | **{count_proofs}** | **{count_total}** |\n"
         md_content += f">\n"
         md_content += f"> *Dernière mise à jour et synchronisation : {now.strftime('%d/%m/%Y %H:%M')}*\n\n"
         
@@ -730,7 +1260,7 @@ class DashboardManager:
             md_content += "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
             
             for a in month_apps:
-                d = a.get("date", "")
+                d = a.get("_clean_date") or a.get("date", "")
                 comp = a.get("company", "Entreprise").replace("|", "-")
                 contact_name = a.get("contact_name") or "Monsieur le Responsable du Recrutement"
                 contact_title = a.get("contact_title") or "Direction des Ressources Humaines"
