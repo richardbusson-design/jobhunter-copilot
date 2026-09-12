@@ -66,21 +66,28 @@ FRENCH_MONTHS = {
     "09": "Septembre", "10": "Octobre", "11": "Novembre", "12": "Décembre"
 }
 
-def parse_date_str(date_str: str) -> Tuple[str, str, str]:
-    """Parse une date brute (YYYY-MM-DD ou texte France Travail DD/MM/YYYY) et retourne (clean_date, month_key, month_label)."""
-    if not date_str:
-        return "2026-08-01", "2026-08", "Août 2026"
-    m = re.search(r'(\d{4})-(\d{2})-(\d{2})', date_str)
-    if m:
-        y, mo, d = m.group(1), m.group(2), m.group(3)
-        month_name = FRENCH_MONTHS.get(mo, mo)
-        return f"{y}-{mo}-{d}", f"{y}-{mo}", f"{month_name} {y}"
-    m = re.search(r'(\d{2})/(\d{2})/(\d{4})', date_str)
-    if m:
-        d, mo, y = m.group(1), m.group(2), m.group(3)
-        month_name = FRENCH_MONTHS.get(mo, mo)
-        return f"{y}-{mo}-{d}", f"{y}-{mo}", f"{month_name} {y}"
-    return "2026-08-01", "2026-08", "Août 2026"
+def parse_date_str(date_str: str) -> Tuple[str, str, str, str]:
+    """Parse une date brute (YYYY-MM-DD ou texte France Travail DD/MM/YYYY) et retourne (clean_date, clean_time, month_key, month_label)."""
+    clean_d = "2026-08-01"
+    clean_t = "00:00"
+    mo = "08"
+    y = "2026"
+    if date_str:
+        m = re.search(r'(\d{4})-(\d{2})-(\d{2})', date_str)
+        if m:
+            y, mo, d = m.group(1), m.group(2), m.group(3)
+            clean_d = f"{y}-{mo}-{d}"
+        else:
+            m = re.search(r'(\d{2})/(\d{2})/(\d{4})', date_str)
+            if m:
+                d, mo, y = m.group(1), m.group(2), m.group(3)
+                clean_d = f"{y}-{mo}-{d}"
+        tm = re.search(r'(\d{1,2})[h:](\d{2})', date_str)
+        if tm:
+            clean_t = f"{int(tm.group(1)):02d}:{tm.group(2)}"
+            
+    month_name = FRENCH_MONTHS.get(mo, mo)
+    return clean_d, clean_t, f"{y}-{mo}", f"{month_name} {y}"
 
 class DashboardManager:
     def __init__(self, base_dir="."):
@@ -230,9 +237,11 @@ class DashboardManager:
         apps = self.load_tracker()
         apps_by_month = defaultdict(list)
         
-        for a in apps:
-            clean_d, month_key, month_label = parse_date_str(a.get("date"))
+        for idx, a in enumerate(apps):
+            clean_d, clean_t, month_key, month_label = parse_date_str(a.get("date"))
             a["_clean_date"] = clean_d
+            a["_clean_time"] = clean_t
+            a["_orig_idx"] = idx
             apps_by_month[(month_key, month_label)].append(a)
             
         # Compteurs statistiques dynamiques
@@ -280,6 +289,8 @@ class DashboardManager:
         sections_html = ""
         for month_key, month_label in sorted_months:
             month_apps = apps_by_month[(month_key, month_label)]
+            # Tri strict de la plus récente à la plus ancienne
+            month_apps.sort(key=lambda a: (a.get("_clean_date", ""), a.get("_clean_time", ""), a.get("_orig_idx", 0)), reverse=True)
             
             rows_html = ""
             for idx, a in enumerate(month_apps):
@@ -1225,9 +1236,11 @@ class DashboardManager:
         apps = self.load_tracker()
         apps_by_month = defaultdict(list)
         
-        for a in apps:
-            clean_d, month_key, month_label = parse_date_str(a.get("date"))
+        for idx, a in enumerate(apps):
+            clean_d, clean_t, month_key, month_label = parse_date_str(a.get("date"))
             a["_clean_date"] = clean_d
+            a["_clean_time"] = clean_t
+            a["_orig_idx"] = idx
             apps_by_month[(month_key, month_label)].append(a)
             
         sorted_months = sorted(apps_by_month.keys(), key=lambda x: x[0], reverse=True)
@@ -1255,6 +1268,8 @@ class DashboardManager:
         
         for month_key, month_label in sorted_months:
             month_apps = apps_by_month[(month_key, month_label)]
+            # Tri strict de la plus récente à la plus ancienne
+            month_apps.sort(key=lambda a: (a.get("_clean_date", ""), a.get("_clean_time", ""), a.get("_orig_idx", 0)), reverse=True)
             md_content += f"## 🗓️ {month_label} ({len(month_apps)} candidatures)\n\n"
             md_content += "| Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |\n"
             md_content += "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
