@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **4** | **249** | **276** | **75** | **537** |
+> | **5** | **250** | **277** | **16** | **538** |
 >
-> *Dernière mise à jour et synchronisation : 12/09/2026 13:23*
+> *Dernière mise à jour et synchronisation : 12/09/2026 15:30*
 
-## 🗓️ Septembre 2026 (276 candidatures)
+## 🗓️ Septembre 2026 (277 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-12 | **MICHAEL PAGE INTERNATIONAL FRANCE** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Lille (59000) | Non communiqué | 🌐 Portail Web | [gestionnaire paie F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179410164W) (28 - 33 k€ brut annuel - 93%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-12 | **POTENTIEL HUMAIN** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Béziers - (34) (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/212VWJP) (Titres restaurant / Prime de panier - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-12_POTENTIEL_HUMAIN_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-12_POTENTIEL_HUMAIN_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-12_POTENTIEL_HUMAIN_Gestionnaire_de_paie__H_F_/preuve_soumission_officielle.png) |
 | 2026-09-12 | **PRH 360** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | PEROLS - (34) (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie - mi temps (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/212YYQW) (Salaire brut : Horaire de 13.0 Euros sur 12 mois - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-12_PRH_360_Gestionnaire_de_Paie_-_mi_temps__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-12_PRH_360_Gestionnaire_de_Paie_-_mi_temps__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-12_PRH_360_Gestionnaire_de_Paie_-_mi_temps__H_F_/preuve_soumission_officielle.png) |
 | 2026-09-12 | **CERFRANCE BROCELIANDE** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Bruz - (35) (35000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie en CDD - f/h (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213FZMF) (compétitif - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-12_CERFRANCE_BROCELIANDE_Gestionnaire_de_paie_en_CDD_-_f_h__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-12_CERFRANCE_BROCELIANDE_Gestionnaire_de_paie_en_CDD_-_f_h__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-12_CERFRANCE_BROCELIANDE_Gestionnaire_de_paie_en_CDD_-_f_h__H_F_/preuve_soumission_officielle.png) |

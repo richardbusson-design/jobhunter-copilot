@@ -10178,5 +10178,33 @@
     },
     "date": "2026-09-12",
     "relance_date": "2026-09-19"
+  },
+  {
+    "id": "APEC-179410164W",
+    "source": "L'Apec (Direct WebService)",
+    "company": "MICHAEL PAGE INTERNATIONAL FRANCE",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "gestionnaire paie F/H",
+    "city": "Lille",
+    "postal_code": "59000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "28 - 33 k€ brut annuel",
+    "contract_type": "CDI",
+    "url": "https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179410164W",
+    "description": "Poste de gestionnaire paie F/H chez MICHAEL PAGE INTERNATIONAL FRANCE. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
+    "score": 93,
+    "date": "2026-09-12",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H",
+    "folder_rel": "candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-12_MICHAEL_PAGE_INTERNATIONAL_FRANCE_gestionnaire_paie_F_H/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": false,
+      "mode": "WEB_PORTAL_REQUIRED",
+      "channel": "L'Apec (Direct WebService)"
+    },
+    "relance_date": "2026-09-19"
   }
 ]
