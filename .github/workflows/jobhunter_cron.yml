@@ -46,6 +46,8 @@ jobs:
           FT_CLIENT_SECRET: ${{ secrets.FT_CLIENT_SECRET }}
           FRANCE_TRAVAIL_USER: ${{ secrets.FRANCE_TRAVAIL_USER }}
           FRANCE_TRAVAIL_PASSWORD: ${{ secrets.FRANCE_TRAVAIL_PASSWORD }}
+          EDUCATION_GOUV_USER: ${{ secrets.EDUCATION_GOUV_USER }}
+          EDUCATION_GOUV_PASSWORD: ${{ secrets.EDUCATION_GOUV_PASSWORD }}
         run: |
           python src/cloud_runner.py
 

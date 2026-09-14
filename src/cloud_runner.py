@@ -16,6 +16,7 @@ from dashboard_manager import DashboardManager
 from notifier import ApplicationNotifier
 from recruiter_dispatcher import RecruiterDispatcher
 from france_travail_bot import FranceTravailBot
+from education_gouv_bot import EducationGouvBot
 
 def sanitize_filename(name: str) -> str:
     return re.sub(r'[^\w\-_\. ]', '_', name).replace(' ', '_')
@@ -70,6 +71,7 @@ def run_pipeline(base_dir=".", auto_notify=True):
     notifier = ApplicationNotifier()
     dispatcher = RecruiterDispatcher(base_dir=base_dir)
     ft_bot = FranceTravailBot(base_dir=base_dir)
+    edu_bot = EducationGouvBot(base_dir=base_dir)
     
     # 1. Lecture préalable de l'historique GitHub / Tracker (Anti-Doublon Préalable)
     existing_fps = dashboard.get_existing_fingerprints()
