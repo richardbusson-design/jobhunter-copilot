@@ -81,14 +81,15 @@ class QualityGuard:
 
         # 5. Contrôle du périmètre géographique
         postal_code = str(job.get("postal_code", "60100")).strip()
-        dept = postal_code[:2] if len(postal_code) >= 2 else "60"
+        dept = postal_code[:3] if postal_code.startswith(("97", "98")) else (postal_code[:2] if len(postal_code) >= 2 else "60")
         
         bassin_creil_2h = ["60", "75", "92", "93", "94", "95", "78", "77", "91", "80", "02", "59", "62", "76", "27"]
-        facade_maritime = ["17", "33", "40", "64", "44", "85", "56", "29", "22", "35", "50", "14", "66", "11", "34", "30", "13", "83", "06"]
+        facade_maritime = ["17", "33", "40", "64", "44", "85", "56", "29", "22", "35", "50", "14", "66", "11", "34", "30", "13", "83", "06", "976", "974", "97"]
         
+        is_mayotte = "mayotte" in desc or "mamoudzou" in desc or "koungou" in desc or "976" in postal_code
         is_remote = "télétravail" in desc or "remote" in desc or "100%" in desc or "full remote" in desc
         
-        if not (dept in bassin_creil_2h or dept in facade_maritime or is_remote):
+        if not (dept in bassin_creil_2h or dept in facade_maritime or is_mayotte or is_remote):
             return False, f"Rejet : Zone géographique ({dept}) hors bassin Creil 2h et hors façades maritimes."
 
         return True, "Offre qualifiée et éligible."

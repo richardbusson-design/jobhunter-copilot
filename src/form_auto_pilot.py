@@ -849,8 +849,8 @@ class FormAutoPilot:
         except Exception:
             pass
 
-        email_input = page.locator("input#email, input[type='email'], input[placeholder*='Identifiant']").first
-        pwd_input = page.locator("input#password, input[type='password']").first
+        email_input = page.locator("#emailid, input#email, input[name='emailid'], input[type='email'], input[placeholder*='Identifiant' i]").first
+        pwd_input = page.locator("#password, input#password, input[name='password'], input[type='password']").first
         submit_btn = page.locator("button:has-text('Se connecter')").first
 
         if email_input.is_visible(timeout=3000) and pwd_input.is_visible(timeout=3000):
