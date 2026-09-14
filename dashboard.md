@@ -3,9 +3,9 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **4** | **209** | **283** | **80** | **544** |
+> | **4** | **209** | **283** | **80** | **545** |
 >
-> *Dernière mise à jour et synchronisation : 14/09/2026 07:14*
+> *Dernière mise à jour et synchronisation : 14/09/2026 20:37*
 
 ## 🗓️ Septembre 2026 (283 candidatures)
 
@@ -296,7 +296,7 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-09-01 | **LP SAINTE SOPHIE** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 02 - Bohain-en-Vermandois | Non communiqué | 🌐 Portail Web | [Professeur(e)/Formateur(rice) d'éco-gestion (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/389274781) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 | 2026-09-01 | **ADEIS RH** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 44 | Non communiqué | 🌐 Portail Web | [Responsable Paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213FYPJ) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-01_ADEIS_RH_Responsable_Paie__H_F_/preuve_soumission_officielle.png) |
 
-## 🗓️ Août 2026 (210 candidatures)
+## 🗓️ Août 2026 (211 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -510,6 +510,7 @@ régime indemnitaire - 95%) | 🟢 Transmis & Validé (essourceshumaines@champag
 | 2026-08-01 | **Entreprise confidentielle** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 59 - MAUBEUGE | Non communiqué | 🌐 Portail Web | [Gestionnaire paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057894) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 | 2026-08-01 | **AUDIT 64** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 64 - ORTHEZ | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE DE PAIE/COLLABORATEUR SOCIAL (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057843) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
 | 2026-08-01 | **GIP FCIP** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | 31 - Toulouse | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F) (voir le détail de la candidature)](https://candidat.francetravail.fr/candidature/mescandidatures/385057785) (Non précisé (Espace France Travail) - 85%) | 📁 Prêt | - / - |
+| 2026-08-01 | **Académie de VERSAILLES** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | France | Non communiqué | 🌐 Portail Web | [Enseignant(e) en économie gestion filière stmg](https://recrutement.education.gouv.fr/recrutement/offreemploi/a1DIV00000D7OXa2AN/enseignante-en-%C3%A9conomie-gestion-fili%C3%A8re-stmg) (27 060 € à 38 160 € brut/an (2255 - 3180 €/mois) - 85%) | 📁 Prêt | [Lettre](candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg/CV_Richard_BUSSON.pdf) |
 
 ## 🗓️ Juillet 2026 (48 candidatures)
 

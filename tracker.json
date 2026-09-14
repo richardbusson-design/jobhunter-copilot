@@ -1,5 +1,21 @@
 [
   {
+    "id": "MENJ-25-2026-45727",
+    "reference": "MENJ-25-2026-45727",
+    "title": "Enseignant(e) en économie gestion filière stmg",
+    "company": "Académie de VERSAILLES",
+    "location": "Versailles / Essonne (91, 78, 92, 95)",
+    "date_scraped": "2026-09-14",
+    "date_applied": "2026-09-14",
+    "status": "Prête à postuler / Dossier complet généré",
+    "source": "recrutement.education.gouv.fr",
+    "url": "https://recrutement.education.gouv.fr/recrutement/offreemploi/a1DIV00000D7OXa2AN/enseignante-en-%C3%A9conomie-gestion-fili%C3%A8re-stmg",
+    "folder_rel": "candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg",
+    "salary": "27 060 € à 38 160 € brut/an (2255 - 3180 €/mois)",
+    "rome_code": "K2107 / K2111",
+    "notes": "Besoins urgents Essonne 91. Profil Richard Busson idéal : Maîtrise Sciences de Gestion + Master 2 Droit public + Qualiopi + Dirigeant."
+  },
+  {
     "company": "ADEIS RH",
     "title": "Responsable Paie (H/F)",
     "city": "44",
