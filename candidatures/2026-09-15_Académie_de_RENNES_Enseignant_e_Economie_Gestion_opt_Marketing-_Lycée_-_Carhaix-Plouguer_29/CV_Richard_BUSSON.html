@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CV Richard BUSSON - Enseignant(e) Economie Gestion opt. Marketing- Lycée - Carhaix-Plouguer (29)</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  html, body {
+    width: 794px;
+    height: 1123px;
+    max-height: 1123px;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: #1e293b;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+
+  /* 1. EN-TÊTE SUPÉRIEUR EXÉCUTIF */
+  .header {
+    background: linear-gradient(135deg, #091e36 0%, #152e50 60%, #1c3d69 100%);
+    color: #ffffff;
+    padding: 13px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3.5px solid #d4af37;
+    height: 104px;
+  }
+  .header-left h1 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 3px;
+    line-height: 1.1;
+  }
+  .header-left .title-sub {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #f1c40f;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .header-left .title-tagline {
+    font-size: 11px;
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 10.5px;
+    line-height: 1.45;
+    color: #e2e8f0;
+    border-left: 1.5px solid rgba(212, 175, 55, 0.45);
+    padding-left: 14px;
+  }
+  .header-right strong {
+    color: #ffffff;
+  }
+  .header-right a {
+    color: #67e8f9;
+    text-decoration: none;
+  }
+
+  /* 2. CORPS EN 2 COLONNES ASYMÉTRIQUES */
+  .main-container {
+    display: flex;
+    width: 794px;
+    height: 1019px;
+    background-color: #ffffff;
+  }
+
+  /* COLONNE GAUCHE (35%) */
+  .sidebar {
+    width: 268px;
+    background-color: #f8fafc;
+    border-right: 1.5px solid #e2e8f0;
+    padding: 12px 14px 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .side-section {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 8.5px 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .side-title {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #0f2b48;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 3.5px;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .badge-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5px;
+  }
+  .badge {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 2.5px 5.5px;
+    border-radius: 3px;
+    line-height: 1.2;
+  }
+  .badge-gold {
+    background-color: #fef9c3;
+    color: #854d0e;
+    border-color: #fde047;
+    font-weight: 700;
+  }
+  .side-item {
+    margin-bottom: 5.5px;
+    font-size: 9.8px;
+    line-height: 1.35;
+    color: #334155;
+  }
+  .side-item:last-child {
+    margin-bottom: 0;
+  }
+  .side-item-title {
+    font-weight: 700;
+    color: #0f2b48;
+    font-size: 10px;
+  }
+  .side-item-sub {
+    color: #64748b;
+    font-size: 9px;
+    font-style: italic;
+  }
+
+  /* COLONNE DROITE (65%) */
+  .content {
+    width: 526px;
+    padding: 12px 18px 10px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #ffffff;
+  }
+  .section-banner {
+    background: linear-gradient(90deg, #0f2b48 0%, #1e3a8a 100%);
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4.5px 9px;
+    border-radius: 4px;
+    border-left: 3.5px solid #d4af37;
+    margin-bottom: 2px;
+  }
+  .exp-card {
+    border-left: 3px solid #cbd5e1;
+    padding-left: 10px;
+    margin-bottom: 2px;
+    position: relative;
+  }
+  .exp-card:hover {
+    border-left-color: #1e3a8a;
+  }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5px;
+  }
+  .exp-role {
+    font-size: 11.2px;
+    font-weight: 800;
+    color: #0f2b48;
+  }
+  .exp-date {
+    font-size: 9.8px;
+    font-weight: 700;
+    color: #b45309;
+    background: #fef3c7;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .exp-org {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 2px;
+  }
+  .exp-bullets {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .exp-bullets li {
+    font-size: 9.5px;
+    line-height: 1.34;
+    color: #334155;
+    position: relative;
+    padding-left: 11px;
+    margin-bottom: 2px;
+  }
+  .exp-bullets li::before {
+    content: "▪";
+    color: #d4af37;
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    top: -1px;
+  }
+  .exp-bullets li strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  /* BAS DE PAGE COLONNE DROITE (CARTOUCHES COMPACTS) */
+  .focus-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-top: 2.5px solid #1e3a8a;
+    border-radius: 4px;
+    padding: 6.5px 9px;
+  }
+  .focus-title {
+    font-size: 10.2px;
+    font-weight: 800;
+    color: #0f2b48;
+    text-transform: uppercase;
+    margin-bottom: 2.5px;
+  }
+  .focus-text {
+    font-size: 9.2px;
+    line-height: 1.35;
+    color: #334155;
+  }
+</style>
+</head>
+<body>
+
+  <!-- EN-TÊTE -->
+  <header class="header">
+    <div class="header-left">
+      <h1>Richard BUSSON</h1>
+      <div class="title-sub">Enseignant Économie et Gestion · Spécialité Ressources Humaines & Organisation (L8011)</div>
+      <div class="title-tagline">Maîtrise Sciences de Gestion · Master 2 Droit Public · Dirigeant Qualiopi · 580 collab.</div>
+    </div>
+    <div class="header-right">
+      <div>📍 <strong>Creil (60)</strong> — Mobilité Active & Permis B</div>
+      <div>📞 <strong>09 39 20 08 70</strong> · 07 61 96 15 46</div>
+      <div>✉️ <a href="mailto:richard.busson@kairos-paye.fr">richard.busson@kairos-paye.fr</a></div>
+      <div>🌐 <a href="https://kairos-paye.fr">kairos-paye.fr</a> · linkedin.com/in/richard-busson</div>
+      <div>⚡ Disponibilité : <strong>Immédiate sans préavis</strong></div>
+    </div>
+  </header>
+
+  <!-- CORPS -->
+  <main class="main-container">
+    <!-- COLONNE GAUCHE (35%) -->
+    <aside class="sidebar">
+      <div class="side-section">
+        <div class="side-title">Profil & Posture Civique</div>
+        <div class="side-item">
+          <strong>59 ans · Cadre Senior Expérimenté</strong><br>
+          Grande loyauté, engagement républicain, pédagogie bienveillante et rigueur méthodologique.
+        </div>
+        <div class="side-item">
+          <strong>Transmission & Pédagogie Active :</strong><br>
+          Ancrage des notions académiques dans des cas concrets d'entreprise et d'actualité économique.
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Compétences Éco-Gestion</div>
+        <div class="badge-grid">
+          <span class="badge badge-gold">Management STMG</span>
+          <span class="badge badge-gold">Économie & Droit</span>
+          <span class="badge badge-gold">Ressources Humaines</span>
+          <span class="badge">Gestion & Finance</span>
+          <span class="badge">Sciences de Gestion</span>
+          <span class="badge">Droit du Travail & Public</span>
+          <span class="badge">Organisation & Stratégie</span>
+          <span class="badge">Communication Managériale</span>
+          <span class="badge">Logiciels Métiers & Silae</span>
+          <span class="badge">Contrôle de Gestion</span>
+          <span class="badge">Audit Social</span>
+          <span class="badge">Démarche RSE / IAE</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Ingénierie & Outils Éducatifs</div>
+        <div class="side-item">
+          <strong>Conformité Pédagogique Qualiopi :</strong><br>
+          Conception intégrale de référentiels (758h), animation de groupes et évaluations formatives ECF.
+        </div>
+        <div class="side-item">
+          <strong>Systèmes & Didactique :</strong><br>
+          Outil Métis (Afpa), ENT, pédagogie par projet, études de cas numériques, différenciation pédagogique.
+        </div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">Formation Supérieure</div>
+        <div class="side-item">
+          <div class="side-item-title">Master RSE (En cours)</div>
+          <div class="side-item-sub">IAE Paris - Sorbonne Business School</div>
+        </div>
+        <div class="side-item">
+          <div class="side-item-title">Master 2 Droit Public</div>
+          <div class="side-item-sub">Univ. Picardie Jules Verne · Mention Droit</div>
+        </div>
+        <div class="side-item">
+          <div class="side-item-title">Maîtrise Sciences de Gestion</div>
+          <div class="side-item-sub">Univ. Paris XIII · Option Finance & RH</div>
+        </div>
+        <div class="side-item">
+          <div class="side-item-title">DUT GEA option RH</div>
+          <div class="side-item-sub">Univ. Paris XIII · Gestion des Entreprises</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- COLONNE DROITE (65%) -->
+    <section class="content">
+      <div class="section-banner">Expériences Professionnelles & Réalisations Terrain</div>
+
+      <!-- Expérience 1 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-role">Dirigeant & Formateur Référent Éco-Gestion / RH</span>
+          <span class="exp-date">Depuis 2014</span>
+        </div>
+        <div class="exp-org">Kairos Formation · Organisme Certifié Qualiopi (Paris & Creil)</div>
+        <ul class="exp-bullets">
+          <li><strong>Ingénierie de formation complète :</strong> Conception et animation d'un parcours certifiant de 758 heures (Titre pro TP-01254 millésime 04) combinant économie, gestion, droit social et paie.</li>
+          <li><strong>Pédagogie active & insertion :</strong> Encadrement d'apprenants adultes et jeunes, préparation intensive aux jurys d'examen officiels, 100% de conformité aux référentiels d'État.</li>
+          <li><strong>Animation consulaire (CMA) :</strong> Enseignement des modules d'organisation, gestion d'entreprise et relations professionnelles (ADEA et Brevet de Maîtrise).</li>
+        </ul>
+      </div>
+
+      <!-- Expérience 2 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-role">Formateur Vacataire & Sous-traitant Enseignement Tertiaire</span>
+          <span class="exp-date">2016 – 2020</span>
+        </div>
+        <div class="exp-org">Centres Afpa (Creil, Beauvais, Amiens, Vervins)</div>
+        <ul class="exp-bullets">
+          <li><strong>Animation en filière tertiaire administrative :</strong> Gestion de promotions individualisées à entrées permanentes sur les matières de gestion, droit et administration.</li>
+          <li><strong>Digitalisation & suivi individualisé :</strong> Déploiement actif de l'outil Métis, conception de livrets d'Évaluation en Cours de Formation (ECF), remédiation personnalisée.</li>
+        </ul>
+      </div>
+
+      <!-- Expérience 3 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-role">Responsable des Ressources Humaines & Gestion Sociale</span>
+          <span class="exp-date">2003 – 2010</span>
+        </div>
+        <div class="exp-org">Secours Populaire Français · Pilotage RH de 580 Collaborateurs</div>
+        <ul class="exp-bullets">
+          <li><strong>Direction opérationnelle des RH :</strong> Pilotage intégral des contrats de travail, dialogue social soutenu avec les instances représentatives (CSE, CE, DP), gestion de crise.</li>
+          <li><strong>Gestion prévisionnelle & Masse salariale :</strong> Élaboration du plan de formation, animation de séminaires internes, supervision budgétaire et juridique stricte.</li>
+        </ul>
+      </div>
+
+      <!-- Expérience 4 -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-role">Responsable de Site Opérationnel & Gestion d'Exploitation</span>
+          <span class="exp-date">2010 – 2014</span>
+        </div>
+        <div class="exp-org">ETV Nouvelle-Calédonie · Exploitation Industrielle & Environnement</div>
+        <ul class="exp-bullets">
+          <li><strong>Gestion d'un centre de profit :</strong> Pilotage budgétaire, management d'équipes pluridisciplinaires, négociation avec les autorités publiques locales et partenaires.</li>
+        </ul>
+      </div>
+
+      <!-- 3 CARTES DE BAS DE PAGE -->
+      <div class="focus-box">
+        <div class="focus-title">Valeur Ajoutée pour les Élèves de STMG & BTS</div>
+        <div class="focus-text">Capacité prouvée à vulgariser la réalité concrète de l'entreprise moderne (organigrammes, flux économiques, dialogue social, obligations fiscales et comptables). Préparation rigoureuse des lycéens aux épreuves du baccalauréat et à la poursuite d'études supérieures.</div>
+      </div>
+
+      <div class="focus-box">
+        <div class="focus-title">Pédagogie Républicaine & Cadre Éducatif</div>
+        <div class="focus-text">Autorité naturelle bienveillante, sens élevé du service public, transmission des principes de laïcité et de civisme, accompagnement bienveillant pour la réussite de chaque jeune.</div>
+      </div>
+
+      <div class="focus-box">
+        <div class="focus-title">Affectation Immédiate & Priorité Académie de RENNES</div>
+        <div class="focus-text">Mobilité totale acceptée sur l'ensemble de l'académie. Prise de service immédiate sans préavis sur les besoins d'enseignement en lycée.</div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
