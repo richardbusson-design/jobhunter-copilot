@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **20** | **223** | **297** | **16** | **558** |
+> | **21** | **224** | **298** | **17** | **559** |
 >
-> *Dernière mise à jour et synchronisation : 14/09/2026 21:00*
+> *Dernière mise à jour et synchronisation : 15/09/2026 02:15*
 
 ## 🗓️ Septembre 2026 (297 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-15 | **ACADÉMIE DE VERSAILLES** | Monsieur le Recteur d'Académie (DPE 1) | Versailles / Essonne (78000) | Non communiqué | 🌐 Portail Web | [Enseignant(e) en économie gestion filière stmg](https://recrutement.education.gouv.fr/recrutement/offreemploi/a1DIV00000D7OXa2AN/enseignante-en-%C3%A9conomie-gestion-fili%C3%A8re-stmg) (27 060 € à 38 160 € brut/an - Réf. MENJ-25-2026-45727) | 🟢 Transmis & Validé (Portail Officiel) | [Lettre](candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-14_Academie_de_Versailles_Enseignant_en_economie_gestion_filiere_stmg/statut_final_apres_envoi.png) |
 | 2026-09-14 | **RESEAU TALENTS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie (H/F) - CDD 7 mois (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213WBFH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-14_RESEAU_TALENTS_Gestionnaire_de_Paie__H_F__-_CDD_7_mois__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-14_RESEAU_TALENTS_Gestionnaire_de_Paie__H_F__-_CDD_7_mois__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-14 | **TOUCHE PAS A LA PAYE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (F/H) (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213WFQY) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-14_TOUCHE_PAS_A_LA_PAYE_Gestionnaire_de_paie__F_H___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-14_TOUCHE_PAS_A_LA_PAYE_Gestionnaire_de_paie__F_H___H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-14 | **ADEQUAT INTERIM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 02 (02000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de RH et paie F/H](https://candidat.francetravail.fr/offres/recherche/detail/213WGKX) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-14_ADEQUAT_INTERIM_Gestionnaire_de_RH_et_paie_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-14_ADEQUAT_INTERIM_Gestionnaire_de_RH_et_paie_F_H/CV_Richard_BUSSON.pdf) |
