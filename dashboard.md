@@ -3,14 +3,17 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **9** | **111** | **325** | **16** | **620** |
+> | **12** | **114** | **328** | **16** | **623** |
 >
-> *Dernière mise à jour et synchronisation : 16/09/2026 12:40*
+> *Dernière mise à jour et synchronisation : 16/09/2026 20:08*
 
-## 🗓️ Septembre 2026 (325 candidatures)
+## 🗓️ Septembre 2026 (328 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-16 | **FCS LAVAGE AUTO** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 06 (06000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213YNZH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_FCS_LAVAGE_AUTO_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_FCS_LAVAGE_AUTO_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-16 | **ALIZES RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 972 (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213ZBFJ) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_ALIZES_RH_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_ALIZES_RH_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-16 | **11** | Monsieur le Directeur de Centre (Direction de l'Établissement) | LEZIGNAN CORBIERES (60100) | Non communiqué | 🌐 Portail Web | [Responsable des Ressources Humaines H/F](https://candidat.francetravail.fr/offres/recherche/detail/213YPLW) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_11_Responsable_des_Ressources_Humaines_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_11_Responsable_des_Ressources_Humaines_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-09-16 | **77** | Monsieur le Directeur de Centre (Direction de l'Établissement) | FAREMOUTIERS (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie et administration du personnel](https://candidat.francetravail.fr/offres/recherche/detail/213YFNF) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_77_Gestionnaire_paie_et_administration_du_personnel/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_77_Gestionnaire_paie_et_administration_du_personnel/CV_Richard_BUSSON.pdf) |
 | 2026-09-16 | **EXCO OMNI CONSEILS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie/ ADP (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213YKMC) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_EXCO_OMNI_CONSEILS_Gestionnaire_de_paie__ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_EXCO_OMNI_CONSEILS_Gestionnaire_de_paie__ADP__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-16 | **COMPAGNIE GUSTAVE GROEBLI** | Monsieur le Directeur de Centre (Direction de l'Établissement) | HPA (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie  -   CDI  Forfait annuel 218 jours (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213YLQT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-16_COMPAGNIE_GUSTAVE_GROEBLI_Gestionnaire_de_paie__-___CDI__Forfait_annu/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-16_COMPAGNIE_GUSTAVE_GROEBLI_Gestionnaire_de_paie__-___CDI__Forfait_annu/CV_Richard_BUSSON.pdf) |
