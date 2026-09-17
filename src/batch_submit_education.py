@@ -13,25 +13,74 @@ import sys
 import time
 import json
 import asyncio
+import subprocess
+import unicodedata
 from datetime import datetime
 from playwright.async_api import async_playwright
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE_DIR = r"C:\Users\richa\Gemini\Pipeline_JobHunter"
 SESSION_FILE = r"C:\Users\richa\JobHunter\browser_profile\education_storage_state.json"
 TRACKER_FILE = os.path.join(BASE_DIR, "tracker.json")
 DASHBOARD_FILE = os.path.join(BASE_DIR, "dashboard.md")
+RESTANTES_JSON = os.path.join(BASE_DIR, "data", "offres_stmg_restantes.json")
 QUALIFIED_JSON = os.path.join(BASE_DIR, "data", "offres_stmg_nationales_qualifiees.json")
 
 # Importer le générateur sur-mesure
 sys.path.append(os.path.join(BASE_DIR, "src"))
 from generate_bespoke_dossier import generate_dossier_files
 
+def norm(text: str) -> str:
+    if not text:
+        return ""
+    t = unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore').decode('utf-8').lower()
+    t = re.sub(r'[\W_]+', ' ', t)
+    return t.strip()
+
 def sanitize_folder_name(name: str) -> str:
     s = re.sub(r'[^\w\-_]', '_', name)
     return re.sub(r'_+', '_', s).strip('_')[:80]
 
+def build_smart_query(offer: dict) -> str:
+    """Construit une requête de recherche ultra-ciblée pour le portail."""
+    title = offer.get("title", "")
+    lines = offer.get("lines", [])
+    acad_line = lines[1] if len(lines) > 1 else ""
+    acad_match = re.search(r'Académie de\s+([A-ZÉÈÊÀÂÔÛÎÇ\-]+)', acad_line, re.I)
+    acad = acad_match.group(1).strip() if acad_match else ""
+
+    code_match = re.search(r'\b(L\d{4}|P\d{4}|P\d{3})\b', title)
+    code = code_match.group(1) if code_match else ""
+
+    cities = [
+        "Tours", "Issoudun", "Dieppe", "Saint Lô", "Saint-Lô", "Le Havre", "Bordeaux",
+        "Martinique", "Guyane", "Oyonnax", "Jonzac", "Honfleur", "Alençon", "Vire",
+        "Poligny", "Forbach", "Caen", "Douarnenez", "Carhaix", "Bayeux", "Allonnes",
+        "Pornic", "Angoulême", "St Avold", "Saint-Avold", "Bourg en Bresse", "Poitiers",
+        "Rennes", "Dijon", "Strasbourg", "Mayotte", "Créteil", "Versailles", "Amiens"
+    ]
+    city_found = None
+    for c in cities:
+        if re.search(r'\b' + re.escape(c) + r'\b', title, re.I) or re.search(r'\b' + re.escape(c) + r'\b', " ".join(lines), re.I):
+            city_found = c
+            break
+
+    if code and acad:
+        return f"{code} {acad}"
+    elif code:
+        return code
+    elif city_found and acad and city_found.lower() != acad.lower():
+        return f"{city_found} {acad}"
+    elif city_found:
+        return f"{city_found} economie gestion"
+    elif acad:
+        return f"{acad} economie gestion"
+    return "economie gestion"
+
 def update_tracker_and_dashboard(offer_entry: dict):
-    """Met à jour tracker.json et dashboard.md puis synchronise Git."""
+    """Met à jour tracker.json et dashboard.md."""
     today_str = datetime.now().strftime("%Y-%m-%d")
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -42,11 +91,10 @@ def update_tracker_and_dashboard(offer_entry: dict):
     except Exception:
         tracker_data = []
 
-    # Vérifier si l'id existe déjà
     ref_id = offer_entry.get("reference") or offer_entry.get("title")
     existing_idx = None
     for i, item in enumerate(tracker_data):
-        if item.get("reference") == ref_id or item.get("title") == offer_entry.get("title"):
+        if item.get("reference") == ref_id or (ref_id and item.get("id") == ref_id) or item.get("title") == offer_entry.get("title"):
             existing_idx = i
             break
 
@@ -64,7 +112,7 @@ def update_tracker_and_dashboard(offer_entry: dict):
         "folder_rel": offer_entry.get("folder_rel", ""),
         "salary": "27 060 € à 38 160 € brut/an",
         "rome_code": "K2107 / K2111",
-        "notes": f"Poste d'Enseignant Éco-Gestion / STMG. Candidature transmise et validée avec succès sur le portail officiel de l'Éducation Nationale le {today_str}. 4 pièces officielles jointes (Passeport, M2 Droit public, CV et Lettre sur-mesure validés).",
+        "notes": f"Poste d'Enseignant Éco-Gestion / STMG. Candidature transmise et validée sur le portail officiel le {today_str}. 4 pièces officielles jointes.",
         "recruiter_delivery": {
             "sent": True,
             "mode": "WEB_PORTAL_AUTO_SUBMITTED",
@@ -83,7 +131,7 @@ def update_tracker_and_dashboard(offer_entry: dict):
 
     with open(TRACKER_FILE, "w", encoding="utf-8") as f:
         json.dump(tracker_data, f, indent=2, ensure_ascii=False)
-    print(f"[OK] tracker.json mis à jour pour : {ref_id}")
+    print(f"[OK] tracker.json mis à jour pour : {ref_id}", flush=True)
 
     # 2. Mise à jour dashboard.md
     if os.path.exists(DASHBOARD_FILE):
@@ -101,61 +149,104 @@ def update_tracker_and_dashboard(offer_entry: dict):
                 f"[📸 Preuve]({offer_entry.get('proof_rel')}) |"
             )
 
-            # Insérer après l'en-tête du tableau
             table_header = "| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n"
             if table_header in dash_content:
                 dash_content = dash_content.replace(table_header, table_header + dash_line + "\n")
                 with open(DASHBOARD_FILE, "w", encoding="utf-8") as f:
                     f.write(dash_content)
-                print(f"[OK] dashboard.md mis à jour avec succès.")
+                print(f"[OK] dashboard.md mis à jour avec succès.", flush=True)
         except Exception as e:
-            print(f"[!] Erreur mise à jour dashboard.md : {e}")
+            print(f"[!] Erreur mise à jour dashboard.md : {e}", flush=True)
+
+def git_sync(batch_num: int):
+    """Synchronise les nouveaux dossiers et trackers sur GitHub origin/main."""
+    try:
+        cmd = 'git add tracker.json dashboard.md candidatures/ data/ && git commit -m \"feat(candidatures): envoi batch education nationale STMG #' + str(batch_num) + '\" && git push origin main'
+        res = subprocess.run(cmd, shell=True, cwd=BASE_DIR, capture_output=True, text=True)
+        if res.returncode == 0:
+            print(f"[GIT] Synchronisation réussie sur origin/main (Lot #{batch_num})", flush=True)
+        else:
+            print(f"[GIT] Commit ou push : {res.stdout} {res.stderr}", flush=True)
+    except Exception as e:
+        print(f"[!] Erreur git sync : {e}", flush=True)
 
 async def process_single_offer(page, offer_info: dict) -> bool:
     """Traite de bout en bout une candidature sur le portail."""
     raw_title = offer_info["title"]
-    clean_kw = re.sub(r'\(.*?\)', '', raw_title).strip()[:35]
     today_str = datetime.now().strftime("%Y-%m-%d")
+    smart_query = build_smart_query(offer_info)
 
-    print(f"\n=======================================================")
-    print(f"[*] TRAITEMENT OFFRE : {raw_title}")
-    print(f"=======================================================")
+    print(f"\n=======================================================", flush=True)
+    print(f"[*] TRAITEMENT OFFRE : {raw_title}", flush=True)
+    print(f"[*] REQUÊTE CIBLÉE : '{smart_query}'", flush=True)
+    print(f"=======================================================", flush=True)
 
-    # 1. Recherche et accès à la fiche de poste
+    # 1. Navigation et recherche
     await page.goto("https://recrutement.education.gouv.fr/recrutement/offres", wait_until="domcontentloaded", timeout=45000)
-    await asyncio.sleep(3)
+    await asyncio.sleep(4)
 
     search_input = page.locator("input[name='search']").first
     await search_input.fill("")
-    await search_input.type(clean_kw, delay=30)
+    await search_input.type(smart_query, delay=25)
     await page.locator("button:has-text('Rechercher')").first.click()
     await asyncio.sleep(5)
 
-    # Trouver la carte correspondante
-    cards = page.locator(".fr-card")
+    cards = page.locator(".fr-card, c-dsfroffreemploicard")
     n_cards = await cards.count()
+    print(f"[+] {n_cards} carte(s) trouvée(s) pour '{smart_query}'", flush=True)
+
+    if n_cards == 0:
+        print("[!] Aucun résultat avec requête ciblée. Tentative avec 'economie gestion'...", flush=True)
+        await search_input.fill("")
+        await search_input.type("economie gestion", delay=25)
+        await page.locator("button:has-text('Rechercher')").first.click()
+        await asyncio.sleep(5)
+        cards = page.locator(".fr-card, c-dsfroffreemploicard")
+        n_cards = await cards.count()
+
+    # Trouver la carte avec le meilleur score de correspondance
+    code_match = re.search(r'\b(L\d{4}|P\d{4})\b', raw_title)
+    code = code_match.group(1).lower() if code_match else None
+
+    title_words = set(re.findall(r'\b\w{4,}\b', norm(raw_title)))
+
+    best_score = -1
     target_card = None
 
-    for i in range(min(n_cards, 10)):
+    for i in range(min(n_cards, 12)):
         c = cards.nth(i)
-        ctxt = await c.inner_text()
-        words = [w for w in clean_kw.split() if len(w) > 4]
-        if any(w.lower() in ctxt.lower() for w in words):
-            target_card = c
-            break
+        ctxt = norm(await c.inner_text())
+        
+        score = 0
+        if code and code in ctxt:
+            score += 15
+        
+        for w in title_words:
+            if w in ctxt:
+                score += 2
 
-    if not target_card:
-        print(f"[!] Impossible de localiser la carte pour : {clean_kw}")
+        lines = offer_info.get("lines", [])
+        if len(lines) > 1 and norm(lines[1]) in ctxt:
+            score += 8
+
+        if score > best_score:
+            best_score = score
+            target_card = c
+
+    if not target_card or best_score <= 2:
+        print(f"[!] Aucune carte pertinente trouvée (meilleur score: {best_score}).", flush=True)
         return False
+
+    selected_text = (await target_card.inner_text()).replace('\n', ' // ')
+    print(f"[+] Carte sélectionnée (score {best_score}): {selected_text[:110]}", flush=True)
 
     link = target_card.locator("a").first
     await link.click()
     await asyncio.sleep(6)
 
     offer_url = page.url
-    print(f"[+] URL offre atteinte : {offer_url}")
+    print(f"[+] Page de l'offre atteinte : {offer_url}", flush=True)
 
-    # Récupérer les métadonnées de la page
     content = await page.eval_on_selector("main", "el => el ? el.innerText : ''")
     if not content:
         content = await page.eval_on_selector("body", "el => el.innerText")
@@ -164,12 +255,18 @@ async def process_single_offer(page, offer_info: dict) -> bool:
     ref = ref_match.group(1) if ref_match else f"MENJ-STMG-{int(time.time())}"
 
     acad_match = re.search(r'Académie de\s+([A-ZÉÈÊÀÂÔÛÎÇ\-]+)', content, re.I)
-    acad = acad_match.group(0) if acad_match else offer_info.get("lines", ["", ""])[1]
+    acad = acad_match.group(0) if acad_match else offer_info.get("lines", ["", "Académie Éducation Nationale"])[1]
 
     loc_match = re.search(r'Lieu de travail\s*:\s*([^\n]+)', content)
     loc = loc_match.group(1).strip() if loc_match else acad
 
-    # 2. Création du dossier et génération des 6 fichiers sur-mesure
+    # Vérification présence bouton "Je postule"
+    postuler_btn = page.locator("button:has-text('Je postule')").first
+    if await postuler_btn.count() == 0:
+        print("[!] Bouton 'Je postule' absent sur la page (déjà candidaté ou offre expirée).", flush=True)
+        return False
+
+    # 2. Génération des 6 fichiers sur-mesure QualityGuard 3-Pass
     folder_name = f"{today_str}_{sanitize_folder_name(acad)}_{sanitize_folder_name(raw_title)}"
     dossier_abs = os.path.join(BASE_DIR, "candidatures", folder_name)
     folder_rel = f"candidatures/{folder_name}"
@@ -182,33 +279,23 @@ async def process_single_offer(page, offer_info: dict) -> bool:
         "raw_card": offer_info.get("card_text", "")
     }
 
-    print(f"[*] Génération du pack 6 fichiers sur-mesure dans : {dossier_abs}")
+    print(f"[*] Génération du pack 6 fichiers sur-mesure dans : {dossier_abs}", flush=True)
     dossier_files = await generate_dossier_files(offer_data, dossier_abs)
-
     cv_pdf_path = dossier_files["cv_pdf"]
     lm_pdf_path = dossier_files["lm_pdf"]
 
-    # 3. Processus de postulation sur le portail
-    print("[*] Vérification du bouton de postulation...")
-    # Vérifier si déjà candidaté (bouton indisponible ou message)
-    postuler_btn = page.locator("button:has-text('Je postule')").first
-    if await postuler_btn.count() == 0:
-        print("[!] Bouton 'Je postule' absent (peut-être déjà candidaté ou statut particulier).")
-        return False
-
-    print("[+] Clic sur 'Je postule'...")
+    # 3. Initialisation de la candidature
+    print("[+] Clic sur 'Je postule'...", flush=True)
     await postuler_btn.click()
     await asyncio.sleep(5)
 
-    # Si modale "Candidature initialisée", la fermer
     fermer_btn = page.locator("button:has-text('Fermer')")
     if await fermer_btn.count() > 0 and await fermer_btn.first.is_visible():
-        print("[+] Fermeture de la modale d'initialisation...")
         await fermer_btn.first.click()
         await asyncio.sleep(4)
 
-    # Naviguer sur Mon espace candidat -> Mes candidatures pour ouvrir le brouillon
-    print("[*] Accès à Mon espace candidat pour ouvrir le brouillon...")
+    # 4. Accès à Mon espace candidat -> Mes candidatures -> Ouvrir le Brouillon
+    print("[*] Accès à Mon espace candidat...", flush=True)
     await page.goto("https://recrutement.education.gouv.fr/recrutement/mon-espace-candidat", wait_until="domcontentloaded", timeout=45000)
     await asyncio.sleep(5)
 
@@ -216,80 +303,74 @@ async def process_single_offer(page, offer_info: dict) -> bool:
     await tab_cand.click()
     await asyncio.sleep(4)
 
-    # Ouvrir la candidature en Brouillon correspondant au titre
-    brouillon_card = page.locator(f"text='{clean_kw[:20]}'").first
-    if await brouillon_card.count() == 0:
-        brouillon_card = page.locator(".fr-card:has-text('BROUILLON')").first
-
+    brouillon_card = page.locator(".fr-card:has-text('BROUILLON')").first
     if await brouillon_card.count() > 0:
-        print("[+] Clic sur le brouillon de candidature...")
+        print("[+] Brouillon trouvé, ouverture...", flush=True)
         await brouillon_card.click()
         await asyncio.sleep(6)
     else:
-        print("[!] Brouillon introuvable.")
+        print("[!] Aucun brouillon trouvé dans Mes candidatures.", flush=True)
         return False
 
-    print(f"[+] Formulaire de candidature ouvert : {page.url}")
-
-    # 4. Rattachement des 4 pièces obligatoires
-    # A. CNI/Passeport
+    # 5. Rattachement des 4 pièces obligatoires
+    # A. Passeport
     has_passport = await page.locator(".slds-file:has-text('Passeport'), a:has-text('Passeport')").count() > 0
     if not has_passport:
-        print("[*] Rattachement du Passeport...")
+        print("[*] Rattachement du Passeport...", flush=True)
         sel_cni = page.locator("select:has(option[value='CNI_SEJ'])").first
-        await sel_cni.select_option(value="CNI_SEJ")
-        await asyncio.sleep(2)
-        sel_exist = page.locator("select").nth(3)
-        for opt_idx in range(await sel_exist.locator("option").count()):
-            opt = sel_exist.locator("option").nth(opt_idx)
-            otxt = (await opt.inner_text()).strip()
-            oval = await opt.get_attribute("value")
-            if "Passeport" in otxt and oval:
-                await sel_exist.select_option(value=oval)
-                print(f"    -> {otxt} rattaché")
-                break
-        await asyncio.sleep(3)
+        if await sel_cni.count() > 0:
+            await sel_cni.select_option(value="CNI_SEJ")
+            await asyncio.sleep(2)
+            sel_exist = page.locator("select").nth(3)
+            for opt_idx in range(await sel_exist.locator("option").count()):
+                opt = sel_exist.locator("option").nth(opt_idx)
+                otxt = (await opt.inner_text()).strip()
+                oval = await opt.get_attribute("value")
+                if "Passeport" in otxt and oval:
+                    await sel_exist.select_option(value=oval)
+                    print(f"    -> {otxt} rattaché", flush=True)
+                    break
+            await asyncio.sleep(3)
 
     # B. Diplôme
     has_dipl = await page.locator(".slds-file:has-text('Diplome'), a:has-text('Diplome')").count() > 0
     if not has_dipl:
-        print("[*] Rattachement du Diplôme (Master 2 Droit Public)...")
+        print("[*] Rattachement du Diplôme (Master 2 Droit Public)...", flush=True)
         sel_dipl = page.locator("select:has(option[value='DIPL'])").first
-        await sel_dipl.select_option(value="DIPL")
-        await asyncio.sleep(2)
-        sel_exist = page.locator("select").nth(3)
-        for opt_idx in range(await sel_exist.locator("option").count()):
-            opt = sel_exist.locator("option").nth(opt_idx)
-            otxt = (await opt.inner_text()).strip()
-            oval = await opt.get_attribute("value")
-            if "Diplome_Master2_Droit_Public" in otxt and oval:
-                await sel_exist.select_option(value=oval)
-                print(f"    -> {otxt} rattaché")
-                break
-        await asyncio.sleep(3)
+        if await sel_dipl.count() > 0:
+            await sel_dipl.select_option(value="DIPL")
+            await asyncio.sleep(2)
+            sel_exist = page.locator("select").nth(3)
+            for opt_idx in range(await sel_exist.locator("option").count()):
+                opt = sel_exist.locator("option").nth(opt_idx)
+                otxt = (await opt.inner_text()).strip()
+                oval = await opt.get_attribute("value")
+                if "Diplome_Master2_Droit_Public" in otxt and oval:
+                    await sel_exist.select_option(value=oval)
+                    print(f"    -> {otxt} rattaché", flush=True)
+                    break
+            await asyncio.sleep(3)
 
-    # C. Téléversement du CV sur-mesure
-    print(f"[*] Upload du CV validé : {cv_pdf_path}")
+    # C. Upload CV
+    print(f"[*] Upload CV validé : {cv_pdf_path}", flush=True)
     sel_cv = page.locator("select:has(option[value='CV'])").first
     await sel_cv.select_option(value="CV")
     await asyncio.sleep(2)
-    file_inp = page.locator("input[type='file']").first
-    await file_inp.set_input_files(cv_pdf_path)
+    await page.locator("input[type='file']").first.set_input_files(cv_pdf_path)
     await asyncio.sleep(5)
 
-    # D. Téléversement de la Lettre sur-mesure
-    print(f"[*] Upload de la Lettre validée : {lm_pdf_path}")
+    # D. Upload LM
+    print(f"[*] Upload Lettre validée : {lm_pdf_path}", flush=True)
     sel_lm = page.locator("select:has(option[value='LMOT'])").first
     await sel_lm.select_option(value="LMOT")
     await asyncio.sleep(2)
-    file_inp = page.locator("input[type='file']").first
-    await file_inp.set_input_files(lm_pdf_path)
+    await page.locator("input[type='file']").first.set_input_files(lm_pdf_path)
     await asyncio.sleep(5)
 
-    # 5. Soumission de la candidature
+    # 6. Soumission finale
     send_btn = page.locator("button:has-text('Envoyer ma candidature')").first
     if await send_btn.count() > 0 and await send_btn.is_enabled():
-        print("[+] Clic sur 'Envoyer ma candidature'...")
+        print("[+] Clic sur 'Envoyer ma candidature'...", flush=True)
         await send_btn.click()
         await asyncio.sleep(6)
 
@@ -298,10 +379,9 @@ async def process_single_offer(page, offer_info: dict) -> bool:
             await confirm_btn.first.click()
             await asyncio.sleep(5)
 
-        # Capture de preuve
         proof_path = os.path.join(dossier_abs, "candidature_soumise_preuve.png")
         await page.screenshot(path=proof_path, full_page=True)
-        print(f"[VICTOIRE] Preuve matérielle enregistrée : {proof_path}")
+        print(f"[VICTOIRE] Preuve matérielle enregistrée : {proof_path}", flush=True)
 
         proof_rel = f"{folder_rel}/candidature_soumise_preuve.png"
         offer_entry = {
@@ -314,45 +394,48 @@ async def process_single_offer(page, offer_info: dict) -> bool:
             "proof_rel": proof_rel
         }
 
-        # Mise à jour des registres
         update_tracker_and_dashboard(offer_entry)
         return True
     else:
-        print("[!] Le bouton 'Envoyer ma candidature' n'est pas actif.")
+        print("[!] Le bouton 'Envoyer ma candidature' n'est pas actif.", flush=True)
         return False
 
-async def run_batch(limit: int = 5):
-    """Exécute un lot de candidatures."""
-    if not os.path.exists(QUALIFIED_JSON):
-        print("[!] Fichier d'offres introuvable.")
+async def run_batch(limit: int = 50, batch_id: int = 2):
+    """Exécute les candidatures de manière séquentielle continue."""
+    if os.path.exists(RESTANTES_JSON):
+        with open(RESTANTES_JSON, "r", encoding="utf-8") as f:
+            remaining_offers = json.load(f)
+    elif os.path.exists(QUALIFIED_JSON):
+        with open(QUALIFIED_JSON, "r", encoding="utf-8") as f:
+            remaining_offers = json.load(f)
+    else:
+        print("[!] Aucune liste d'offres disponible.", flush=True)
         return
 
-    with open(QUALIFIED_JSON, "r", encoding="utf-8") as f:
-        all_offers = json.load(f)
-
-    # Filtrer les offres déjà traitées
     try:
         with open(TRACKER_FILE, "r", encoding="utf-8") as f:
             tracker = json.load(f)
-        tracker_titles = {t.get("title", "").lower() for t in tracker}
+        tracker_titles = {norm(t.get("title")) for t in tracker if t.get("title")}
         tracker_refs = {t.get("reference", "").lower() for t in tracker if t.get("reference")}
     except Exception:
         tracker_titles = set()
         tracker_refs = set()
 
-    # Définition de l'ordre de priorité : Amiens, Lyon RH, Mayotte, Pornic, etc.
-    priority_keywords = ["amiens", "rh", "grh", "mayotte", "pornic", "sam", "stmg"]
+    filtered_offers = []
+    for o in remaining_offers:
+        t_raw = o.get("title", "").strip()
+        t_n = norm(t_raw)
+        if t_n in tracker_titles:
+            continue
+        is_sub = False
+        for tt in tracker_titles:
+            if len(t_n) > 20 and (t_n in tt or tt in t_n):
+                is_sub = True
+                break
+        if not is_sub:
+            filtered_offers.append(o)
 
-    def score_priority(item):
-        title = item["title"].lower()
-        lines = " ".join(item.get("lines", [])).lower()
-        score = 0
-        for i, kw in enumerate(priority_keywords):
-            if kw in title or kw in lines:
-                score += (len(priority_keywords) - i) * 10
-        return score
-
-    sorted_offers = sorted(all_offers, key=score_priority, reverse=True)
+    print(f"[*] Démarrage Traitement Continu : {len(filtered_offers)} offres éligibles dans la file. Objectif : {limit} candidatures.", flush=True)
 
     candidated_count = 0
     async with async_playwright() as p:
@@ -363,44 +446,51 @@ async def run_batch(limit: int = 5):
         )
         page = await context.new_page()
 
-        for idx, offer in enumerate(sorted_offers, 1):
+        for idx, offer in enumerate(filtered_offers, 1):
             title = offer["title"]
-            
-            # Contrôle anti-doublon
-            if title.lower() in tracker_titles:
-                print(f"[-] Offre déjà dans le tracker : {title}")
-                continue
-            if "versailles" in title.lower() and "filière stmg" in title.lower():
-                print(f"[-] Offre Versailles déjà soumise aujourd'hui : {title}")
-                continue
-            if "créteil" in title.lower() and "stmg" in title.lower():
-                print(f"[-] Offre Créteil déjà traitée : {title}")
-                continue
+            print(f"\n>>> Progression : {candidated_count}/{limit} validées (Examen offre {idx}/{len(filtered_offers)})", flush=True)
 
-            success = await process_single_offer(page, offer)
-            if success:
-                candidated_count += 1
-                tracker_titles.add(title.lower())
-                print(f"[+] Candidature #{candidated_count} terminée avec succès.")
+            try:
+                success = await process_single_offer(page, offer)
+                if success:
+                    candidated_count += 1
+                    tracker_titles.add(norm(title))
+                    print(f"[SUCCESS] Candidature #{candidated_count}/{limit} transmise avec succès !", flush=True)
+                    
+                    # Synchronisation Git tous les 5 envois
+                    if candidated_count % 5 == 0:
+                        print(f"[*] Palier de 5 atteint : synchronisation Git intermédiaire...", flush=True)
+                        git_sync(batch_id + (candidated_count // 5))
+            except Exception as e:
+                print(f"[!] Erreur sur '{title}' : {e}", flush=True)
 
             if candidated_count >= limit:
-                print(f"\n[+] Limite du lot atteinte ({limit} candidatures traitées).")
+                print(f"\n[+] Objectif du lot atteint ({limit} candidatures traitées).", flush=True)
                 break
 
-            # Pause respectueuse entre 2 candidatures
-            await asyncio.sleep(8)
+            await asyncio.sleep(6)
 
         await browser.close()
 
-    print(f"\n=======================================================")
-    print(f"[+] FIN DU LOT : {candidated_count} nouvelle(s) candidature(s) soumise(s).")
-    print(f"=======================================================")
+    # Synchronisation Git finale
+    if candidated_count > 0 and candidated_count % 5 != 0:
+        git_sync(batch_id + (candidated_count // 5) + 1)
+
+    print(f"\n=======================================================", flush=True)
+    print(f"[+] FIN DU TRAITEMENT CONTINU : {candidated_count} nouvelle(s) candidature(s) soumise(s).", flush=True)
+    print(f"=======================================================", flush=True)
 
 if __name__ == "__main__":
-    limit = 5
+    limit = 50
+    batch_id = 2
     if len(sys.argv) > 1:
         try:
             limit = int(sys.argv[1])
         except ValueError:
             pass
-    asyncio.run(run_batch(limit=limit))
+    if len(sys.argv) > 2:
+        try:
+            batch_id = int(sys.argv[2])
+        except ValueError:
+            pass
+    asyncio.run(run_batch(limit=limit, batch_id=batch_id))
