@@ -212,5 +212,85 @@
     "card_index": 34,
     "page_index": 3,
     "href": "#"
+  },
+  {
+    "title": "ASSISTANT(E) DE DIRECTION",
+    "date_pub_str": "2026-09-16",
+    "lines": [
+      "ASSISTANT(E) DE DIRECTION",
+      "Académie de ADMINISTRATION CENTRALE",
+      "SAAM C",
+      "Temps plein",
+      "Publié le 16/9/2026"
+    ],
+    "card_text": "ASSISTANT(E) DE DIRECTION\n\n Académie de ADMINISTRATION CENTRALE\n SAAM C\n Temps plein\n\nPublié le 16/9/2026",
+    "query": "gestion",
+    "card_index": 18,
+    "page_index": 1,
+    "href": "#"
+  },
+  {
+    "title": "Chargé/Chargée de gestion Parcoursup au SRAIOLDS - Bordeaux",
+    "date_pub_str": "2026-09-16",
+    "lines": [
+      "Chargé/Chargée de gestion Parcoursup au SRAIOLDS - Bordeaux",
+      "Académie de BORDEAUX",
+      "SRA-IOLDS",
+      "Temps plein",
+      "Publié le 16/9/2026"
+    ],
+    "card_text": "Chargé/Chargée de gestion Parcoursup au SRAIOLDS - Bordeaux\n\n Académie de BORDEAUX\n SRA-IOLDS\n Temps plein\n\nPublié le 16/9/2026",
+    "query": "gestion",
+    "card_index": 24,
+    "page_index": 1,
+    "href": "#"
+  },
+  {
+    "title": "Expert(e) parcours et carrière - DE SPES - DPC",
+    "date_pub_str": "2026-09-16",
+    "lines": [
+      "Expert(e) parcours et carrière - DE SPES - DPC",
+      "Académie de ADMINISTRATION CENTRALE",
+      "DE SPES 2",
+      "Temps plein",
+      "Publié le 16/9/2026"
+    ],
+    "card_text": "Expert(e) parcours et carrière - DE SPES - DPC\n\n Académie de ADMINISTRATION CENTRALE\n DE SPES 2\n Temps plein\n\nPublié le 16/9/2026",
+    "query": "gestion",
+    "card_index": 46,
+    "page_index": 2,
+    "href": "#"
+  },
+  {
+    "title": "DAF E2 ADJOINT A LA CHEFFE DE SECTION - REFERENT METIER",
+    "date_pub_str": "2026-09-17",
+    "lines": [
+      "DAF E2 ADJOINT A LA CHEFFE DE SECTION - REFERENT METIER",
+      "Académie de ADMINISTRATION CENTRALE",
+      "DAF E2",
+      "Temps plein",
+      "Publié le 17/9/2026"
+    ],
+    "card_text": "DAF E2 ADJOINT A LA CHEFFE DE SECTION - REFERENT METIER\n\n Académie de ADMINISTRATION CENTRALE\n DAF E2\n Temps plein\n\nPublié le 17/9/2026",
+    "query": "gestion",
+    "card_index": 41,
+    "page_index": 3,
+    "href": "#"
+  },
+  {
+    "title": "Adjoint(e) chef du bureau prog enseignement scolaire public 2d degré DGESCO B1-2",
+    "date_pub_str": "2026-09-18",
+    "lines": [
+      "Adjoint(e) chef du bureau prog enseignement scolaire public 2d degré DGESCO B1-2",
+      "Académie de ADMINISTRATION CENTRALE",
+      "DGESCO B1-2",
+      "Temps plein",
+      "Publié le 18/9/2026"
+    ],
+    "card_text": "Adjoint(e) chef du bureau prog enseignement scolaire public 2d degré DGESCO B1-2\n\n Académie de ADMINISTRATION CENTRALE\n DGESCO B1-2\n Temps plein\n\nPublié le 18/9/2026",
+    "query": "management",
+    "card_index": 21,
+    "page_index": 3,
+    "href": "#"
   }
 ]
