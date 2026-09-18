@@ -14027,5 +14027,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-09-25"
+  },
+  {
+    "id": "APEC-179447137W",
+    "source": "L'Apec (Direct WebService)",
+    "company": "Robert Walters France",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "Responsable Ressources Humaines F/H",
+    "city": "Roissy",
+    "postal_code": "95000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "50 - 55 k€ brut annuel",
+    "contract_type": "CDI",
+    "url": "https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179447137W",
+    "description": "Poste de Responsable Ressources Humaines F/H chez Robert Walters France. Missions d'encadrement, pilotage RH, paie ou ingénierie de formation.",
+    "score": 97,
+    "date": "2026-09-18",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H",
+    "folder_rel": "candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": false,
+      "mode": "WEB_PORTAL_REQUIRED",
+      "channel": "L'Apec (Direct WebService)"
+    },
+    "relance_date": "2026-09-25"
   }
 ]
