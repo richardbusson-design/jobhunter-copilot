@@ -59,13 +59,21 @@ def build_smart_query(offer: dict) -> str:
         "Martinique", "Guyane", "Oyonnax", "Jonzac", "Honfleur", "Alençon", "Vire",
         "Poligny", "Forbach", "Caen", "Douarnenez", "Carhaix", "Bayeux", "Allonnes",
         "Pornic", "Angoulême", "St Avold", "Saint-Avold", "Bourg en Bresse", "Poitiers",
-        "Rennes", "Dijon", "Strasbourg", "Mayotte", "Créteil", "Versailles", "Amiens"
+        "Rennes", "Dijon", "Strasbourg", "Mayotte", "Créteil", "Versailles", "Amiens",
+        "Montbéliard", "Montbeliard", "Châtellerault", "Chatellerault", "Rochefort",
+        "Niort", "Vannes", "Bressuire", "Saint Jean d'Angely", "St Jean d'Angely",
+        "Reims", "Montluçon", "Montlucon", "Lorient", "Landerneau", "Civray", "Ruffec"
     ]
     city_found = None
     for c in cities:
-        if re.search(r'\b' + re.escape(c) + r'\b', title, re.I) or re.search(r'\b' + re.escape(c) + r'\b', " ".join(lines), re.I):
+        if re.search(r'\b' + re.escape(c) + r'\b', title, re.I):
             city_found = c
             break
+    if not city_found:
+        for c in cities:
+            if re.search(r'\b' + re.escape(c) + r'\b', " ".join(lines), re.I):
+                city_found = c
+                break
 
     if code and acad:
         return f"{code} {acad}"

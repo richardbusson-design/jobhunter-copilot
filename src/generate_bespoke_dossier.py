@@ -613,7 +613,7 @@ def build_lettre_html(offer: dict) -> str:
 
   <!-- DATE -->
   <div class="date-box">
-    Creil, le 15 septembre 2026
+    Creil, le 18 septembre 2026
   </div>
 
   <!-- OBJET -->
