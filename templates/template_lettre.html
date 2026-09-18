@@ -105,7 +105,7 @@
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
-      margin-top: 26px; /* Espacement naturel avant signature */
+      margin-top: 26px;
       padding-bottom: 4px;
       page-break-inside: avoid;
       break-inside: avoid;
@@ -113,6 +113,7 @@
       break-before: avoid;
     }
     .pj-block {
+      width: 50%;
       font-size: 9.5pt;
       color: #222222;
       text-align: left;
@@ -122,26 +123,31 @@
       font-weight: 600;
       color: #000000;
     }
+    /* Bloc signature rigoureusement aligné sur l'axe du bloc destinataire */
     .signature-box {
+      width: 50%;
+      margin-left: auto;
+      padding-left: 10px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      width: 160px;
-      margin-right: 20px;
+      align-items: flex-start;
+      text-align: left;
     }
     .signature-img {
       height: 52px;
       width: auto;
-      max-width: 150px;
+      max-width: 160px;
       object-fit: contain;
       display: block;
       margin-bottom: 2px;
+      margin-left: 0;
     }
     .signature-name {
       font-size: 10.5pt;
       font-weight: bold;
       color: #000000;
       letter-spacing: 0.01em;
+      text-align: left;
     }
   </style>
 </head>
