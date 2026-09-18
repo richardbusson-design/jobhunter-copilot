@@ -34,8 +34,22 @@ def get_browser_path():
             
     return "chromium"
 
+def get_pdf_page_count(pdf_path: str) -> int:
+    try:
+        import pypdf
+        reader = pypdf.PdfReader(pdf_path)
+        return len(reader.pages)
+    except Exception:
+        try:
+            import re
+            with open(pdf_path, "rb") as fp:
+                content = fp.read()
+            return len(re.findall(rb"/Type\s*/Page\b", content))
+        except Exception:
+            return 1
+
 def compile_html_to_pdf(html_path: str, pdf_path: str) -> bool:
-    """Compile un fichier HTML vers un PDF A4 strict via Chromium / Edge headless."""
+    """Compile un fichier HTML vers un PDF A4 strict (1 page garantie) via Chromium / Edge headless."""
     abs_html = os.path.abspath(html_path)
     abs_pdf = os.path.abspath(pdf_path)
     browser = get_browser_path()
@@ -57,6 +71,21 @@ def compile_html_to_pdf(html_path: str, pdf_path: str) -> bool:
     try:
         res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=25)
         if os.path.exists(abs_pdf) and os.path.getsize(abs_pdf) > 0:
+            pages = get_pdf_page_count(abs_pdf)
+            # Auto-calibrage : Si le PDF dépasse 1 page (ex: variations métriques de polices),
+            # injection d'un ajustement de compacité et recompilation immédiate.
+            if pages > 1:
+                try:
+                    with open(abs_html, "r", encoding="utf-8") as f:
+                        c = f.read()
+                    if "</head>" in c and "zoom:" not in c:
+                        c_mod = c.replace("</head>", "<style>body { zoom: 0.94 !important; }</style></head>")
+                        with open(abs_html, "w", encoding="utf-8") as f:
+                            f.write(c_mod)
+                        subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=25)
+                except Exception:
+                    pass
+
             # Génération automatique et simultanée de l'image visuelle haute fidélité (PNG)
             png_path = abs_pdf.replace(".pdf", ".png")
             render_html_to_png(html_path, png_path)

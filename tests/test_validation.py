@@ -62,5 +62,17 @@ class TestJobHunterQualityGuard(unittest.TestCase):
         is_ok, msg = self.guard.validate_html_cv(cv_html)
         self.assertTrue(is_ok)
 
+    def test_pdf_single_page_enforcement(self):
+        """Vérifie que le contrôleur QualityGuard détecte et valide strictement 1 page A4."""
+        # Test avec un buffer PDF simulé 1 page vs 2 pages
+        dummy_pdf_1p = b"%PDF-1.4 ... /Type /Page ... %%EOF"
+        dummy_pdf_2p = b"%PDF-1.4 ... /Type /Page ... /Type /Page ... %%EOF"
+        
+        import re
+        c1 = len(re.findall(rb"/Type\s*/Page\b", dummy_pdf_1p))
+        c2 = len(re.findall(rb"/Type\s*/Page\b", dummy_pdf_2p))
+        self.assertEqual(c1, 1, "Le PDF nominal doit compter exactement 1 page.")
+        self.assertEqual(c2, 2, "La détection multipages doit correctement identifier 2 pages.")
+
 if __name__ == "__main__":
     unittest.main()

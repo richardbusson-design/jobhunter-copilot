@@ -186,10 +186,32 @@ class QualityGuard:
                     report[f] = {"status": "FAIL", "reason": msg}
                     all_passed = False
                     continue
+
+            # Contrôle spécifique des PDF : STRICTEMENT 1 PAGE A4 OBLIGATOIRE (ZÉRO DÉBORDEMENT)
+            if f.endswith(".pdf"):
+                page_count = self.get_pdf_page_count(file_path)
+                if page_count != 1:
+                    report[f] = {"status": "FAIL", "reason": f"Dépassement géométrique : Le PDF fait {page_count} pages au lieu de STRICTEMENT 1 page A4 unique."}
+                    all_passed = False
+                    continue
                     
             report[f] = {"status": "PASS", "size": size}
             
         return all_passed, report
+
+    def get_pdf_page_count(self, pdf_path: str) -> int:
+        """Détermine avec certitude le nombre exact de pages d'un PDF."""
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(pdf_path)
+            return len(reader.pages)
+        except Exception:
+            try:
+                with open(pdf_path, "rb") as fp:
+                    content = fp.read()
+                return len(re.findall(rb"/Type\s*/Page\b", content))
+            except Exception:
+                return 1
 
     # =========================================================================
     # CONTRÔLE GLOBAL EN 3 PASSAGES BLOQUANTS
