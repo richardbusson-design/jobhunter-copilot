@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2026-09-18T15:37:04.295883",
+  "protected_by": "QualityGuard Security System",
+  "files": {
+    ".gemini\\config\\skills\\lettre-de-motivation\\SKILL.md": {
+      "sha256": "c3e3bbcaf412f41cd96e3d1316f4e1bd046db8e8a7293b69d725dc9c19fec92d",
+      "size": 18326,
+      "flat_name": ".gemini__config__skills__lettre-de-motivation__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\lettre-de-motivation\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\redaction-cv\\SKILL.md": {
+      "sha256": "c4154f56029e482915db9316dabd28345381ca0e7ea5ba50c9ad8c173123b797",
+      "size": 8430,
+      "flat_name": ".gemini__config__skills__redaction-cv__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\redaction-cv\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\formulaire-candidature\\SKILL.md": {
+      "sha256": "6f4befbb5ee663aa74d8af249907e7f38d03958562e4ed4cd0b0169747e6aff7",
+      "size": 8809,
+      "flat_name": ".gemini__config__skills__formulaire-candidature__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\formulaire-candidature\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\creation-bouton-dashboard\\SKILL.md": {
+      "sha256": "1e6db42ebc56b0adce0ffd01e33eba0d156b66747ad2e109d17420c316a926f6",
+      "size": 6669,
+      "flat_name": ".gemini__config__skills__creation-bouton-dashboard__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\creation-bouton-dashboard\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\creation-visuel-linkedin\\SKILL.md": {
+      "sha256": "0ebfcbaa65689b55814266b2efe1a665bb62a4c4baee868499bf23b9b3242e72",
+      "size": 8410,
+      "flat_name": ".gemini__config__skills__creation-visuel-linkedin__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\creation-visuel-linkedin\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\veille-offres-mayotte\\SKILL.md": {
+      "sha256": "1ad701912bc61dd7e21f1a4fd0d7b9163f143c501fa96f3f27d64a2202786673",
+      "size": 4827,
+      "flat_name": ".gemini__config__skills__veille-offres-mayotte__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\veille-offres-mayotte\\SKILL.md"
+    },
+    ".gemini\\config\\skills\\veille-recrutement-education-gouv\\SKILL.md": {
+      "sha256": "33fdd68124133d1f4389a4ea83ffe05c4a3ff844fa2974965db231c2d6242987",
+      "size": 7631,
+      "flat_name": ".gemini__config__skills__veille-recrutement-education-gouv__SKILL.md",
+      "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\veille-recrutement-education-gouv\\SKILL.md"
+    },
+    "Gemini\\Pipeline_JobHunter\\templates\\template_lettre.html": {
+      "sha256": "f7a24c90e3fa1dac202e1cd61bc4c7fc2795e2a470ca47428773194bdec68b54",
+      "size": 16538,
+      "flat_name": "Gemini__Pipeline_JobHunter__templates__template_lettre.html",
+      "original_path": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\templates\\template_lettre.html"
+    },
+    "Gemini\\Pipeline_JobHunter\\templates\\template_cv.html": {
+      "sha256": "9df5790c216a74fd2c1dc3de2523ccfbb5cbc3d27b10e3641580aeb8a68e325b",
+      "size": 22405,
+      "flat_name": "Gemini__Pipeline_JobHunter__templates__template_cv.html",
+      "original_path": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\templates\\template_cv.html"
+    }
+  }
+}
