@@ -82,13 +82,11 @@
       text-align: left;
     }
     .body-paragraphs {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      margin-top: 8px;
     }
     .body-paragraphs p {
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 12px; /* Saut d'une seule ligne entre paragraphes */
       text-align: justify;
       text-justify: inter-word;
       color: #111111;
@@ -96,7 +94,7 @@
       break-inside: avoid;
     }
     .politesse {
-      margin-top: 4px;
+      margin-top: 0;
       margin-bottom: 0 !important;
       text-align: justify;
       text-justify: inter-word;
@@ -107,7 +105,7 @@
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
-      margin-top: auto;
+      margin-top: 26px; /* Espacement naturel avant signature */
       padding-bottom: 4px;
       page-break-inside: avoid;
       break-inside: avoid;
