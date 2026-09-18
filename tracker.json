@@ -13112,5 +13112,34 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-09-24"
+  },
+  {
+    "id": "FT-213GSFD",
+    "source": "France Travail (Flux Direct)",
+    "company": "HICONNECT SARL",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "Gestionnaire de paie et ADP temps plein (H/F)",
+    "city": "GARDANNE - (13)",
+    "postal_code": "13000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "Salaire brut : Annuel de 32000.0 Euros à 37000.0 Euros sur 12 mois",
+    "contract_type": "CDI",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/213GSFD",
+    "description": "HiConnect est une société basée sur Gardanne près d'Aix en Provence (accès facile), prestataire de services dédié aux entreprises étrangères en France. Nous fournissons aux sociétés internationales (principalement américaines et britanniques) ayant des petites à moyennes structures en France, une assistance indispensable dans la gestion du personnel, la paye et les déclarations sociales. \n\nDescriptif de la mission : \n- L'établissement des payes ( multi conventions) : entre 150 et 300 bulletins/ mois\n- Les déclarations des charges sociales trimestrielles, annuelles \n- Contrôle des DSN mensuelles\n- La relation avec les organismes sociaux\n- Les formalités d'embauche et de départ\n- Suivi des absences maladie (dossiers prévoyance) \n- Formalités administratives diverses\n- Relations clients (emails, vision)\n- Anglais indispensable\n\n1 jour de télétravail par semaine.",
+    "score": 95,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_",
+    "folder_rel": "candidatures\\2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION",
+      "reason": "Candidature officiellement transmise via l'espace candidat France Travail",
+      "proof_screenshot": "preuve_soumission_officielle.png"
+    },
+    "date": "2026-09-18",
+    "relance_date": "2026-09-25"
   }
 ]

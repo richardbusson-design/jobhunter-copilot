@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **0** | **100** | **349** | **81** | **644** |
+> | **1** | **101** | **350** | **82** | **645** |
 >
-> *Dernière mise à jour et synchronisation : 18/09/2026 01:25*
+> *Dernière mise à jour et synchronisation : 18/09/2026 07:10*
 
-## 🗓️ Septembre 2026 (349 candidatures)
+## 🗓️ Septembre 2026 (350 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-18 | **HICONNECT SARL** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | GARDANNE - (13) (13000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie et ADP temps plein (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213GSFD) (Salaire brut : Annuel de 32000.0 Euros à 37000.0 Euros sur 12 mois - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-18_HICONNECT_SARL_Gestionnaire_de_paie_et_ADP_temps_plein__H_F_/preuve_soumission_officielle.png) |
 | 2026-09-17 | **PROMAN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 60 (60000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213ZXDV) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-17_PROMAN_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-17_PROMAN_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-17 | **TIM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 91 (91000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/213ZXXT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-17_TIM_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-17_TIM_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-17 | **BTP CFA PAYS DE LA LOIRE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214BDBM) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-17_BTP_CFA_PAYS_DE_LA_LOIRE_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-17_BTP_CFA_PAYS_DE_LA_LOIRE_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
