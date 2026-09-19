@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **19** | **119** | **368** | **26** | **677** |
+> | **1** | **98** | **369** | **93** | **678** |
 >
-> *Dernière mise à jour et synchronisation : 18/09/2026 19:35*
+> *Dernière mise à jour et synchronisation : 19/09/2026 07:09*
 
-## 🗓️ Septembre 2026 (368 candidatures)
+## 🗓️ Septembre 2026 (369 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-19 | **BOUSSENOT DEMENAGEMENT** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | PARIS - (75) (75000) | Non communiqué | 🌐 Portail Web | [CHARGÉ(E) DE MARKETING DIGITAL &amp; RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214BZND) (A DEFINIR - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARG%C3%89_E__DE_MARKETING_DIGITAL__amp__RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARG%C3%89_E__DE_MARKETING_DIGITAL__amp__RH__H_F_/CV_Richard_BUSSON.pdf) / [📸 Preuve](candidatures/2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARG%C3%89_E__DE_MARKETING_DIGITAL__amp__RH__H_F_/preuve_soumission_officielle.png) |
 | 2026-09-18 | **Robert Walters France** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Roissy (95000) | Non communiqué | 🌐 Portail Web | [Responsable Ressources Humaines F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179447137W) (50 - 55 k€ brut annuel - 97%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-18_Robert_Walters_France_Responsable_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-18 | **ABEILLES SERVICES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 30 (30000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie &amp; RH H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214CKNX) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-18_ABEILLES_SERVICES_Gestionnaire_de_Paie__amp__RH_H_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-18_ABEILLES_SERVICES_Gestionnaire_de_Paie__amp__RH_H_F__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-18 | **Holy-Dis** | Monsieur le Responsable du Recrutement (Direction des Ressources Humaines) | Colombes (92000) | Non communiqué | 🌐 Portail Web | [Consultant Formateur Logiciel RH F/H](https://www.apec.fr/candidat/recherche-emploi.html/emploi/detail-offre/179446428W) (37 - 40 k€ brut annuel - 94%) | 🌐 Portail Web | [Lettre](candidatures/2026-09-18_Holy-Dis_Consultant_Formateur_Logiciel_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-18_Holy-Dis_Consultant_Formateur_Logiciel_RH_F_H/CV_Richard_BUSSON.pdf) |

@@ -14055,5 +14055,34 @@
       "channel": "L'Apec (Direct WebService)"
     },
     "relance_date": "2026-09-25"
+  },
+  {
+    "id": "FT-214BZND",
+    "source": "France Travail (Flux Direct)",
+    "company": "BOUSSENOT DEMENAGEMENT",
+    "contact_name": "Monsieur le Responsable du Recrutement",
+    "contact_title": "Direction des Ressources Humaines",
+    "title": "CHARGÉ(E) DE MARKETING DIGITAL &amp; RH (H/F)",
+    "city": "PARIS - (75)",
+    "postal_code": "75000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "A DEFINIR",
+    "contract_type": "CDI",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/214BZND",
+    "description": "Boussenot Déménagement, entreprise spécialisée dans le déménagement de particuliers et de professionnels, recherche un(e) Chargé(e) de Marketing Digital &amp; RH pour accompagner son développement, renforcer sa visibilité et participer à la gestion des ressources humaines.\n\nVos missions\n\nMarketing digital et communication\n\nGestion et animation des réseaux sociaux ;\nCréation de contenus : publications, photos, vidéos et supports de communication ;\nMise à jour du site internet ;\nDéveloppement de la visibilité et du référencement de l'entreprise ;\nGestion des avis clients et de l'e-réputation ;\nMise en valeur de nos prestations, réalisations et équipes.\n\nRessources humaines\n\nRédaction et diffusion des offres d'emploi ;\nRecherche et présélection des candidatures ;\nParticipation aux recrutements ;\nSuivi administratif des salariés ;\nParticipation à l'intégration des nouveaux collaborateurs ;\nMise à jour des documents et dossiers RH ;\nParticipation à la communication interne et à la marque employeur.\nProfil recherché\n\nVous avez une formation ou une expérience en marketing digital / communication.\n\nAucun diplôme spécifique en ressources humaines n'est exigé, mais une première expérience ou une pratique des missions RH (recrutement, gestion administrative du personnel, suivi des salariés) est souhaitée.\n\nNous recherchons une personne polyvalente, organisée, autonome, créative et à l'aise avec les outils numériques, souhaitant s'investir dans une PME dynamique.",
+    "score": 95,
+    "folder": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARGÉ_E__DE_MARKETING_DIGITAL__amp__RH__H_F_",
+    "folder_rel": "candidatures\\2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARGÉ_E__DE_MARKETING_DIGITAL__amp__RH__H_F_",
+    "pdf_letter": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARGÉ_E__DE_MARKETING_DIGITAL__amp__RH__H_F_\\Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\candidatures\\2026-09-19_BOUSSENOT_DEMENAGEMENT_CHARGÉ_E__DE_MARKETING_DIGITAL__amp__RH__H_F_\\CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_OFFICIAL_DIRECT_SUBMISSION",
+      "reason": "Candidature officiellement transmise via l'espace candidat France Travail",
+      "proof_screenshot": "preuve_soumission_officielle.png"
+    },
+    "date": "2026-09-19",
+    "relance_date": "2026-09-26"
   }
 ]
