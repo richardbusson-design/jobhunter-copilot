@@ -3,14 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **9** | **96** | **423** | **26** | **732** |
+> | **11** | **98** | **425** | **26** | **734** |
 >
-> *Dernière mise à jour et synchronisation : 24/09/2026 12:47*
+> *Dernière mise à jour et synchronisation : 24/09/2026 20:30*
 
-## 🗓️ Septembre 2026 (423 candidatures)
+## 🗓️ Septembre 2026 (425 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-24 | **LEADSEN RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Chargé de ressources humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214JNRT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-24_LEADSEN_RH_Charg%C3%A9_de_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-24_LEADSEN_RH_Charg%C3%A9_de_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-09-24 | **Talents AEC** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 62 (62000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie - Silae &amp; Cabinet Formateur - Saint-Omer H/F](https://candidat.francetravail.fr/offres/recherche/detail/7186006) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa/CV_Richard_BUSSON.pdf) |
 | 2026-09-24 | **CAISSE D ASSURANCE RETRAITE ET DE LA SAN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Chargé(e) de ressources humaines en CDI (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214JBSV) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-24_CAISSE_D_ASSURANCE_RETRAITE_ET_DE_LA_SAN_Charg%C3%A9_e__de_ressources_huma/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-24_CAISSE_D_ASSURANCE_RETRAITE_ET_DE_LA_SAN_Charg%C3%A9_e__de_ressources_huma/CV_Richard_BUSSON.pdf) |
 | 2026-09-24 | **CM WORLD** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Principauté de Monaco (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214JBPM) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-24_CM_WORLD_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-24_CM_WORLD_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-24 | **COS MAS GLASBERG** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 75 (75000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/214JHPW) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-24_COS_MAS_GLASBERG_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-24_COS_MAS_GLASBERG_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |

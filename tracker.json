@@ -15596,5 +15596,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-01"
+  },
+  {
+    "id": "FT-7186006",
+    "source": "France Travail (Flux Direct)",
+    "company": "Talents AEC",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire de Paie - Silae &amp; Cabinet Formateur - Saint-Omer H/F",
+    "city": "62",
+    "postal_code": "62000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/7186006",
+    "description": "POSTE : Gestionnaire de Paie - Silae &amp; Cabinet Formateur - Saint-Omer H/F\nDESCRIPTION : \nJe recherche pour mon client un Gestionnaire de Paie H/F dans le cadre d'un CDI.\n \nIl s'agit d'un cabinet...",
+    "score": 96,
+    "date": "2026-09-24",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa",
+    "folder_rel": "candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_Talents_AEC_Gestionnaire_de_Paie_-_Silae__amp__Cabinet_Formateur_-_Sa/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-01"
+  },
+  {
+    "id": "FT-214JNRT",
+    "source": "France Travail (Flux Direct)",
+    "company": "LEADSEN RH",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Chargé de ressources humaines (H/F)",
+    "city": "13",
+    "postal_code": "13000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/214JNRT",
+    "description": "Nous recrutons aujourd'hui un(e) Chargé(e) de Ressources Humaines (H/F) pour rejoindre une PME industrielle d'environ 40 collaborateurs, située aux alentours de Rousset.\n\nRattaché(e) directement au...",
+    "score": 93,
+    "date": "2026-09-24",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_LEADSEN_RH_Chargé_de_ressources_humaines__H_F_",
+    "folder_rel": "candidatures/2026-09-24_LEADSEN_RH_Chargé_de_ressources_humaines__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_LEADSEN_RH_Chargé_de_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-24_LEADSEN_RH_Chargé_de_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-01"
   }
 ]
