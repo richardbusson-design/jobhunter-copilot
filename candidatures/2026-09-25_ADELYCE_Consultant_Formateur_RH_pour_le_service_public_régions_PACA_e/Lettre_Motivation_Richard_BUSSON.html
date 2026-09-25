@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Lettre de Motivation - Richard Busson</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    html, body {
+      width: 794px;
+      height: 1123px;
+      max-height: 1123px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+    body {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.44;
+      color: #000000;
+      padding: 26px 48px 20px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      -webkit-font-smoothing: antialiased;
+    }
+    .header-container {
+      width: 100%;
+      margin-bottom: 6px;
+    }
+    .sender-box {
+      width: 48%;
+      text-align: left;
+      font-size: 10pt;
+      line-height: 1.34;
+      color: #111111;
+    }
+    .sender-name {
+      color: #000000;
+      font-size: 11pt;
+      font-weight: bold;
+      letter-spacing: 0.02em;
+      text-align: left;
+    }
+    .recipient-box {
+      width: 50%;
+      margin-left: auto;
+      margin-top: 10px; /* 1 ligne en dessous du bloc expéditeur */
+      text-align: left;  /* Alignement à gauche à l'intérieur du bloc */
+      font-size: 10pt;
+      line-height: 1.34;
+      color: #111111;
+      padding-left: 10px;
+    }
+    .recipient-name {
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+    }
+    .date-line {
+      margin-top: 5px;
+      font-size: 10pt;
+      color: #222222;
+      text-align: left;
+    }
+    .object-line {
+      font-size: 10.8pt;
+      margin: 38px 0 12px 0; /* Descente du texte de 2 lignes après la date */
+      color: #000000;
+      text-align: left;
+    }
+    .body-paragraphs {
+      margin-top: 8px;
+    }
+    .body-paragraphs p {
+      margin-top: 0;
+      margin-bottom: 12px; /* Saut d'une seule ligne entre paragraphes */
+      text-align: justify;
+      text-justify: inter-word;
+      color: #111111;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .politesse {
+      margin-top: 0;
+      margin-bottom: 0 !important;
+      text-align: justify;
+      text-justify: inter-word;
+      color: #111111;
+    }
+    .bottom-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      margin-top: 26px;
+      padding-bottom: 4px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+    .pj-block {
+      width: 50%;
+      font-size: 9.5pt;
+      color: #222222;
+      text-align: left;
+      margin-bottom: 4px;
+    }
+    .pj-block span {
+      font-weight: 600;
+      color: #000000;
+    }
+    /* Bloc signature rigoureusement aligné sur l'axe du bloc destinataire */
+    .signature-box {
+      width: 50%;
+      margin-left: auto;
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .signature-img {
+      height: 52px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 2px;
+      margin-left: 0;
+    }
+    .signature-name {
+      font-size: 10.5pt;
+      font-weight: bold;
+      color: #000000;
+      letter-spacing: 0.01em;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- En-tête officiel aligné : destinataire 1 ligne sous l'expéditeur -->
+  <div>
+    <div class="header-container">
+      <div class="sender-box">
+        <div class="sender-name">Richard BUSSON</div>
+        <div>98, allée Paul Cézanne</div>
+        <div>60100 CREIL</div>
+        <div>07 61 96 15 46 · 09 39 20 08 70</div>
+        <div>richard.busson@kairos-paye.fr</div>
+      </div>
+      <div class="recipient-box">
+        <div class="recipient-name">À l’attention de Monsieur le Responsable du Recrutement</div>
+        <div>Direction des Ressources Humaines</div>
+<div>ADELYCE</div>
+<div>Pôle Recrutement Cadres & Formation</div>
+<div>92000 Colombes</div>
+        <div class="date-line">À Creil, le 25 septembre 2026</div>
+      </div>
+    </div>
+
+    <!-- Objet (Gras uniquement sur 'Objet :') -->
+    <div class="object-line">
+      <strong>Objet :</strong> Candidature au poste de Consultant Formateur RH pour le service public régions PACA et LR
+    </div>
+  </div>
+
+  <!-- Corps de la lettre (4 paragraphes denses équilibrés, pleine page A4 garantie) -->
+  <div class="body-paragraphs">
+    <p>Madame, Monsieur,</p>
+    <p>Votre recherche d'un Consultant Formateur RH pour le service public régions PACA et LR à Colombes au sein de ADELYCE a retenu toute mon attention. Acteur reconnu dans le développement des compétences et la formation professionnelle, votre organisme représente un cadre d'excellence dont je mesure pleinement les exigences pédagogiques, la rigueur méthodologique et la volonté d'accompagner des apprenants vers une qualification certifiante reconnue.</p>
+<p>Mon parcours allie une longue expérience de terrain à une pratique éprouvée de l'enseignement. Je maîtrise de bout en bout l'animation des blocs RH et Paie, depuis l'embauche du premier salarié jusqu'à la production du bulletin, le contrôle approfondi de la DSN et le suivi des obligations de l'employeur. Rompu à la pédagogie active auprès d'adultes en reconversion et d'alternants, je sais contextualiser chaque règle juridique et chaque calcul pour garantir une assimilation rapide et pérenne des compétences du référentiel.</p>
+<p>J'ai exercé ce métier avec une responsabilité directe avant de l'enseigner : de 2003 à 2010, j'ai dirigé les ressources humaines et la paie d'une structure de 580 collaborateurs, salariés et bénévoles, en y pilotant l'administration, le plan de formation et le dialogue social. Par ailleurs, entre 2016 et 2020, je suis intervenu sur quatre centres Afpa (Vervins, Beauvais, Creil et Amiens), avec référentiel imposé, outil Métis, parcours individualisés et passage régulier des évaluations en cours de formation (ECF). Ce double ancrage professionnel donne à mes interventions un réalisme immédiatement apprécié.</p>
+<p>Dirigeant d'un organisme certifié Qualiopi (ICPF QUA007374), j'ai conçu de bout en bout un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254). Titulaire d'un Master 2 en Droit public et d'une Maîtrise en Sciences de Gestion, j'apporte une double expertise juridique et managériale garantissant des contenus rigoureusement actualisés. À 59 ans, j'offre un engagement loyal et pérenne, éligible aux aides à l'embauche senior. Titulaire du permis B, immédiatement disponible et mobile sur l'ensemble de votre secteur géographique, je serais honoré d'échanger avec vous lors d'un entretien.</p>
+    <p class="politesse">Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.</p>
+  </div>
+
+  <!-- Bas de page : Pièces jointes en bas à gauche, Signature vectorielle nette en bas à droite -->
+  <div class="bottom-container">
+    <div class="pj-block">
+      <span>Pièce jointe :</span> curriculum vitae.
+    </div>
+    <div class="signature-box">
+      <img class="signature-img" src="data:image/png;base64,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" alt="Signature Richard Busson" />
+      <div class="signature-name">Richard Busson</div>
+    </div>
+    </div>
+  </div>
+
+</body>
+</html>
