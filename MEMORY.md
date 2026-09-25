@@ -167,3 +167,23 @@
 - **Boucle de Repli à 4 Stratégies :** Clic standard -> Clic forcé (`force=True`) -> Soumission JS `form.submit()` -> Pression touche Entrée.
 - **Validation IMAP OVH :** Détection et activation en arrière-plan des e-mails avec lien d'activation obligatoire (ex: Taleez).
 - **Preuve Matérielle Horodatée :** Double capture obligatoire `form_ready_to_submit.png` et `preuve_soumission_officielle.png`. Zéro hallucination.
+
+---
+
+## 📬 RÈGLES D'EXPÉDITION PAR E-MAIL (LEÇONS DU 25/09/2026, CNAM HAUTS-DE-FRANCE)
+
+1. **CONTRÔLE DE CONFORMITÉ COMMANDE / PIÈCES JOINTES AVANT ENVOI (BLOQUANT) :**
+   - Relire la demande du recruteur et lister les pièces exigées. Si le recruteur demande **le CV**, le CV est joint au **premier** message, jamais annoncé « pour plus tard ».
+   - Contrôle final avant `send` : destinataire, objet (`RE:` + objet d'origine), corps, **chaque pièce jointe attendue présente et lisible**, copie cachée `richard.busson@kairos-paye.fr`.
+   - Un envoi incomplet impose un second message correctif dans le **même fil** (`replyThreadId`), jamais un nouveau fil.
+2. **LIMITE DU CONNECTEUR GMAIL (PIÈCES JOINTES EN BASE64) :**
+   - Les PDF Chromium (polices incorporées, ~250 Ko pour le CV) sont trop lourds pour transiter par le connecteur.
+   - Solution validée : **version compacte** des mêmes documents (`src/compact_pdf_cv.py`, ReportLab, polices standard Helvetica non incorporées, signature authentique redimensionnée) : CV ≈ 12 Ko, lettre ≈ 18 Ko. Ces fichiers sont stockés dans le dossier à côté du pack de 6 fichiers sous le suffixe `_compact_email.pdf`.
+   - Le pack officiel de 6 fichiers (HTML/PDF/PNG Chromium) reste la référence et n'est jamais remplacé.
+3. **BOÎTES AUX LETTRES :**
+   - Le connecteur Gmail des sessions cloud est relié à `richard.busson@gmail.com` uniquement. La boîte `richard.busson@kairos-paye.fr` (Google Workspace) n'est pas lisible directement.
+   - Depuis la récupération du compte kairos-paye.fr le 21/09/2026 (18h05), plus aucun mail externe adressé à kairos-paye.fr n'est remonté dans gmail.com : la liaison est à rétablir (transfert automatique côté Workspace, onglet « Transfert et POP/IMAP »).
+   - Tant que la liaison n'est pas rétablie, demander à Richard de transférer manuellement les mails reçus sur kairos-paye.fr.
+4. **HISTORIQUE :**
+   - 25/09/2026 : Cnam Hauts-de-France (Juliette Ferreira, chargée de missions RH) demande un CV à jour pour son vivier de formateurs (migration d'outil, conservation 2 ans). Réponse envoyée depuis gmail.com en deux messages (lettre 13h15, CV 13h38), consentement donné. Dossier : `candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie/`. Relance prévue le 09/10/2026.
+   - 25/09/2026 : correction du dossier `2026-09-16_CNAM_Pays_de_la_Loire__Responsable_RH_F_H` qui contenait un CV « Enseignant STMG / Essonne » (gabarit non adapté) : remplacé par un CV Responsable RH calibré. **Règle :** le gabarit `templates/template_cv.html` est un gabarit STMG ; ses blocs (titre, mobilité Essonne, adéquation STMG) doivent être réécrits à chaque offre, jamais copiés tels quels.
