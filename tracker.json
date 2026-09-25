@@ -15652,5 +15652,50 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-01"
+  },
+  {
+    "id": "CNAM-HDF-VIVIER-20260925",
+    "source": "Sollicitation directe par e-mail (vivier formateurs)",
+    "company": "Cnam Hauts-de-France",
+    "contact_name": "Madame Juliette FERREIRA",
+    "contact_title": "Chargée de missions RH",
+    "title": "Formateur vacataire RH, paie et droit social (vivier : FPG001, FPG104, FPG225)",
+    "city": "Lille",
+    "postal_code": "59000",
+    "phone": "Non communiqué",
+    "contact_email": "juliette.ferreira@lecnam.net",
+    "salary": "Vacations (non communiqué)",
+    "contract_type": "Vacataire",
+    "url": null,
+    "description": "Mail du 25/09/2026 12:04 reçu sur richard.busson@kairos-paye.fr : migration de l'outil de gestion des candidatures, demande de CV à jour pour maintien dans le vivier de formateurs (conservation 2 ans, consentement révocable). Adresse : 7 boulevard Louis XIV, 59000 Lille.",
+    "score": 95,
+    "date": "2026-09-25",
+    "folder": "/home/user/jobhunter-copilot/candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie",
+    "folder_rel": "candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie",
+    "pdf_letter": "/home/user/jobhunter-copilot/candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/user/jobhunter-copilot/candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "EMAIL_DIRECT_GMAIL",
+      "recruiter_email": "juliette.ferreira@lecnam.net",
+      "subject": "RE: Mise à jour de votre candidature - Cnam Hauts-de-France",
+      "timestamp": "2026-09-25 13:15",
+      "bcc": "richard.busson@kairos-paye.fr",
+      "gmail_thread_id": "1a0d8470a7ddc552",
+      "messages": [
+        {
+          "id": "1a0d8470a7ddc552",
+          "time": "2026-09-25 13:15",
+          "attachment": "Lettre_Motivation_Richard_BUSSON.pdf (version compacte 18 Ko)"
+        },
+        {
+          "id": "1a0d8538c7fc2ced",
+          "time": "2026-09-25 13:38",
+          "attachment": "CV_Richard_BUSSON.pdf (version compacte 12 Ko)"
+        }
+      ],
+      "note": "Envoi en deux messages : le CV, pièce demandée par le Cnam, a été oublié dans le premier envoi et transmis dans le second. Consentement RGPD 2 ans donné explicitement."
+    },
+    "relance_date": "2026-10-09"
   }
 ]
