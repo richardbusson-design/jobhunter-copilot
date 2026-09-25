@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>CV Richard BUSSON - Enseignant Économie-Gestion STMG</title>
+<title>CV Richard BUSSON - Responsable des Ressources Humaines</title>
 <style>
   @page {
     size: A4 portrait;
@@ -25,7 +25,7 @@
     overflow: hidden;
   }
 
-  /* 1. EN-TÊTE SUPÉRIEUR EXÉCUTIF */
+  /* 1. EN-TÊTE SUPÉRIEUR EXÉCUTIF (AWESOME-CV) */
   .header {
     background: linear-gradient(135deg, #091e36 0%, #152e50 60%, #1c3d69 100%);
     color: #ffffff;
@@ -58,6 +58,7 @@
     font-weight: 500;
   }
   .header-right {
+    white-space: nowrap;
     text-align: right;
     font-size: 9.6px;
     line-height: 1.45;
@@ -83,7 +84,7 @@
     letter-spacing: 0.3px;
   }
 
-  /* 2. CORPS BI-COLONNE : FLUX CONTINU SANS AUCUN VIDE (1019px) */
+  /* 2. CORPS BI-COLONNE ASYMÉTRIQUE ALTACV : FLUX CONTINU SANS VIDE (1019px) */
   .content-grid {
     display: flex;
     height: 1019px;
@@ -98,7 +99,7 @@
     padding: 11px 12px 11px 16px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
   }
 
   /* COLONNE DROITE (65% = 516px) */
@@ -108,10 +109,9 @@
     padding: 11px 16px 11px 14px;
     display: flex;
     flex-direction: column;
-    gap: 8.5px;
+    gap: 17px;
   }
 
-  /* TITRES DE SECTIONS */
   .sec-title {
     font-size: 11px;
     font-weight: 850;
@@ -138,7 +138,6 @@
     font-weight: 800;
   }
 
-  /* BLOCS GAUCHE ÉPAIS & STRUCTURÉS */
   .profil-box {
     background: #ffffff;
     padding: 8px 9px;
@@ -148,8 +147,8 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
   .profil-text {
-    font-size: 8.8px;
-    line-height: 1.38;
+    font-size: 9.2px;
+    line-height: 1.48;
     text-align: justify;
     color: #334155;
   }
@@ -157,11 +156,11 @@
   .diplomes-container {
     display: flex;
     flex-direction: column;
-    gap: 4.5px;
+    gap: 6px;
   }
   .diplome-item {
     background: #ffffff;
-    padding: 5px 8px;
+    padding: 6.5px 8px;
     border-radius: 4px;
     border: 1px solid #e2e8f0;
     border-left: 3.5px solid #0284c7;
@@ -177,7 +176,7 @@
     font-weight: 650;
   }
   .diplome-desc {
-    font-size: 8px;
+    font-size: 8.4px;
     color: #475569;
     margin-top: 1px;
     line-height: 1.25;
@@ -185,7 +184,7 @@
 
   .skills-box {
     background: #ffffff;
-    padding: 7px 8px;
+    padding: 9px 8px;
     border-radius: 5px;
     border: 1px solid #e2e8f0;
     border-left: 3.5px solid #d97706;
@@ -193,7 +192,7 @@
   .skills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 3.5px;
+    gap: 5px;
   }
   .badge-skill {
     background-color: #e0e7ff;
@@ -217,7 +216,7 @@
     border-radius: 5px;
     border: 1px solid #e2e8f0;
     border-left: 3.5px solid #7c3aed;
-    font-size: 8.7px;
+    font-size: 9.1px;
     line-height: 1.36;
     color: #334155;
   }
@@ -231,7 +230,7 @@
     border-radius: 5px;
     border: 1px solid #e2e8f0;
     border-left: 3.5px solid #0ea5e9;
-    font-size: 8.7px;
+    font-size: 9.1px;
     line-height: 1.36;
     color: #334155;
   }
@@ -242,9 +241,9 @@
   .card-senior {
     background: linear-gradient(135deg, #162e50 0%, #1e293b 100%);
     color: #ffffff;
-    padding: 9px 10px;
+    padding: 11px 10px;
     border-radius: 5px;
-    font-size: 8.7px;
+    font-size: 9.1px;
     line-height: 1.4;
     border-left: 4px solid #d4af37;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -253,12 +252,11 @@
     color: #facc15;
   }
 
-  /* BLOCS DROITE : EXPÉRIENCES SOUS FORME DE CARTES ÉPAISSES ET PARFAITEMENT CALIBRÉES */
   .exp-card {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-left: 3.5px solid #1b365d;
-    padding: 9.5px 12px;
+    padding: 12.5px 12px;
     border-radius: 5px;
   }
   .exp-header {
@@ -266,6 +264,7 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 2px;
+    gap: 10px;
   }
   .exp-poste {
     font-size: 11px;
@@ -277,6 +276,7 @@
     font-weight: 750;
     color: #b45309;
     white-space: nowrap;
+    flex-shrink: 0;
   }
   .exp-entreprise {
     font-size: 9.2px;
@@ -300,8 +300,8 @@
   .exp-bullets li {
     position: relative;
     padding-left: 11px;
-    font-size: 8.8px;
-    line-height: 1.40;
+    font-size: 8.9px;
+    line-height: 1.5;
     color: #334155;
     margin-bottom: 3px;
     text-align: justify;
@@ -321,16 +321,15 @@
     color: #0f172a;
   }
 
-  /* BLOCS DU BAS DROITE ÉPAIS ET VALORISÉS (ENCHAÎNEMENT SANS TROU) */
-  .stmg-focus-box {
+  .focus-box {
     background: #eff6ff;
     border: 1.5px solid #bfdbfe;
     border-left: 4px solid #2563eb;
-    padding: 8.5px 12px;
+    padding: 10px 12px;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
-  .stmg-focus-box h4 {
+  .focus-box h4 {
     font-size: 9.6px;
     font-weight: 850;
     color: #1d4ed8;
@@ -338,22 +337,22 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
-  .stmg-focus-box p {
-    font-size: 8.6px;
-    line-height: 1.38;
+  .focus-box p {
+    font-size: 8.7px;
+    line-height: 1.45;
     color: #1e40af;
     text-align: justify;
   }
 
-  .pedago-box {
+  .values-box {
     background: #f0fdf4;
     border: 1.5px solid #bbf7d0;
     border-left: 4px solid #16a34a;
-    padding: 8.5px 12px;
+    padding: 10px 12px;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
-  .pedago-box h4 {
+  .values-box h4 {
     font-size: 9.6px;
     font-weight: 850;
     color: #15803d;
@@ -361,9 +360,9 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
-  .pedago-box p {
-    font-size: 8.6px;
-    line-height: 1.38;
+  .values-box p {
+    font-size: 8.7px;
+    line-height: 1.45;
     color: #166534;
     text-align: justify;
   }
@@ -372,7 +371,7 @@
     background: #fefce8;
     border: 1.5px solid #fef08a;
     border-left: 4px solid #ca8a04;
-    padding: 8.5px 12px;
+    padding: 10px 12px;
     border-radius: 5px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
@@ -385,8 +384,8 @@
     letter-spacing: 0.3px;
   }
   .mobility-box p {
-    font-size: 8.6px;
-    line-height: 1.38;
+    font-size: 8.7px;
+    line-height: 1.45;
     color: #854d0e;
     text-align: justify;
   }
@@ -394,34 +393,34 @@
 </head>
 <body>
 
-  <!-- 1. EN-TÊTE STATUTAIRE HAUTE DENSITÉ -->
+  <!-- 1. EN-TÊTE STATUTAIRE -->
   <div class="header">
     <div class="header-left">
       <h1>Richard BUSSON</h1>
-      <div class="title-sub">ENSEIGNANT EN ÉCONOMIE ET GESTION — FILIÈRE STMG & BTS</div>
-      <div class="specialties">Sciences de Gestion · Économie & Droit · Management des Organisations · Ressources Humaines</div>
+      <div class="title-sub">RESPONSABLE RESSOURCES HUMAINES — PAIE &amp; DROIT SOCIAL</div>
+      <div class="specialties">Pilotage RH · Paie &amp; DSN · Dialogue social · Ingénierie de formation Qualiopi · SIRH &amp; automatisation</div>
     </div>
     <div class="header-right">
-      <div class="badge-status">Disponibilité Immédiate · Sans Préavis</div><br>
-      📍 98, allée Paul Cézanne, 60100 Creil<br>
-      📞 <strong>07 61 96 15 46</strong> · 09 39 20 08 70<br>
-      ✉️ <strong>richard.busson@kairos-paye.fr</strong><br>
-      🚗 Permis B valide · Véhicule personnel
+      <div class="badge-status">Disponibilité immédiate</div><br>
+      98, allée Paul Cézanne, 60100 Creil<br>
+      Tél. <strong>07 61 96 15 46</strong> · 09 39 20 08 70<br>
+      <strong>richard.busson@kairos-paye.fr</strong><br>
+      linkedin.com/in/richard-busson · Permis B
     </div>
   </div>
 
-  <!-- 2. CORPS BI-COLONNE ASYMÉTRIQUE : FLUX CONTINU SANS AUCUN VIDE -->
+  <!-- 2. CORPS BI-COLONNE ASYMÉTRIQUE 35 % / 65 % -->
   <div class="content-grid">
 
-    <!-- COLONNE GAUCHE (35%) -->
+    <!-- COLONNE GAUCHE (35 %) -->
     <div class="left-col">
 
-      <!-- 1. DÉMARCHE PÉDAGOGIQUE -->
+      <!-- 1. PROFIL -->
       <div>
-        <div class="sec-title"><span>1</span>Démarche Pédagogique</div>
+        <div class="sec-title"><span>1</span>Profil Professionnel</div>
         <div class="profil-box">
           <div class="profil-text">
-            Formateur expert certifié Qualiopi fort d'une double compétence d'excellence en <strong>Sciences de Gestion</strong> (Maîtrise Univ. Paris XIII) et <strong>Droit public</strong> (Master 2 Univ. Picardie). Plus de 15 années d'expérience combinée dans l'ingénierie pédagogique certifiante et le management des organisations. Pratique d'enseignement active, rigoureuse et ancrée dans le réel professionnel pour transmettre aux lycéens de STMG le goût des sciences managériales, structurer leur esprit critique et les guider vers la réussite au baccalauréat.
+            Responsable RH et paie confirmé, ancien pilote de la fonction RH d'une structure de <strong>580 collaborateurs</strong> et dirigeant d'un organisme de formation certifié <strong>Qualiopi</strong>. Double formation en <strong>Sciences de Gestion</strong> et en <strong>Droit public</strong>. Vingt ans de pratique de l'administration du personnel, de la paie, du dialogue social et de l'ingénierie de formation.
           </div>
         </div>
       </div>
@@ -431,102 +430,102 @@
         <div class="sec-title"><span>2</span>Diplômes Supérieurs</div>
         <div class="diplomes-container">
           <div class="diplome-item">
-            <div class="diplome-nom">Maîtrise Sciences de Gestion</div>
-            <div class="diplome-univ">Université Paris XIII · Niveau 6 certifié</div>
-            <div class="diplome-desc">Économie d'entreprise, analyse financière, gestion des RH, diagnostic stratégique et modélisation.</div>
+            <div class="diplome-nom">Master 2 Droit public</div>
+            <div class="diplome-univ">Université de Picardie Jules Verne</div>
+            <div class="diplome-desc">Droit administratif, commande publique ; recherche doctorale engagée.</div>
           </div>
 
           <div class="diplome-item">
-            <div class="diplome-nom">Master 2 Droit public</div>
-            <div class="diplome-univ">Université de Picardie Jules Verne</div>
-            <div class="diplome-desc">Droit des institutions publiques, libertés fondamentales, régulation économique et politiques publiques.</div>
+            <div class="diplome-nom">Maîtrise Sciences de Gestion</div>
+            <div class="diplome-univ">Université Paris XIII · Niveau 6 certifié</div>
+            <div class="diplome-desc">GRH, analyse financière, contrôle de gestion, stratégie.</div>
           </div>
 
           <div class="diplome-item">
             <div class="diplome-nom">Master RSE (en cours de validation)</div>
             <div class="diplome-univ">IAE de Paris Panthéon-Sorbonne</div>
-            <div class="diplome-desc">Gouvernance d'entreprise durable, éthique des affaires, dialogue social et performance extra-financière.</div>
+            <div class="diplome-desc">Gouvernance durable, éthique, QVT et dialogue social.</div>
           </div>
 
           <div class="diplome-item">
-            <div class="diplome-nom">DUT GEA (Gestion des Entreprises)</div>
-            <div class="diplome-univ">Université Paris XIII · Option Ressources Humaines</div>
-            <div class="diplome-desc">Comptabilité analytique, fiscalité, droit du travail, gestion de paie et administration du personnel.</div>
+            <div class="diplome-nom">DUT GEA, option Ressources Humaines</div>
+            <div class="diplome-univ">Université Paris XIII</div>
+            <div class="diplome-desc">Droit du travail, paie, administration du personnel.</div>
           </div>
         </div>
       </div>
 
-      <!-- 3. COMPÉTENCES DIDACTIQUES -->
+      <!-- 3. COMPÉTENCES CLÉS (BADGES ATS) -->
       <div>
-        <div class="sec-title"><span>3</span>Compétences Didactiques</div>
+        <div class="sec-title"><span>3</span>Compétences Clés RH</div>
         <div class="skills-box">
           <div class="skills-container">
-            <div class="badge-skill accent">Management des Organisations</div>
-            <div class="badge-skill accent">Économie & Droit Social</div>
-            <div class="badge-skill">Ressources Humaines & Paie</div>
-            <div class="badge-skill">Gestion & Finance d'Entreprise</div>
-            <div class="badge-skill">Didactique Bac STMG & BTS</div>
-            <div class="badge-skill">Grand Oral & Épreuves Écrites</div>
-            <div class="badge-skill accent">Ingénierie Formation Qualiopi</div>
-            <div class="badge-skill">Plateforme Métis & Outils LMS</div>
-            <div class="badge-skill">Évaluations ECF & Grilles Critériées</div>
+            <div class="badge-skill accent">Pilotage RH &amp; Masse salariale</div>
+            <div class="badge-skill accent">Paie complète &amp; DSN</div>
+            <div class="badge-skill">Droit social &amp; Conventions collectives</div>
+            <div class="badge-skill">Dialogue social &amp; CSE</div>
+            <div class="badge-skill">Administration du personnel</div>
+            <div class="badge-skill">Plan de développement des compétences</div>
+            <div class="badge-skill accent">Qualiopi &amp; Ingénierie de formation</div>
+            <div class="badge-skill">Marchés publics RH &amp; Formation</div>
+            <div class="badge-skill">SIRH · IA générative · Automatisation</div>
           </div>
         </div>
       </div>
 
-      <!-- 4. MÉTHODES PÉDAGOGIQUES -->
+      <!-- 4. MÉTHODES DE PILOTAGE -->
       <div>
-        <div class="sec-title"><span>4</span>Méthodes & Pédagogie Active</div>
+        <div class="sec-title"><span>4</span>Méthodes de Pilotage</div>
         <div class="didactique-box">
-          • <strong>Pédagogie inductive :</strong> Études de cas réels d'entreprises, jeux de rôles managériaux, analyse de documents juridiques d'actualité.<br>
-          • <strong>Accompagnement :</strong> Différenciation pédagogique, entraînements réguliers aux épreuves du bac, suivi méthodologique individuel.
+          • <strong>Sécurisation juridique :</strong> Veille sociale, procédures écrites, contrôle interne de la paie, prévention du contentieux.<br>
+          • <strong>Management de la fonction :</strong> Tableaux de bord RH, masse salariale, absentéisme, appui aux managers.
         </div>
       </div>
 
-      <!-- 5. OUTILS NUMÉRIQUES & SIRH -->
+      <!-- 5. OUTILS & SIRH -->
       <div>
-        <div class="sec-title"><span>5</span>Outils Numériques & SIRH</div>
+        <div class="sec-title"><span>5</span>Outils &amp; SIRH</div>
         <div class="tools-box">
-          • <strong>LMS & Didactique :</strong> Plateforme Métis (Afpa), ENT, suites collaboratives numériques, rétroprojection interactive.<br>
-          • <strong>Outils de Gestion :</strong> Logiciel Silae, DSN, Excel expert (modélisation financière, tableaux croisés dynamiques).
+          • <strong>Paie &amp; déclaratif :</strong> Silae, DSN mensuelle et événementielle, Net-entreprises, Urssaf, retraite et prévoyance.<br>
+          • <strong>Gestion &amp; pédagogie :</strong> Excel avancé, LMS Moodle et Métis, automatisation assistée par IA générative.
         </div>
       </div>
 
-      <!-- 6. CARTE SENIORITÉ & MOBILITÉ ESSONNE -->
+      <!-- 6. CARTE SENIOR & MOBILITÉ -->
       <div class="card-senior">
-        <strong>Atouts Recrutement Senior & Mobilité :</strong><br>
-        59 ans, engagement exemplaire, grande stabilité et disponibilité immédiate sans préavis. Éligible aux dispositifs d'aide à l'embauche pour demandeur d'emploi senior. Mobilité prioritaire sur les établissements de l'Essonne (91) et sur toute l'académie de Versailles.
+        <strong>Atouts Recrutement Senior &amp; Mobilité :</strong><br>
+        59 ans, engagement loyal et durable, disponibilité immédiate sans préavis. Éligible aux aides à l'embauche pour demandeur d'emploi senior. Installation à Nantes et déplacements sur tous les sites des Pays de la Loire.
       </div>
 
     </div>
 
-    <!-- COLONNE DROITE (65%) : EXPÉRIENCES ET BLOCS STMG EN CONTINU -->
+    <!-- COLONNE DROITE (65 %) -->
     <div class="right-col">
 
-      <div class="sec-title"><span>6</span>Expériences Professionnelles Réelles & Ancrage Opérationnel</div>
+      <div class="sec-title"><span>6</span>Expériences Professionnelles &amp; Réalisations</div>
 
       <!-- EXP 1 : KAIROS FORMATION -->
       <div class="exp-card">
         <div class="exp-header">
-          <span class="exp-poste">Dirigeant d'Organisme & Formateur Expert Sciences de Gestion / RH</span>
+          <span class="exp-poste">Dirigeant d'Organisme de Formation &amp; Consultant RH / Paie</span>
           <span class="exp-dates">2014 – Aujourd'hui</span>
         </div>
         <div class="exp-entreprise">
-          <span>Kairos Formation (Organisme certifié Qualiopi ICPF QUA007374)</span>
-          <span class="exp-lieu">Creil & Distanciel</span>
+          <span>Kairos Formation SAS (Organisme certifié Qualiopi ICPF QUA007374)</span>
+          <span class="exp-lieu">Creil &amp; Distanciel</span>
         </div>
         <ul class="exp-bullets">
-          <li><strong>Ingénierie de certification d'État :</strong> Conception intégrale et animation continue d'un cursus certifiant de 758 heures préparant au Titre Professionnel de Gestionnaire (TP-01254). Élaboration des livrets pédagogiques, progressions séquentielles et évaluations formatives.</li>
-          <li><strong>Enseignement consulaire :</strong> Animation des modules d'économie, management d'entreprise, RH et droit social pour la Chambre de Métiers et de l'Artisanat (CMA) : filières ADEA et Brevet de Maîtrise.</li>
-          <li><strong>Conformité Qualiopi :</strong> Maintien sans réserve de la certification, pilotage du Référentiel National Qualité (RNQ), conception d'outils d'évaluation critériée et accompagnement individualisé des apprenants vers l'examen final.</li>
-          <li><strong>Didactique du numérique :</strong> Scénarisation de ressources d'apprentissage en ligne, utilisation de classes virtuelles interactives et digitalisation des supports de cours.</li>
+          <li><strong>Direction de l'organisme :</strong> Construction de l'offre, conformité au Référentiel National Qualité, indicateurs, audits, relations avec les financeurs (OPCO, France Travail, Régions) et réponse aux marchés publics de formation.</li>
+          <li><strong>Ingénierie certifiante :</strong> Conception intégrale et animation d'un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254) ; animation des blocs RH de l'ADEA et du Brevet de Maîtrise pour la CMA.</li>
+          <li><strong>Conseil RH et paie aux TPE/PME :</strong> Embauche, contrats, apprentissage, paie et DSN, obligations de l'employeur, audits de conformité et veille réglementaire pour dirigeants et gestionnaires.</li>
+          <li><strong>Transformation numérique :</strong> Automatisation administrative, paramétrage SIRH, déploiement de parcours sur LMS Moodle et intégration de l'IA générative dans les processus RH.</li>
         </ul>
       </div>
 
       <!-- EXP 2 : AFPA -->
       <div class="exp-card">
         <div class="exp-header">
-          <span class="exp-poste">Formateur Professionnel en Sous-traitance Pédagogique</span>
+          <span class="exp-poste">Formateur en Gestion de Paie et RH (sous-traitance pédagogique)</span>
           <span class="exp-dates">2016 – 2020</span>
         </div>
         <div class="exp-entreprise">
@@ -534,17 +533,34 @@
           <span class="exp-lieu">Hauts-de-France</span>
         </div>
         <ul class="exp-bullets">
-          <li><strong>Didactique individualisée et animation de groupes :</strong> Enseignement auprès de promotions d'adultes et d'alternants. Utilisation quotidienne de la plateforme Métis, animation de classes inversées et d'ateliers pratiques de gestion.</li>
-          <li><strong>Évaluations en Cours de Formation (ECF) :</strong> Conception des sujets d'évaluation, organisation des sessions d'examens écrits et oraux, animation des jurys de certification et traçabilité réglementaire des compétences acquises.</li>
-          <li><strong>Remédiation et soutien ciblé :</strong> Diagnostic précoce des difficultés d'apprentissage, ajustement individualisé de la pédagogie et sécurisation des parcours jusqu'à l'obtention du diplôme d'État.</li>
-          <li><strong>Pédagogie collaborative :</strong> Travaux en sous-groupes, résolutions de problématiques managériales d'entreprise et mise en situation réelle d'examen.</li>
+          <li><strong>Interventions multi-sites :</strong> Animation sur quatre centres pour le compte d'organismes titulaires du marché, dans le respect du référentiel du donneur d'ordre et de la traçabilité du suivi des stagiaires.</li>
+          <li><strong>Évaluations en cours de formation :</strong> Conception des sujets, passation des ECF, participation aux jurys de certification et gestion administrative des dossiers sur l'outil Métis.</li>
+          <li><strong>Individualisation :</strong> Groupes en entrées permanentes, parcours personnalisés et remédiation ciblée pour des publics adultes en reconversion.</li>
+          <li><strong>Relations avec les donneurs d'ordre :</strong> Reporting pédagogique et administratif, respect des conventions de sous-traitance et coordination avec les équipes des centres.</li>
         </ul>
       </div>
 
-      <!-- EXP 3 : SECOURS POPULAIRE -->
+      <!-- EXP 3 : ETV -->
       <div class="exp-card">
         <div class="exp-header">
-          <span class="exp-poste">Responsable des Ressources Humaines & Relations Sociales</span>
+          <span class="exp-poste">Responsable d'Exploitation et de Site Opérationnel</span>
+          <span class="exp-dates">2010 – 2014</span>
+        </div>
+        <div class="exp-entreprise">
+          <span>ETV (Fonderie d'aluminium &amp; Valorisation industrielle)</span>
+          <span class="exp-lieu">Nouvelle-Calédonie</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Management opérationnel :</strong> Montage et direction complète d'un site industriel, encadrement de 50 personnes, recrutement, organisation du travail et gestion budgétaire prévisionnelle.</li>
+          <li><strong>Conformité et prévention :</strong> Application des protocoles HSE, réglementation du travail locale, reporting de performance auprès de la direction et conduite du changement.</li>
+          <li><strong>Gestion du personnel :</strong> Contrats, paie et déclarations sociales du site, formation interne des chefs d'équipe et gestion des relations avec les organismes locaux.</li>
+        </ul>
+      </div>
+
+      <!-- EXP 4 : SECOURS POPULAIRE -->
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-poste">Responsable des Ressources Humaines &amp; des Relations Sociales</span>
           <span class="exp-dates">2003 – 2010</span>
         </div>
         <div class="exp-entreprise">
@@ -552,51 +568,33 @@
           <span class="exp-lieu">Structure de 580 collaborateurs</span>
         </div>
         <ul class="exp-bullets">
-          <li><strong>Direction RH globale et dialogue social :</strong> Pilotage opérationnel du pôle RH et paie pour 580 collaborateurs. Animation des Instances Représentatives du Personnel (CSE/DP/CE), négociations d'accords d'entreprise et gestion du climat social.</li>
-          <li><strong>Gestion administrative et budgétaire :</strong> Supervision des déclarations sociales dématérialisées, contrôle de la masse salariale, pilotage du plan de formation et sécurisation des procédures juridiques.</li>
-          <li><strong>Capitalisation didactique :</strong> Réserve majeure de cas d'entreprise réels (négociation collective, litiges, réorganisations) directement exploitables pour dynamiser les cours de management et d'éco-droit en classe de STMG.</li>
-          <li><strong>Climat social et gestion de crise :</strong> Résolution amiable des conflits collectifs, médiation interne et prévention des risques psychosociaux.</li>
+          <li><strong>Pilotage RH et paie :</strong> Administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, arrêts de travail, accidents du travail, déclarations sociales et contrôle de la masse salariale.</li>
+          <li><strong>Dialogue social :</strong> Animation des instances représentatives du personnel (DP, CE, CHSCT), négociation d'accords d'entreprise, gestion de crise et prévention des risques psychosociaux.</li>
+          <li><strong>Développement des compétences :</strong> Pilotage du plan de formation, conduite de marchés publics RH et formation, accompagnement des responsables d'établissements.</li>
         </ul>
       </div>
 
-      <!-- EXP 4 : ETV -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <span class="exp-poste">Responsable d'Exploitation et de Site Opérationnel</span>
-          <span class="exp-dates">2010 – 2014</span>
-        </div>
-        <div class="exp-entreprise">
-          <span>ETV (Fonderie d'aluminium & Valorisation industrielle)</span>
-          <span class="exp-lieu">Nouvelle-Calédonie</span>
-        </div>
-        <ul class="exp-bullets">
-          <li><strong>Management opérationnel et logistique :</strong> Montage et direction complète d'un site industriel. Encadrement d'une équipe opérationnelle de 50 personnes, gestion budgétaire prévisionnelle et négociation des contrats fournisseurs.</li>
-          <li><strong>Prévention des risques et sécurité :</strong> Application des protocoles HSE, régulation des flux d'exploitation et reporting de performance auprès du conseil d'administration.</li>
-          <li><strong>Conduite du changement :</strong> Optimisation des processus de production et accompagnement des équipes aux nouvelles normes qualité.</li>
-        </ul>
-      </div>
-
-      <!-- 7. ADÉQUATION PROGRAMME STMG (ENCHAÎNEMENT DIRECT SANS TROU) -->
-      <div class="stmg-focus-box">
-        <h4>Maîtrise Complète du Programme de la Filière Technologique STMG</h4>
+      <!-- 7. ADÉQUATION AU POSTE -->
+      <div class="focus-box">
+        <h4>Adéquation au poste de Responsable RH du Cnam Pays de la Loire</h4>
         <p>
-          Enseignement des <strong>Sciences de Gestion et Numérique</strong> (1ère), du <strong>Management</strong> et de <strong>l'Économie-Droit</strong> : étude du fonctionnement des organisations privées et publiques, analyse des décisions stratégiques, mobilisation des outils numériques de gestion et préparation ciblée aux épreuves terminales du baccalauréat et au Grand Oral.
+          Connaissance intime des deux versants du poste : la fonction RH d'une organisation multi-sites (<strong>paie, droit social, dialogue social, développement des compétences</strong>) et le fonctionnement d'un établissement de formation pour adultes (<strong>enseignants et intervenants vacataires, Qualiopi, financeurs, alternance</strong>), au service d'une direction et de ses équipes pédagogiques.
         </p>
       </div>
 
-      <!-- 8. ENGAGEMENT RÉPUBLICAIN (ENCHAÎNEMENT DIRECT SANS TROU) -->
-      <div class="pedago-box">
-        <h4>Mission Éducative, Climat de Classe & Valeurs de la République</h4>
+      <!-- 8. VALEURS -->
+      <div class="values-box">
+        <h4>Engagement, Loyauté &amp; Sens du Service Public de la Formation</h4>
         <p>
-          Rompu aux exigences de transmission auprès de publics hétérogènes, j'instaure un climat de travail exigeant et bienveillant favorisant la persévérance scolaire. Mon action éducative promeut rigoureusement la laïcité, l'égalité des chances, la culture du débat argumenté et l'émancipation citoyenne de chaque lycéen.
+          Attaché à la promotion sociale par la formation tout au long de la vie, j'exerce la fonction RH avec rigueur juridique, écoute des équipes et sens de la confidentialité. Parcours stable, engagement durable et posture de partenaire de la direction, des managers et des représentants du personnel.
         </p>
       </div>
 
-      <!-- 9. MOBILITÉ & ENGAGEMENT ESSONNE (ENCHAÎNEMENT DIRECT SANS TROU) -->
+      <!-- 9. MOBILITÉ -->
       <div class="mobility-box">
-        <h4>Affectation Immédiate & Priorité Lycées de l'Essonne (91)</h4>
+        <h4>Prise de Poste Immédiate à Nantes &amp; Mobilité Régionale</h4>
         <p>
-          Prise de fonction sans délai, mobilité totale avec véhicule personnel, disponibilité intégrale sur les établissements en tension du département de l'Essonne (Évry, Massy, Corbeil, Sainte-Geneviève-des-Bois...) et engagement éducatif durable auprès du Rectorat de Versailles.
+          Disponible sans délai, installation à Nantes et déplacements réguliers sur les sites des Pays de la Loire (Angers, Le Mans, Laval, La Roche-sur-Yon, Saint-Nazaire). Permis B, véhicule personnel, engagement dans la durée.
         </p>
       </div>
 
