@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **14** | **90** | **439** | **26** | **748** |
+> | **1** | **72** | **440** | **26** | **749** |
 >
-> *Dernière mise à jour et synchronisation : 25/09/2026 20:31*
+> *Dernière mise à jour et synchronisation : 26/09/2026 12:14*
 
-## 🗓️ Septembre 2026 (439 candidatures)
+## 🗓️ Septembre 2026 (440 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-26 | **13** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Penne (60100) | Non communiqué | 🌐 Portail Web | [Formateur - Gestionnaire de paie et RH (M) - Freelance H/F - La Penne sur Huveaune](https://candidat.francetravail.fr/offres/recherche/detail/7422996) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe/CV_Richard_BUSSON.pdf) |
 | 2026-09-25 | **IKEA** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 95 (95000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/214KXWC) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-25_IKEA_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-25_IKEA_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
 | 2026-09-25 | **GROUPEMENT EMPLOYEURS PROFESSION SPORT E** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 77 (77000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214LBFK) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-25_GROUPEMENT_EMPLOYEURS_PROFESSION_SPORT_E_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-25_GROUPEMENT_EMPLOYEURS_PROFESSION_SPORT_E_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-25 | **HOCO** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 14 (14000) | Non communiqué | 🌐 Portail Web | [Responsable relations sociales (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/7349412) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-25_HOCO_Responsable_relations_sociales__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-25_HOCO_Responsable_relations_sociales__H_F_/CV_Richard_BUSSON.pdf) |

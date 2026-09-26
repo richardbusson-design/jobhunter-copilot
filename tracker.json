@@ -16044,5 +16044,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-02"
+  },
+  {
+    "id": "FT-7422996",
+    "source": "France Travail (Flux Direct)",
+    "company": "13",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Formateur - Gestionnaire de paie et RH (M) - Freelance H/F - La Penne sur Huveaune",
+    "city": "Penne",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/7422996",
+    "description": "Salaire fixe : 400 euros par jour (TTC)\n\nFrais de déplacement inclus\n\nNous proposons une journée d'introduction à notre entreprise, prevoir un entretien téléphonique avec les participants afin de...",
+    "score": 94,
+    "date": "2026-09-26",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe",
+    "folder_rel": "candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-09-26_13_Formateur_-_Gestionnaire_de_paie_et_RH__M__-_Freelance_H_F_-_La_Pe/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-03"
   }
 ]
