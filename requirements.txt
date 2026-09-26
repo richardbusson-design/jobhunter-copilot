@@ -1,0 +1,8 @@
+# Dépendances Python du pipeline JobHunter (runner cloud, GitHub Actions, poste local).
+# Installation : python -m pip install -r requirements.txt && python -m playwright install --with-deps chromium
+#
+# Playwright est épinglé sur la version dont le build Chromium correspond à celui
+# préinstallé dans l'environnement cloud Claude Code (Chromium 141 / build 1194).
+# Une version plus récente s'installe mais refuse de lancer le navigateur.
+playwright==1.56.0
+pypdf>=6.0,<7

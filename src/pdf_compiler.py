@@ -4,35 +4,57 @@ import sys
 import subprocess
 import shutil
 
+_BROWSER_PATH = None
+
 def get_browser_path():
-    """Détecte automatiquement le navigateur headless disponible (Windows Edge ou Linux Chromium)."""
-    # 1. Sous Windows (Edge ou Chrome)
+    """Détecte le navigateur headless disponible et mémorise le résultat pour la session.
+
+    Ordre de résolution :
+      1. Variable d'environnement JOBHUNTER_BROWSER (chemin explicite vers Chrome/Chromium/Edge).
+      2. Windows : Edge ou Chrome installés aux emplacements standards.
+      3. Linux / GitHub Actions : binaire Chrome ou Chromium présent dans le PATH.
+      4. Chromium fourni par Playwright (environnement cloud Claude Code, GitHub Actions
+         après `playwright install chromium`), uniquement si le binaire existe réellement.
+    """
+    global _BROWSER_PATH
+    if _BROWSER_PATH:
+        return _BROWSER_PATH
+
+    env_browser = os.environ.get("JOBHUNTER_BROWSER")
+    if env_browser and os.path.exists(env_browser):
+        _BROWSER_PATH = env_browser
+        return _BROWSER_PATH
+
     if sys.platform == "win32":
-        edge_paths = [
+        for p in (
             r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
             r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-        ]
-        for p in edge_paths:
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        ):
             if os.path.exists(p):
-                return p
-            
-    # 2. Sous Linux / GitHub Actions (Chromium ou Chrome)
-    linux_bins = ["google-chrome", "google-chrome-stable", "chromium-browser", "chromium"]
-    for b in linux_bins:
+                _BROWSER_PATH = p
+                return _BROWSER_PATH
+
+    for b in ("google-chrome", "google-chrome-stable", "chromium-browser", "chromium"):
         path = shutil.which(b)
         if path:
-            return path
-            
-    # 3. Fallback Playwright executable
+            _BROWSER_PATH = path
+            return _BROWSER_PATH
+
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
-            return p.chromium.executable_path
+            candidate = p.chromium.executable_path
+        if candidate and os.path.exists(candidate):
+            _BROWSER_PATH = candidate
+            return _BROWSER_PATH
     except Exception:
         pass
-            
-    return "chromium"
+
+    raise RuntimeError(
+        "Aucun navigateur headless trouvé. Installez Chromium via "
+        "`python -m playwright install --with-deps chromium` ou définissez JOBHUNTER_BROWSER."
+    )
 
 def get_pdf_page_count(pdf_path: str) -> int:
     try:
@@ -52,8 +74,12 @@ def compile_html_to_pdf(html_path: str, pdf_path: str) -> bool:
     """Compile un fichier HTML vers un PDF A4 strict (1 page garantie) via Chromium / Edge headless."""
     abs_html = os.path.abspath(html_path)
     abs_pdf = os.path.abspath(pdf_path)
-    browser = get_browser_path()
-    
+    try:
+        browser = get_browser_path()
+    except RuntimeError as e:
+        print(f"[!] Compilation PDF impossible : {e}")
+        return False
+
     file_url = f"file:///{abs_html.replace(os.sep, '/')}"
     
     cmd = [
@@ -99,7 +125,11 @@ def render_html_to_png(html_path: str, png_path: str) -> bool:
     """Génère une capture visuelle PNG haute résolution (794x1123) pour contrôle visuel immédiat."""
     abs_html = os.path.abspath(html_path)
     abs_png = os.path.abspath(png_path)
-    browser = get_browser_path()
+    try:
+        browser = get_browser_path()
+    except RuntimeError as e:
+        print(f"[!] Génération PNG impossible : {e}")
+        return False
     file_url = f"file:///{abs_html.replace(os.sep, '/')}"
     
     cmd = [
