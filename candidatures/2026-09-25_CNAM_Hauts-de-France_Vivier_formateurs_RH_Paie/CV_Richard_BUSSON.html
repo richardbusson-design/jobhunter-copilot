@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CV Richard BUSSON - Formateur RH, Paie et Droit social - Cnam Hauts-de-France</title>
+<style>
+  @page { size: A4 portrait; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body {
+    width: 794px; height: 1123px; max-height: 1123px;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: #1e293b; background-color: #ffffff; overflow: hidden;
+  }
+  .header {
+    background: linear-gradient(135deg, #091e36 0%, #152e50 60%, #1c3d69 100%);
+    color: #ffffff; padding: 13px 22px; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3.5px solid #d4af37; height: 104px;
+  }
+  .header-left h1 { font-size: 24px; font-weight: 900; letter-spacing: 0.8px; text-transform: uppercase; color: #ffffff; margin-bottom: 3px; line-height: 1.1; }
+  .header-left .title-sub { font-size: 13px; font-weight: 700; color: #facc15; letter-spacing: 0.4px; margin-bottom: 4px; }
+  .header-left .specialties { font-size: 10.5px; color: #e2e8f0; font-weight: 500; }
+  .header-right {
+    white-space: nowrap;
+    text-align: right; font-size: 9.6px; line-height: 1.45; color: #f8fafc;
+    background: rgba(255,255,255,0.1); padding: 7px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2);
+  }
+  .header-right strong { color: #facc15; }
+  .badge-status {
+    display: inline-block; background-color: #16a34a; color: #ffffff; font-size: 9px; font-weight: 800;
+    padding: 2.5px 8px; border-radius: 10px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.3px;
+  }
+  .content-grid { display: flex; height: 1019px; background-color: #ffffff; }
+  .left-col {
+    width: 278px; background-color: #f8fafc; border-right: 1.5px solid #cbd5e1;
+    padding: 11px 12px 11px 16px; display: flex; flex-direction: column; gap: 17px;
+  }
+  .right-col { width: 516px; background-color: #ffffff; padding: 11px 16px 11px 14px; display: flex; flex-direction: column; gap: 18.5px; }
+  .sec-title {
+    font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: 0.4px; color: #1b365d;
+    display: flex; align-items: center; margin-bottom: 4px; border-bottom: 2px solid #1b365d; padding-bottom: 2px;
+  }
+  .sec-title span {
+    background-color: #1b365d; color: #ffffff; width: 16px; height: 16px; border-radius: 3px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 9px; margin-right: 5px; font-weight: 800;
+  }
+  .profil-box { background: #ffffff; padding: 8px 9px; border-radius: 5px; border: 1px solid #e2e8f0; border-left: 3.5px solid #1b365d; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .profil-text { font-size: 9.2px; line-height: 1.5; text-align: justify; color: #334155; }
+  .diplomes-container { display: flex; flex-direction: column; gap: 6.5px; }
+  .diplome-item { background: #ffffff; padding: 6.5px 8px; border-radius: 4px; border: 1px solid #e2e8f0; border-left: 3.5px solid #0284c7; }
+  .diplome-nom { font-size: 9.4px; font-weight: 750; color: #1b365d; }
+  .diplome-univ { font-size: 8.2px; color: #64748b; font-weight: 650; }
+  .diplome-desc { font-size: 8.4px; color: #475569; margin-top: 1px; line-height: 1.25; }
+  .skills-box { background: #ffffff; padding: 9px 8px; border-radius: 5px; border: 1px solid #e2e8f0; border-left: 3.5px solid #d97706; }
+  .skills-container { display: flex; flex-wrap: wrap; gap: 5px; }
+  .badge-skill { background-color: #e0e7ff; color: #1e1b4b; font-size: 8.2px; font-weight: 650; padding: 2.5px 6px; border-radius: 3px; border: 1px solid #c7d2fe; line-height: 1.2; }
+  .badge-skill.accent { background-color: #fef3c7; color: #78350f; border-color: #fde68a; }
+  .didactique-box { background: #ffffff; padding: 7px 8px; border-radius: 5px; border: 1px solid #e2e8f0; border-left: 3.5px solid #7c3aed; font-size: 9.1px; line-height: 1.36; color: #334155; }
+  .didactique-box strong { color: #1b365d; }
+  .tools-box { background: #ffffff; padding: 7px 8px; border-radius: 5px; border: 1px solid #e2e8f0; border-left: 3.5px solid #0ea5e9; font-size: 9.1px; line-height: 1.36; color: #334155; }
+  .tools-box strong { color: #1b365d; }
+  .card-senior {
+    background: linear-gradient(135deg, #162e50 0%, #1e293b 100%); color: #ffffff; padding: 12px 10px; border-radius: 5px;
+    font-size: 9.1px; line-height: 1.4; border-left: 4px solid #d4af37; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .card-senior strong { color: #facc15; }
+  .exp-card { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 3.5px solid #1b365d; padding: 12.5px 12px; border-radius: 5px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px;
+    gap: 10px; }
+  .exp-poste { font-size: 11px; font-weight: 800; color: #1b365d; }
+  .exp-dates { font-size: 9.3px; font-weight: 750; color: #b45309; white-space: nowrap;
+    flex-shrink: 0; }
+  .exp-entreprise { font-size: 9.2px; font-weight: 650; color: #475569; font-style: italic; margin-bottom: 2.5px; display: flex; justify-content: space-between; }
+  .exp-lieu { font-style: normal; font-weight: 650; color: #64748b; font-size: 8.4px; }
+  .exp-bullets { list-style: none; padding-left: 0; }
+  .exp-bullets li { position: relative; padding-left: 11px; font-size: 8.9px; line-height: 1.5; color: #334155; margin-bottom: 3px; text-align: justify; }
+  .exp-bullets li:last-child { margin-bottom: 0; }
+  .exp-bullets li::before { content: "▪"; position: absolute; left: 0; color: #1b365d; font-size: 9.5px; top: -1px; }
+  .exp-bullets li strong { color: #0f172a; }
+  .focus-box { background: #eff6ff; border: 1.5px solid #bfdbfe; border-left: 4px solid #2563eb; padding: 10.5px 12px; border-radius: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .focus-box h4 { font-size: 9.6px; font-weight: 850; color: #1d4ed8; margin-bottom: 2.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .focus-box p { font-size: 8.7px; line-height: 1.45; color: #1e40af; text-align: justify; }
+  .values-box { background: #f0fdf4; border: 1.5px solid #bbf7d0; border-left: 4px solid #16a34a; padding: 10.5px 12px; border-radius: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .values-box h4 { font-size: 9.6px; font-weight: 850; color: #15803d; margin-bottom: 2.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .values-box p { font-size: 8.7px; line-height: 1.45; color: #166534; text-align: justify; }
+  .mobility-box { background: #fefce8; border: 1.5px solid #fef08a; border-left: 4px solid #ca8a04; padding: 10.5px 12px; border-radius: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .mobility-box h4 { font-size: 9.6px; font-weight: 850; color: #a16207; margin-bottom: 2.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+  .mobility-box p { font-size: 8.7px; line-height: 1.45; color: #854d0e; text-align: justify; }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Richard BUSSON</h1>
+      <div class="title-sub">FORMATEUR EN RH, PAIE &amp; DROIT SOCIAL — PUBLICS ADULTES</div>
+      <div class="specialties">Management des RH · Paie &amp; DSN · Droit du travail · Ingénierie Qualiopi · LMS Moodle · IA générative</div>
+    </div>
+    <div class="header-right">
+      <div class="badge-status">Disponibilité immédiate</div><br>
+      98, allée Paul Cézanne, 60100 Creil<br>
+      Tél. <strong>07 61 96 15 46</strong> · 09 39 20 08 70<br>
+      <strong>richard.busson@kairos-paye.fr</strong><br>
+      linkedin.com/in/richard-busson · Permis B
+    </div>
+  </div>
+
+  <div class="content-grid">
+
+    <!-- COLONNE GAUCHE 35 % -->
+    <div class="left-col">
+
+      <div>
+        <div class="sec-title"><span>1</span>Démarche Pédagogique</div>
+        <div class="profil-box">
+          <div class="profil-text">
+            Formateur d'adultes depuis plus de dix ans et dirigeant d'un organisme certifié <strong>Qualiopi</strong>, j'enseigne les RH, la paie et le droit social à partir d'une pratique réelle de la fonction RH (<strong>580 collaborateurs</strong>). Double formation en <strong>Sciences de Gestion</strong> et en <strong>Droit public</strong>. Pédagogie active, cas d'entreprise et accompagnement des auditeurs en reprise d'études, en présence, le soir ou à distance.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title"><span>2</span>Diplômes Supérieurs</div>
+        <div class="diplomes-container">
+          <div class="diplome-item">
+            <div class="diplome-nom">Master 2 Droit public</div>
+            <div class="diplome-univ">Université de Picardie Jules Verne</div>
+            <div class="diplome-desc">Droit administratif, commande publique ; recherche doctorale engagée.</div>
+          </div>
+          <div class="diplome-item">
+            <div class="diplome-nom">Maîtrise Sciences de Gestion</div>
+            <div class="diplome-univ">Université Paris XIII · Niveau 6 certifié</div>
+            <div class="diplome-desc">GRH, analyse financière, contrôle de gestion, stratégie.</div>
+          </div>
+          <div class="diplome-item">
+            <div class="diplome-nom">Master RSE (en cours de validation)</div>
+            <div class="diplome-univ">IAE de Paris Panthéon-Sorbonne</div>
+            <div class="diplome-desc">Gouvernance durable, éthique, QVT et dialogue social.</div>
+          </div>
+          <div class="diplome-item">
+            <div class="diplome-nom">DUT GEA, option Ressources Humaines</div>
+            <div class="diplome-univ">Université Paris XIII</div>
+            <div class="diplome-desc">Droit du travail, paie, administration du personnel.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title"><span>3</span>Domaines d'Enseignement</div>
+        <div class="skills-box">
+          <div class="skills-container">
+            <div class="badge-skill accent">Management des RH</div>
+            <div class="badge-skill accent">Paie &amp; Déclarations sociales (DSN)</div>
+            <div class="badge-skill">Droit du travail &amp; Relations sociales</div>
+            <div class="badge-skill">Administration du personnel</div>
+            <div class="badge-skill">Diversité, RSE &amp; QVT</div>
+            <div class="badge-skill accent">Ingénierie de formation Qualiopi</div>
+            <div class="badge-skill">Évaluations, jurys &amp; VAE</div>
+            <div class="badge-skill">Formation hybride &amp; LMS Moodle</div>
+            <div class="badge-skill">IA générative appliquée aux RH</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title"><span>4</span>Méthodes &amp; Pédagogie Active</div>
+        <div class="didactique-box">
+          • <strong>Andragogie :</strong> Cas d'entreprise réels, bulletins et contrats à analyser, jeux de rôle, classes inversées.<br>
+          • <strong>Évaluation :</strong> Grilles critériées, ECF, préparation aux examens et suivi individualisé.
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-title"><span>5</span>Outils &amp; Environnement Numérique</div>
+        <div class="tools-box">
+          • <strong>Paie &amp; SIRH :</strong> Silae, DSN, Net-entreprises, Excel avancé.<br>
+          • <strong>Pédagogie numérique :</strong> LMS Moodle et Métis, classes virtuelles, IA générative (Claude, ChatGPT, Gemini, Mistral).
+        </div>
+      </div>
+
+      <div class="card-senior">
+        <strong>Atouts &amp; Disponibilité :</strong><br>
+        59 ans, engagement loyal et durable, disponibilité immédiate. Domicilié à Creil (Oise), mobile sur tous les centres du Cnam Hauts-de-France, en journée, en soirée, le samedi et à distance. Vacataire ou intervenant extérieur immédiatement opérationnel.
+      </div>
+
+    </div>
+
+    <!-- COLONNE DROITE 65 % -->
+    <div class="right-col">
+
+      <div class="sec-title"><span>6</span>Expériences Professionnelles &amp; Réalisations</div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-poste">Dirigeant d'Organisme de Formation &amp; Formateur Expert RH / Paie</span>
+          <span class="exp-dates">2014 – Aujourd'hui</span>
+        </div>
+        <div class="exp-entreprise">
+          <span>Kairos Formation SAS (Organisme certifié Qualiopi ICPF QUA007374)</span>
+          <span class="exp-lieu">Creil &amp; Distanciel</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Ingénierie certifiante :</strong> Conception intégrale et animation d'un parcours de 758 heures préparant au Titre professionnel Gestionnaire de paie (TP-01254) : référentiel, progression, déroulés de séance, évaluations et préparation au jury.</li>
+          <li><strong>Enseignement consulaire :</strong> Animation des blocs RH, paie et droit social de l'ADEA et du Brevet de Maîtrise pour la Chambre de Métiers et de l'Artisanat auprès de dirigeants et de collaborateurs de TPE/PME.</li>
+          <li><strong>Direction Qualiopi :</strong> Construction de l'offre, conformité au Référentiel National Qualité, indicateurs, audits, relations financeurs (OPCO, France Travail, Régions) et marchés publics de formation.</li>
+          <li><strong>Pédagogie numérique :</strong> Déploiement de parcours hybrides sur LMS Moodle et intégration de l'IA générative dans la conception de supports et de cas pratiques.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-poste">Formateur en Gestion de Paie et RH (sous-traitance pédagogique)</span>
+          <span class="exp-dates">2016 – 2020</span>
+        </div>
+        <div class="exp-entreprise">
+          <span>Centres Afpa de Vervins, Beauvais, Creil et Amiens</span>
+          <span class="exp-lieu">Hauts-de-France</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Interventions multi-sites :</strong> Animation sur quatre centres pour le compte d'organismes titulaires du marché, dans le respect du référentiel du donneur d'ordre et de la traçabilité du suivi des stagiaires.</li>
+          <li><strong>Évaluations en cours de formation :</strong> Conception des sujets, passation des ECF, participation aux jurys de certification et gestion des dossiers sur l'outil Métis.</li>
+          <li><strong>Individualisation :</strong> Groupes en entrées permanentes, parcours personnalisés et remédiation ciblée pour des adultes en reconversion.</li>
+          <li><strong>Pédagogie collaborative :</strong> Travaux en sous-groupes, mises en situation professionnelle (bulletins, DSN, contrats) et entraînement aux épreuves de certification.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-poste">Responsable d'Exploitation et de Site Opérationnel</span>
+          <span class="exp-dates">2010 – 2014</span>
+        </div>
+        <div class="exp-entreprise">
+          <span>ETV (Fonderie d'aluminium &amp; Valorisation industrielle)</span>
+          <span class="exp-lieu">Nouvelle-Calédonie</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Management opérationnel :</strong> Montage et direction d'un site industriel, encadrement de 50 personnes, recrutement, organisation du travail et gestion budgétaire.</li>
+          <li><strong>Conformité et prévention :</strong> Protocoles HSE, réglementation du travail locale, reporting de performance et conduite du changement.</li>
+          <li><strong>Formation interne :</strong> Conception et animation des formations sécurité, qualité et encadrement de proximité pour les chefs d'équipe et les nouveaux entrants.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-poste">Responsable des Ressources Humaines &amp; des Relations Sociales</span>
+          <span class="exp-dates">2003 – 2010</span>
+        </div>
+        <div class="exp-entreprise">
+          <span>Secours Populaire Français (Fédération et Établissements)</span>
+          <span class="exp-lieu">Structure de 580 collaborateurs</span>
+        </div>
+        <ul class="exp-bullets">
+          <li><strong>Pilotage RH et paie :</strong> Administration du personnel de 580 collaborateurs, salariés et bénévoles : contrats, avenants, absences, accidents du travail, déclarations sociales et masse salariale.</li>
+          <li><strong>Dialogue social :</strong> Animation des instances représentatives (DP, CE, CHSCT), négociation d'accords, gestion de crise et prévention des risques psychosociaux.</li>
+          <li><strong>Capital pédagogique :</strong> Réserve de cas réels (négociation collective, contentieux, réorganisations, plan de formation) directement mobilisables en cours.</li>
+        </ul>
+      </div>
+
+      <div class="focus-box">
+        <h4>Unités d'enseignement du Cnam que je peux prendre en charge</h4>
+        <p>
+          Initiation au management et gestion des ressources humaines (<strong>FPG001</strong>), gestion de la paie (<strong>FPG104</strong>), gestion de la diversité en ressources humaines (<strong>FPG225</strong>), ainsi que les enseignements de droit du travail, de relations sociales et d'administration du personnel des parcours RH, en cours du soir, en journée, en hybride ou en formation à distance.
+        </p>
+      </div>
+
+      <div class="values-box">
+        <h4>Publics du Cnam &amp; Posture d'Enseignant</h4>
+        <p>
+          Habitué des auditeurs adultes en reprise d'études, salariés, demandeurs d'emploi et alternants : exigence bienveillante, contextualisation systématique de la règle de droit et du calcul de paie, valorisation des acquis de l'expérience et accompagnement jusqu'à la certification.
+        </p>
+      </div>
+
+      <div class="mobility-box">
+        <h4>Disponibilité immédiate sur les centres Hauts-de-France</h4>
+        <p>
+          Interventions possibles dès la rentrée en cours sur Lille, Valenciennes, Amiens et les sites de l'Oise, ainsi qu'à distance. Permis B, véhicule personnel, engagement durable dans le vivier de formateurs du Cnam Hauts-de-France.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

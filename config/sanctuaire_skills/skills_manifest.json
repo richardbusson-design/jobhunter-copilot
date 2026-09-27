@@ -1,23 +1,23 @@
 {
-  "version": "1.0.0",
-  "timestamp": "2026-09-18T15:37:04.295883",
+  "version": "1.1.0",
+  "timestamp": "2026-09-25T11:30:16.029181",
   "protected_by": "QualityGuard Security System",
   "files": {
     ".gemini\\config\\skills\\lettre-de-motivation\\SKILL.md": {
-      "sha256": "c3e3bbcaf412f41cd96e3d1316f4e1bd046db8e8a7293b69d725dc9c19fec92d",
-      "size": 18326,
+      "sha256": "088be2e1a54a8030e83be148fb140eb5abfed31c391df31a8b9877305fd6c8ef",
+      "size": 19456,
       "flat_name": ".gemini__config__skills__lettre-de-motivation__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\lettre-de-motivation\\SKILL.md"
     },
     ".gemini\\config\\skills\\redaction-cv\\SKILL.md": {
-      "sha256": "c4154f56029e482915db9316dabd28345381ca0e7ea5ba50c9ad8c173123b797",
-      "size": 8430,
+      "sha256": "69bcea5689710cc007f2545040fba67a26f1331199c849bb7b7f256e74c1ed8f",
+      "size": 9419,
       "flat_name": ".gemini__config__skills__redaction-cv__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\redaction-cv\\SKILL.md"
     },
     ".gemini\\config\\skills\\formulaire-candidature\\SKILL.md": {
-      "sha256": "6f4befbb5ee663aa74d8af249907e7f38d03958562e4ed4cd0b0169747e6aff7",
-      "size": 8809,
+      "sha256": "1949fca2a4eb6ea8e1b8ad05906603b7c28e4f11d0eba4bfd18946fe59a68f2a",
+      "size": 8685,
       "flat_name": ".gemini__config__skills__formulaire-candidature__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\formulaire-candidature\\SKILL.md"
     },
@@ -28,34 +28,40 @@
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\creation-bouton-dashboard\\SKILL.md"
     },
     ".gemini\\config\\skills\\creation-visuel-linkedin\\SKILL.md": {
-      "sha256": "0ebfcbaa65689b55814266b2efe1a665bb62a4c4baee868499bf23b9b3242e72",
-      "size": 8410,
+      "sha256": "963e76b053a6aa28378d7747c11546c8bb1c84503c6509a22bbe493b9b854545",
+      "size": 8280,
       "flat_name": ".gemini__config__skills__creation-visuel-linkedin__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\creation-visuel-linkedin\\SKILL.md"
     },
     ".gemini\\config\\skills\\veille-offres-mayotte\\SKILL.md": {
-      "sha256": "1ad701912bc61dd7e21f1a4fd0d7b9163f143c501fa96f3f27d64a2202786673",
-      "size": 4827,
+      "sha256": "ea3e78cccf5ba51594ba3ec46fd0f18aaae9ce80f4ce6ed15306de617671de35",
+      "size": 4755,
       "flat_name": ".gemini__config__skills__veille-offres-mayotte__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\veille-offres-mayotte\\SKILL.md"
     },
     ".gemini\\config\\skills\\veille-recrutement-education-gouv\\SKILL.md": {
-      "sha256": "33fdd68124133d1f4389a4ea83ffe05c4a3ff844fa2974965db231c2d6242987",
-      "size": 7631,
+      "sha256": "bf6a468b39df8751b587d622a81e4291fcee546bde20d0a46cb834a959f555ac",
+      "size": 7530,
       "flat_name": ".gemini__config__skills__veille-recrutement-education-gouv__SKILL.md",
       "original_path": "C:\\Users\\richa\\.gemini\\config\\skills\\veille-recrutement-education-gouv\\SKILL.md"
     },
     "Gemini\\Pipeline_JobHunter\\templates\\template_lettre.html": {
-      "sha256": "f7a24c90e3fa1dac202e1cd61bc4c7fc2795e2a470ca47428773194bdec68b54",
-      "size": 16538,
+      "sha256": "61239ac80380b4c025d40c049d645056f8fb409d911df5019fe8effc4c85776d",
+      "size": 16339,
       "flat_name": "Gemini__Pipeline_JobHunter__templates__template_lettre.html",
       "original_path": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\templates\\template_lettre.html"
     },
     "Gemini\\Pipeline_JobHunter\\templates\\template_cv.html": {
-      "sha256": "9df5790c216a74fd2c1dc3de2523ccfbb5cbc3d27b10e3641580aeb8a68e325b",
-      "size": 22405,
+      "sha256": "0f6249aa2a9aac8cbe89707e11304a4013e64cbb18fd83f4a5223a7e68f6fb03",
+      "size": 21797,
       "flat_name": "Gemini__Pipeline_JobHunter__templates__template_cv.html",
       "original_path": "C:\\Users\\richa\\Gemini\\Pipeline_JobHunter\\templates\\template_cv.html"
     }
-  }
+  },
+  "changelog": [
+    {
+      "date": "2026-09-25",
+      "change": "Ajout section 6 (redaction-cv) et section 8 (lettre-de-motivation) : version compacte pour connecteur e-mail et contrôle des pièces jointes."
+    }
+  ]
 }
