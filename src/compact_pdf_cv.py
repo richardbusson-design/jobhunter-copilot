@@ -1,13 +1,32 @@
 # -*- coding: utf-8 -*-
-import re, html as H, sys
+"""Génère la version compacte du CV (ReportLab, Helvetica non incorporée) pour envoi par connecteur e-mail.
+
+Usage :
+    python src/compact_pdf_cv.py candidatures/<dossier> [--scale K] [--scale-right KR] [--out FICHIER] [--png]
+
+Le CV source est lu dans <dossier>/CV_Richard_BUSSON.html ; la sortie par défaut est
+<dossier>/CV_Richard_BUSSON_compact_email.pdf (poids attendu : 10 à 15 Ko, une page A4).
+"""
+import re, html as H, sys, os, argparse
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_JUSTIFY, TA_LEFT
 from reportlab.lib.colors import HexColor, white
-S='/tmp/claude-0/-home-user-jobhunter-copilot/2e9d9f5c-51d9-5430-991a-31bd2053a5dc/scratchpad'
-SRC='candidatures/2026-09-25_CNAM_Hauts-de-France_Vivier_formateurs_RH_Paie/CV_Richard_BUSSON.html'
+
+ap = argparse.ArgumentParser(description="Version compacte du CV pour envoi par e-mail.")
+ap.add_argument("dossier", help="Dossier de candidature contenant CV_Richard_BUSSON.html")
+ap.add_argument("--scale", type=float, default=1.0, help="Facteur d'échelle de la colonne gauche (défaut 1.0)")
+ap.add_argument("--scale-right", type=float, default=None, help="Facteur d'échelle de la colonne droite (défaut = --scale)")
+ap.add_argument("--out", default=None, help="Fichier PDF de sortie (défaut : <dossier>/CV_Richard_BUSSON_compact_email.pdf)")
+ap.add_argument("--png", action="store_true", help="Génère aussi un PNG de contrôle visuel via PyMuPDF")
+args = ap.parse_args()
+
+SRC = os.path.join(args.dossier, "CV_Richard_BUSSON.html")
+if not os.path.isfile(SRC):
+    sys.exit(f"[!] CV source introuvable : {SRC}")
+OUT = args.out or os.path.join(args.dossier, "CV_Richard_BUSSON_compact_email.pdf")
 src=open(SRC,encoding='utf-8').read()
 def txt(s):
     s=re.sub(r'<strong>(.*?)</strong>',r'<b>\1</b>',s,flags=re.S)
@@ -135,7 +154,13 @@ def build(k, out, kr=None):
     right_bottom=y+rgap
     c.showPage(); c.save()
     return left_bottom, right_bottom
-k=float(sys.argv[1]) if len(sys.argv)>1 else 1.0
-kr=float(sys.argv[2]) if len(sys.argv)>2 else k
-lb,rb=build(k,S+'/CV_Richard_BUSSON.pdf',kr)
-import os; print('scale',k,'left_bottom',round(lb),'right_bottom',round(rb),'size',os.path.getsize(S+'/CV_Richard_BUSSON.pdf'))
+k = args.scale
+kr = args.scale_right if args.scale_right is not None else k
+lb, rb = build(k, OUT, kr)
+print(f"scale {k}/{kr} | bas colonne gauche {round(lb)} | bas colonne droite {round(rb)} | {OUT} ({os.path.getsize(OUT)} octets)")
+if args.png:
+    import pymupdf
+    doc = pymupdf.open(OUT)
+    png = OUT[:-4] + ".png"
+    doc[0].get_pixmap(dpi=110).save(png)
+    print(f"contrôle visuel : {png} ({len(doc)} page(s))")
