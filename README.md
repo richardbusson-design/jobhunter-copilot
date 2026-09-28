@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **10** | **79** | **451** | **26** | **760** |
+> | **11** | **80** | **452** | **26** | **761** |
 >
-> *Dernière mise à jour et synchronisation : 28/09/2026 15:28*
+> *Dernière mise à jour et synchronisation : 28/09/2026 22:33*
 
-## 🗓️ Septembre 2026 (451 candidatures)
+## 🗓️ Septembre 2026 (452 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-09-28 | **ERGALIS LE HAVRE 3226** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 76 (76000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214MWDM) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-28_ERGALIS_LE_HAVRE_3226_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-28_ERGALIS_LE_HAVRE_3226_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-09-28 | **SYNERGIE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Chargé du développement des RH F/H](https://candidat.francetravail.fr/offres/recherche/detail/214MBTN) (33 000 € - 42 000 € brut annuel - 89%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-28_SYNERGIE_Charg%C3%A9_du_d%C3%A9veloppement_des_RH_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-28_SYNERGIE_Charg%C3%A9_du_d%C3%A9veloppement_des_RH_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-09-28 | **APEI BOUCLE DE LA SEINE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 92 (92000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie et administration du personnel H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214KYHY) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-28_APEI_BOUCLE_DE_LA_SEINE_Gestionnaire_de_paie_et_administration_du_per/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-28_APEI_BOUCLE_DE_LA_SEINE_Gestionnaire_de_paie_et_administration_du_per/CV_Richard_BUSSON.pdf) |
 | 2026-09-28 | **TYLS LAVAL** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214LDKD) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-09-28_TYLS_LAVAL_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-09-28_TYLS_LAVAL_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
