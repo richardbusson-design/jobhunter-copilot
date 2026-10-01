@@ -3,9 +3,19 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **19** | **87** | **491** | **26** | **800** |
+> | **5** | **82** | **5** | **26** | **805** |
 >
-> *Dernière mise à jour et synchronisation : 30/09/2026 21:33*
+> *Dernière mise à jour et synchronisation : 01/10/2026 21:57*
+
+## 🗓️ Octobre 2026 (5 candidatures)
+
+| Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-01 | **ALGAM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Chargé des ressources humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214QRHT) (33 000 € - 42 000 € brut annuel - 91%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-01_ALGAM_Charg%C3%A9_des_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-01_ALGAM_Charg%C3%A9_des_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-01 | **Domino RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Missions Annecy Intérim (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie  (H/F) Staubli](https://candidat.francetravail.fr/offres/recherche/detail/7558999) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-01_Domino_RH_Gestionnaire_de_paie___H_F__Staubli/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-01_Domino_RH_Gestionnaire_de_paie___H_F__Staubli/CV_Richard_BUSSON.pdf) |
+| 2026-10-01 | **GEG2A** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214QXNT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-01_GEG2A_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-01_GEG2A_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-01 | **SAMSIC EMPLOI PACA 2** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 83 (83000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE DE PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214QYYY) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-01_SAMSIC_EMPLOI_PACA_2_GESTIONNAIRE_DE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-01_SAMSIC_EMPLOI_PACA_2_GESTIONNAIRE_DE_PAIE__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-01 | **LES NOUVEAUX HERITIERS (L.N.H.)** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 75 (75000) | Non communiqué | 🌐 Portail Web | [Gestionnaire Paie &amp; ADP (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214PQHR) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-01_LES_NOUVEAUX_HERITIERS__L.N.H.__Gestionnaire_Paie__amp__ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-01_LES_NOUVEAUX_HERITIERS__L.N.H.__Gestionnaire_Paie__amp__ADP__H_F_/CV_Richard_BUSSON.pdf) |
 
 ## 🗓️ Septembre 2026 (491 candidatures)
 
