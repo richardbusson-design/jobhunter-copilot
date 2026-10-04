@@ -3,14 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **10** | **81** | **15** | **26** | **815** |
+> | **2** | **67** | **17** | **26** | **817** |
 >
-> *Dernière mise à jour et synchronisation : 02/10/2026 21:21*
+> *Dernière mise à jour et synchronisation : 04/10/2026 13:12*
 
-## 🗓️ Octobre 2026 (15 candidatures)
+## 🗓️ Octobre 2026 (17 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-04 | **Mistras France** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 94 (94000) | Non communiqué | 🌐 Portail Web | [Responsable Ressources Humaines Juridique &amp; Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/7641807) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/CV_Richard_BUSSON.pdf) |
+| 2026-10-04 | **Onet Propreté et Services** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Responsable RH et Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/7645559) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-04_Onet_Propret%C3%A9_et_Services_Responsable_RH_et_Relations_Sociales_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-04_Onet_Propret%C3%A9_et_Services_Responsable_RH_et_Relations_Sociales_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-02 | **CRIT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 76 (76000) | Non communiqué | 🌐 Portail Web | [Chargé(e) de Ressources Humaines  H/F](https://candidat.francetravail.fr/offres/recherche/detail/214SSTL) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-02_CRIT_Charg%C3%A9_e__de_Ressources_Humaines__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-02_CRIT_Charg%C3%A9_e__de_Ressources_Humaines__H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-02 | **APF FRANCE HANDICAP INTERIM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 92 (92000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214RTDQ) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-02_APF_FRANCE_HANDICAP_INTERIM_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-02_APF_FRANCE_HANDICAP_INTERIM_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-02 | **51** | Monsieur le Directeur de Centre (Direction de l'Établissement) | EPERNAY (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie et RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214SRBT) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-02_51_Gestionnaire_paie_et_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-02_51_Gestionnaire_paie_et_RH__H_F_/CV_Richard_BUSSON.pdf) |

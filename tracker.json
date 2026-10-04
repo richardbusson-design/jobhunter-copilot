@@ -17937,5 +17937,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-09"
+  },
+  {
+    "id": "FT-7645559",
+    "source": "France Travail (Flux Direct)",
+    "company": "Onet Propreté et Services",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Responsable RH et Relations Sociales H/F",
+    "city": "13",
+    "postal_code": "13000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/7645559",
+    "description": "POSTE : Responsable RH et Relations Sociales H/F\nDESCRIPTION : \nNous recrutons pour notre direction régionale Provence un :\n \nResponsable RH Régional F/H\n \nSous l'autorité du DRH zone Est, vos...",
+    "score": 94,
+    "date": "2026-10-04",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Onet_Propreté_et_Services_Responsable_RH_et_Relations_Sociales_H_F",
+    "folder_rel": "candidatures/2026-10-04_Onet_Propreté_et_Services_Responsable_RH_et_Relations_Sociales_H_F",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Onet_Propreté_et_Services_Responsable_RH_et_Relations_Sociales_H_F/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Onet_Propreté_et_Services_Responsable_RH_et_Relations_Sociales_H_F/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-11"
+  },
+  {
+    "id": "FT-7641807",
+    "source": "France Travail (Flux Direct)",
+    "company": "Mistras France",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Responsable Ressources Humaines Juridique &amp; Relations Sociales H/F",
+    "city": "94",
+    "postal_code": "94000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/7641807",
+    "description": "POSTE : Responsable Ressources Humaines Juridique &amp; Relations Sociales H/F\nDESCRIPTION : \nMISTRAS Group SAS recrute pour son Siège basé à Sucy en Brie (94) un(e) Responsable Ressources Humaines...",
+    "score": 93,
+    "date": "2026-10-04",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati",
+    "folder_rel": "candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-11"
   }
 ]
