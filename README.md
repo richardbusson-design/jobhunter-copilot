@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **2** | **67** | **17** | **26** | **817** |
+> | **3** | **68** | **18** | **26** | **818** |
 >
-> *Dernière mise à jour et synchronisation : 04/10/2026 13:12*
+> *Dernière mise à jour et synchronisation : 04/10/2026 20:11*
 
-## 🗓️ Octobre 2026 (17 candidatures)
+## 🗓️ Octobre 2026 (18 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-04 | **LADAPT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Val d'Oise (ESRP) (60100) | Non communiqué | 🌐 Portail Web | [Coordinateur pédagogique (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214SZVR) (33 000 € - 42 000 € brut annuel - 90%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-04_LADAPT_Coordinateur_p%C3%A9dagogique__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-04_LADAPT_Coordinateur_p%C3%A9dagogique__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-04 | **Mistras France** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 94 (94000) | Non communiqué | 🌐 Portail Web | [Responsable Ressources Humaines Juridique &amp; Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/7641807) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-04_Mistras_France_Responsable_Ressources_Humaines_Juridique__amp__Relati/CV_Richard_BUSSON.pdf) |
 | 2026-10-04 | **Onet Propreté et Services** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Responsable RH et Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/7645559) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-04_Onet_Propret%C3%A9_et_Services_Responsable_RH_et_Relations_Sociales_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-04_Onet_Propret%C3%A9_et_Services_Responsable_RH_et_Relations_Sociales_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-02 | **CRIT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 76 (76000) | Non communiqué | 🌐 Portail Web | [Chargé(e) de Ressources Humaines  H/F](https://candidat.francetravail.fr/offres/recherche/detail/214SSTL) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-02_CRIT_Charg%C3%A9_e__de_Ressources_Humaines__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-02_CRIT_Charg%C3%A9_e__de_Ressources_Humaines__H_F/CV_Richard_BUSSON.pdf) |
