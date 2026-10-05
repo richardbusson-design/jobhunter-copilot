@@ -18301,5 +18301,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-12"
+  },
+  {
+    "id": "FT-214SQXD",
+    "source": "France Travail (Flux Direct)",
+    "company": "A G E C E T",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire de paie (H/F)",
+    "city": "93",
+    "postal_code": "93000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/214SQXD",
+    "description": "L'association AGECET, engagée dans l'accompagnement et l'inclusion des personnes en situation de handicap, recrute un professionnel pour renforcer ses équipes au sein de ses différents établissements...",
+    "score": 93,
+    "date": "2026-10-05",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_",
+    "folder_rel": "candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-12"
   }
 ]

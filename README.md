@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **10** | **78** | **28** | **26** | **828** |
+> | **11** | **79** | **29** | **26** | **829** |
 >
-> *Dernière mise à jour et synchronisation : 05/10/2026 16:04*
+> *Dernière mise à jour et synchronisation : 05/10/2026 23:10*
 
-## 🗓️ Octobre 2026 (28 candidatures)
+## 🗓️ Octobre 2026 (29 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-05 | **A G E C E T** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 93 (93000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214SQXD) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-05_A_G_E_C_E_T_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-05 | **CENTRE FERON VRAU** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie et RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214TDKV) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-05_CENTRE_FERON_VRAU_Gestionnaire_paie_et_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-05_CENTRE_FERON_VRAU_Gestionnaire_paie_et_RH__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-05 | **SD WORX** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 64 (64000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie expérimenté(e) H/F](https://candidat.francetravail.fr/offres/recherche/detail/214TRFB) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-05_SD_WORX_Gestionnaire_paie_exp%C3%A9riment%C3%A9_e__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-05_SD_WORX_Gestionnaire_paie_exp%C3%A9riment%C3%A9_e__H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-05 | **GRANDS MOULINS D'AZENAY** | Monsieur le Directeur de Centre (Direction de l'Établissement) | GMA (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie (F/H) (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214TXLY) (33 000 € - 42 000 € brut annuel - 94%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-05_GRANDS_MOULINS_D_AZENAY_Gestionnaire_paie__F_H___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-05_GRANDS_MOULINS_D_AZENAY_Gestionnaire_paie__F_H___H_F_/CV_Richard_BUSSON.pdf) |
