@@ -18749,5 +18749,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-14"
+  },
+  {
+    "id": "FT-214YBGC",
+    "source": "France Travail (Flux Direct)",
+    "company": "LEADSEN RH",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire de la paie et rh (H/F)",
+    "city": "13",
+    "postal_code": "13000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/214YBGC",
+    "description": "Nous recrutons un(e) Gestionnaire de la paie et RH (H/F) pour rejoindre une PME industrielle à taille humaine, d'environ 40 collaborateurs, située à proximité de Rousset.\n\nDans le cadre d'une...",
+    "score": 93,
+    "date": "2026-10-07",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_",
+    "folder_rel": "candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-14"
   }
 ]

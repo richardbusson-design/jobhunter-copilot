@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **6** | **63** | **44** | **26** | **844** |
+> | **7** | **64** | **45** | **26** | **845** |
 >
-> *Dernière mise à jour et synchronisation : 07/10/2026 14:32*
+> *Dernière mise à jour et synchronisation : 07/10/2026 22:00*
 
-## 🗓️ Octobre 2026 (44 candidatures)
+## 🗓️ Octobre 2026 (45 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-07 | **LEADSEN RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 13 (13000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de la paie et rh (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214YBGC) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-07_LEADSEN_RH_Gestionnaire_de_la_paie_et_rh__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-07 | **Laïta** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Chargé de Ressources Humaines F/H](https://candidat.francetravail.fr/offres/recherche/detail/214XTYY) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-07_La%C3%AFta_Charg%C3%A9_de_Ressources_Humaines_F_H/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-07_La%C3%AFta_Charg%C3%A9_de_Ressources_Humaines_F_H/CV_Richard_BUSSON.pdf) |
 | 2026-10-07 | **ALLIANCE EMPLOI PAYS DU HAINAUT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Chargé de développement RH H/F](https://candidat.francetravail.fr/offres/recherche/detail/214WWBD) (33 000 € - 42 000 € brut annuel - 89%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-07_ALLIANCE_EMPLOI_PAYS_DU_HAINAUT_Charg%C3%A9_de_d%C3%A9veloppement_RH_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-07_ALLIANCE_EMPLOI_PAYS_DU_HAINAUT_Charg%C3%A9_de_d%C3%A9veloppement_RH_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-07 | **ANRAS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | LA PASSARELA (60100) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE DE PAIE  (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/214XNXD) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-07_ANRAS_GESTIONNAIRE_DE_PAIE___H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-07_ANRAS_GESTIONNAIRE_DE_PAIE___H_F_/CV_Richard_BUSSON.pdf) |
