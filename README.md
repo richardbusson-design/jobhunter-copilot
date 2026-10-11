@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **15** | **62** | **67** | **26** | **867** |
+> | **1** | **53** | **68** | **26** | **868** |
 >
-> *Dernière mise à jour et synchronisation : 09/10/2026 21:44*
+> *Dernière mise à jour et synchronisation : 11/10/2026 14:01*
 
-## 🗓️ Octobre 2026 (67 candidatures)
+## 🗓️ Octobre 2026 (68 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-11 | **NEW RECRUTEMENT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 93 (93000) | Non communiqué | 🌐 Portail Web | [RESPONSABLE DES RESSOURCES HUMAINES SUR SAINT-DENIS (93 (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215BSSL) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__/CV_Richard_BUSSON.pdf) |
 | 2026-10-09 | **SOCIETE VITREENNE D'ABATTAGE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 35 (35000) | Non communiqué | 🌐 Portail Web | [Chargé de Ressources Humaines H/F](https://candidat.francetravail.fr/offres/recherche/detail/215BMLG) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-09_SOCIETE_VITREENNE_D_ABATTAGE_Charg%C3%A9_de_Ressources_Humaines_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-09_SOCIETE_VITREENNE_D_ABATTAGE_Charg%C3%A9_de_Ressources_Humaines_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-09 | **WINSEARCH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | PARIS AEC (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie confirmé H/F](https://candidat.francetravail.fr/offres/recherche/detail/7797933) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-09_WINSEARCH_Gestionnaire_de_paie_confirm%C3%A9_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-09_WINSEARCH_Gestionnaire_de_paie_confirm%C3%A9_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-09 | **Fab Group** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 17 (17000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie H/F](https://candidat.francetravail.fr/offres/recherche/detail/7798951) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-09_Fab_Group_Gestionnaire_de_paie_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-09_Fab_Group_Gestionnaire_de_paie_H_F/CV_Richard_BUSSON.pdf) |

@@ -19393,5 +19393,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-16"
+  },
+  {
+    "id": "FT-215BSSL",
+    "source": "France Travail (Flux Direct)",
+    "company": "NEW RECRUTEMENT",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "RESPONSABLE DES RESSOURCES HUMAINES SUR SAINT-DENIS (93 (H/F)",
+    "city": "93",
+    "postal_code": "93000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215BSSL",
+    "description": "En tant que Responsable des Ressources Humaines, vos missions seront de :\n- Préparer les contrats de travail, avenants et documents administratifs liés à la vie du salarié \n- Définir et mettre en...",
+    "score": 98,
+    "date": "2026-10-11",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__",
+    "folder_rel": "candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-11_NEW_RECRUTEMENT_RESPONSABLE_DES_RESSOURCES_HUMAINES_SUR_SAINT-DENIS__/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-18"
   }
 ]
