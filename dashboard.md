@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **8** | **58** | **76** | **26** | **876** |
+> | **9** | **59** | **77** | **26** | **877** |
 >
-> *Dernière mise à jour et synchronisation : 12/10/2026 16:48*
+> *Dernière mise à jour et synchronisation : 12/10/2026 23:38*
 
-## 🗓️ Octobre 2026 (76 candidatures)
+## 🗓️ Octobre 2026 (77 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-12 | **UMANEIS RH** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Responsable Paie et Administration du Personnel (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215BZYJ) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-12_UMANEIS_RH_Responsable_Paie_et_Administration_du_Personnel__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-12_UMANEIS_RH_Responsable_Paie_et_Administration_du_Personnel__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-12 | **RECRUT'IM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215CDHT) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-12_RECRUT_IM_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-12_RECRUT_IM_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-12 | **GAT FAST** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 95 (95000) | Non communiqué | 🌐 Portail Web | [COMPTABLE POLYVALENT &amp; GESTIONNAIRE DE PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215CGYW) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-12_GAT_FAST_COMPTABLE_POLYVALENT__amp__GESTIONNAIRE_DE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-12_GAT_FAST_COMPTABLE_POLYVALENT__amp__GESTIONNAIRE_DE_PAIE__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-12 | **2B** | Monsieur le Directeur de Centre (Direction de l'Établissement) | FURIANI (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/215CNCH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-12_2B_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-12_2B_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
