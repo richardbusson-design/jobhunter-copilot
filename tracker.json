@@ -20653,5 +20653,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-24"
+  },
+  {
+    "id": "FT-215JKHS",
+    "source": "France Travail (Flux Direct)",
+    "company": "YOUR BO",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire de paie Senior (H/F)",
+    "city": "Maurice",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215JKHS",
+    "description": "Mission principale \n\nLe(a) Gestionnaire de paie Senior est responsable de la gestion complète et autonome sur le processus de paie pour un volume important de clients. Il garantit la fiabilité, la...",
+    "score": 93,
+    "date": "2026-10-17",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_",
+    "folder_rel": "candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-24"
   }
 ]

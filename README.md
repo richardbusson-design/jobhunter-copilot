@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **2** | **45** | **112** | **26** | **912** |
+> | **3** | **46** | **113** | **26** | **913** |
 >
-> *Dernière mise à jour et synchronisation : 17/10/2026 11:36*
+> *Dernière mise à jour et synchronisation : 17/10/2026 15:31*
 
-## 🗓️ Octobre 2026 (112 candidatures)
+## 🗓️ Octobre 2026 (113 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-17 | **YOUR BO** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Maurice (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie Senior (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215JKHS) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-17_YOUR_BO_Gestionnaire_de_paie_Senior__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-17 | **LA DETECTION ELECTRONIQUE FRANCAISE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 91 (91000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215HHLF) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-17 | **ETABLISSEMENT PUBLIC DE GESTION ET D AME** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 29 (29000) | Non communiqué | 🌐 Portail Web | [Responsable gestion administrative et ressources humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215JFBD) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ/CV_Richard_BUSSON.pdf) |
 | 2026-10-16 | **95** | Monsieur le Directeur de Centre (Direction de l'Établissement) | CERGY (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie CDD confirmé H/F (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215HJVS) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-16_95_Gestionnaire_paie_CDD_confirm%C3%A9_H_F__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-16_95_Gestionnaire_paie_CDD_confirm%C3%A9_H_F__H_F_/CV_Richard_BUSSON.pdf) |
