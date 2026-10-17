@@ -20597,5 +20597,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-23"
+  },
+  {
+    "id": "FT-215JFBD",
+    "source": "France Travail (Flux Direct)",
+    "company": "ETABLISSEMENT PUBLIC DE GESTION ET D AME",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Responsable gestion administrative et ressources humaines (H/F)",
+    "city": "29",
+    "postal_code": "29000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215JFBD",
+    "description": "L'EPAB est un établissement public territorial dédié à la gestion intégrée de l'eau et à l'aménagement de la baie de Douarnenez. Au sein d'une équipe pluridisciplinaire de 9 agents, vous rejoindrez...",
+    "score": 93,
+    "date": "2026-10-17",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ",
+    "folder_rel": "candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_ETABLISSEMENT_PUBLIC_DE_GESTION_ET_D_AME_Responsable_gestion_administ/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-24"
+  },
+  {
+    "id": "FT-215HHLF",
+    "source": "France Travail (Flux Direct)",
+    "company": "LA DETECTION ELECTRONIQUE FRANCAISE",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire de Paie (H/F)",
+    "city": "91",
+    "postal_code": "91000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215HHLF",
+    "description": "Le Réseau DEF (3000 collaborateurs) est un acteur majeur sur le marché européen de la sécurité incendie. C'est le seul réseau international d'entreprises expertes en sécurité incendie et l'un des...",
+    "score": 93,
+    "date": "2026-10-17",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_",
+    "folder_rel": "candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-17_LA_DETECTION_ELECTRONIQUE_FRANCAISE_Gestionnaire_de_Paie__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-24"
   }
 ]
