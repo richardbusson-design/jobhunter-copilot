@@ -21129,5 +21129,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-27"
+  },
+  {
+    "id": "FT-215LSRJ",
+    "source": "France Travail (Flux Direct)",
+    "company": "CORSE COMPOSITES AERONAUTIQUES",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Chargé de développement RH (H/F)",
+    "city": "2A",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215LSRJ",
+    "description": "Vous aimez la diversité des ressources humaines et souhaitez voir les résultats concrets de votre travail ? \nRejoignez Corse Composites Aéronautiques pour contribuer au recrutement, au développement...",
+    "score": 93,
+    "date": "2026-10-20",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Chargé_de_développement_RH__H_F_",
+    "folder_rel": "candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Chargé_de_développement_RH__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Chargé_de_développement_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Chargé_de_développement_RH__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-10-27"
   }
 ]

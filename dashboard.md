@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **7** | **52** | **129** | **26** | **929** |
+> | **8** | **53** | **130** | **26** | **930** |
 >
-> *Dernière mise à jour et synchronisation : 20/10/2026 12:46*
+> *Dernière mise à jour et synchronisation : 20/10/2026 20:35*
 
-## 🗓️ Octobre 2026 (129 candidatures)
+## 🗓️ Octobre 2026 (130 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-20 | **CORSE COMPOSITES AERONAUTIQUES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 2A (60100) | Non communiqué | 🌐 Portail Web | [Chargé de développement RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215LSRJ) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Charg%C3%A9_de_d%C3%A9veloppement_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-20_CORSE_COMPOSITES_AERONAUTIQUES_Charg%C3%A9_de_d%C3%A9veloppement_RH__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-20 | **UNION FRANCAISE CENTRE VACANCES LOISIRS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 93 (93000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215JFDW) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-20_UNION_FRANCAISE_CENTRE_VACANCES_LOISIRS_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-20_UNION_FRANCAISE_CENTRE_VACANCES_LOISIRS_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-20 | **COTEXPERTISE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 62 (62000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie en cabinet comptable (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215KXLH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-20_COTEXPERTISE_Gestionnaire_de_paie_en_cabinet_comptable__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-20_COTEXPERTISE_Gestionnaire_de_paie_en_cabinet_comptable__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-20 | **Talents Légal** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 93 (93000) | Non communiqué | 🌐 Portail Web | [Responsable Relations Sociales H/F](https://candidat.francetravail.fr/offres/recherche/detail/8092065) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-20_Talents_L%C3%A9gal_Responsable_Relations_Sociales_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-20_Talents_L%C3%A9gal_Responsable_Relations_Sociales_H_F/CV_Richard_BUSSON.pdf) |
