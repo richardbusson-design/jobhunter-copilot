@@ -3,14 +3,17 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **11** | **55** | **161** | **26** | **961** |
+> | **14** | **58** | **164** | **26** | **964** |
 >
-> *Dernière mise à jour et synchronisation : 23/10/2026 12:41*
+> *Dernière mise à jour et synchronisation : 23/10/2026 20:28*
 
-## 🗓️ Octobre 2026 (161 candidatures)
+## 🗓️ Octobre 2026 (164 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-23 | **Perpignan Intérim** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 66 (66000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie MSA F/H - Perpignan Intérim](https://candidat.francetravail.fr/offres/recherche/detail/8224686) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_Perpignan_Int%C3%A9rim_Gestionnaire_de_Paie_MSA_F_H_-_Perpignan_Int%C3%A9rim/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_Perpignan_Int%C3%A9rim_Gestionnaire_de_Paie_MSA_F_H_-_Perpignan_Int%C3%A9rim/CV_Richard_BUSSON.pdf) |
+| 2026-10-23 | **CA GOLFE DU MORBIHAN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | VANNES AGGLOMERAT (60100) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE RH - PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215PYXT) (33 000 € - 42 000 € brut annuel - 91%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_CA_GOLFE_DU_MORBIHAN_GESTIONNAIRE_RH_-_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_CA_GOLFE_DU_MORBIHAN_GESTIONNAIRE_RH_-_PAIE__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-23 | **04** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Sisteron (60100) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215QHRH) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_04_Gestionnaire_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_04_Gestionnaire_paie__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-23 | **CORDON ELECTRONICS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 22 (22000) | Non communiqué | 🌐 Portail Web | [Gestionnaire Paie et ADP (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215PDFY) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_CORDON_ELECTRONICS_Gestionnaire_Paie_et_ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_CORDON_ELECTRONICS_Gestionnaire_Paie_et_ADP__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-23 | **ATELIERS BIGATA SAS** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 33 (33000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE RH ET PAIE  H/F](https://candidat.francetravail.fr/offres/recherche/detail/215PHPM) (33 000 € - 42 000 € brut annuel - 91%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_ATELIERS_BIGATA_SAS_GESTIONNAIRE_RH_ET_PAIE__H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_ATELIERS_BIGATA_SAS_GESTIONNAIRE_RH_ET_PAIE__H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-23 | **GUY DEGRENNE INDUSTRIE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 14 (14000) | Non communiqué | 🌐 Portail Web | [Gestionnaire Paie et Administration du Personnel H/F](https://candidat.francetravail.fr/offres/recherche/detail/215PGHH) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_GUY_DEGRENNE_INDUSTRIE_Gestionnaire_Paie_et_Administration_du_Personn/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_GUY_DEGRENNE_INDUSTRIE_Gestionnaire_Paie_et_Administration_du_Personn/CV_Richard_BUSSON.pdf) |
