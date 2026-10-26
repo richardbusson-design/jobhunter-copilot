@@ -3,14 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **1** | **55** | **165** | **26** | **965** |
+> | **2** | **54** | **167** | **26** | **967** |
 >
-> *Dernière mise à jour et synchronisation : 24/10/2026 12:00*
+> *Dernière mise à jour et synchronisation : 26/10/2026 14:15*
 
-## 🗓️ Octobre 2026 (165 candidatures)
+## 🗓️ Octobre 2026 (167 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-26 | **LA COMPAGNIE DES COMPTES** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 93 (93000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie sénior. (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215QSDF) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_s%C3%A9nior.__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_s%C3%A9nior.__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-26 | **42** | Monsieur le Directeur de Centre (Direction de l'Établissement) | ST ETIENNE (60100) | Non communiqué | 🌐 Portail Web | [COMPTABLE ET GESTIONNAIRE DE PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215RDYJ) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-24 | **77** | Monsieur le Directeur de Centre (Direction de l'Établissement) | Melun (60100) | Non communiqué | 🌐 Portail Web | [Responsable Paie et SIRH ADP (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/8226924) (33 000 € - 42 000 € brut annuel - 96%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-24_77_Responsable_Paie_et_SIRH_ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-24_77_Responsable_Paie_et_SIRH_ADP__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-23 | **Perpignan Intérim** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 66 (66000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de Paie MSA F/H - Perpignan Intérim](https://candidat.francetravail.fr/offres/recherche/detail/8224686) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_Perpignan_Int%C3%A9rim_Gestionnaire_de_Paie_MSA_F_H_-_Perpignan_Int%C3%A9rim/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_Perpignan_Int%C3%A9rim_Gestionnaire_de_Paie_MSA_F_H_-_Perpignan_Int%C3%A9rim/CV_Richard_BUSSON.pdf) |
 | 2026-10-23 | **CA GOLFE DU MORBIHAN** | Monsieur le Directeur de Centre (Direction de l'Établissement) | VANNES AGGLOMERAT (60100) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE RH - PAIE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215PYXT) (33 000 € - 42 000 € brut annuel - 91%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-23_CA_GOLFE_DU_MORBIHAN_GESTIONNAIRE_RH_-_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-23_CA_GOLFE_DU_MORBIHAN_GESTIONNAIRE_RH_-_PAIE__H_F_/CV_Richard_BUSSON.pdf) |

@@ -22137,5 +22137,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-10-31"
+  },
+  {
+    "id": "FT-215RDYJ",
+    "source": "France Travail (Flux Direct)",
+    "company": "42",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "COMPTABLE ET GESTIONNAIRE DE PAIE (H/F)",
+    "city": "ST ETIENNE",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215RDYJ",
+    "description": "Pour donner suite à un départ d'une salariée, nous recherchons une technicienne de paie et comptable à mi-temps, rigoureuse, organisée et autonome, pour assurer la gestion de la paie et participer au...",
+    "score": 93,
+    "date": "2026-10-26",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_",
+    "folder_rel": "candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_42_COMPTABLE_ET_GESTIONNAIRE_DE_PAIE__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-02"
+  },
+  {
+    "id": "FT-215QSDF",
+    "source": "France Travail (Flux Direct)",
+    "company": "LA COMPAGNIE DES COMPTES",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire paie sénior. (H/F)",
+    "city": "93",
+    "postal_code": "93000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215QSDF",
+    "description": "La Compagnie Des Comptes (LCDC) est un cabinet d'expertise comptable membre du groupe Numeris. Depuis plus de 50 ans, La Compagnie des Comptes accompagne les entreprises et leurs dirigeants en...",
+    "score": 93,
+    "date": "2026-10-26",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_sénior.__H_F_",
+    "folder_rel": "candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_sénior.__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_sénior.__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-26_LA_COMPAGNIE_DES_COMPTES_Gestionnaire_paie_sénior.__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-02"
   }
 ]
