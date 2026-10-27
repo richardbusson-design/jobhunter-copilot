@@ -3,14 +3,15 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **8** | **57** | **179** | **26** | **979** |
+> | **9** | **58** | **180** | **26** | **980** |
 >
-> *Dernière mise à jour et synchronisation : 27/10/2026 13:15*
+> *Dernière mise à jour et synchronisation : 27/10/2026 21:18*
 
-## 🗓️ Octobre 2026 (179 candidatures)
+## 🗓️ Octobre 2026 (180 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-27 | **CETIH MACHECOUL** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 44 (44000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/215SJRL) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
 | 2026-10-27 | **HYRA Conseil** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 75 (75000) | Non communiqué | 🌐 Portail Web | [Consultant Paie Spécialiste SIRH H/F](https://candidat.francetravail.fr/offres/recherche/detail/8287798) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-27_HYRA_Conseil_Consultant_Paie_Sp%C3%A9cialiste_SIRH_H_F/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-27_HYRA_Conseil_Consultant_Paie_Sp%C3%A9cialiste_SIRH_H_F/CV_Richard_BUSSON.pdf) |
 | 2026-10-27 | **CAF 59** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie](https://candidat.francetravail.fr/offres/recherche/detail/215RSQV) (33 000 € - 42 000 € brut annuel - 98%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-27_CAF_59_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-27_CAF_59_Gestionnaire_paie/CV_Richard_BUSSON.pdf) |
 | 2026-10-27 | **AEQUITAS EXPERTISE &amp; CONSEIL** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 62 (62000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215RVSN) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-27_AEQUITAS_EXPERTISE__amp__CONSEIL_Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-27_AEQUITAS_EXPERTISE__amp__CONSEIL_Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |

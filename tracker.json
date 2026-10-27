@@ -22529,5 +22529,33 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-11-03"
+  },
+  {
+    "id": "FT-215SJRL",
+    "source": "France Travail (Flux Direct)",
+    "company": "CETIH MACHECOUL",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire paie",
+    "city": "44",
+    "postal_code": "44000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215SJRL",
+    "description": "Dans le cadre d'un projet exceptionnel de migration vers un nouveau logiciel de paie, nous recherchons un Gestionnaire de paie pour un CDD de 12 mois minimum à temps partiel (28h/semaine) qui sera...",
+    "score": 93,
+    "date": "2026-10-27",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie",
+    "folder_rel": "candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-27_CETIH_MACHECOUL_Gestionnaire_paie/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-03"
   }
 ]
