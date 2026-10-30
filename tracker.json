@@ -23257,5 +23257,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-11-06"
+  },
+  {
+    "id": "FT-215WQFB",
+    "source": "France Travail (Flux Direct)",
+    "company": "SAMSIC INTERIM NORD",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "GESTIONNAIRE PAIE ET ADMINISTRATION DU PERSONNEL (H/F)",
+    "city": "59",
+    "postal_code": "59000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215WQFB",
+    "description": "En tant qu'assistant administratif dans le secteur tertiaire, vous aurez l'opportunité de prendre part à des missions variées et enrichissantes dans le domaine de l'assistanat et du secrétariat. \nVos...",
+    "score": 95,
+    "date": "2026-10-30",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_",
+    "folder_rel": "candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-06"
+  },
+  {
+    "id": "FT-215WRDQ",
+    "source": "France Travail (Flux Direct)",
+    "company": "ADEQUAT INTERIM",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Charge ressources humaines (H/F)",
+    "city": "34",
+    "postal_code": "34000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215WRDQ",
+    "description": "Notre agence de Montpellier recherche un(e) Chargé(e) des Ressources Humaines pour notre client situé à Vendargues.\n\nVos missions : \n\n- Assurer la gestion administrative des salariés en garantissant...",
+    "score": 93,
+    "date": "2026-10-30",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_",
+    "folder_rel": "candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-06"
   }
 ]

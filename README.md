@@ -3,14 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **8** | **55** | **205** | **26** | **1005** |
+> | **10** | **57** | **207** | **26** | **1007** |
 >
-> *Dernière mise à jour et synchronisation : 30/10/2026 14:09*
+> *Dernière mise à jour et synchronisation : 30/10/2026 21:30*
 
-## 🗓️ Octobre 2026 (205 candidatures)
+## 🗓️ Octobre 2026 (207 candidatures)
 
 | Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-10-30 | **ADEQUAT INTERIM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Charge ressources humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215WRDQ) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-30_ADEQUAT_INTERIM_Charge_ressources_humaines__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-10-30 | **SAMSIC INTERIM NORD** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 59 (59000) | Non communiqué | 🌐 Portail Web | [GESTIONNAIRE PAIE ET ADMINISTRATION DU PERSONNEL (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215WQFB) (33 000 € - 42 000 € brut annuel - 95%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-30_SAMSIC_INTERIM_NORD_GESTIONNAIRE_PAIE_ET_ADMINISTRATION_DU_PERSONNEL_/CV_Richard_BUSSON.pdf) |
 | 2026-10-30 | **CENTRE COMMUNAL D'ACTION SOCIALE** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Chargé des Ressources Humaines (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215VZTG) (33 000 € - 42 000 € brut annuel - 91%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-30_CENTRE_COMMUNAL_D_ACTION_SOCIALE_Charg%C3%A9_des_Ressources_Humaines__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-30_CENTRE_COMMUNAL_D_ACTION_SOCIALE_Charg%C3%A9_des_Ressources_Humaines__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-30 | **WORKTEAM** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 75 (75000) | Non communiqué | 🌐 Portail Web | [Gestionnaire de paie confirmé (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215VPDF) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-30_WORKTEAM_Gestionnaire_de_paie_confirm%C3%A9__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-30_WORKTEAM_Gestionnaire_de_paie_confirm%C3%A9__H_F_/CV_Richard_BUSSON.pdf) |
 | 2026-10-30 | **SUD EST PROTECTION** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 30 (30000) | Non communiqué | 🌐 Portail Web | [Comptable expérimenté / Gestionnaire de paie (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215WDBD) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-10-30_SUD_EST_PROTECTION_Comptable_exp%C3%A9riment%C3%A9___Gestionnaire_de_paie__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-10-30_SUD_EST_PROTECTION_Comptable_exp%C3%A9riment%C3%A9___Gestionnaire_de_paie__H_F_/CV_Richard_BUSSON.pdf) |
