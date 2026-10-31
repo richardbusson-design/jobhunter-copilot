@@ -23313,5 +23313,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-11-06"
+  },
+  {
+    "id": "FT-8449517",
+    "source": "France Travail (Flux Direct)",
+    "company": "Île",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Responsable Paie &amp; ADP F/H",
+    "city": "de",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/8449517",
+    "description": "Manei Lift, experte du cycle de vie complet de l'ascenseur (installation, maintenance, modernisation, dépannage), poursuit sa croissance et recherche un Responsable Paie &amp; ADP (H/F) pour renforcer...",
+    "score": 94,
+    "date": "2026-10-31",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_Île_Responsable_Paie__amp__ADP_F_H",
+    "folder_rel": "candidatures/2026-10-31_Île_Responsable_Paie__amp__ADP_F_H",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_Île_Responsable_Paie__amp__ADP_F_H/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_Île_Responsable_Paie__amp__ADP_F_H/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-07"
+  },
+  {
+    "id": "FT-8431197",
+    "source": "France Travail (Flux Direct)",
+    "company": "VINCI Energies France",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Responsable Paie et SIRH ADP (H/F)",
+    "city": "92",
+    "postal_code": "92000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/8431197",
+    "description": "Description du poste :\n\nManei Lift, experte du cycle de vie complet de l'ascenseur (installation, maintenance, modernisation, dépannage), poursuit sa croissance et recherche un Responsable Paie &amp; ADP...",
+    "score": 94,
+    "date": "2026-10-31",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_VINCI_Energies_France_Responsable_Paie_et_SIRH_ADP__H_F_",
+    "folder_rel": "candidatures/2026-10-31_VINCI_Energies_France_Responsable_Paie_et_SIRH_ADP__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_VINCI_Energies_France_Responsable_Paie_et_SIRH_ADP__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-10-31_VINCI_Energies_France_Responsable_Paie_et_SIRH_ADP__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-07"
   }
 ]
