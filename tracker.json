@@ -23369,5 +23369,61 @@
       "status": "Formulaire préparé"
     },
     "relance_date": "2026-11-07"
+  },
+  {
+    "id": "FT-215XNQW",
+    "source": "France Travail (Flux Direct)",
+    "company": "ALTER EGO SAINT PAUL 1225",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "UN GESTIONNAIRE PAIE ETANG SALE (H/F)",
+    "city": "974",
+    "postal_code": "60100",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215XNQW",
+    "description": "ALTER EGO TERTIAIRE, agence d'emploi et de recrutement spécialisée dans les contrats CDD/CDI, recherche pour l'un de ses clients un(e) Gestionnaire de Paie sur le secteur de...",
+    "score": 97,
+    "date": "2026-11-02",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_",
+    "folder_rel": "candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-09"
+  },
+  {
+    "id": "FT-215XHDS",
+    "source": "France Travail (Flux Direct)",
+    "company": "GEIQ BTP HERAULT",
+    "contact_name": "Monsieur le Directeur de Centre",
+    "contact_title": "Direction de l'Établissement",
+    "title": "Gestionnaire paie et RH (H/F)",
+    "city": "34",
+    "postal_code": "34000",
+    "phone": "Non communiqué",
+    "contact_email": null,
+    "salary": "33 000 € - 42 000 € brut annuel",
+    "contract_type": "CDI / CDD",
+    "url": "https://candidat.francetravail.fr/offres/recherche/detail/215XHDS",
+    "description": "Le GEIQ BTP Hérault et le GEMME 34 sont deux groupements d'employeurs implantés à Montpellier, qui accompagnent les entreprises du secteur du Bâtiment et des Travaux Publics dans leurs besoins en...",
+    "score": 93,
+    "date": "2026-11-02",
+    "folder": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_",
+    "folder_rel": "candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_",
+    "pdf_letter": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf",
+    "pdf_cv": "/home/runner/work/jobhunter-copilot/jobhunter-copilot/candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_/CV_Richard_BUSSON.pdf",
+    "recruiter_delivery": {
+      "sent": true,
+      "mode": "FRANCE_TRAVAIL_AUTO",
+      "status": "Formulaire préparé"
+    },
+    "relance_date": "2026-11-09"
   }
 ]

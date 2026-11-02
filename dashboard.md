@@ -3,9 +3,16 @@
 > ### 📊 Compteurs d'Envoi et Suivi d'Activité
 > | 📅 Aujourd'hui | 📆 Cette Semaine | 🗓️ Ce Mois-ci | 📸 Preuves Certifiées | 🏆 Total Traitées |
 > | :---: | :---: | :---: | :---: | :---: |
-> | **2** | **45** | **209** | **26** | **1009** |
+> | **2** | **46** | **2** | **26** | **1011** |
 >
-> *Dernière mise à jour et synchronisation : 31/10/2026 13:38*
+> *Dernière mise à jour et synchronisation : 02/11/2026 17:03*
+
+## 🗓️ Novembre 2026 (2 candidatures)
+
+| Date | Entreprise | Contact / Destinataire | Localisation | Téléphone | E-mail | Poste & Annonce Source | Statut Envoi | Dossier PDF |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 2026-11-02 | **GEIQ BTP HERAULT** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 34 (34000) | Non communiqué | 🌐 Portail Web | [Gestionnaire paie et RH (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215XHDS) (33 000 € - 42 000 € brut annuel - 93%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-11-02_GEIQ_BTP_HERAULT_Gestionnaire_paie_et_RH__H_F_/CV_Richard_BUSSON.pdf) |
+| 2026-11-02 | **ALTER EGO SAINT PAUL 1225** | Monsieur le Directeur de Centre (Direction de l'Établissement) | 974 (60100) | Non communiqué | 🌐 Portail Web | [UN GESTIONNAIRE PAIE ETANG SALE (H/F)](https://candidat.francetravail.fr/offres/recherche/detail/215XNQW) (33 000 € - 42 000 € brut annuel - 97%) | 🟢 Transmis & Validé (Web ATS) | [Lettre](candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_/Lettre_Motivation_Richard_BUSSON.pdf) / [CV](candidatures/2026-11-02_ALTER_EGO_SAINT_PAUL_1225_UN_GESTIONNAIRE_PAIE_ETANG_SALE__H_F_/CV_Richard_BUSSON.pdf) |
 
 ## 🗓️ Octobre 2026 (209 candidatures)
 
